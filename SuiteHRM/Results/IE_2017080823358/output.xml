@@ -1,0 +1,1150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20170808 14:00:49.483" generator="Robot 2.9.2 (Python 2.7.13 on win32)">
+<suite id="s1" name="Accounts &amp; Leads &amp; Oppurtunities">
+<suite source="C:\SuiteCRM\TestCases\Accounts.txt" id="s1-s1" name="Accounts">
+<test id="s1-s1-t1" name="Create An Account">
+<kw name="Get Ms Excel Row Values Into Dictionary Based On Key" library="CommonLibrary">
+<doc>Returns the dictionary of values given row in the MS Excel file</doc>
+<arguments>
+<arg>${testDataFolderPath}\\SuiteCRMWorkflows.xls</arg>
+<arg>CA_TD_01</arg>
+<arg>Create Account</arg>
+</arguments>
+<assign>
+<var>${CreateAccount}</var>
+</assign>
+<msg timestamp="20170808 14:00:50.053" level="INFO">${CreateAccount} = {'Billing Address City': 'Hyderabad ', 'Billing Address Country': 'India', 'Shipping Address Postal Code': '500082', 'Billing AddressPostal Code': '500082', 'Member Of': 'Rhy', 'Save': 'Y', 'Type': 'A...</msg>
+<status status="PASS" endtime="20170808 14:00:50.053" starttime="20170808 14:00:50.037"></status>
+</kw>
+<kw name="Login To SuiteCRM" library="common">
+<doc>This keyword is used to Login to SuiteCRM application. It returns True for successful login otherwise False.</doc>
+<arguments>
+<arg>${BROWSER}</arg>
+<arg>${userName}</arg>
+<arg>${password}</arg>
+</arguments>
+<assign>
+<var>${loginStatus}</var>
+</assign>
+<kw name="Open Browser To Login Page" library="common">
+<doc>Open the application in the specified browser</doc>
+<arguments>
+<arg>${serverSuiteCRMURL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<assign>
+<var>${loginStatus}</var>
+</assign>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>'${BROWSER.lower()}'=='ff' or '${BROWSER.lower()}'=='firefox'</arg>
+</arguments>
+<assign>
+<var>${bStatus}</var>
+</assign>
+<msg timestamp="20170808 14:00:50.053" level="INFO">${bStatus} = False</msg>
+<status status="PASS" endtime="20170808 14:00:50.053" starttime="20170808 14:00:50.053"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>'${BROWSER.lower()}'=='gc' or '${BROWSER.lower()}'=='chrome'</arg>
+</arguments>
+<assign>
+<var>${chromeStatus}</var>
+</assign>
+<msg timestamp="20170808 14:00:50.068" level="INFO">${chromeStatus} = False</msg>
+<status status="PASS" endtime="20170808 14:00:50.068" starttime="20170808 14:00:50.053"></status>
+</kw>
+<kw name="Get Chrome Browser Options" library="CommonLibrary">
+<doc>It returns the chrome browser ChromeProfile, so that download pop up won't appear</doc>
+<assign>
+<var>${chrome_options}</var>
+</assign>
+<msg timestamp="20170808 14:00:50.068" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x049299F0&gt;</msg>
+<status status="PASS" endtime="20170808 14:00:50.068" starttime="20170808 14:00:50.068"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on given items.</doc>
+<arguments>
+<arg>chrome_options=${chrome_options}</arg>
+</arguments>
+<assign>
+<var>${kwargs}</var>
+</assign>
+<msg timestamp="20170808 14:00:50.068" level="INFO">${kwargs} = {u'chrome_options': &lt;selenium.webdriver.chrome.options.Options object at 0x049299F0&gt;}</msg>
+<status status="PASS" endtime="20170808 14:00:50.068" starttime="20170808 14:00:50.068"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${chromeStatus}</arg>
+<arg>Create Webdriver</arg>
+<arg>Chrome</arg>
+<arg>kwargs=${kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:00:50.068" starttime="20170808 14:00:50.068"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${chromeStatus}</arg>
+<arg>Go To</arg>
+<arg>${url}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:00:50.068" starttime="20170808 14:00:50.068"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${bStatus}==True</arg>
+<arg>Open Browser</arg>
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<arg>${EMPTY}</arg>
+<arg>${firefox_profile_path}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:00:50.068" starttime="20170808 14:00:50.068"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${bStatus}==False and ${chromeStatus}==False</arg>
+<arg>Open Browser</arg>
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20170808 14:00:50.084" level="INFO">Opening browser 'ie' to base url 'http://10.13.20.86/SuiteCRM/index.php'</msg>
+<status status="PASS" endtime="20170808 14:00:53.678" starttime="20170808 14:00:50.084"></status>
+</kw>
+<status status="PASS" endtime="20170808 14:00:53.678" starttime="20170808 14:00:50.068"></status>
+</kw>
+<kw name="Maximize Browser Window" library="Selenium2Library">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" endtime="20170808 14:00:53.694" starttime="20170808 14:00:53.678"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Wait Until Page Contains Element</arg>
+<arg>${textBox.Login.UserName}</arg>
+<arg>${Delay30}</arg>
+</arguments>
+<assign>
+<var>${loginPageStatus}</var>
+</assign>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<arguments>
+<arg>${textBox.Login.UserName}</arg>
+<arg>${Delay30}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:00:53.787" starttime="20170808 14:00:53.694"></status>
+</kw>
+<msg timestamp="20170808 14:00:53.787" level="INFO">${loginPageStatus} = True</msg>
+<status status="PASS" endtime="20170808 14:00:53.787" starttime="20170808 14:00:53.694"></status>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<doc>Sets variable based on the given condition.</doc>
+<arguments>
+<arg>${loginPageStatus}==False</arg>
+<arg>Login Page is not Displayed.</arg>
+<arg>${EMPTY}</arg>
+</arguments>
+<assign>
+<var>${errorMessage}</var>
+</assign>
+<msg timestamp="20170808 14:00:53.787" level="INFO">${errorMessage} = </msg>
+<status status="PASS" endtime="20170808 14:00:53.787" starttime="20170808 14:00:53.787"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${loginPageStatus}==False</arg>
+<arg>Set Global Variable</arg>
+<arg>${errorMessage}</arg>
+<arg>${errorMessage}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:00:53.787" starttime="20170808 14:00:53.787"></status>
+</kw>
+<msg timestamp="20170808 14:00:53.787" level="INFO">${loginStatus} = True</msg>
+<status status="PASS" endtime="20170808 14:00:53.787" starttime="20170808 14:00:50.053"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>${loginStatus}==False</arg>
+<arg>${loginStatus}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:00:53.787" starttime="20170808 14:00:53.787"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${username}' != '${EMPTY}'</arg>
+<arg>Input Text</arg>
+<arg>${textBox.Login.UserName}</arg>
+<arg>${username}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${textBox.Login.UserName}</arg>
+<arg>${username}</arg>
+</arguments>
+<msg timestamp="20170808 14:00:53.803" level="INFO">Typing text 'admin' into text field '//input[@id='user_name']'</msg>
+<status status="PASS" endtime="20170808 14:01:19.382" starttime="20170808 14:00:53.803"></status>
+</kw>
+<status status="PASS" endtime="20170808 14:01:19.382" starttime="20170808 14:00:53.803"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${password}' != '${EMPTY}'</arg>
+<arg>Input Password</arg>
+<arg>${textBox.Login.Password}</arg>
+<arg>${password}</arg>
+</arguments>
+<kw name="Input Password" library="Selenium2Library">
+<doc>Types the given password into text field identified by `locator`.</doc>
+<arguments>
+<arg>${textBox.Login.Password}</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20170808 14:01:19.382" level="INFO">Typing password into text field '//input[@id='user_password']'</msg>
+<status status="PASS" endtime="20170808 14:02:04.981" starttime="20170808 14:01:19.382"></status>
+</kw>
+<status status="PASS" endtime="20170808 14:02:04.981" starttime="20170808 14:01:19.382"></status>
+</kw>
+<kw name="Click Or Simulate" library="common">
+<doc>This keyword is used to perform click action on webelement if the browser is other than internet explorer, otherwise it performs simulate click action. It returns True if the keyword perform simultae click or click, otheriwse False.</doc>
+<arguments>
+<arg>${button.login}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<kw name="Wait For Element Visible" library="CommonLibrary">
+<doc>Returns 'True' if the element visible with the 'locator' in the corresponding page else returns 'False' base timeout</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>${Delay30}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20170808 14:02:05.200" level="INFO">iCounter: 1</msg>
+<msg timestamp="20170808 14:02:05.200" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20170808 14:02:05.200" starttime="20170808 14:02:04.981"></status>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<doc>Sets variable based on the given condition.</doc>
+<arguments>
+<arg>${status}==False</arg>
+<arg>'${locator}' is not visible.</arg>
+</arguments>
+<assign>
+<var>${errorMessage}</var>
+</assign>
+<msg timestamp="20170808 14:02:05.200" level="INFO">${errorMessage} = None</msg>
+<status status="PASS" endtime="20170808 14:02:05.200" starttime="20170808 14:02:05.200"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${status}==False</arg>
+<arg>Set Global Variable</arg>
+<arg>${errorMessage}</arg>
+<arg>${errorMessage}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:02:05.200" starttime="20170808 14:02:05.200"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>${status}==False</arg>
+<arg>${status}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:02:05.200" starttime="20170808 14:02:05.200"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${BROWSER.lower()}'=='ie' or '${BROWSER.lower()}'=='internetexplorer'</arg>
+<arg>Simulate</arg>
+<arg>${locator}</arg>
+<arg>click</arg>
+<arg>ELSE</arg>
+<arg>Click Element Using Javascript</arg>
+<arg>${locator}</arg>
+</arguments>
+<kw name="Simulate" library="Selenium2Library">
+<doc>Simulates `event` on element identified by `locator`.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>click</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:02:05.403" starttime="20170808 14:02:05.215"></status>
+</kw>
+<status status="PASS" endtime="20170808 14:02:05.403" starttime="20170808 14:02:05.200"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>True</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20170808 14:02:05.403" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20170808 14:02:05.403" starttime="20170808 14:02:05.403"></status>
+</kw>
+<msg timestamp="20170808 14:02:05.403" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20170808 14:02:05.403" starttime="20170808 14:02:04.981"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is false.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Fail</arg>
+<arg>${errorMessage}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:02:05.418" starttime="20170808 14:02:05.403"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${username}' == '${EMPTY}'</arg>
+<arg>Sleep</arg>
+<arg>2s</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:02:05.418" starttime="20170808 14:02:05.418"></status>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<doc>Sets variable based on the given condition.</doc>
+<arguments>
+<arg>'${username}' == '${EMPTY}'</arg>
+<arg>Please fill out this field.</arg>
+</arguments>
+<assign>
+<var>${errorMessage}</var>
+</assign>
+<msg timestamp="20170808 14:02:05.434" level="INFO">${errorMessage} = None</msg>
+<status status="PASS" endtime="20170808 14:02:05.434" starttime="20170808 14:02:05.418"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${username}' == '${EMPTY}'</arg>
+<arg>Set Global Variable</arg>
+<arg>${errorMessage}</arg>
+<arg>${errorMessage}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:02:05.434" starttime="20170808 14:02:05.434"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${username}' == '${EMPTY}'</arg>
+<arg>False</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:02:05.434" starttime="20170808 14:02:05.434"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${password}' == '${EMPTY}'</arg>
+<arg>Wait For Element Visible</arg>
+<arg>${error.Login.ErrorMessage}</arg>
+<arg>${Delay30}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:02:05.434" starttime="20170808 14:02:05.434"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${password}' == '${EMPTY}'</arg>
+<arg>Selenium2Library.Get Text</arg>
+<arg>${error.Login.ErrorMessage}</arg>
+</arguments>
+<assign>
+<var>${errorMessage}</var>
+</assign>
+<msg timestamp="20170808 14:02:05.449" level="INFO">${errorMessage} = None</msg>
+<status status="PASS" endtime="20170808 14:02:05.449" starttime="20170808 14:02:05.434"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${password}' == '${EMPTY}'</arg>
+<arg>Set Global Variable</arg>
+<arg>${errorMessage}</arg>
+<arg>${errorMessage}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:02:05.449" starttime="20170808 14:02:05.449"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${password}' == '${EMPTY}'</arg>
+<arg>False</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:02:05.449" starttime="20170808 14:02:05.449"></status>
+</kw>
+<kw name="Wait For Element Visible" library="CommonLibrary">
+<doc>Returns 'True' if the element visible with the 'locator' in the corresponding page else returns 'False' base timeout</doc>
+<arguments>
+<arg>${image.Home.HomeIcon}</arg>
+<arg>${Delay30}</arg>
+</arguments>
+<assign>
+<var>${loginStatus}</var>
+</assign>
+<msg timestamp="20170808 14:02:08.797" level="INFO">iCounter: 1</msg>
+<msg timestamp="20170808 14:02:08.797" level="INFO">${loginStatus} = True</msg>
+<status status="PASS" endtime="20170808 14:02:08.797" starttime="20170808 14:02:05.449"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${loginStatus}==False</arg>
+<arg>Verify Element Visible</arg>
+<arg>${error.Login.ErrorMessage}</arg>
+</arguments>
+<assign>
+<var>${errorMsgStatus}</var>
+</assign>
+<msg timestamp="20170808 14:02:08.797" level="INFO">${errorMsgStatus} = None</msg>
+<status status="PASS" endtime="20170808 14:02:08.797" starttime="20170808 14:02:08.797"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${errorMsgStatus}</arg>
+<arg>Selenium2Library.Get Text</arg>
+<arg>${error.Login.ErrorMessage}</arg>
+</arguments>
+<assign>
+<var>${errorMsg}</var>
+</assign>
+<msg timestamp="20170808 14:02:08.797" level="INFO">${errorMsg} = None</msg>
+<status status="PASS" endtime="20170808 14:02:08.797" starttime="20170808 14:02:08.797"></status>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<doc>Sets variable based on the given condition.</doc>
+<arguments>
+<arg>${loginStatus}==False</arg>
+<arg>Login Failed.</arg>
+<arg>${EMPTY}</arg>
+</arguments>
+<assign>
+<var>${errorMessage}</var>
+</assign>
+<msg timestamp="20170808 14:02:08.797" level="INFO">${errorMessage} = </msg>
+<status status="PASS" endtime="20170808 14:02:08.797" starttime="20170808 14:02:08.797"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${loginStatus}==False and ${errorMsgStatus}==False</arg>
+<arg>Set Global Variable</arg>
+<arg>${errorMessage}</arg>
+<arg>${errorMessage}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:02:08.813" starttime="20170808 14:02:08.797"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${loginStatus}==False and ${errorMsgStatus}==True</arg>
+<arg>Set Global Variable</arg>
+<arg>${errorMessage}</arg>
+<arg>${errorMsg}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:02:08.817" starttime="20170808 14:02:08.813"></status>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<doc>Sets variable based on the given condition.</doc>
+<arguments>
+<arg>${loginStatus}</arg>
+<arg>False</arg>
+<arg>True</arg>
+</arguments>
+<assign>
+<var>${logOut}</var>
+</assign>
+<msg timestamp="20170808 14:02:08.818" level="INFO">${logOut} = False</msg>
+<status status="PASS" endtime="20170808 14:02:08.818" starttime="20170808 14:02:08.818"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${global_Logout_Status}</arg>
+<arg>${logOut}</arg>
+</arguments>
+<msg timestamp="20170808 14:02:08.819" level="INFO">${global_Logout_Status} = False</msg>
+<status status="PASS" endtime="20170808 14:02:08.820" starttime="20170808 14:02:08.819"></status>
+</kw>
+<msg timestamp="20170808 14:02:08.820" level="INFO">${loginStatus} = True</msg>
+<status status="PASS" endtime="20170808 14:02:08.821" starttime="20170808 14:00:50.053"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is false.</doc>
+<arguments>
+<arg>${loginStatus}</arg>
+<arg>Fail</arg>
+<arg>${errorMessage}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:02:08.822" starttime="20170808 14:02:08.821"></status>
+</kw>
+<kw name="Create Account" library="Accounts">
+<arguments>
+<arg>${CreateAccount}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<kw name="Navigate To Create Sub Menu" library="common">
+<doc>This keyword is used to navigate to create pulldown innermenu,It returns True if it is navigate to required inner menu otherwise False.</doc>
+<arguments>
+<arg>Create Account</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<kw name="Verify Element Visible" library="CommonLibrary">
+<doc>Returns 'True' if the element visible with the 'locator' in the corresponding page else returns 'False'</doc>
+<arguments>
+<arg>${link.common.Home.Create}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20170808 14:02:08.989" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20170808 14:02:08.989" starttime="20170808 14:02:08.826"></status>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<doc>Sets variable based on the given condition.</doc>
+<arguments>
+<arg>${status}==False</arg>
+<arg>'${link.common.Home.Create}' is not visible.</arg>
+</arguments>
+<assign>
+<var>${errorMessage}</var>
+</assign>
+<msg timestamp="20170808 14:02:08.989" level="INFO">${errorMessage} = None</msg>
+<status status="PASS" endtime="20170808 14:02:08.989" starttime="20170808 14:02:08.989"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${status}==False</arg>
+<arg>Set Global Variable</arg>
+<arg>${errorMessage}</arg>
+<arg>${errorMessage}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:02:08.989" starttime="20170808 14:02:08.989"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>${status}==False</arg>
+<arg>${status}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:02:08.989" starttime="20170808 14:02:08.989"></status>
+</kw>
+<kw name="Click Or Simulate" library="common">
+<doc>This keyword is used to perform click action on webelement if the browser is other than internet explorer, otherwise it performs simulate click action. It returns True if the keyword perform simultae click or click, otheriwse False.</doc>
+<arguments>
+<arg>${link.common.Home.Create}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<kw name="Wait For Element Visible" library="CommonLibrary">
+<doc>Returns 'True' if the element visible with the 'locator' in the corresponding page else returns 'False' base timeout</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>${Delay30}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20170808 14:02:09.208" level="INFO">iCounter: 1</msg>
+<msg timestamp="20170808 14:02:09.208" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20170808 14:02:09.208" starttime="20170808 14:02:09.004"></status>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<doc>Sets variable based on the given condition.</doc>
+<arguments>
+<arg>${status}==False</arg>
+<arg>'${locator}' is not visible.</arg>
+</arguments>
+<assign>
+<var>${errorMessage}</var>
+</assign>
+<msg timestamp="20170808 14:02:09.208" level="INFO">${errorMessage} = None</msg>
+<status status="PASS" endtime="20170808 14:02:09.208" starttime="20170808 14:02:09.208"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${status}==False</arg>
+<arg>Set Global Variable</arg>
+<arg>${errorMessage}</arg>
+<arg>${errorMessage}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:02:09.208" starttime="20170808 14:02:09.208"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>${status}==False</arg>
+<arg>${status}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:02:09.208" starttime="20170808 14:02:09.208"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${BROWSER.lower()}'=='ie' or '${BROWSER.lower()}'=='internetexplorer'</arg>
+<arg>Simulate</arg>
+<arg>${locator}</arg>
+<arg>click</arg>
+<arg>ELSE</arg>
+<arg>Click Element Using Javascript</arg>
+<arg>${locator}</arg>
+</arguments>
+<kw name="Simulate" library="Selenium2Library">
+<doc>Simulates `event` on element identified by `locator`.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>click</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:02:09.453" starttime="20170808 14:02:09.223"></status>
+</kw>
+<status status="PASS" endtime="20170808 14:02:09.453" starttime="20170808 14:02:09.208"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>True</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20170808 14:02:09.455" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20170808 14:02:09.455" starttime="20170808 14:02:09.454"></status>
+</kw>
+<msg timestamp="20170808 14:02:09.457" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20170808 14:02:09.457" starttime="20170808 14:02:08.989"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is false.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Fail</arg>
+<arg>${errorMessage}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:02:09.462" starttime="20170808 14:02:09.458"></status>
+</kw>
+<kw name="Wait For Element Visible" library="CommonLibrary">
+<doc>Returns 'True' if the element visible with the 'locator' in the corresponding page else returns 'False' base timeout</doc>
+<arguments>
+<arg>//div[@class='desktop-bar']//li[@id='quickcreatetop' and contains(@class,'quickcreatetop open')]//a[normalize-space()='${subMenuName}']</arg>
+<arg>${Delay30}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20170808 14:02:09.681" level="INFO">iCounter: 1</msg>
+<msg timestamp="20170808 14:02:09.681" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20170808 14:02:09.681" starttime="20170808 14:02:09.462"></status>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<doc>Sets variable based on the given condition.</doc>
+<arguments>
+<arg>${status}==False</arg>
+<arg>'//div[@class='desktop-bar']//li[@id='quickcreatetop' and contains(@class,'quickcreatetop open')]//a[normalize-space()='${subMenuName}']' is not visible.</arg>
+</arguments>
+<assign>
+<var>${errorMessage}</var>
+</assign>
+<msg timestamp="20170808 14:02:09.681" level="INFO">${errorMessage} = None</msg>
+<status status="PASS" endtime="20170808 14:02:09.681" starttime="20170808 14:02:09.681"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${status}==False</arg>
+<arg>Set Global Variable</arg>
+<arg>${errorMessage}</arg>
+<arg>${errorMessage}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:02:09.681" starttime="20170808 14:02:09.681"></status>
+</kw>
+<kw name="Click Or Simulate" library="common">
+<doc>This keyword is used to perform click action on webelement if the browser is other than internet explorer, otherwise it performs simulate click action. It returns True if the keyword perform simultae click or click, otheriwse False.</doc>
+<arguments>
+<arg>//div[@class='desktop-bar']//li[@id='quickcreatetop' and contains(@class,'quickcreatetop open')]//a[normalize-space()='${subMenuName}']</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<kw name="Wait For Element Visible" library="CommonLibrary">
+<doc>Returns 'True' if the element visible with the 'locator' in the corresponding page else returns 'False' base timeout</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>${Delay30}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20170808 14:02:10.186" level="INFO">iCounter: 1</msg>
+<msg timestamp="20170808 14:02:10.186" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20170808 14:02:10.186" starttime="20170808 14:02:09.681"></status>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<doc>Sets variable based on the given condition.</doc>
+<arguments>
+<arg>${status}==False</arg>
+<arg>'${locator}' is not visible.</arg>
+</arguments>
+<assign>
+<var>${errorMessage}</var>
+</assign>
+<msg timestamp="20170808 14:02:10.186" level="INFO">${errorMessage} = None</msg>
+<status status="PASS" endtime="20170808 14:02:10.186" starttime="20170808 14:02:10.186"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${status}==False</arg>
+<arg>Set Global Variable</arg>
+<arg>${errorMessage}</arg>
+<arg>${errorMessage}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:02:10.186" starttime="20170808 14:02:10.186"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>${status}==False</arg>
+<arg>${status}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:02:10.186" starttime="20170808 14:02:10.186"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${BROWSER.lower()}'=='ie' or '${BROWSER.lower()}'=='internetexplorer'</arg>
+<arg>Simulate</arg>
+<arg>${locator}</arg>
+<arg>click</arg>
+<arg>ELSE</arg>
+<arg>Click Element Using Javascript</arg>
+<arg>${locator}</arg>
+</arguments>
+<kw name="Simulate" library="Selenium2Library">
+<doc>Simulates `event` on element identified by `locator`.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>click</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:02:10.374" starttime="20170808 14:02:10.201"></status>
+</kw>
+<status status="PASS" endtime="20170808 14:02:10.374" starttime="20170808 14:02:10.186"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>True</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20170808 14:02:10.374" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20170808 14:02:10.374" starttime="20170808 14:02:10.374"></status>
+</kw>
+<msg timestamp="20170808 14:02:10.374" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20170808 14:02:10.374" starttime="20170808 14:02:09.681"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is false.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Fail</arg>
+<arg>${errorMessage}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:02:10.374" starttime="20170808 14:02:10.374"></status>
+</kw>
+<kw name="Wait For Element Visible" library="CommonLibrary">
+<doc>Returns 'True' if the element visible with the 'locator' in the corresponding page else returns 'False' base timeout</doc>
+<arguments>
+<arg>//div[@id='actionMenuSidebar']/ul/li//div[normalize-space()='${subMenuName}']</arg>
+<arg>${Delay30}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20170808 14:02:12.499" level="INFO">iCounter: 1</msg>
+<msg timestamp="20170808 14:02:12.499" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20170808 14:02:12.499" starttime="20170808 14:02:10.374"></status>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<doc>Sets variable based on the given condition.</doc>
+<arguments>
+<arg>${status}==False</arg>
+<arg>'//div[@id='actionMenuSidebar']/ul/li//div[normalize-space()='${subMenuName}']' is not visible.</arg>
+</arguments>
+<assign>
+<var>${errorMessage}</var>
+</assign>
+<msg timestamp="20170808 14:02:12.499" level="INFO">${errorMessage} = None</msg>
+<status status="PASS" endtime="20170808 14:02:12.499" starttime="20170808 14:02:12.499"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${status}==False</arg>
+<arg>Set Global Variable</arg>
+<arg>${errorMessage}</arg>
+<arg>${errorMessage}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:02:12.499" starttime="20170808 14:02:12.499"></status>
+</kw>
+<msg timestamp="20170808 14:02:12.499" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20170808 14:02:12.499" starttime="20170808 14:02:08.824"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>${status}==False</arg>
+<arg>${status}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:02:12.499" starttime="20170808 14:02:12.499"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${accountDetails}</arg>
+<arg>Name</arg>
+</arguments>
+<assign>
+<var>${name}</var>
+</assign>
+<msg timestamp="20170808 14:02:12.514" level="INFO">${name} = QATest14005005300056</msg>
+<status status="PASS" endtime="20170808 14:02:12.514" starttime="20170808 14:02:12.499"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${accountDetails}</arg>
+<arg>Office Phone</arg>
+</arguments>
+<assign>
+<var>${officePhone}</var>
+</assign>
+<msg timestamp="20170808 14:02:12.514" level="INFO">${officePhone} = 40987678</msg>
+<status status="PASS" endtime="20170808 14:02:12.514" starttime="20170808 14:02:12.514"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${accountDetails}</arg>
+<arg>Website</arg>
+</arguments>
+<assign>
+<var>${website}</var>
+</assign>
+<msg timestamp="20170808 14:02:12.514" level="INFO">${website} = Software</msg>
+<status status="PASS" endtime="20170808 14:02:12.514" starttime="20170808 14:02:12.514"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${accountDetails}</arg>
+<arg>Fax</arg>
+</arguments>
+<assign>
+<var>${fax}</var>
+</assign>
+<msg timestamp="20170808 14:02:12.514" level="INFO">${fax} = 1234</msg>
+<status status="PASS" endtime="20170808 14:02:12.514" starttime="20170808 14:02:12.514"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${accountDetails}</arg>
+<arg>Billing Address Street</arg>
+</arguments>
+<assign>
+<var>${BillingAddressStreet}</var>
+</assign>
+<msg timestamp="20170808 14:02:12.514" level="INFO">${BillingAddressStreet} = Madhapur</msg>
+<status status="PASS" endtime="20170808 14:02:12.514" starttime="20170808 14:02:12.514"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${accountDetails}</arg>
+<arg>Billing Address City</arg>
+</arguments>
+<assign>
+<var>${BillingAddressCity}</var>
+</assign>
+<msg timestamp="20170808 14:02:12.514" level="INFO">${BillingAddressCity} = Hyderabad </msg>
+<status status="PASS" endtime="20170808 14:02:12.514" starttime="20170808 14:02:12.514"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${accountDetails}</arg>
+<arg>Billing Address State</arg>
+</arguments>
+<assign>
+<var>${BillingAddressState}</var>
+</assign>
+<msg timestamp="20170808 14:02:12.514" level="INFO">${BillingAddressState} = Telangana</msg>
+<status status="PASS" endtime="20170808 14:02:12.514" starttime="20170808 14:02:12.514"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${accountDetails}</arg>
+<arg>Billing AddressPostal Code</arg>
+</arguments>
+<assign>
+<var>${BillingAddressPostalCode}</var>
+</assign>
+<msg timestamp="20170808 14:02:12.514" level="INFO">${BillingAddressPostalCode} = 500082</msg>
+<status status="PASS" endtime="20170808 14:02:12.514" starttime="20170808 14:02:12.514"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${accountDetails}</arg>
+<arg>Billing Address Country</arg>
+</arguments>
+<assign>
+<var>${BillingAddressCountry}</var>
+</assign>
+<msg timestamp="20170808 14:02:12.530" level="INFO">${BillingAddressCountry} = India</msg>
+<status status="PASS" endtime="20170808 14:02:12.530" starttime="20170808 14:02:12.514"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${accountDetails}</arg>
+<arg>Shipping Address Street</arg>
+</arguments>
+<assign>
+<var>${ShippingAddressStreet}</var>
+</assign>
+<msg timestamp="20170808 14:02:12.530" level="INFO">${ShippingAddressStreet} = Madhapur</msg>
+<status status="PASS" endtime="20170808 14:02:12.530" starttime="20170808 14:02:12.530"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${accountDetails}</arg>
+<arg>Shipping Address City</arg>
+</arguments>
+<assign>
+<var>${ShippingAddressCity}</var>
+</assign>
+<msg timestamp="20170808 14:02:12.530" level="INFO">${ShippingAddressCity} = Hyderabad </msg>
+<status status="PASS" endtime="20170808 14:02:12.530" starttime="20170808 14:02:12.530"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${accountDetails}</arg>
+<arg>Shipping Address State</arg>
+</arguments>
+<assign>
+<var>${ShippingAddressState}</var>
+</assign>
+<msg timestamp="20170808 14:02:12.530" level="INFO">${ShippingAddressState} = Telangana</msg>
+<status status="PASS" endtime="20170808 14:02:12.530" starttime="20170808 14:02:12.530"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${accountDetails}</arg>
+<arg>Shipping Address Postal Code</arg>
+</arguments>
+<assign>
+<var>${ShippingAddressPostalCode}</var>
+</assign>
+<msg timestamp="20170808 14:02:12.530" level="INFO">${ShippingAddressPostalCode} = 500082</msg>
+<status status="PASS" endtime="20170808 14:02:12.530" starttime="20170808 14:02:12.530"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${accountDetails}</arg>
+<arg>Shipping Address Country</arg>
+</arguments>
+<assign>
+<var>${ShippingAddressCountry}</var>
+</assign>
+<msg timestamp="20170808 14:02:12.530" level="INFO">${ShippingAddressCountry} = India</msg>
+<status status="PASS" endtime="20170808 14:02:12.530" starttime="20170808 14:02:12.530"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${accountDetails}</arg>
+<arg>Email Address</arg>
+</arguments>
+<assign>
+<var>${emailAddress}</var>
+</assign>
+<msg timestamp="20170808 14:02:12.530" level="INFO">${emailAddress} = QATest1400500530004@gmail.com</msg>
+<status status="PASS" endtime="20170808 14:02:12.530" starttime="20170808 14:02:12.530"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${accountDetails}</arg>
+<arg>Description</arg>
+</arguments>
+<assign>
+<var>${description}</var>
+</assign>
+<msg timestamp="20170808 14:02:12.530" level="INFO">${description} = New Account</msg>
+<status status="PASS" endtime="20170808 14:02:12.530" starttime="20170808 14:02:12.530"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${accountDetails}</arg>
+<arg>Type</arg>
+</arguments>
+<assign>
+<var>${type}</var>
+</assign>
+<msg timestamp="20170808 14:02:12.545" level="INFO">${type} = Analyst</msg>
+<status status="PASS" endtime="20170808 14:02:12.545" starttime="20170808 14:02:12.530"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${accountDetails}</arg>
+<arg>Industry</arg>
+</arguments>
+<assign>
+<var>${industry}</var>
+</assign>
+<msg timestamp="20170808 14:02:12.545" level="INFO">${industry} = Banking</msg>
+<status status="PASS" endtime="20170808 14:02:12.545" starttime="20170808 14:02:12.545"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${accountDetails}</arg>
+<arg>Annual Revenue</arg>
+</arguments>
+<assign>
+<var>${annualRevenue}</var>
+</assign>
+<msg timestamp="20170808 14:02:12.545" level="INFO">${annualRevenue} = 15Lakhs</msg>
+<status status="PASS" endtime="20170808 14:02:12.545" starttime="20170808 14:02:12.545"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${accountDetails}</arg>
+<arg>Employees</arg>
+</arguments>
+<assign>
+<var>${employees}</var>
+</assign>
+<msg timestamp="20170808 14:02:12.545" level="INFO">${employees} = 10</msg>
+<status status="PASS" endtime="20170808 14:02:12.545" starttime="20170808 14:02:12.545"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${accountDetails}</arg>
+<arg>Campaign</arg>
+</arguments>
+<assign>
+<var>${campaign}</var>
+</assign>
+<msg timestamp="20170808 14:02:12.545" level="INFO">${campaign} = BootCamp</msg>
+<status status="PASS" endtime="20170808 14:02:12.545" starttime="20170808 14:02:12.545"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${accountDetails}</arg>
+<arg>Assigned To</arg>
+</arguments>
+<assign>
+<var>${assignedTo}</var>
+</assign>
+<msg timestamp="20170808 14:02:12.545" level="INFO">${assignedTo} = Administrator</msg>
+<status status="PASS" endtime="20170808 14:02:12.545" starttime="20170808 14:02:12.545"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${accountDetails}</arg>
+<arg>Member Of</arg>
+</arguments>
+<assign>
+<var>${memberOf}</var>
+</assign>
+<msg timestamp="20170808 14:02:12.545" level="INFO">${memberOf} = Rhy</msg>
+<status status="PASS" endtime="20170808 14:02:12.545" starttime="20170808 14:02:12.545"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${accountDetails}</arg>
+<arg>Save</arg>
+</arguments>
+<assign>
+<var>${save}</var>
+</assign>
+<msg timestamp="20170808 14:02:12.545" level="INFO">${save} = Y</msg>
+<status status="PASS" endtime="20170808 14:02:12.545" starttime="20170808 14:02:12.545"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${accountDetails}</arg>
+<arg>Cancel</arg>
+</arguments>
+<assign>
+<var>${cancel}</var>
+</assign>
+<msg timestamp="20170808 14:02:12.561" level="INFO">${cancel} = N</msg>
+<status status="PASS" endtime="20170808 14:02:12.561" starttime="20170808 14:02:12.545"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${name}'!='${EMPTY}'</arg>
+<arg>Input Text</arg>
+<arg>${textBox.accounts.Name}</arg>
+<arg>${name}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${textBox.accounts.Name}</arg>
+<arg>${name}</arg>
+</arguments>
+<msg timestamp="20170808 14:02:12.561" level="INFO">Typing text 'QATest14005005300056' into text field '//input[@id='name']'</msg>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>

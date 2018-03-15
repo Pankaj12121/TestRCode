@@ -1,0 +1,245 @@
+*** Settings ***
+Resource          super.txt
+
+*** Keywords ***
+Login Into Application
+    [Arguments]    ${userName}    ${passWord}
+    ${kwStatus}    Set Variable    False
+    Wait For Text    Sign On    60
+    Enter Text By Field Name    User    ${userName}
+    Enter Text By Field Name    Password    ${passWord}
+    Capture Screenshot
+    Press Key    [enter]
+    ${bStatus}    Wait For Text    Sign-on Information
+    Run Keyword If    ${bStatus}==True    Sign In information
+    Comment    Run Keyword If    ${bStatus}==False    Recover Inactive Job    ${userName}    ${passWord}
+    ${kwStatus}    Wait For Text    System Master Menu
+    Run Keyword If    ${kwStatus}    Set Test Message    INFO: Logged in Successfully with UserId: ${userName} \n    append=True
+    Comment    ${bStatus}    Wait For Text    Display Messages
+    Comment    Run Keyword If    ${bStatus}    Press Key    [enter]
+    Comment    ${bRecoverInteractive}    Wait For Text    Attempt to Recover Interactive Job
+    Comment    Run Keyword If    ${bRecoverInteractive}==True    Recover Inactive Job
+    Comment    ${bStatus1}    Run Keyword If    ${bStatus}==False    Wait For Text    Attempt to Recover Interactive Job
+    Comment    Run Keyword If    '${bStatus1}'=='True' and '${closePreviousSession}'=='True'    Enter Text    90
+    Comment    Run Keyword If    '${bStatus1}'=='True' and '${closePreviousSession}'!='True'    Enter Text    1
+    Comment    Run Keyword If    '${bStatus1}'=='True'    Press Key    [enter]
+    Comment    ${bStatus}    Wait For Text    Command Entry
+    Comment    Run Keyword If    ${bStatus}    Enter Text By Field Name    Type command    D
+    Comment    Run Keyword If    ${bStatus}    Press Key    [enter]
+    Comment    ${kwStatus}    Wait For Text    System Master Menu
+    Comment    Run Keyword If    ${kwStatus}    Set Test Message    INFO: Logged in Successfully with UserId: ${userName} \n    append=True
+    [Return]    ${kwStatus}
+
+Logout From Application
+    Take Screenshot
+    ${kwStatus}    Set Variable    False
+    ${bStatus2}    Set Variable    False
+    : FOR    ${iIndex}    IN RANGE    0    10
+    \    ${bStatus1}    Wait For Text    System Master Menu    1
+    \    ${bStatus2}    Run Keyword If    ${bStatus1}==False    Wait For Text    Sign-on Information    1
+    \    ${bStatus2}    Set Variable If    ${bStatus1}==True    False    ${bStatus2}
+    \    ${bStatus}    Evaluate    ${bStatus1}==True or ${bStatus2}==True
+    \    Run Keyword If    ${bStatus}==True    Exit For Loop
+    \    Press Key    [PF3]
+    Run Keyword If    ${bStatus}==False    Return From Keyword    ${kwStatus}
+    Press Key    [PF3]
+    Run Keyword If    ${bStatus2}==True    Press Key    [enter]
+    ${kwStatus}    Wait For Text    Sign On    10
+    Run Keyword If    ${kwStatus}    Set Test Message    \n INFO: Logged out Successfully    append=True
+    [Return]    ${kwStatus}
+
+Open AS400 Console
+    [Arguments]    ${connFilePath}    ${sheet_name}
+    ${kwStatus}    Set Variable    False
+    ${intanceCount}    Get Connection Count
+    Run Keyword If    ${intanceCount}>0    Set Test Message    INFO: AS400 Console opened successfully \n    append=True
+    Run Keyword If    ${intanceCount}>0    Return From Keyword    True
+    ${connectionStatus}    ${err_msg}    Open Console    ${connFilePath}
+    Run Keyword If    ${connectionStatus}==False    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Opening AS400 Console    False    ${err_msg}
+    Run Keyword If    ${connectionStatus}==False    Fail and Capture ScreenShot    ${err_msg}
+    ${popupStatus}    Run Keyword And Return Status    AutoItLibrary.Wait For Active Window    IBM i signon    \    20
+    Run Keyword If    ${popupStatus}==False    Return From Keyword    True
+    Run Keyword If    ${popupStatus}    AutoItLibrary.Send    ${GlobalUserName}
+    Run Keyword If    ${popupStatus}    AutoItLibrary.Send    {TAB}
+    Run Keyword If    ${popupStatus}    Sleep    1s
+    Run Keyword If    ${popupStatus}    AutoItLibrary.Send    ${GlobalPassword}
+    Run Keyword If    ${popupStatus}    AutoItLibrary.Send    {TAB}
+    Run Keyword If    ${popupStatus}    AutoItLibrary.Send    {ENTER}
+    ${kwStatus}    Wait For Text    Sign On    25
+    Run Keyword If    ${kwStatus}==False    Send    !{F4}
+    Run Keyword If    ${kwStatus}==False    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Sign-On in AS400 console    False    \n AS400 console was not open or user unable to login at "Sign on to iSeries" window
+    Run Keyword If    ${kwStatus}==False    Fail and Capture ScreenShot    \n AS400 console was not open or user unable to login at "Sign on to iSeries" window
+    Set Test Message    INFO: AS400 Console opened successfully \n    append=True
+    [Return]    ${kwStatus}
+
+Close AS400 Console
+    [Arguments]    ${policyNumber}    ${sheet_name}
+    Take Screenshot
+    ${kwStatus}    Shutdown Console
+    Run Keyword If    ${kwStatus}==False    Fail and Capture ScreenShot    \n AS400 console can't shutdown
+    OperatingSystem.Run    taskkill /f /im pcsws.exe
+    Set Test Message    \n INFO: AS400 Console closed successfully    append=True
+    [Return]    ${kwStatus}
+
+Get Messages
+    Sleep    1s
+    ${lastRowData}    Get Value By Row And Column    24    1    80
+    Capture Screenshot
+    ${lastRowData}    Set Variable    ${lastRowData.strip()}
+    ${tempList}    Split String    ${lastRowData}    ¦
+    Remove Values From List    ${tempList}    ${EMPTY}
+    Log List    ${tempList}
+    [Return]    ${tempList}
+
+Enter Text For Multiple Fileds
+    [Arguments]    ${FieldName}    ${Value}    ${instance}
+    ${tempList}=    Split String    ${Value}    |
+    Enter Text By Field Name    ${FieldName}    @{tempList}[0]    ${instance}
+    ${iSize}    Get Length    ${tempList}
+    : FOR    ${Index}    IN RANGE    1    ${iSize}
+    \    Press Key    [TAB]
+    \    Enter Text    @{tempList}[${Index}]
+    \    Sleep    2
+
+Get Inward and Application Details
+    ${messages}    Get Messages
+    ${messages}    Set Variable    @{messages}[0]
+    ${messages}    Set Variable    ${messages.strip()}
+    ${messages}    Replace String    ${messages}    IO Number :-    ${EMPTY}
+    ${messages}    Replace String    ${messages}    Application No :-    ${EMPTY}
+    ${messages}    Set Variable    ${messages.strip()}
+    ${tempList}    Split String    ${messages}    ${SPACE}
+    Remove Values From List    ${tempList}    ${EMPTY}
+    ${NewInwardNo}    Set Variable    @{tempList}[0]
+    ${NewApplicationNo}    Set Variable    @{tempList}[1]
+    ${NewInwardNo}    Set Variable    ${NewInwardNo.strip()}
+    ${NewApplicationNo}    Set Variable    ${NewApplicationNo.strip()}
+    ${Details}    Create List    ${NewInwardNo}    ${NewApplicationNo}
+    [Return]    ${Details}
+
+Fail and Capture ScreenShot
+    [Arguments]    ${ErrorMessage}=${EMPTY}
+    Capture Screenshot
+    Fail    ${ErrorMessage}
+
+Update Result to Log File
+    [Arguments]    ${RecorNumber}    ${Status}    ${Message}
+    ${ScreenShotFileName}    Get Latest File In Folder    ${OUTPUT_DIR}    screenshot
+    ${Resultdict}    Create Dictionary    RecordNumber    ${RecorNumber}    Status    ${Status}    Message
+    ...    ${Message}    ScreenShot    File:\\\\${ScreenShotFileName}
+    Updated Ms Excel File    ${LogExcelResultFile}    InwardTransactionData    ${Resultdict}
+
+Recover Inactive Job
+    [Arguments]    ${userName}    ${passWord}
+    Comment    Wait For Text    Attempt to Recover Interactive Job
+    Enter Text By Field Name    Select    90
+    Capture Screenshot
+    Press Key    [enter]
+    Press Key    [enter]
+    Capture Screenshot
+    Wait For Text    Sign On    60
+    Enter Text By Field Name    User    ${userName}
+    Enter Text By Field Name    Password    ${passWord}
+    Capture Screenshot
+    Press Key    [enter]
+    Capture Screenshot
+    Sign In information
+
+Sign In information
+    Wait For Text    Sign-on Information
+    Capture Screenshot
+    Press Key    [enter]
+    ${displayMessages}    Wait For Text    Display Messages
+    Capture Screenshot
+    Run Keyword If    ${displayMessages}==True    EnterKeyword
+    Comment    Wait For Text    Display Messages
+    Comment    Press Key    [enter]
+    Comment    Wait For Text    IBM i Main Menu
+    Comment    Capture Screenshot
+    Comment    Enter Text    TO FGGACT
+    Comment    Capture Screenshot
+    Comment    Press Key    [enter]
+    Comment    Wait For Text    IBM i Main Menu
+    Comment    Capture Screenshot
+    Comment    sleep    2s
+    Comment    Enter Text    D
+    Comment    Press Key    [enter]
+    Comment    Capture Screenshot
+
+Handle Excel Popup
+    ${bStatus}    Wait For Active Window    Microsoft Excel    \    15
+    ${popupText}    AutoItLibrary.Win Get Text    Microsoft Excel    OK
+    AutoItLibrary.Win Close    Microsoft Excel
+
+EnterKeyword
+    Press Key    [enter]
+
+ReturnFromDictionaryIfKeyContains
+    [Arguments]    ${dict}    ${key}
+    ${status}    Run Keyword And Return Status    Get From Dictionary    ${dict}    ${key}
+    Return From Keyword If    ${status} != True    None
+    ${value}    Get From Dictionary    ${dict}    ${key}
+    [Return]    ${value}
+
+GetPolicyNumberFromFileName
+    [Arguments]    ${deafult_client_files_directory}    ${file_path}
+    ${file_name}    String.Replace String    ${file_path}    ${deafult_client_files_directory}    ${EMPTY}
+    ${file_name}    String.Replace String    ${file_name}    \\    ${EMPTY}
+    ${file_name}    Split String    ${file_name}    .
+    ${policy_number}    Set Variable    ${file_name[0]}
+    Log    ${policy_number}
+    [Return]    ${policy_number}
+
+ConsolidationOfClientData
+    [Arguments]    ${file}    ${time_stamp}
+    Process Close    EXCEL.EXE
+    ${policy_number}    GetPolicyNumberFromFileName    ${deafult_client_files_directory}    ${file}
+    Set Test Variable    ${policy_number}
+    ${error_log_file_path}    ${log_folder}    Get Error Log File Path For Policy Number    ${outpu_folder_for_log_errors}    ${policy_number}    ${time_stamp}
+    Set Test Variable    ${log_folder}
+    Set Test Variable    ${error_log_file_path}
+    ${status}    ${sheet_name}    ${err_msg}    Consolidate Client Excel File    ${file}    ${config_file}    ${output_folder_to_save_macro}
+    ...    ${standard_macro_file}    ${policy_number}    ${master_data_file}    ${error_log_file_path}    ${log_folder}
+    Set Test Variable    ${sheet_name}
+    Run Keyword If    '${status}' == 'False'    RobotExample.Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policy_number}    ${sheet_name}
+    ...    Consolidation of Excel    ${status}    ${err_msg}
+    ${move_status}    ${move_err_msg}    RobotExample.Move Selected File To Required Folder    ${file}    ${output_folder_for_successfully_consolidated_fies}    ${time_stamp}
+    Run Keyword If    '${move_status}' == 'False'    RobotExample.Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policy_number}    ${sheet_name}
+    ...    Moving client excel file to failed folder    ${move_status}    ${move_err_msg}
+
+ProcessTransactions
+    [Arguments]    ${macro_file_dict}    ${polcy_folder_path}
+    ${len_dict}    Get Length    ${macro_file_dict}
+    ${file_to_process}    ReturnFromDictionaryIfKeyContains    ${macro_file_dict}    ${1}
+    ${status}    Run Keyword If    "${file_to_process}" != "None"    Run Keyword And Return Status    DeletionProcess    ${file_to_process}    ${policy_number}
+    ...    ${polcy_folder_path}
+    Run Keyword If    '${status}' == 'False'    Write Policy Status To Excel Sheet    ${EXECDIR}\\TestData\\policyStatus    ${policyNumber}    Deletion    False
+    ...    Deletion Transaction failed    ${time_stamp}
+    Run Keyword If    '${status}' == 'False'    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    Deletion
+    ...    Deletion Transaction    False    Failed to Process Deletion Transaction and cannot perform other Transactions for given policy number : \ ${policy_number}
+    Run Keyword If    '${status}' == 'False'    Fail and Capture ScreenShot    Policy status is not IF InForce status
+    ${file_to_process}    ReturnFromDictionaryIfKeyContains    ${macro_file_dict}    ${2}
+    ${status}    Run Keyword If    "${file_to_process}" != "None"    Run Keyword And Return Status    AdditionProcess    ${file_to_process}    ${policy_number}
+    ...    G    ${polcy_folder_path}    Addition    List of members successfully added    Total number of members added :
+    Run Keyword If    '${status}' == 'False'    Write Policy Status To Excel Sheet    ${EXECDIR}\\TestData\\policyStatus    ${policyNumber}    Addition    False
+    ...    Addition Transaction failed    ${time_stamp}
+    Run Keyword If    '${status}' == 'False'    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    Addition
+    ...    Addition Transaction    False    Failed to Process Addition Transaction \ and cannot perform other Transactions for given policy number : \ ${policy_number}
+    Run Keyword If    '${status}' == 'False'    Fail and Capture ScreenShot    Policy status is not IF InForce status
+    ${file_to_process}    ReturnFromDictionaryIfKeyContains    ${macro_file_dict}    ${3}
+    ${status}    Run Keyword If    "${file_to_process}" != "None"    Run Keyword And Return Status    AdditionProcess    ${file_to_process}    ${policy_number}
+    ...    G    ${polcy_folder_path}    Revision    List of members successfully changed    Total number of members changed :
+    Run Keyword If    '${status}' == 'False'    Write Policy Status To Excel Sheet    ${EXECDIR}\\TestData\\policyStatus    ${policyNumber}    Revisions    False
+    ...    Revisions Transaction failed    ${time_stamp}
+    Run Keyword If    '${status}' == 'False'    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    Revisions
+    ...    Revision Transaction    False    Failed to Process Revision Transaction and cannot perform other Transactions for given policy number : \ ${policy_number}
+    Run Keyword If    '${status}' == 'False'    Fail and Capture ScreenShot    Policy status is not IF InForce status
+
+Close Bill Application
+    Take Screenshot
+    ${kwStatus}    Shutdown Console
+    Run Keyword If    ${kwStatus}==False    Fail and Capture ScreenShot    \n AS400 console can't shutdown
+    OperatingSystem.Run    taskkill /f /im pcsws.exe
+    Set Test Message    \n INFO: AS400 Console closed successfully    append=True

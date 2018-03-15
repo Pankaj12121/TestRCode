@@ -1,0 +1,32 @@
+*** Settings ***
+Resource          ../Keywords/super.txt
+
+*** Variables ***
+${GlobalUserName}    FMFL00275    # UserName For Terminal Login
+${GlobalPassword}    FMFL00275    # Password For Terminal Login
+${GlobalConnFilePath}    ${EXECDIR}\\Connections\\GroupAsia.WS    # This is connection file path
+${GlobalErrMessage}    No Error
+${testDataFilePath}    ${EXECDIR}\\TestData\\FGTestData.xls
+${TimeOut}        20
+${NewContractNumber}    ${EMPTY}
+${globalScreenShot}    True
+${LogFolder}      ${EXECDIR}\\Results\\
+${BatchTimeOut}    3600
+${ScheduleBatchName}    Scheduled_G5MBRDATAI
+${GlobalFileUploadpath}    ${EXECDIR}\\Connections\\Upload.DTT    #This is File Upload Path
+${Delay5}         5s
+${ResultsDictionary}    {EMPTY}
+${macro_file}     ${EXECDIR}\\TestData\\GL000460 Rev.xlsm
+${clientData}     ${EXECDIR}\\TestData\\GL000460 Del File.xls
+${config_file}    ${EXECDIR}\\TestData\\ConfigurationSheet.xlsx
+${deafult_client}    ${EXECDIR}\\Default_Client_Files
+${output_folder}    ${EXECDIR}\\OutputFolderToSaveMacroFiles
+${temp_for_client_files}    ${EXECDIR}\\temp_folder_for_client_files
+${temp_for_output_files}    ${EXECDIR}\\temp_for_output_files
+${lookupdata_file_path}    ${EXECDIR}\\TestData\\LookupData.xlsx
+${GlobalExportBillPath}    ${EXECDIR}\\Connections\\Bill data extraction New Product.dtf
+${dtt_upload_folder_path}    ${EXECDIR}\\TestData
+${libraryOrFileName}    FGGACTDTA/MICDPF
+${extractedbillnumberpath}    $[EXECDIR]\\ExtractedBillNumber\\BillNumber.xls
+${TimeOutDisplay}    920
+${macro_default_header_rows_count}    6

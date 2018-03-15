@@ -1,0 +1,19 @@
+*** Settings ***
+Suite Setup       Kill Driver Instances
+Resource          ../Keywords/Super.txt
+
+*** Test Cases ***
+Create An Opportunity
+    Comment    Login To Suite CRM Application
+    Login To SuiteCRM
+    Comment    Create an account
+    Create Account    CA_TD_01
+    Comment    Validate whether account is created or not.
+    Validate Create Account
+    Comment    Create an Opportunity
+    Create Opportunity    CO_TD_01
+    Comment    Validate whether Opportunity is created or not.
+    Validate Create Opportunity
+    Comment    Logout from application
+    Logout From SuiteCRM
+    [Teardown]    Stop Application

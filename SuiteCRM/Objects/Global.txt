@@ -1,0 +1,16 @@
+*** Variables ***
+${serverSuiteCRMURL}    http://10.13.20.73/SuiteCRM/index.php    # http://10.14.20.30/SuiteCRM/index.php
+${userName}       admin
+${password}       admin@123
+${global_Logout_Status}    True
+${BROWSER}        gc
+${Delay60}        60s
+${Delay90}        90s
+${Delay30}        30s
+${Delay10}        10s
+${Delay5}         5s
+${errorMessage}    ${EMPTY}
+${localhostURL}    http://localhost/SuiteCRM/index.php
+${Delay2}         2s
+${testDataFolderPath}    ${EXECDIR}\\TestData
+${firefox_profile_path}    ${EXECDIR}\\Library\\firefoxprofile

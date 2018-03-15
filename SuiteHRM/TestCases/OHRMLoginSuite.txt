@@ -1,0 +1,9 @@
+*** Settings ***
+Suite Setup       Kill Driver Instances
+Resource          ../Keywords/Super.txt
+
+*** Test Cases ***
+HRMLoginTestCase
+    [Setup]
+    Login to orange HRM
+    LoginSteps    Open Browser To Login Page    ${localhostURL}

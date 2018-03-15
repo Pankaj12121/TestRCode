@@ -1,0 +1,14 @@
+*** Settings ***
+Library           Selenium2Library
+Library           Collections
+Library           String
+Library           OperatingSystem
+Library           AutoItLibrary
+Library           ../Library/CommonLibrary.py
+Resource          common.txt
+Resource          ../Objects/objects.txt
+Resource          Contacts.txt
+Resource          Leads.txt
+Resource          Opportunities.txt
+Resource          Accounts.txt
+Resource          Login ToHRM.txt

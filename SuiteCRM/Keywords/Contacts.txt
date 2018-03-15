@@ -1,0 +1,123 @@
+*** Settings ***
+Resource          Super.txt
+
+*** Keywords ***
+Create Contact
+    [Arguments]    ${testCaseID}
+    ${contactDetails}    Get Ms Excel Row Values Into Dictionary Based On Key    ${testDataFolderPath}/SuiteCRMWorkflows.xls    ${testCaseID}    Create Contact
+    ${status}    Navigate To Create Sub Menu    Create Contact
+    Run Keyword If    ${status}==False    Fail    ${errorMessage}
+    ${salutation}    Get From Dictionary    ${contactDetails}    Salutation
+    ${firstName}    Get From Dictionary    ${contactDetails}    First Name
+    ${lastName}    Get From Dictionary    ${contactDetails}    Last Name
+    ${title}    Get From Dictionary    ${contactDetails}    Title
+    ${department}    Get From Dictionary    ${contactDetails}    Department
+    ${accountName}    Get From Dictionary    ${contactDetails}    Account Name
+    ${officePhone}    Get From Dictionary    ${contactDetails}    Office Phone
+    ${mobile}    Get From Dictionary    ${contactDetails}    Mobile
+    ${fax}    Get From Dictionary    ${contactDetails}    Fax
+    ${primaryAddress}    Get From Dictionary    ${contactDetails}    Primary Address
+    ${primaryCity}    Get From Dictionary    ${contactDetails}    Primary City
+    ${primaryState}    Get From Dictionary    ${contactDetails}    Primary State
+    ${primaryPostalCode}    Get From Dictionary    ${contactDetails}    Primary Postal Code
+    ${primaryCountry}    Get From Dictionary    ${contactDetails}    Primary Country
+    ${otherAddress}    Get From Dictionary    ${contactDetails}    Other Address
+    ${otherAddressCity}    Get From Dictionary    ${contactDetails}    Other Address City
+    ${otherAddressState}    Get From Dictionary    ${contactDetails}    Other Address State
+    ${otherAddressPostalCode}    Get From Dictionary    ${contactDetails}    Other AddressPostal Code
+    ${otherAddressCountry}    Get From Dictionary    ${contactDetails}    Other AddressCountry
+    ${emailAddress}    Get From Dictionary    ${contactDetails}    Email Address
+    ${description}    Get From Dictionary    ${contactDetails}    Description
+    ${leadSource}    Get From Dictionary    ${contactDetails}    Lead Source
+    ${campaign}    Get From Dictionary    ${contactDetails}    Campaign
+    ${assignedTo}    Get From Dictionary    ${contactDetails}    Assigned To
+    ${reportsTo}    Get From Dictionary    ${contactDetails}    Reports To
+    ${save}    Get From Dictionary    ${contactDetails}    Save
+    ${cancel}    Get From Dictionary    ${contactDetails}    Cancel
+    ${expectedTCStatusl}    Get From Dictionary    ${contactDetails}    Expected Result
+    ${expectedTCStatusl}    Set Variable    ${expectedTCStatusl.lower()}
+    Run Keyword If    '${salutation}'!='${EMPTY}'    Select From List By Label    ${contact.Salutation}    ${salutation}
+    Run Keyword If    '${firstName}'!='${EMPTY}'    Input Text    ${Contact.FirstName}    ${firstName}
+    Run Keyword If    '${lastName}'!='${EMPTY}'    Input Text    ${contact.LastName}    ${lastName}
+    Run Keyword If    '${title}'!='${EMPTY}'    Input Text    ${contact.Title}    ${title}
+    Run Keyword If    '${department}'!='${EMPTY}'    Input Text    ${contact.Department}    ${department}
+    Run Keyword If    '${accountName}'!='${EMPTY}'    Input Text    ${contact.AccountName}    ${accountName}
+    Run Keyword If    '${officePhone}'!='${EMPTY}'    Input Text    ${contact.OfficePhone}    ${officePhone}
+    Run Keyword If    '${mobile}'!='${EMPTY}'    Input Text    ${contact.Mobile}    ${mobile}
+    Run Keyword If    '${fax}'!='${EMPTY}'    Input Text    ${contact.Fax}    ${fax}
+    Run Keyword If    '${primaryAddress}'!='${EMPTY}'    Input Text    ${contact.PrimaryAddress.Address}    ${primaryAddress}
+    Run Keyword If    '${primaryCity}'!='${EMPTY}'    Input Text    ${contact.PrimaryAddress.City}    ${primaryCity}
+    Run Keyword If    '${primaryState}'!='${EMPTY}'    Input Text    ${contact.PrimaryAddress.State}    ${primaryState}
+    Run Keyword If    '${primaryPostalCode}'!='${EMPTY}'    Input Text    ${contact.PrimaryAddress.PostalCode}    ${primaryPostalCode}
+    Run Keyword If    '${primaryCountry}'!='${EMPTY}'    Input Text    ${contact.PrimaryAddress.Country}    ${primaryCountry}
+    Run Keyword If    '${otherAddress}'!='${EMPTY}'    Input Text    ${contact.OtherAddress.Address}    ${otherAddress}
+    Run Keyword If    '${otherAddressCity}'!='${EMPTY}'    Input Text    ${contact.OtherAddress.City}    ${otherAddressCity}
+    Run Keyword If    '${otherAddressState}'!='${EMPTY}'    Input Text    ${contact.OtherAddress.State}    ${otherAddressState}
+    Run Keyword If    '${otherAddressPostalCode}'!='${EMPTY}'    Input Text    ${contact.OtherAddress.PostalCode}    ${otherAddressPostalCode}
+    Run Keyword If    '${otherAddressCountry}'!='${EMPTY}'    Input Text    ${contact.OtherAddress.Country}    ${otherAddressCountry}
+    Run Keyword If    '${emailAddress}'!='${EMPTY}'    Input Text    ${contact.EmailAddress}    ${emailAddress}
+    Run Keyword If    '${description}'!='${EMPTY}'    Input Text    ${contact.Description}    ${description}
+    Run Keyword If    '${leadSource}'!='${EMPTY}'    Select From List By Label    ${contact.LeadSource}    ${leadSource}
+    Run Keyword If    '${campaign}'!='${EMPTY}'    Input Text    ${contact.Compaign}    ${campaign}
+    Run Keyword If    '${assignedTo}'!='${EMPTY}'    Input Text    ${contact.AssignedTo}    ${assignedTo}
+    Run Keyword If    '${reportsTo}'!='${EMPTY}'    Input Text    ${contact.ReportsTo}    ${reportsTo}
+    ${saveStatus}    Run Keyword And Return Status    Should Be Equal    ${save.lower()}    y
+    ${cancelStatus}    Run Keyword And Return Status    Should Be Equal    ${cancel.lower()}    y
+    Run Keyword If    ${saveStatus}    Click Or Simulate    ${contact.Save}
+    Run Keyword If    ${cancelStatus}    Click Or Simulate    ${contact.Cancel}
+    ${text}    Set Variable    ${salutation}${SPACE}${firstName}${SPACE}${lastName}
+    ${createContactStatus}    Run Keyword If    ${saveStatus}    Wait For Element Visible    //div[@class='moduleTitle']/h2[contains(text(),'${text}')]    ${Delay30}
+    Run Keyword If    ${cancelStatus}    Sleep    ${Delay5}
+    ${alertMsg}    Run Keyword If    ${cancelStatus}    Run Keyword And Continue On Failure    Get Alert Message
+    Run Keyword If    ${cancelStatus}    Set Test Message    ${alertMsg}    True
+    ${status}    Run Keyword If    ${cancelStatus}    Wait For Element Visible    //div[@class='moduleTitle']/h2[contains(text(),'Contacts')]    ${Delay30}
+    ${errorMessage}    Set Variable If    ${status}==False    After accepting the alert application is not navigating to Contacts page.
+    Run Keyword If    ${cancelStatus}    Set Global Variable    ${errorMessage}    ${errorMessage}
+    Run Keyword If    ${status}==False    Fail    ${errorMessage}
+    Run Keyword If    ${status}    Set Test Message    Account is not created when we click on cancel button.
+    Return From Keyword If    ${status}
+    ${emailErrStatus}    Verify Element Visible    ${contact.Email.ErrorMessage}
+    ${errorMessage}    Run Keyword If    ${emailErrStatus}    Run Keyword    Selenium2Library.Get Text    ${contact.LastName.ErrorMessage}
+    ${errorMessage}    Set Variable If    ${emailErrStatus}    ${errorMessage}
+    Run Keyword If    ${emailErrStatus}    Set Global Variable    ${errorMessage}    ${errorMessage}
+    Run Keyword If    ${emailErrStatus} and '${expectedTCStatusl}'=='fail'    Set Test Message    ${errorMessage}
+    Return From Keyword If    ${emailErrStatus}
+    ${lastNameErrStatus}    Verify Element Visible    ${contact.LastName.ErrorMessage}
+    ${errorMessage}    Run Keyword If    ${lastNameErrStatus}    Run Keyword    Selenium2Library.Get Text    ${contact.LastName.ErrorMessage}
+    ${errorMessage}    Set Variable If    ${lastNameErrStatus}    ${errorMessage}
+    Run Keyword If    ${lastNameErrStatus}    Set Global Variable    ${errorMessage}    ${errorMessage}
+    Run Keyword If    ${lastNameErrStatus} and '${expectedTCStatusl}'=='fail'    Set Test Message    ${errorMessage}
+    Return From Keyword If    ${lastNameErrStatus}
+    ${errorMessage}    Set Variable If    ${createContactStatus}==False    After click on Save button application is not navigating to Contact Success message.
+    Run Keyword If    ${createContactStatus}==False    Fail    ${errorMessage}
+    Comment    Set Test Variable    ${status}    ${createContactStatus}
+    Comment    Validate Create Contact Status    ${testCaseID}
+    [Return]    ${createContactStatus}
+
+Validate Create Contact
+    ${value}    Get Text From Required Page
+    ${value}    Set Variable    ${value.lower()}
+    ${status}    Navigate To Inner Menu Of Main Menu    Sales    Contacts
+    Return From Keyword If    ${status}==False    ${status}
+    ${status}    Quick Filter    ${value}
+    Return From Keyword If    ${status}==False    ${status}
+    ${text}    Selenium2Library.Get Text    ${label.common.Name}
+    ${text}    Set Variable    ${text.lower()}
+    ${status}    String Should Contain    ${text}    ${value}
+    ${errorMessage}    Set Variable If    ${status}==False    Mismatch the Created Contact.
+    Run Keyword If    ${status}==False    Fail    ${errorMessage}
+    [Return]    ${status}
+
+Validate Create Contact Status
+    [Arguments]    ${TestCaseID}
+    ${CreateContact}    Get Ms Excel Row Values Into Dictionary Based On Key    ${testDataFolderPath}/SuiteCRMWorkflows.xls    ${TestCaseID}    Create Contact
+    ${save}    Get From Dictionary    ${CreateContact}    Save
+    ${cancel}    Get From Dictionary    ${CreateContact}    Cancel
+    ${expectedTCStatusl}    Get From Dictionary    ${CreateContact}    Expected Result
+    ${expectedTCStatusl}    Set Variable    ${expectedTCStatusl.lower()}
+    Run Keyword If    '${save.lower()}'=='y' and ${status}==False and '${expectedTCStatusl}'=='fail'    Set Test Message    Create Contact Failed.Error Message::${errorMessage}
+    Run Keyword If    '${save.lower()}'=='y' and ${status}==False and '${expectedTCStatusl}'=='pass'    Fail    Create \ Contact Failed.Error Message::${errorMessage}
+    Run Keyword If    '${cancel.lower()}'=='y' and ${status}==True and '${expectedTCStatusl}'=='fail'    Fail    Contact is Created.
+    Run Keyword If    '${save.lower()}'=='n' and ${status}==True and '${expectedTCStatusl}'=='fail'    Fail    Contact is Created.
+    Run Keyword If    '${save.lower()}'=='n' and ${status}==False and '${expectedTCStatusl}'=='fail'    Set Test Message    Contact is Created.
+    Run Keyword If    '${cancel.lower()}'=='n' and '${save.lower()}'=='n' and ${status}==True    Fail    Contact is Created after click on Cancel button.Error Message::${errorMessage}

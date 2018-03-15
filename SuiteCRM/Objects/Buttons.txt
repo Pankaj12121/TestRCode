@@ -1,0 +1,3 @@
+*** Variables ***
+${button.login}    //input[@id='bigbutton']
+${button.Home.UserMenu}    //li[@id='globalLinks' and contains(@class,'globalLinks-desktop')]/button[@id='usermenucollapsed']

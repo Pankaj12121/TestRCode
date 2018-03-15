@@ -1,0 +1,43 @@
+[Profile]
+ID=WS
+Version=9
+[CT]
+trace=Y
+[Telnet5250]
+HostName=10.1.41.62
+AssociatedPrinterStartMinimized=N
+AssociatedPrinterClose=N
+AssociatedPrinterTimeout=0
+Security=Y
+SSLClientAuthentication=Y
+CertSelection=AUTOSELECT
+HostPortNumber=992
+[KeepAlive]
+KeepAliveTimeOut=0
+[Communication]
+Link=telnet5250
+Session=5250
+[5250]
+HostCodePage=037-U
+PrinterType=IBM3812
+[Keyboard]
+CuaKeyboard=2
+Language=United-States
+IBMDefaultKeyboard=N
+DefaultKeyboard=D:\as400.kmp
+[LastExitView]
+A=4 208 208 976 742 3 13 29 400 0 IBM3270— 37
+[Window]
+ViewFlags=CF00
+RuleLinePos=70 5
+[printers]
+printer=CutePDF Writer (from INDHYDELP011) in session 31 (redirected 2),winspool,TS001
+CPI=10
+LPI=6
+FaceName=[SimSun-ExtB]
+Raster=N
+Drawer1Orient=Portrait
+Drawer2Orient=Portrait
+VTPrintArea=Scroll
+VTPrintChar=ASCII
+VTTerminator=None

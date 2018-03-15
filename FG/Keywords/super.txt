@@ -1,0 +1,15 @@
+*** Settings ***
+Library           Collections
+Library           String
+Library           OperatingSystem
+Library           Screenshot
+Library           ../Library/Insurance.py
+Resource          common.txt
+Resource          batchprocessing.txt
+Resource          SpoolFilesVerification.txt
+Library           DateTime
+Resource          ../Variables/filePaths.txt
+Library           ../Library/RobotExample.py
+Library           ../Library/CustomLibrary.py
+Resource          ../Variables/global.txt
+Library           AutoItLibrary

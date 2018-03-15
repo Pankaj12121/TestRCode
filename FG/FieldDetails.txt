@@ -1,0 +1,37 @@
+*************Extracting all the fields in the Screen***************
+Field Index: 1 Field label: 
+Field Index: 2 Field label: GROUP UAT       
+Field Index: 3 Field label:        
+Field Index: 4 Field label: Major Alterations - Sub Menu
+Field Index: 5 Field label:               
+Field Index: 6 Field label: S9102
+Field Index: 7 Field label: 01
+Field Index: 8 Field label:                                                                                                                                                                                                                                                                                                                                                          
+Field Index: 9 Field label: A - Work With Policy
+Field Index: 10 Field label:                                                           
+Field Index: 11 Field label: B - Work With Subsidiaries
+Field Index: 12 Field label:                                                     
+Field Index: 13 Field label: C - Work With Products/Plans
+Field Index: 14 Field label:                                                   
+Field Index: 15 Field label: D - Work With Members
+Field Index: 16 Field label:                                                          
+Field Index: 17 Field label: E - Work With Headcount
+Field Index: 18 Field label:                                                        
+Field Index: 19 Field label: F - Issue Policy
+Field Index: 20 Field label:                                                               
+Field Index: 21 Field label: G - Issue Trial Bill
+Field Index: 22 Field label:                                                                                                                                    
+Field Index: 23 Field label: Policy Number      :
+Field Index: 24 Field label: GL000103  
+Field Index: 25 Field label:                                                                                                                                
+Field Index: 26 Field label: Effective Date     :
+Field Index: 27 Field label:           
+Field Index: 28 Field label:                                                                                                                                
+Field Index: 29 Field label: Pre-validate (Y/N) :
+Field Index: 30 Field label: Y
+Field Index: 31 Field label:                                                                                                                                                     
+Field Index: 32 Field label: Action :
+Field Index: 33 Field label: G
+Field Index: 34 Field label:                                                                                                                                                                                                                                                                                       
+Field Index: 35 Field label:                                                                               
+*************End of - Extracting all the fields in the Screen***************

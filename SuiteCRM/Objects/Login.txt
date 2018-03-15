@@ -1,0 +1,3 @@
+*** Variables ***
+${textBox.Login.UserName}    //input[@id='user_name']
+${textBox.Login.Password}    //input[@id='user_password']

@@ -1,0 +1,12 @@
+*** Settings ***
+Resource          Super.txt
+
+*** Keywords ***
+LoginSteps
+    [Arguments]    ${url}    ${BROWSER}
+    ${bStstus}    Evaluate    '${BROWSER.lower()}'=='ff' or '${BROWSER.lower()='firefox'
+    ${chromeStatus}    Evaluate    '${BROWSER.lower()}'=='gc' or '${BROWSER.lower()='chrome'
+    ${chromeOptions}    Get Chrome Browser Options
+    ${dict}    Create Dictionary    chromeOptions=${chromeOptions}
+    Run Keyword If    ${bStstus}    Create Dictionary    Chrome    dict=${dict}
+    [Return]    ${LoginStatus}

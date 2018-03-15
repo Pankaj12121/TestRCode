@@ -1,0 +1,16 @@
+*** Variables ***
+${serverSuiteCRMURL}    http://opensource.demo.orangehrmlive.com/    # a openSource site for automation testing
+${userName}       Admin
+${password}       admin
+${global_Logout_Status}    True
+${BROWSER}        gc
+${Delay60}        60s
+${Delay90}        90s
+${Delay30}        30s
+${Delay10}        10s
+${Delay5}         5s
+${errorMessage}    ${EMPTY}
+${localhostURL}    http://opensource.demo.orangehrmlive.com/
+${Delay2}         2s
+${testDataFolderPath}    ${EXECDIR}\\TestDataHRM
+${firefox_profile_path}    ${EXECDIR}\\Library\\firefoxprofile

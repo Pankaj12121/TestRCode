@@ -1,0 +1,39 @@
+*** Settings ***
+Resource          super.txt
+
+*** Keywords ***
+Schedule Maintenance Processing Batch
+    [Arguments]    ${sheet_name}
+    ${bstatus}    Wait For Text    Schedule Maintenance Processing
+    Run Keyword If    ${bstatus}==False    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Schedule Maintenance Processing    ${status}    Schedule Maintenance Processing is not visible in page
+    Run Keyword If    ${bstatus}==False    Fail and Capture ScreenShot    Schedule Maintenance Processing is not visible in page
+    Enter Text By Field Name    User Name    ${GlobalUserName}
+    Comment    Enter Text By Field Name    Schedule Number    00000420
+    Press Key    [enter]
+
+Work SpoolFiless Verification
+    ${WorkSS}    Run Keyword And Return Status    Wait For Text    Work with Submitted Schedules
+    ${Value}    Get Value By Row And Column    9    50    3
+    : FOR    ${rowIndex}    IN RANGE    9    22
+    \    ${Value}    Get Value By Row And Column    ${rowIndex}    50    3
+    \    Run Keyword If    ${Value}==451    Enter Text    8
+    \    Press Key    [TAB]
+    Comment    Run Keyword If    ${WorkSS}==True    Work SpoolFiless Verification
+    Press Key    [Enter]
+    ${workSF}    Run Keyword And Return Status    Wait For Text    Work with Spooled Files
+    ${Value1}    Get Value By Row And Column    09    007    5
+    : FOR    ${rowIndex}    IN RANGE    9    22
+    \    ${Value1}    Get Value By Row And Column    ${rowIndex}    007    5
+    \    Run Keyword If    '${Value1}'=='RR9JP'    Enter Text    5
+    \    Press Key    [TAB]
+    Press Key    [Enter]
+    Comment    sleep    2
+    Comment    Run Keyword If    ${workSF}==True    Work Spooled Files
+    Wait For Text    Display Spooled File
+    Enter Text By Field Name    Control    B
+    Press Key    [Enter]
+    sleep    3
+    ${Toal NumberRecord Upload}    Get Value By Row And Column    21    02    50
+    ${No of record uploded}    Get Value By Row And Column    21    33    2
+    Navigate To Screen    System Master Menu

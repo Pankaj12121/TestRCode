@@ -1,0 +1,1812 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20170824 16:08:58.115" generator="Robot 3.0 (Python 2.7.12 on win32)">
+<suite source="C:\Users\anilj\Downloads\FG" id="s1" name="FG">
+<suite source="C:\Users\anilj\Downloads\FG\TestSuites" id="s1-s1" name="TestSuites">
+<suite source="C:\Users\anilj\Downloads\FG\TestSuites\FG_Suite.txt" id="s1-s1-s1" name="FG Suite">
+<test id="s1-s1-s1-t1" name="sample">
+<kw name="Get Ms Excel Multiple Row Values Into Dictionary List Based On Key For Billnumber" library="RobotExample">
+<doc>Returns the dictionary of values given row in the MS Excel file</doc>
+<arguments>
+<arg>C:\\Users\\anilj\\Desktop\\HDFC\\Sample Data.xls</arg>
+</arguments>
+<assign>
+<var>${bill_Details}</var>
+<var>${status}</var>
+<var>${message}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.194" level="INFO">sheetname Sheet1
+noofrows 21
+size 0
+hearderList [u'Product Code', u'Contract Owner', u'Prop Date', u'Agent Code', u'Statistical Code', u'Billing Frequency', u'Method of Payment', u'Main Benefit SA', u'Main Benefit Risk Cess term', u'Main Benefit Prem Cess term', u'Topup Flag', u'Acc Dis Rider SA', u'CI Rider SA', u'Beneficiary']
+rowValues [u'CTP', u'A0623853', 42948.0, u'00758405', u'SUW', u'01', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 1
+cell_data CTP
+cell_data A0623853
+cell_data 42948.0
+cell_data 00758405
+cell_data SUW
+cell_data 01
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623854', 42948.0, u'00758405', u'EUW', u'02', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 2
+cell_data CTP
+cell_data A0623854
+cell_data 42948.0
+cell_data 00758405
+cell_data EUW
+cell_data 02
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623855', 42948.0, u'00758405', u'SUW', u'04', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 3
+cell_data CTP
+cell_data A0623855
+cell_data 42948.0
+cell_data 00758405
+cell_data SUW
+cell_data 04
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623856', 42948.0, u'00758405', u'EUW', u'12', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 4
+cell_data CTP
+cell_data A0623856
+cell_data 42948.0
+cell_data 00758405
+cell_data EUW
+cell_data 12
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623857', 42948.0, u'00758405', u'SUW', u'01', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 5
+cell_data CTP
+cell_data A0623857
+cell_data 42948.0
+cell_data 00758405
+cell_data SUW
+cell_data 01
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623858', 42948.0, u'00758405', u'EUW', u'02', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 6
+cell_data CTP
+cell_data A0623858
+cell_data 42948.0
+cell_data 00758405
+cell_data EUW
+cell_data 02
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623859', 42948.0, u'00758405', u'SUW', u'04', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 7
+cell_data CTP
+cell_data A0623859
+cell_data 42948.0
+cell_data 00758405
+cell_data SUW
+cell_data 04
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623860', 42948.0, u'00758405', u'EUW', u'12', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 8
+cell_data CTP
+cell_data A0623860
+cell_data 42948.0
+cell_data 00758405
+cell_data EUW
+cell_data 12
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623861', 42948.0, u'00758405', u'SUW', u'01', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 9
+cell_data CTP
+cell_data A0623861
+cell_data 42948.0
+cell_data 00758405
+cell_data SUW
+cell_data 01
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623862', 42948.0, u'00758405', u'EUW', u'02', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 10
+cell_data CTP
+cell_data A0623862
+cell_data 42948.0
+cell_data 00758405
+cell_data EUW
+cell_data 02
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623863', 42948.0, u'00758405', u'SUW', u'04', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 11
+cell_data CTP
+cell_data A0623863
+cell_data 42948.0
+cell_data 00758405
+cell_data SUW
+cell_data 04
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623864', 42948.0, u'00758405', u'EUW', u'12', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 12
+cell_data CTP
+cell_data A0623864
+cell_data 42948.0
+cell_data 00758405
+cell_data EUW
+cell_data 12
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623865', 42948.0, u'00758405', u'SUW', u'01', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 13
+cell_data CTP
+cell_data A0623865
+cell_data 42948.0
+cell_data 00758405
+cell_data SUW
+cell_data 01
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623866', 42948.0, u'00758405', u'EUW', u'02', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 14
+cell_data CTP
+cell_data A0623866
+cell_data 42948.0
+cell_data 00758405
+cell_data EUW
+cell_data 02
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623867', 42948.0, u'00758405', u'SUW', u'04', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 15
+cell_data CTP
+cell_data A0623867
+cell_data 42948.0
+cell_data 00758405
+cell_data SUW
+cell_data 04
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623868', 42948.0, u'00758405', u'EUW', u'12', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 16
+cell_data CTP
+cell_data A0623868
+cell_data 42948.0
+cell_data 00758405
+cell_data EUW
+cell_data 12
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623869', 42948.0, u'00758405', u'SUW', u'01', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 17
+cell_data CTP
+cell_data A0623869
+cell_data 42948.0
+cell_data 00758405
+cell_data SUW
+cell_data 01
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623870', 42948.0, u'00758405', u'EUW', u'02', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 18
+cell_data CTP
+cell_data A0623870
+cell_data 42948.0
+cell_data 00758405
+cell_data EUW
+cell_data 02
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623871', 42948.0, u'00758405', u'SUW', u'04', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 19
+cell_data CTP
+cell_data A0623871
+cell_data 42948.0
+cell_data 00758405
+cell_data SUW
+cell_data 04
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623872', 42948.0, u'00758405', u'EUW', u'12', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 20
+cell_data CTP
+cell_data A0623872
+cell_data 42948.0
+cell_data 00758405
+cell_data EUW
+cell_data 12
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+listDict {1: {'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623853', 'Acc Dis Rider SA': 5000000.0}, 2: {'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623854', 'Acc Dis Rider SA': 5000000.0}, 3: {'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623855', 'Acc Dis Rider SA': 5000000.0}, 4: {'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623856', 'Acc Dis Rider SA': 5000000.0}, 5: {'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623857', 'Acc Dis Rider SA': 5000000.0}, 6: {'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623858', 'Acc Dis Rider SA': 5000000.0}, 7: {'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623859', 'Acc Dis Rider SA': 5000000.0}, 8: {'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623860', 'Acc Dis Rider SA': 5000000.0}, 9: {'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623861', 'Acc Dis Rider SA': 5000000.0}, 10: {'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623862', 'Acc Dis Rider SA': 5000000.0}, 11: {'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623863', 'Acc Dis Rider SA': 5000000.0}, 12: {'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623864', 'Acc Dis Rider SA': 5000000.0}, 13: {'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623865', 'Acc Dis Rider SA': 5000000.0}, 14: {'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623866', 'Acc Dis Rider SA': 5000000.0}, 15: {'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623867', 'Acc Dis Rider SA': 5000000.0}, 16: {'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623868', 'Acc Dis Rider SA': 5000000.0}, 17: {'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623869', 'Acc Dis Rider SA': 5000000.0}, 18: {'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623870', 'Acc Dis Rider SA': 5000000.0}, 19: {'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623871', 'Acc Dis Rider SA': 5000000.0}, 20: {'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623872', 'Acc Dis Rider SA': 5000000.0}}</msg>
+<msg timestamp="20170824 16:08:59.195" level="INFO">${bill_Details} = {1: {'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiar...</msg>
+<msg timestamp="20170824 16:08:59.195" level="INFO">${status} = True</msg>
+<msg timestamp="20170824 16:08:59.196" level="INFO">${message} = Pass</msg>
+<status status="PASS" endtime="20170824 16:08:59.196" starttime="20170824 16:08:59.186"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${bill_Details}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.198" level="INFO">{1: {'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623853', 'Acc Dis Rider SA': 5000000.0}, 2: {'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623854', 'Acc Dis Rider SA': 5000000.0}, 3: {'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623855', 'Acc Dis Rider SA': 5000000.0}, 4: {'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623856', 'Acc Dis Rider SA': 5000000.0}, 5: {'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623857', 'Acc Dis Rider SA': 5000000.0}, 6: {'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623858', 'Acc Dis Rider SA': 5000000.0}, 7: {'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623859', 'Acc Dis Rider SA': 5000000.0}, 8: {'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623860', 'Acc Dis Rider SA': 5000000.0}, 9: {'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623861', 'Acc Dis Rider SA': 5000000.0}, 10: {'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623862', 'Acc Dis Rider SA': 5000000.0}, 11: {'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623863', 'Acc Dis Rider SA': 5000000.0}, 12: {'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623864', 'Acc Dis Rider SA': 5000000.0}, 13: {'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623865', 'Acc Dis Rider SA': 5000000.0}, 14: {'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623866', 'Acc Dis Rider SA': 5000000.0}, 15: {'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623867', 'Acc Dis Rider SA': 5000000.0}, 16: {'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623868', 'Acc Dis Rider SA': 5000000.0}, 17: {'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623869', 'Acc Dis Rider SA': 5000000.0}, 18: {'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623870', 'Acc Dis Rider SA': 5000000.0}, 19: {'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623871', 'Acc Dis Rider SA': 5000000.0}, 20: {'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623872', 'Acc Dis Rider SA': 5000000.0}}</msg>
+<status status="PASS" endtime="20170824 16:08:59.198" starttime="20170824 16:08:59.197"></status>
+</kw>
+<kw name="Get Dictionary Keys" library="Collections">
+<doc>Returns keys of the given ``dictionary``.</doc>
+<arguments>
+<arg>${bill_Details}</arg>
+</arguments>
+<assign>
+<var>${dictkeys}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.199" level="INFO">${dictkeys} = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]</msg>
+<status status="PASS" endtime="20170824 16:08:59.199" starttime="20170824 16:08:59.199"></status>
+</kw>
+<kw type="for" name="${indivual} IN [ @{dictkeys} ]">
+<kw type="foritem" name="${indivual} = 1">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${indivual}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.201" level="INFO">1</msg>
+<status status="PASS" endtime="20170824 16:08:59.201" starttime="20170824 16:08:59.201"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${bill_Details}</arg>
+<arg>${indivual}</arg>
+</arguments>
+<assign>
+<var>${productkey}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.202" level="INFO">${productkey} = {'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170824 16:08:59.202" starttime="20170824 16:08:59.202"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productkey}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.204" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623853', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170824 16:08:59.204" starttime="20170824 16:08:59.203"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.206" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.206" starttime="20170824 16:08:59.204"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.208" level="INFO">CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.208" starttime="20170824 16:08:59.206"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.209" level="INFO">${productcode} = A0623853</msg>
+<status status="PASS" endtime="20170824 16:08:59.209" starttime="20170824 16:08:59.208"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.209" level="INFO">A0623853</msg>
+<status status="PASS" endtime="20170824 16:08:59.209" starttime="20170824 16:08:59.209"></status>
+</kw>
+<status status="PASS" endtime="20170824 16:08:59.210" starttime="20170824 16:08:59.200"></status>
+</kw>
+<kw type="foritem" name="${indivual} = 2">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${indivual}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.211" level="INFO">2</msg>
+<status status="PASS" endtime="20170824 16:08:59.211" starttime="20170824 16:08:59.210"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${bill_Details}</arg>
+<arg>${indivual}</arg>
+</arguments>
+<assign>
+<var>${productkey}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.213" level="INFO">${productkey} = {'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170824 16:08:59.213" starttime="20170824 16:08:59.211"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productkey}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.213" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623854', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170824 16:08:59.213" starttime="20170824 16:08:59.213"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.214" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.214" starttime="20170824 16:08:59.214"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.215" level="INFO">CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.215" starttime="20170824 16:08:59.215"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.216" level="INFO">${productcode} = A0623854</msg>
+<status status="PASS" endtime="20170824 16:08:59.216" starttime="20170824 16:08:59.215"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.217" level="INFO">A0623854</msg>
+<status status="PASS" endtime="20170824 16:08:59.217" starttime="20170824 16:08:59.216"></status>
+</kw>
+<status status="PASS" endtime="20170824 16:08:59.217" starttime="20170824 16:08:59.210"></status>
+</kw>
+<kw type="foritem" name="${indivual} = 3">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${indivual}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.218" level="INFO">3</msg>
+<status status="PASS" endtime="20170824 16:08:59.218" starttime="20170824 16:08:59.218"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${bill_Details}</arg>
+<arg>${indivual}</arg>
+</arguments>
+<assign>
+<var>${productkey}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.219" level="INFO">${productkey} = {'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170824 16:08:59.219" starttime="20170824 16:08:59.218"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productkey}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.220" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623855', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170824 16:08:59.220" starttime="20170824 16:08:59.219"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.221" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.221" starttime="20170824 16:08:59.220"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.221" level="INFO">CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.222" starttime="20170824 16:08:59.221"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.223" level="INFO">${productcode} = A0623855</msg>
+<status status="PASS" endtime="20170824 16:08:59.223" starttime="20170824 16:08:59.223"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.224" level="INFO">A0623855</msg>
+<status status="PASS" endtime="20170824 16:08:59.224" starttime="20170824 16:08:59.224"></status>
+</kw>
+<status status="PASS" endtime="20170824 16:08:59.224" starttime="20170824 16:08:59.217"></status>
+</kw>
+<kw type="foritem" name="${indivual} = 4">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${indivual}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.226" level="INFO">4</msg>
+<status status="PASS" endtime="20170824 16:08:59.226" starttime="20170824 16:08:59.225"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${bill_Details}</arg>
+<arg>${indivual}</arg>
+</arguments>
+<assign>
+<var>${productkey}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.227" level="INFO">${productkey} = {'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170824 16:08:59.227" starttime="20170824 16:08:59.226"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productkey}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.227" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623856', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170824 16:08:59.228" starttime="20170824 16:08:59.227"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.229" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.229" starttime="20170824 16:08:59.228"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.230" level="INFO">CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.230" starttime="20170824 16:08:59.229"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.231" level="INFO">${productcode} = A0623856</msg>
+<status status="PASS" endtime="20170824 16:08:59.231" starttime="20170824 16:08:59.230"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.231" level="INFO">A0623856</msg>
+<status status="PASS" endtime="20170824 16:08:59.232" starttime="20170824 16:08:59.231"></status>
+</kw>
+<status status="PASS" endtime="20170824 16:08:59.232" starttime="20170824 16:08:59.225"></status>
+</kw>
+<kw type="foritem" name="${indivual} = 5">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${indivual}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.233" level="INFO">5</msg>
+<status status="PASS" endtime="20170824 16:08:59.233" starttime="20170824 16:08:59.232"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${bill_Details}</arg>
+<arg>${indivual}</arg>
+</arguments>
+<assign>
+<var>${productkey}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.234" level="INFO">${productkey} = {'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170824 16:08:59.234" starttime="20170824 16:08:59.233"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productkey}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.234" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623857', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170824 16:08:59.234" starttime="20170824 16:08:59.234"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.235" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.236" starttime="20170824 16:08:59.235"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.236" level="INFO">CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.237" starttime="20170824 16:08:59.236"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.237" level="INFO">${productcode} = A0623857</msg>
+<status status="PASS" endtime="20170824 16:08:59.237" starttime="20170824 16:08:59.237"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.238" level="INFO">A0623857</msg>
+<status status="PASS" endtime="20170824 16:08:59.238" starttime="20170824 16:08:59.238"></status>
+</kw>
+<status status="PASS" endtime="20170824 16:08:59.238" starttime="20170824 16:08:59.232"></status>
+</kw>
+<kw type="foritem" name="${indivual} = 6">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${indivual}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.239" level="INFO">6</msg>
+<status status="PASS" endtime="20170824 16:08:59.239" starttime="20170824 16:08:59.239"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${bill_Details}</arg>
+<arg>${indivual}</arg>
+</arguments>
+<assign>
+<var>${productkey}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.240" level="INFO">${productkey} = {'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170824 16:08:59.240" starttime="20170824 16:08:59.240"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productkey}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.241" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623858', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170824 16:08:59.242" starttime="20170824 16:08:59.241"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.243" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.243" starttime="20170824 16:08:59.242"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.244" level="INFO">CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.244" starttime="20170824 16:08:59.244"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.245" level="INFO">${productcode} = A0623858</msg>
+<status status="PASS" endtime="20170824 16:08:59.246" starttime="20170824 16:08:59.245"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.247" level="INFO">A0623858</msg>
+<status status="PASS" endtime="20170824 16:08:59.247" starttime="20170824 16:08:59.246"></status>
+</kw>
+<status status="PASS" endtime="20170824 16:08:59.247" starttime="20170824 16:08:59.239"></status>
+</kw>
+<kw type="foritem" name="${indivual} = 7">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${indivual}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.248" level="INFO">7</msg>
+<status status="PASS" endtime="20170824 16:08:59.248" starttime="20170824 16:08:59.248"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${bill_Details}</arg>
+<arg>${indivual}</arg>
+</arguments>
+<assign>
+<var>${productkey}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.250" level="INFO">${productkey} = {'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170824 16:08:59.250" starttime="20170824 16:08:59.249"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productkey}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.251" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623859', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170824 16:08:59.251" starttime="20170824 16:08:59.250"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.252" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.252" starttime="20170824 16:08:59.251"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.253" level="INFO">CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.253" starttime="20170824 16:08:59.252"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.254" level="INFO">${productcode} = A0623859</msg>
+<status status="PASS" endtime="20170824 16:08:59.254" starttime="20170824 16:08:59.253"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.254" level="INFO">A0623859</msg>
+<status status="PASS" endtime="20170824 16:08:59.255" starttime="20170824 16:08:59.254"></status>
+</kw>
+<status status="PASS" endtime="20170824 16:08:59.255" starttime="20170824 16:08:59.248"></status>
+</kw>
+<kw type="foritem" name="${indivual} = 8">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${indivual}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.256" level="INFO">8</msg>
+<status status="PASS" endtime="20170824 16:08:59.256" starttime="20170824 16:08:59.255"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${bill_Details}</arg>
+<arg>${indivual}</arg>
+</arguments>
+<assign>
+<var>${productkey}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.257" level="INFO">${productkey} = {'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170824 16:08:59.257" starttime="20170824 16:08:59.256"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productkey}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.258" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623860', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170824 16:08:59.258" starttime="20170824 16:08:59.258"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.259" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.259" starttime="20170824 16:08:59.258"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.260" level="INFO">CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.260" starttime="20170824 16:08:59.259"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.261" level="INFO">${productcode} = A0623860</msg>
+<status status="PASS" endtime="20170824 16:08:59.261" starttime="20170824 16:08:59.261"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.262" level="INFO">A0623860</msg>
+<status status="PASS" endtime="20170824 16:08:59.262" starttime="20170824 16:08:59.262"></status>
+</kw>
+<status status="PASS" endtime="20170824 16:08:59.262" starttime="20170824 16:08:59.255"></status>
+</kw>
+<kw type="foritem" name="${indivual} = 9">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${indivual}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.263" level="INFO">9</msg>
+<status status="PASS" endtime="20170824 16:08:59.264" starttime="20170824 16:08:59.263"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${bill_Details}</arg>
+<arg>${indivual}</arg>
+</arguments>
+<assign>
+<var>${productkey}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.265" level="INFO">${productkey} = {'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170824 16:08:59.265" starttime="20170824 16:08:59.264"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productkey}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.265" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623861', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170824 16:08:59.266" starttime="20170824 16:08:59.265"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.267" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.267" starttime="20170824 16:08:59.266"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.267" level="INFO">CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.268" starttime="20170824 16:08:59.267"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.268" level="INFO">${productcode} = A0623861</msg>
+<status status="PASS" endtime="20170824 16:08:59.268" starttime="20170824 16:08:59.268"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.269" level="INFO">A0623861</msg>
+<status status="PASS" endtime="20170824 16:08:59.269" starttime="20170824 16:08:59.269"></status>
+</kw>
+<status status="PASS" endtime="20170824 16:08:59.269" starttime="20170824 16:08:59.263"></status>
+</kw>
+<kw type="foritem" name="${indivual} = 10">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${indivual}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.270" level="INFO">10</msg>
+<status status="PASS" endtime="20170824 16:08:59.271" starttime="20170824 16:08:59.270"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${bill_Details}</arg>
+<arg>${indivual}</arg>
+</arguments>
+<assign>
+<var>${productkey}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.271" level="INFO">${productkey} = {'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170824 16:08:59.271" starttime="20170824 16:08:59.271"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productkey}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.272" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623862', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170824 16:08:59.273" starttime="20170824 16:08:59.272"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.274" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.274" starttime="20170824 16:08:59.273"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.275" level="INFO">CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.275" starttime="20170824 16:08:59.275"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.276" level="INFO">${productcode} = A0623862</msg>
+<status status="PASS" endtime="20170824 16:08:59.276" starttime="20170824 16:08:59.276"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.277" level="INFO">A0623862</msg>
+<status status="PASS" endtime="20170824 16:08:59.277" starttime="20170824 16:08:59.277"></status>
+</kw>
+<status status="PASS" endtime="20170824 16:08:59.277" starttime="20170824 16:08:59.270"></status>
+</kw>
+<kw type="foritem" name="${indivual} = 11">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${indivual}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.278" level="INFO">11</msg>
+<status status="PASS" endtime="20170824 16:08:59.278" starttime="20170824 16:08:59.278"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${bill_Details}</arg>
+<arg>${indivual}</arg>
+</arguments>
+<assign>
+<var>${productkey}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.279" level="INFO">${productkey} = {'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170824 16:08:59.279" starttime="20170824 16:08:59.279"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productkey}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.280" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623863', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170824 16:08:59.280" starttime="20170824 16:08:59.279"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.281" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.281" starttime="20170824 16:08:59.280"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.282" level="INFO">CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.282" starttime="20170824 16:08:59.281"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.283" level="INFO">${productcode} = A0623863</msg>
+<status status="PASS" endtime="20170824 16:08:59.283" starttime="20170824 16:08:59.282"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.283" level="INFO">A0623863</msg>
+<status status="PASS" endtime="20170824 16:08:59.283" starttime="20170824 16:08:59.283"></status>
+</kw>
+<status status="PASS" endtime="20170824 16:08:59.284" starttime="20170824 16:08:59.277"></status>
+</kw>
+<kw type="foritem" name="${indivual} = 12">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${indivual}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.285" level="INFO">12</msg>
+<status status="PASS" endtime="20170824 16:08:59.285" starttime="20170824 16:08:59.284"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${bill_Details}</arg>
+<arg>${indivual}</arg>
+</arguments>
+<assign>
+<var>${productkey}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.286" level="INFO">${productkey} = {'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170824 16:08:59.286" starttime="20170824 16:08:59.285"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productkey}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.287" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623864', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170824 16:08:59.287" starttime="20170824 16:08:59.286"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.288" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.288" starttime="20170824 16:08:59.287"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.289" level="INFO">CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.289" starttime="20170824 16:08:59.288"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.290" level="INFO">${productcode} = A0623864</msg>
+<status status="PASS" endtime="20170824 16:08:59.290" starttime="20170824 16:08:59.289"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.290" level="INFO">A0623864</msg>
+<status status="PASS" endtime="20170824 16:08:59.291" starttime="20170824 16:08:59.290"></status>
+</kw>
+<status status="PASS" endtime="20170824 16:08:59.291" starttime="20170824 16:08:59.284"></status>
+</kw>
+<kw type="foritem" name="${indivual} = 13">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${indivual}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.292" level="INFO">13</msg>
+<status status="PASS" endtime="20170824 16:08:59.292" starttime="20170824 16:08:59.292"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${bill_Details}</arg>
+<arg>${indivual}</arg>
+</arguments>
+<assign>
+<var>${productkey}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.293" level="INFO">${productkey} = {'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170824 16:08:59.294" starttime="20170824 16:08:59.293"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productkey}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.294" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623865', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170824 16:08:59.295" starttime="20170824 16:08:59.294"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.295" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.295" starttime="20170824 16:08:59.295"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.296" level="INFO">CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.296" starttime="20170824 16:08:59.296"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.297" level="INFO">${productcode} = A0623865</msg>
+<status status="PASS" endtime="20170824 16:08:59.298" starttime="20170824 16:08:59.297"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.298" level="INFO">A0623865</msg>
+<status status="PASS" endtime="20170824 16:08:59.298" starttime="20170824 16:08:59.298"></status>
+</kw>
+<status status="PASS" endtime="20170824 16:08:59.298" starttime="20170824 16:08:59.291"></status>
+</kw>
+<kw type="foritem" name="${indivual} = 14">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${indivual}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.299" level="INFO">14</msg>
+<status status="PASS" endtime="20170824 16:08:59.300" starttime="20170824 16:08:59.299"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${bill_Details}</arg>
+<arg>${indivual}</arg>
+</arguments>
+<assign>
+<var>${productkey}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.301" level="INFO">${productkey} = {'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170824 16:08:59.301" starttime="20170824 16:08:59.300"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productkey}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.302" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623866', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170824 16:08:59.302" starttime="20170824 16:08:59.301"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.302" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.303" starttime="20170824 16:08:59.302"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.304" level="INFO">CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.304" starttime="20170824 16:08:59.303"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.305" level="INFO">${productcode} = A0623866</msg>
+<status status="PASS" endtime="20170824 16:08:59.305" starttime="20170824 16:08:59.304"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.306" level="INFO">A0623866</msg>
+<status status="PASS" endtime="20170824 16:08:59.306" starttime="20170824 16:08:59.305"></status>
+</kw>
+<status status="PASS" endtime="20170824 16:08:59.307" starttime="20170824 16:08:59.299"></status>
+</kw>
+<kw type="foritem" name="${indivual} = 15">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${indivual}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.308" level="INFO">15</msg>
+<status status="PASS" endtime="20170824 16:08:59.308" starttime="20170824 16:08:59.307"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${bill_Details}</arg>
+<arg>${indivual}</arg>
+</arguments>
+<assign>
+<var>${productkey}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.309" level="INFO">${productkey} = {'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170824 16:08:59.309" starttime="20170824 16:08:59.308"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productkey}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.310" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623867', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170824 16:08:59.310" starttime="20170824 16:08:59.310"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.311" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.311" starttime="20170824 16:08:59.310"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.312" level="INFO">CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.312" starttime="20170824 16:08:59.312"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.313" level="INFO">${productcode} = A0623867</msg>
+<status status="PASS" endtime="20170824 16:08:59.313" starttime="20170824 16:08:59.313"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.314" level="INFO">A0623867</msg>
+<status status="PASS" endtime="20170824 16:08:59.314" starttime="20170824 16:08:59.314"></status>
+</kw>
+<status status="PASS" endtime="20170824 16:08:59.314" starttime="20170824 16:08:59.307"></status>
+</kw>
+<kw type="foritem" name="${indivual} = 16">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${indivual}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.315" level="INFO">16</msg>
+<status status="PASS" endtime="20170824 16:08:59.315" starttime="20170824 16:08:59.315"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${bill_Details}</arg>
+<arg>${indivual}</arg>
+</arguments>
+<assign>
+<var>${productkey}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.316" level="INFO">${productkey} = {'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170824 16:08:59.316" starttime="20170824 16:08:59.316"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productkey}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.317" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623868', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170824 16:08:59.317" starttime="20170824 16:08:59.317"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.318" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.318" starttime="20170824 16:08:59.318"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.319" level="INFO">CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.319" starttime="20170824 16:08:59.318"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.320" level="INFO">${productcode} = A0623868</msg>
+<status status="PASS" endtime="20170824 16:08:59.320" starttime="20170824 16:08:59.319"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.321" level="INFO">A0623868</msg>
+<status status="PASS" endtime="20170824 16:08:59.321" starttime="20170824 16:08:59.320"></status>
+</kw>
+<status status="PASS" endtime="20170824 16:08:59.321" starttime="20170824 16:08:59.314"></status>
+</kw>
+<kw type="foritem" name="${indivual} = 17">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${indivual}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.322" level="INFO">17</msg>
+<status status="PASS" endtime="20170824 16:08:59.322" starttime="20170824 16:08:59.322"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${bill_Details}</arg>
+<arg>${indivual}</arg>
+</arguments>
+<assign>
+<var>${productkey}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.323" level="INFO">${productkey} = {'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170824 16:08:59.324" starttime="20170824 16:08:59.323"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productkey}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.325" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623869', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170824 16:08:59.325" starttime="20170824 16:08:59.325"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.326" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.326" starttime="20170824 16:08:59.325"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.327" level="INFO">CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.327" starttime="20170824 16:08:59.326"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.328" level="INFO">${productcode} = A0623869</msg>
+<status status="PASS" endtime="20170824 16:08:59.328" starttime="20170824 16:08:59.327"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.328" level="INFO">A0623869</msg>
+<status status="PASS" endtime="20170824 16:08:59.329" starttime="20170824 16:08:59.328"></status>
+</kw>
+<status status="PASS" endtime="20170824 16:08:59.329" starttime="20170824 16:08:59.321"></status>
+</kw>
+<kw type="foritem" name="${indivual} = 18">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${indivual}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.330" level="INFO">18</msg>
+<status status="PASS" endtime="20170824 16:08:59.330" starttime="20170824 16:08:59.329"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${bill_Details}</arg>
+<arg>${indivual}</arg>
+</arguments>
+<assign>
+<var>${productkey}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.331" level="INFO">${productkey} = {'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170824 16:08:59.331" starttime="20170824 16:08:59.330"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productkey}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.331" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623870', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170824 16:08:59.332" starttime="20170824 16:08:59.331"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.333" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.333" starttime="20170824 16:08:59.332"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.333" level="INFO">CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.334" starttime="20170824 16:08:59.333"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.334" level="INFO">${productcode} = A0623870</msg>
+<status status="PASS" endtime="20170824 16:08:59.335" starttime="20170824 16:08:59.334"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.335" level="INFO">A0623870</msg>
+<status status="PASS" endtime="20170824 16:08:59.335" starttime="20170824 16:08:59.335"></status>
+</kw>
+<status status="PASS" endtime="20170824 16:08:59.336" starttime="20170824 16:08:59.329"></status>
+</kw>
+<kw type="foritem" name="${indivual} = 19">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${indivual}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.337" level="INFO">19</msg>
+<status status="PASS" endtime="20170824 16:08:59.337" starttime="20170824 16:08:59.336"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${bill_Details}</arg>
+<arg>${indivual}</arg>
+</arguments>
+<assign>
+<var>${productkey}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.338" level="INFO">${productkey} = {'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170824 16:08:59.338" starttime="20170824 16:08:59.337"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productkey}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.338" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623871', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170824 16:08:59.339" starttime="20170824 16:08:59.338"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.341" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.341" starttime="20170824 16:08:59.339"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.342" level="INFO">CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.343" starttime="20170824 16:08:59.342"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.344" level="INFO">${productcode} = A0623871</msg>
+<status status="PASS" endtime="20170824 16:08:59.344" starttime="20170824 16:08:59.343"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.345" level="INFO">A0623871</msg>
+<status status="PASS" endtime="20170824 16:08:59.345" starttime="20170824 16:08:59.344"></status>
+</kw>
+<status status="PASS" endtime="20170824 16:08:59.345" starttime="20170824 16:08:59.336"></status>
+</kw>
+<kw type="foritem" name="${indivual} = 20">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${indivual}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.346" level="INFO">20</msg>
+<status status="PASS" endtime="20170824 16:08:59.346" starttime="20170824 16:08:59.346"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${bill_Details}</arg>
+<arg>${indivual}</arg>
+</arguments>
+<assign>
+<var>${productkey}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.347" level="INFO">${productkey} = {'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170824 16:08:59.347" starttime="20170824 16:08:59.346"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productkey}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.348" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623872', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170824 16:08:59.348" starttime="20170824 16:08:59.348"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.349" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.349" starttime="20170824 16:08:59.349"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.350" level="INFO">CTP</msg>
+<status status="PASS" endtime="20170824 16:08:59.351" starttime="20170824 16:08:59.350"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${productkey}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170824 16:08:59.351" level="INFO">${productcode} = A0623872</msg>
+<status status="PASS" endtime="20170824 16:08:59.352" starttime="20170824 16:08:59.351"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${productcode}</arg>
+</arguments>
+<msg timestamp="20170824 16:08:59.353" level="INFO">A0623872</msg>
+<status status="PASS" endtime="20170824 16:08:59.353" starttime="20170824 16:08:59.352"></status>
+</kw>
+<status status="PASS" endtime="20170824 16:08:59.353" starttime="20170824 16:08:59.345"></status>
+</kw>
+<status status="PASS" endtime="20170824 16:08:59.353" starttime="20170824 16:08:59.200"></status>
+</kw>
+<status status="PASS" endtime="20170824 16:08:59.354" critical="yes" starttime="20170824 16:08:59.185"></status>
+</test>
+<status status="PASS" endtime="20170824 16:08:59.354" starttime="20170824 16:08:58.180"></status>
+</suite>
+<status status="PASS" endtime="20170824 16:08:59.356" starttime="20170824 16:08:58.177"></status>
+</suite>
+<status status="PASS" endtime="20170824 16:08:59.357" starttime="20170824 16:08:58.148"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="1">Critical Tests</stat>
+<stat fail="0" pass="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="FG" pass="1">FG</stat>
+<stat fail="0" id="s1-s1" name="TestSuites" pass="1">FG.TestSuites</stat>
+<stat fail="0" id="s1-s1-s1" name="FG Suite" pass="1">FG.TestSuites.FG Suite</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

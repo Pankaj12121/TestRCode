@@ -1,0 +1,42 @@
+*** Variables ***
+${button.createlead}    //div[@class='desktop-bar']//li[@id='quickcreatetop' and contains(@class,'quickcreatetop open')]//a[normalize-space()='Create Lead']
+${select.salutation}    salutation
+${Textbox.first_name}    first_name
+${Textbox.last_name}    last_name
+${Textbox.title}    title
+${Textbox.department}    department
+${Textbox.phone}    phone_work
+${Textbox.mobile}    phone_mobile
+${Textbox.fax}    phone_fax
+${Textbox.Accountname}    EditView_account_name
+${Textbox.website}    website
+${Textbox.primary_address}    //textarea[@id='primary_address_street']
+${Textbox.primary_address_city}    //input[@id='primary_address_city']
+${Textbox.primary_address_state}    //input[@id='primary_address_state']
+${Textbox.primary_address_postalcode}    //input[@id='primary_address_postalcode']
+${Textbox.primary_address_country}    //input[@id='primary_address_country']
+${Other_address_street}    //textarea[@id='alt_address_street']
+${Other_address_city}    //input[@id='alt_address_city']
+${Other_address_state}    //input[@id='alt_address_state']
+${Other_address_postalcode}    //input[@id='alt_address_postalcode']
+${Other_address_country}    //input[@id='alt_address_postalcode']
+${Textbox.EmailAddress}    //input[@type='email' and @enabled='true']
+${Primary}        //input[contains(@id,'emailAddressPrimaryFlag')] -type= radio
+${Opted Out}      //input[contains(@id,'emailAddressOptOutFlag')]
+${Invalid}        //input[contains(@id,'emailAddressInvalidFlag')]
+${Description}    //textarea[@id='description']
+${Textbox.status}    status
+${Dropdown.lead_source}    lead_source
+${Textbox.status_description}    //textarea[@id='status_description']
+${Textbox.lead_source_description}    //textarea[@id='lead_source_description']
+${Textbox.opportunity_amount}    opportunity_amount
+${refered_by}     refered_by
+${campaign_name}    //input[@id="campaign_name"]
+${Assigned}       //input[@id='assigned_user_name']
+${Button.Save}    //div[@id='EditView_tabs']/following-sibling::div/input[@id='SAVE']
+${Button.Cancel}    //div[@id='EditView_tabs']/following-sibling::div/input[@id='CANCEL']
+${Filter createlead}    //div[@class='list-view-rounded-corners']//thead//li[@class='sugar_action_button']/a[contains(@onclick,'listViewSearchIcon')]
+${Fliter.textbox.name}    //input[contains(@id,'name_basic')]
+${Filter.button.search}    //input[@id='search_form_submit']
+${Filter.Quickfilter}    //a[text()='Quick Filter']
+${leads.siva}     hbjb

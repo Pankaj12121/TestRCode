@@ -1,0 +1,863 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20170808 14:00:09.445" generator="Robot 2.9.2 (Python 2.7.13 on win32)">
+<suite id="s1" name="Accounts &amp; Leads &amp; Oppurtunities">
+<suite source="C:\SuiteCRM\TestCases\Accounts.txt" id="s1-s1" name="Accounts">
+<test id="s1-s1-t1" name="Create An Account">
+<kw name="Get Ms Excel Row Values Into Dictionary Based On Key" library="CommonLibrary">
+<doc>Returns the dictionary of values given row in the MS Excel file</doc>
+<arguments>
+<arg>${testDataFolderPath}\\SuiteCRMWorkflows.xls</arg>
+<arg>CA_TD_01</arg>
+<arg>Create Account</arg>
+</arguments>
+<assign>
+<var>${CreateAccount}</var>
+</assign>
+<msg timestamp="20170808 14:00:10.007" level="INFO">${CreateAccount} = {'Billing Address City': 'Hyderabad ', 'Billing Address Country': 'India', 'Shipping Address Postal Code': '500082', 'Billing AddressPostal Code': '500082', 'Member Of': 'Rhy', 'Save': 'Y', 'Type': 'A...</msg>
+<status status="PASS" endtime="20170808 14:00:10.007" starttime="20170808 14:00:10.007"></status>
+</kw>
+<kw name="Login To SuiteCRM" library="common">
+<doc>This keyword is used to Login to SuiteCRM application. It returns True for successful login otherwise False.</doc>
+<arguments>
+<arg>${BROWSER}</arg>
+<arg>${userName}</arg>
+<arg>${password}</arg>
+</arguments>
+<assign>
+<var>${loginStatus}</var>
+</assign>
+<kw name="Open Browser To Login Page" library="common">
+<doc>Open the application in the specified browser</doc>
+<arguments>
+<arg>${serverSuiteCRMURL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<assign>
+<var>${loginStatus}</var>
+</assign>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>'${BROWSER.lower()}'=='ff' or '${BROWSER.lower()}'=='firefox'</arg>
+</arguments>
+<assign>
+<var>${bStatus}</var>
+</assign>
+<msg timestamp="20170808 14:00:10.023" level="INFO">${bStatus} = False</msg>
+<status status="PASS" endtime="20170808 14:00:10.023" starttime="20170808 14:00:10.023"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>'${BROWSER.lower()}'=='gc' or '${BROWSER.lower()}'=='chrome'</arg>
+</arguments>
+<assign>
+<var>${chromeStatus}</var>
+</assign>
+<msg timestamp="20170808 14:00:10.023" level="INFO">${chromeStatus} = False</msg>
+<status status="PASS" endtime="20170808 14:00:10.023" starttime="20170808 14:00:10.023"></status>
+</kw>
+<kw name="Get Chrome Browser Options" library="CommonLibrary">
+<doc>It returns the chrome browser ChromeProfile, so that download pop up won't appear</doc>
+<assign>
+<var>${chrome_options}</var>
+</assign>
+<msg timestamp="20170808 14:00:10.023" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x043F99F0&gt;</msg>
+<status status="PASS" endtime="20170808 14:00:10.023" starttime="20170808 14:00:10.023"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on given items.</doc>
+<arguments>
+<arg>chrome_options=${chrome_options}</arg>
+</arguments>
+<assign>
+<var>${kwargs}</var>
+</assign>
+<msg timestamp="20170808 14:00:10.023" level="INFO">${kwargs} = {u'chrome_options': &lt;selenium.webdriver.chrome.options.Options object at 0x043F99F0&gt;}</msg>
+<status status="PASS" endtime="20170808 14:00:10.023" starttime="20170808 14:00:10.023"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${chromeStatus}</arg>
+<arg>Create Webdriver</arg>
+<arg>Chrome</arg>
+<arg>kwargs=${kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:00:10.039" starttime="20170808 14:00:10.023"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${chromeStatus}</arg>
+<arg>Go To</arg>
+<arg>${url}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:00:10.039" starttime="20170808 14:00:10.039"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${bStatus}==True</arg>
+<arg>Open Browser</arg>
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<arg>${EMPTY}</arg>
+<arg>${firefox_profile_path}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:00:10.039" starttime="20170808 14:00:10.039"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${bStatus}==False and ${chromeStatus}==False</arg>
+<arg>Open Browser</arg>
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20170808 14:00:10.039" level="INFO">Opening browser 'ie' to base url 'http://10.13.20.86/SuiteCRM/index.php'</msg>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20170808 14:00:11.101" level="FAIL">No browser is open</msg>
+<status status="FAIL" endtime="20170808 14:00:11.101" starttime="20170808 14:00:11.054"></status>
+</kw>
+<msg timestamp="20170808 14:00:11.101" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No browser is open</msg>
+<msg timestamp="20170808 14:00:11.117" level="FAIL">WebDriverException: Message: Unexpected error launching Internet Explorer. Protected Mode settings are not the same for all zones. Enable Protected Mode must be set to the same value (enabled or disabled) for all zones.
+</msg>
+<status status="FAIL" endtime="20170808 14:00:13.117" starttime="20170808 14:00:10.039"></status>
+</kw>
+<status status="FAIL" endtime="20170808 14:00:13.117" starttime="20170808 14:00:10.039"></status>
+</kw>
+<status status="FAIL" endtime="20170808 14:00:13.117" starttime="20170808 14:00:10.023"></status>
+</kw>
+<status status="FAIL" endtime="20170808 14:00:13.117" starttime="20170808 14:00:10.023"></status>
+</kw>
+<kw type="teardown" name="Stop Application" library="common">
+<kw name="Get Current Time Stamp" library="CommonLibrary">
+<doc>Return the Current date value</doc>
+<assign>
+<var>${ts}</var>
+</assign>
+<msg timestamp="20170808 14:00:13.117" level="INFO">${ts} = 20170808140013</msg>
+<status status="PASS" endtime="20170808 14:00:13.133" starttime="20170808 14:00:13.117"></status>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>Capture Page Screenshot</arg>
+<arg>Screenshot${ts}.png</arg>
+</arguments>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<arguments>
+<arg>Screenshot${ts}.png</arg>
+</arguments>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20170808 14:00:13.164" level="FAIL">No browser is open</msg>
+<status status="FAIL" endtime="20170808 14:00:13.164" starttime="20170808 14:00:13.148"></status>
+</kw>
+<msg timestamp="20170808 14:00:13.164" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No browser is open</msg>
+<msg timestamp="20170808 14:00:13.164" level="FAIL">No browser is open</msg>
+<status status="FAIL" endtime="20170808 14:00:13.164" starttime="20170808 14:00:13.133"></status>
+</kw>
+<status status="PASS" endtime="20170808 14:00:13.180" starttime="20170808 14:00:13.133"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${global_Logout_Status}!=True</arg>
+<arg>Logout From SuiteCRM</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:00:13.180" starttime="20170808 14:00:13.180"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Close Browser</arg>
+</arguments>
+<assign>
+<var>${bStatus}</var>
+</assign>
+<kw name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20170808 14:00:13.180" starttime="20170808 14:00:13.180"></status>
+</kw>
+<msg timestamp="20170808 14:00:13.180" level="INFO">${bStatus} = True</msg>
+<status status="PASS" endtime="20170808 14:00:13.180" starttime="20170808 14:00:13.180"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is false.</doc>
+<arguments>
+<arg>${bStatus}</arg>
+<arg>Set Test Message</arg>
+<arg>Getting exception in "Close Browser" keyword</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:00:13.180" starttime="20170808 14:00:13.180"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${BROWSER}'=='ie'</arg>
+<arg>Process Close</arg>
+<arg>IEDriverserver.exe</arg>
+</arguments>
+<kw name="Process Close" library="AutoItLibrary">
+<doc>method ProcessClose</doc>
+<arguments>
+<arg>IEDriverserver.exe</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:00:13.195" starttime="20170808 14:00:13.180"></status>
+</kw>
+<status status="PASS" endtime="20170808 14:00:13.195" starttime="20170808 14:00:13.180"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${BROWSER}'=='ie'</arg>
+<arg>OperatingSystem.Run</arg>
+<arg>taskkill /F /IM iexplore.exe</arg>
+</arguments>
+<kw name="Run" library="OperatingSystem">
+<doc>Runs the given command in the system and returns the output.</doc>
+<arguments>
+<arg>taskkill /F /IM iexplore.exe</arg>
+</arguments>
+<msg timestamp="20170808 14:00:13.195" level="INFO">Running command 'taskkill /F /IM iexplore.exe 2&gt;&amp;1'.</msg>
+<status status="PASS" endtime="20170808 14:00:13.430" starttime="20170808 14:00:13.195"></status>
+</kw>
+<status status="PASS" endtime="20170808 14:00:13.430" starttime="20170808 14:00:13.195"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${BROWSER}'=='ie'</arg>
+<arg>OperatingSystem.Run</arg>
+<arg>taskkill /F /IM iedriverserver.exe</arg>
+</arguments>
+<kw name="Run" library="OperatingSystem">
+<doc>Runs the given command in the system and returns the output.</doc>
+<arguments>
+<arg>taskkill /F /IM iedriverserver.exe</arg>
+</arguments>
+<msg timestamp="20170808 14:00:13.445" level="INFO">Running command 'taskkill /F /IM iedriverserver.exe 2&gt;&amp;1'.</msg>
+<status status="PASS" endtime="20170808 14:00:13.617" starttime="20170808 14:00:13.430"></status>
+</kw>
+<status status="PASS" endtime="20170808 14:00:13.617" starttime="20170808 14:00:13.430"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${BROWSER}'=='gc'</arg>
+<arg>Process Close</arg>
+<arg>chromedriver.exe</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:00:13.633" starttime="20170808 14:00:13.633"></status>
+</kw>
+<status status="PASS" endtime="20170808 14:00:13.633" starttime="20170808 14:00:13.117"></status>
+</kw>
+<status status="FAIL" endtime="20170808 14:00:13.633" critical="yes" starttime="20170808 14:00:09.992">WebDriverException: Message: Unexpected error launching Internet Explorer. Protected Mode settings are not the same for all zones. Enable Protected Mode must be set to the same value (enabled or disabled) for all zones.
+</status>
+</test>
+<status status="FAIL" endtime="20170808 14:00:13.633" starttime="20170808 14:00:09.492"></status>
+</suite>
+<suite source="C:\SuiteCRM\TestCases\Leads.txt" id="s1-s2" name="Leads">
+<test id="s1-s2-t1" name="Create A Lead">
+<kw name="Get Ms Excel Row Values Into Dictionary Based On Key" library="CommonLibrary">
+<doc>Returns the dictionary of values given row in the MS Excel file</doc>
+<arguments>
+<arg>${testDataFolderPath}/SuiteCRMWorkflows.xls</arg>
+<arg>CL_TD_01</arg>
+<arg>Create Lead</arg>
+</arguments>
+<assign>
+<var>${User Details}</var>
+</assign>
+<msg timestamp="20170808 14:00:13.695" level="INFO">${User Details} = {'Primary City': 'Hyderabad ', 'Title': 'Software', 'Lead Source': 'Employee', 'First Name': 'QATestFN14001369500052', 'Account Name': 'QATest', 'Department': 'Testing', 'Primary Address': 'Madhapur',...</msg>
+<status status="PASS" endtime="20170808 14:00:13.695" starttime="20170808 14:00:13.695"></status>
+</kw>
+<kw name="Login To SuiteCRM" library="common">
+<doc>This keyword is used to Login to SuiteCRM application. It returns True for successful login otherwise False.</doc>
+<arguments>
+<arg>${BROWSER}</arg>
+<arg>${userName}</arg>
+<arg>${password}</arg>
+</arguments>
+<assign>
+<var>${loginStatus}</var>
+</assign>
+<kw name="Open Browser To Login Page" library="common">
+<doc>Open the application in the specified browser</doc>
+<arguments>
+<arg>${serverSuiteCRMURL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<assign>
+<var>${loginStatus}</var>
+</assign>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>'${BROWSER.lower()}'=='ff' or '${BROWSER.lower()}'=='firefox'</arg>
+</arguments>
+<assign>
+<var>${bStatus}</var>
+</assign>
+<msg timestamp="20170808 14:00:13.711" level="INFO">${bStatus} = False</msg>
+<status status="PASS" endtime="20170808 14:00:13.711" starttime="20170808 14:00:13.711"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>'${BROWSER.lower()}'=='gc' or '${BROWSER.lower()}'=='chrome'</arg>
+</arguments>
+<assign>
+<var>${chromeStatus}</var>
+</assign>
+<msg timestamp="20170808 14:00:13.711" level="INFO">${chromeStatus} = False</msg>
+<status status="PASS" endtime="20170808 14:00:13.711" starttime="20170808 14:00:13.711"></status>
+</kw>
+<kw name="Get Chrome Browser Options" library="CommonLibrary">
+<doc>It returns the chrome browser ChromeProfile, so that download pop up won't appear</doc>
+<assign>
+<var>${chrome_options}</var>
+</assign>
+<msg timestamp="20170808 14:00:13.711" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x04205BD0&gt;</msg>
+<status status="PASS" endtime="20170808 14:00:13.711" starttime="20170808 14:00:13.711"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on given items.</doc>
+<arguments>
+<arg>chrome_options=${chrome_options}</arg>
+</arguments>
+<assign>
+<var>${kwargs}</var>
+</assign>
+<msg timestamp="20170808 14:00:13.711" level="INFO">${kwargs} = {u'chrome_options': &lt;selenium.webdriver.chrome.options.Options object at 0x04205BD0&gt;}</msg>
+<status status="PASS" endtime="20170808 14:00:13.711" starttime="20170808 14:00:13.711"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${chromeStatus}</arg>
+<arg>Create Webdriver</arg>
+<arg>Chrome</arg>
+<arg>kwargs=${kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:00:13.711" starttime="20170808 14:00:13.711"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${chromeStatus}</arg>
+<arg>Go To</arg>
+<arg>${url}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:00:13.711" starttime="20170808 14:00:13.711"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${bStatus}==True</arg>
+<arg>Open Browser</arg>
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<arg>${EMPTY}</arg>
+<arg>${firefox_profile_path}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:00:13.727" starttime="20170808 14:00:13.727"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${bStatus}==False and ${chromeStatus}==False</arg>
+<arg>Open Browser</arg>
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20170808 14:00:13.727" level="INFO">Opening browser 'ie' to base url 'http://10.13.20.86/SuiteCRM/index.php'</msg>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20170808 14:00:14.331" level="FAIL">No browser is open</msg>
+<status status="FAIL" endtime="20170808 14:00:14.331" starttime="20170808 14:00:14.300"></status>
+</kw>
+<msg timestamp="20170808 14:00:14.331" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No browser is open</msg>
+<msg timestamp="20170808 14:00:14.331" level="FAIL">WebDriverException: Message: Unexpected error launching Internet Explorer. Protected Mode settings are not the same for all zones. Enable Protected Mode must be set to the same value (enabled or disabled) for all zones.
+</msg>
+<status status="FAIL" endtime="20170808 14:00:16.332" starttime="20170808 14:00:13.727"></status>
+</kw>
+<status status="FAIL" endtime="20170808 14:00:16.332" starttime="20170808 14:00:13.727"></status>
+</kw>
+<status status="FAIL" endtime="20170808 14:00:16.332" starttime="20170808 14:00:13.711"></status>
+</kw>
+<status status="FAIL" endtime="20170808 14:00:16.332" starttime="20170808 14:00:13.695"></status>
+</kw>
+<kw type="teardown" name="Stop Application" library="common">
+<kw name="Get Current Time Stamp" library="CommonLibrary">
+<doc>Return the Current date value</doc>
+<assign>
+<var>${ts}</var>
+</assign>
+<msg timestamp="20170808 14:00:16.347" level="INFO">${ts} = 20170808140016</msg>
+<status status="PASS" endtime="20170808 14:00:16.347" starttime="20170808 14:00:16.347"></status>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>Capture Page Screenshot</arg>
+<arg>Screenshot${ts}.png</arg>
+</arguments>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<arguments>
+<arg>Screenshot${ts}.png</arg>
+</arguments>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20170808 14:00:16.394" level="FAIL">No browser is open</msg>
+<status status="FAIL" endtime="20170808 14:00:16.394" starttime="20170808 14:00:16.363"></status>
+</kw>
+<msg timestamp="20170808 14:00:16.394" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No browser is open</msg>
+<msg timestamp="20170808 14:00:16.394" level="FAIL">No browser is open</msg>
+<status status="FAIL" endtime="20170808 14:00:16.394" starttime="20170808 14:00:16.347"></status>
+</kw>
+<status status="PASS" endtime="20170808 14:00:16.394" starttime="20170808 14:00:16.347"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${global_Logout_Status}!=True</arg>
+<arg>Logout From SuiteCRM</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:00:16.394" starttime="20170808 14:00:16.394"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Close Browser</arg>
+</arguments>
+<assign>
+<var>${bStatus}</var>
+</assign>
+<kw name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20170808 14:00:16.394" starttime="20170808 14:00:16.394"></status>
+</kw>
+<msg timestamp="20170808 14:00:16.394" level="INFO">${bStatus} = True</msg>
+<status status="PASS" endtime="20170808 14:00:16.394" starttime="20170808 14:00:16.394"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is false.</doc>
+<arguments>
+<arg>${bStatus}</arg>
+<arg>Set Test Message</arg>
+<arg>Getting exception in "Close Browser" keyword</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:00:16.394" starttime="20170808 14:00:16.394"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${BROWSER}'=='ie'</arg>
+<arg>Process Close</arg>
+<arg>IEDriverserver.exe</arg>
+</arguments>
+<kw name="Process Close" library="AutoItLibrary">
+<doc>method ProcessClose</doc>
+<arguments>
+<arg>IEDriverserver.exe</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:00:16.409" starttime="20170808 14:00:16.409"></status>
+</kw>
+<status status="PASS" endtime="20170808 14:00:16.409" starttime="20170808 14:00:16.394"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${BROWSER}'=='ie'</arg>
+<arg>OperatingSystem.Run</arg>
+<arg>taskkill /F /IM iexplore.exe</arg>
+</arguments>
+<kw name="Run" library="OperatingSystem">
+<doc>Runs the given command in the system and returns the output.</doc>
+<arguments>
+<arg>taskkill /F /IM iexplore.exe</arg>
+</arguments>
+<msg timestamp="20170808 14:00:16.409" level="INFO">Running command 'taskkill /F /IM iexplore.exe 2&gt;&amp;1'.</msg>
+<status status="PASS" endtime="20170808 14:00:16.613" starttime="20170808 14:00:16.409"></status>
+</kw>
+<status status="PASS" endtime="20170808 14:00:16.613" starttime="20170808 14:00:16.409"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${BROWSER}'=='ie'</arg>
+<arg>OperatingSystem.Run</arg>
+<arg>taskkill /F /IM iedriverserver.exe</arg>
+</arguments>
+<kw name="Run" library="OperatingSystem">
+<doc>Runs the given command in the system and returns the output.</doc>
+<arguments>
+<arg>taskkill /F /IM iedriverserver.exe</arg>
+</arguments>
+<msg timestamp="20170808 14:00:16.613" level="INFO">Running command 'taskkill /F /IM iedriverserver.exe 2&gt;&amp;1'.</msg>
+<status status="PASS" endtime="20170808 14:00:16.800" starttime="20170808 14:00:16.613"></status>
+</kw>
+<status status="PASS" endtime="20170808 14:00:16.800" starttime="20170808 14:00:16.613"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${BROWSER}'=='gc'</arg>
+<arg>Process Close</arg>
+<arg>chromedriver.exe</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:00:16.800" starttime="20170808 14:00:16.800"></status>
+</kw>
+<status status="PASS" endtime="20170808 14:00:16.800" starttime="20170808 14:00:16.332"></status>
+</kw>
+<status status="FAIL" endtime="20170808 14:00:16.800" critical="yes" starttime="20170808 14:00:13.680">WebDriverException: Message: Unexpected error launching Internet Explorer. Protected Mode settings are not the same for all zones. Enable Protected Mode must be set to the same value (enabled or disabled) for all zones.
+</status>
+</test>
+<status status="FAIL" endtime="20170808 14:00:16.816" starttime="20170808 14:00:13.633"></status>
+</suite>
+<suite source="C:\SuiteCRM\TestCases\Oppurtunities.txt" id="s1-s3" name="Oppurtunities">
+<test id="s1-s3-t1" name="Create An Opportunity">
+<kw name="Get Ms Excel Row Values Into Dictionary Based On Key" library="CommonLibrary">
+<doc>Returns the dictionary of values given row in the MS Excel file</doc>
+<arguments>
+<arg>${testDataFolderPath}/SuiteCRMWorkflows.xls</arg>
+<arg>CO_TD_01</arg>
+<arg>Create Opportunity</arg>
+</arguments>
+<assign>
+<var>${CreateOpportunity}</var>
+</assign>
+<msg timestamp="20170808 14:00:16.878" level="INFO">${CreateOpportunity} = {'Assigned To': 'Administrator', 'Probability': '20', 'Next Step': 'Start Business', 'Save': 'Y', 'Description': 'Opportunity Description', 'Campaign': 'BootCamp', 'Currency': 'US Dollars : $', 'Sales...</msg>
+<status status="PASS" endtime="20170808 14:00:16.878" starttime="20170808 14:00:16.863"></status>
+</kw>
+<kw name="Get Ms Excel Row Values Into Dictionary Based On Key" library="CommonLibrary">
+<doc>Returns the dictionary of values given row in the MS Excel file</doc>
+<arguments>
+<arg>${testDataFolderPath}/SuiteCRMWorkflows.xls</arg>
+<arg>CA_TD_01</arg>
+<arg>Create Account</arg>
+</arguments>
+<assign>
+<var>${CreateAccount}</var>
+</assign>
+<msg timestamp="20170808 14:00:16.894" level="INFO">${CreateAccount} = {'Billing Address City': 'Hyderabad ', 'Billing Address Country': 'India', 'Shipping Address Postal Code': '500082', 'Billing AddressPostal Code': '500082', 'Member Of': 'Rhy', 'Save': 'Y', 'Type': 'A...</msg>
+<status status="PASS" endtime="20170808 14:00:16.894" starttime="20170808 14:00:16.878"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${CreateAccount}</arg>
+<arg>Save</arg>
+</arguments>
+<assign>
+<var>${save}</var>
+</assign>
+<msg timestamp="20170808 14:00:16.894" level="INFO">${save} = Y</msg>
+<status status="PASS" endtime="20170808 14:00:16.894" starttime="20170808 14:00:16.894"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${CreateAccount}</arg>
+<arg>Cancel</arg>
+</arguments>
+<assign>
+<var>${cancel}</var>
+</assign>
+<msg timestamp="20170808 14:00:16.894" level="INFO">${cancel} = N</msg>
+<status status="PASS" endtime="20170808 14:00:16.894" starttime="20170808 14:00:16.894"></status>
+</kw>
+<kw name="Login To SuiteCRM" library="common">
+<doc>This keyword is used to Login to SuiteCRM application. It returns True for successful login otherwise False.</doc>
+<arguments>
+<arg>${BROWSER}</arg>
+<arg>${userName}</arg>
+<arg>${password}</arg>
+</arguments>
+<assign>
+<var>${loginStatus}</var>
+</assign>
+<kw name="Open Browser To Login Page" library="common">
+<doc>Open the application in the specified browser</doc>
+<arguments>
+<arg>${serverSuiteCRMURL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<assign>
+<var>${loginStatus}</var>
+</assign>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>'${BROWSER.lower()}'=='ff' or '${BROWSER.lower()}'=='firefox'</arg>
+</arguments>
+<assign>
+<var>${bStatus}</var>
+</assign>
+<msg timestamp="20170808 14:00:16.894" level="INFO">${bStatus} = False</msg>
+<status status="PASS" endtime="20170808 14:00:16.894" starttime="20170808 14:00:16.894"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>'${BROWSER.lower()}'=='gc' or '${BROWSER.lower()}'=='chrome'</arg>
+</arguments>
+<assign>
+<var>${chromeStatus}</var>
+</assign>
+<msg timestamp="20170808 14:00:16.910" level="INFO">${chromeStatus} = False</msg>
+<status status="PASS" endtime="20170808 14:00:16.910" starttime="20170808 14:00:16.894"></status>
+</kw>
+<kw name="Get Chrome Browser Options" library="CommonLibrary">
+<doc>It returns the chrome browser ChromeProfile, so that download pop up won't appear</doc>
+<assign>
+<var>${chrome_options}</var>
+</assign>
+<msg timestamp="20170808 14:00:16.910" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x0449BE70&gt;</msg>
+<status status="PASS" endtime="20170808 14:00:16.910" starttime="20170808 14:00:16.910"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on given items.</doc>
+<arguments>
+<arg>chrome_options=${chrome_options}</arg>
+</arguments>
+<assign>
+<var>${kwargs}</var>
+</assign>
+<msg timestamp="20170808 14:00:16.910" level="INFO">${kwargs} = {u'chrome_options': &lt;selenium.webdriver.chrome.options.Options object at 0x0449BE70&gt;}</msg>
+<status status="PASS" endtime="20170808 14:00:16.910" starttime="20170808 14:00:16.910"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${chromeStatus}</arg>
+<arg>Create Webdriver</arg>
+<arg>Chrome</arg>
+<arg>kwargs=${kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:00:16.910" starttime="20170808 14:00:16.910"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${chromeStatus}</arg>
+<arg>Go To</arg>
+<arg>${url}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:00:16.910" starttime="20170808 14:00:16.910"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${bStatus}==True</arg>
+<arg>Open Browser</arg>
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<arg>${EMPTY}</arg>
+<arg>${firefox_profile_path}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:00:16.910" starttime="20170808 14:00:16.910"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${bStatus}==False and ${chromeStatus}==False</arg>
+<arg>Open Browser</arg>
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20170808 14:00:16.925" level="INFO">Opening browser 'ie' to base url 'http://10.13.20.86/SuiteCRM/index.php'</msg>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20170808 14:00:17.519" level="FAIL">No browser is open</msg>
+<status status="FAIL" endtime="20170808 14:00:17.519" starttime="20170808 14:00:17.488"></status>
+</kw>
+<msg timestamp="20170808 14:00:17.519" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No browser is open</msg>
+<msg timestamp="20170808 14:00:17.535" level="FAIL">WebDriverException: Message: Unexpected error launching Internet Explorer. Protected Mode settings are not the same for all zones. Enable Protected Mode must be set to the same value (enabled or disabled) for all zones.
+</msg>
+<status status="FAIL" endtime="20170808 14:00:19.551" starttime="20170808 14:00:16.925"></status>
+</kw>
+<status status="FAIL" endtime="20170808 14:00:19.551" starttime="20170808 14:00:16.910"></status>
+</kw>
+<status status="FAIL" endtime="20170808 14:00:19.551" starttime="20170808 14:00:16.894"></status>
+</kw>
+<status status="FAIL" endtime="20170808 14:00:19.551" starttime="20170808 14:00:16.894"></status>
+</kw>
+<kw type="teardown" name="Stop Application" library="common">
+<kw name="Get Current Time Stamp" library="CommonLibrary">
+<doc>Return the Current date value</doc>
+<assign>
+<var>${ts}</var>
+</assign>
+<msg timestamp="20170808 14:00:19.551" level="INFO">${ts} = 20170808140019</msg>
+<status status="PASS" endtime="20170808 14:00:19.551" starttime="20170808 14:00:19.551"></status>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>Capture Page Screenshot</arg>
+<arg>Screenshot${ts}.png</arg>
+</arguments>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<arguments>
+<arg>Screenshot${ts}.png</arg>
+</arguments>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20170808 14:00:19.566" level="FAIL">No browser is open</msg>
+<status status="FAIL" endtime="20170808 14:00:19.566" starttime="20170808 14:00:19.551"></status>
+</kw>
+<msg timestamp="20170808 14:00:19.566" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No browser is open</msg>
+<msg timestamp="20170808 14:00:19.566" level="FAIL">No browser is open</msg>
+<status status="FAIL" endtime="20170808 14:00:19.566" starttime="20170808 14:00:19.551"></status>
+</kw>
+<status status="PASS" endtime="20170808 14:00:19.566" starttime="20170808 14:00:19.551"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${global_Logout_Status}!=True</arg>
+<arg>Logout From SuiteCRM</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:00:19.566" starttime="20170808 14:00:19.566"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Close Browser</arg>
+</arguments>
+<assign>
+<var>${bStatus}</var>
+</assign>
+<kw name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20170808 14:00:19.566" starttime="20170808 14:00:19.566"></status>
+</kw>
+<msg timestamp="20170808 14:00:19.566" level="INFO">${bStatus} = True</msg>
+<status status="PASS" endtime="20170808 14:00:19.566" starttime="20170808 14:00:19.566"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is false.</doc>
+<arguments>
+<arg>${bStatus}</arg>
+<arg>Set Test Message</arg>
+<arg>Getting exception in "Close Browser" keyword</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:00:19.566" starttime="20170808 14:00:19.566"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${BROWSER}'=='ie'</arg>
+<arg>Process Close</arg>
+<arg>IEDriverserver.exe</arg>
+</arguments>
+<kw name="Process Close" library="AutoItLibrary">
+<doc>method ProcessClose</doc>
+<arguments>
+<arg>IEDriverserver.exe</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:00:19.582" starttime="20170808 14:00:19.582"></status>
+</kw>
+<status status="PASS" endtime="20170808 14:00:19.582" starttime="20170808 14:00:19.566"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${BROWSER}'=='ie'</arg>
+<arg>OperatingSystem.Run</arg>
+<arg>taskkill /F /IM iexplore.exe</arg>
+</arguments>
+<kw name="Run" library="OperatingSystem">
+<doc>Runs the given command in the system and returns the output.</doc>
+<arguments>
+<arg>taskkill /F /IM iexplore.exe</arg>
+</arguments>
+<msg timestamp="20170808 14:00:19.597" level="INFO">Running command 'taskkill /F /IM iexplore.exe 2&gt;&amp;1'.</msg>
+<status status="PASS" endtime="20170808 14:00:19.769" starttime="20170808 14:00:19.582"></status>
+</kw>
+<status status="PASS" endtime="20170808 14:00:19.785" starttime="20170808 14:00:19.582"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${BROWSER}'=='ie'</arg>
+<arg>OperatingSystem.Run</arg>
+<arg>taskkill /F /IM iedriverserver.exe</arg>
+</arguments>
+<kw name="Run" library="OperatingSystem">
+<doc>Runs the given command in the system and returns the output.</doc>
+<arguments>
+<arg>taskkill /F /IM iedriverserver.exe</arg>
+</arguments>
+<msg timestamp="20170808 14:00:19.785" level="INFO">Running command 'taskkill /F /IM iedriverserver.exe 2&gt;&amp;1'.</msg>
+<status status="PASS" endtime="20170808 14:00:19.973" starttime="20170808 14:00:19.785"></status>
+</kw>
+<status status="PASS" endtime="20170808 14:00:19.973" starttime="20170808 14:00:19.785"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${BROWSER}'=='gc'</arg>
+<arg>Process Close</arg>
+<arg>chromedriver.exe</arg>
+</arguments>
+<status status="PASS" endtime="20170808 14:00:19.973" starttime="20170808 14:00:19.973"></status>
+</kw>
+<status status="PASS" endtime="20170808 14:00:19.973" starttime="20170808 14:00:19.551"></status>
+</kw>
+<status status="FAIL" endtime="20170808 14:00:19.973" critical="yes" starttime="20170808 14:00:16.847">WebDriverException: Message: Unexpected error launching Internet Explorer. Protected Mode settings are not the same for all zones. Enable Protected Mode must be set to the same value (enabled or disabled) for all zones.
+</status>
+</test>
+<status status="FAIL" endtime="20170808 14:00:19.973" starttime="20170808 14:00:16.816"></status>
+</suite>
+<status status="FAIL" endtime="20170808 14:00:19.973" starttime="20170808 14:00:09.445"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="3" pass="0">Critical Tests</stat>
+<stat fail="3" pass="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="3" id="s1" name="Accounts &amp; Leads &amp; Oppurtunities" pass="0">Accounts &amp; Leads &amp; Oppurtunities</stat>
+<stat fail="1" id="s1-s1" name="Accounts" pass="0">Accounts &amp; Leads &amp; Oppurtunities.Accounts</stat>
+<stat fail="1" id="s1-s2" name="Leads" pass="0">Accounts &amp; Leads &amp; Oppurtunities.Leads</stat>
+<stat fail="1" id="s1-s3" name="Oppurtunities" pass="0">Accounts &amp; Leads &amp; Oppurtunities.Oppurtunities</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20170808 14:00:11.101" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No browser is open</msg>
+<msg timestamp="20170808 14:00:13.164" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No browser is open</msg>
+<msg timestamp="20170808 14:00:14.331" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No browser is open</msg>
+<msg timestamp="20170808 14:00:16.394" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No browser is open</msg>
+<msg timestamp="20170808 14:00:17.519" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No browser is open</msg>
+<msg timestamp="20170808 14:00:19.566" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No browser is open</msg>
+</errors>
+</robot>

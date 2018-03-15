@@ -1,0 +1,2 @@
+*** Variables ***
+${error.Login.ErrorMessage}    //div[@id='loginform']//span[@class='error' and not(@id)]

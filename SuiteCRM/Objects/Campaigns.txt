@@ -1,0 +1,12 @@
+*** Variables ***
+${textBox.campaigns.NewsLetter.Name}    //input[@id='name']
+${textBox.campaigns.NewsLetter.AssignedTo}    //input[@id='assigned_user_name']
+${select.campaigns.NewsLetter.Status}    //select[@id='status']
+${textArea.campaigns.Description}    //textarea[@id='wiz_content']
+${textBox.campaigns.Budget}    //input[@id='budget']
+${textBox.campaigns.ActualCost}    //input[@id='actual_cost']
+${textBox.campaigns.ExpectedRevenue}    //input[@id='expected_revenue']
+${textBox.campaigns.ExpectedCost}    //input[@id='expected_cost']
+${select.campaigns.Currency}    //select[@id='currency_id']
+${textBox.campaigns.Impressions}    //input[@id='impressions']
+${textArea.campaigns.Objective}    //textarea[@id='objective']

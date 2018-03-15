@@ -1,0 +1,2 @@
+*** Variables ***
+${image.Home.HomeIcon}    //div[@id='toolbar']//a[normalize-space()='SuiteCRM']

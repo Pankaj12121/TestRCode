@@ -1,0 +1,13 @@
+*** Settings ***
+Resource          Buttons.txt
+Resource          Images.txt
+Resource          Labels.txt
+Resource          Links.txt
+Resource          Global.txt
+Resource          Login.txt
+Resource          common.txt
+Resource          Contacts.txt
+Resource          Leads.txt
+Resource          Opportunities.txt
+Resource          Accounts.txt
+Resource          Campaigns.txt

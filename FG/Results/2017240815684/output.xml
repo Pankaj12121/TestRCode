@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20170824 14:00:42.729" generator="Robot 3.0 (Python 2.7.12 on win32)">
+<suite source="C:\Users\anilj\Downloads\FG" id="s1" name="FG">
+<suite source="C:\Users\anilj\Downloads\FG\TestSuites" id="s1-s1" name="TestSuites">
+<suite source="C:\Users\anilj\Downloads\FG\TestSuites\FG_Suite.txt" id="s1-s1-s1" name="FG Suite">
+<test id="s1-s1-s1-t1" name="sample">
+<kw name="Comment" library="BuiltIn">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>${bill_Details}</arg>
+<arg>${status}</arg>
+<arg>${message}</arg>
+<arg>Get Ms Excel Multiple Row Values Into Dictionary List Based On Key For Billnumber</arg>
+<arg>C:\\Users\\anilj\\Desktop\\HDFC\\Sample Data.xls</arg>
+</arguments>
+<status status="PASS" endtime="20170824 14:00:43.689" starttime="20170824 14:00:43.688"></status>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>Log</arg>
+<arg>${bill_Details}</arg>
+</arguments>
+<status status="PASS" endtime="20170824 14:00:43.690" starttime="20170824 14:00:43.690"></status>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>:FOR</arg>
+<arg>${billNumber}</arg>
+<arg>IN</arg>
+<arg>@${keys}</arg>
+</arguments>
+<status status="PASS" endtime="20170824 14:00:43.691" starttime="20170824 14:00:43.690"></status>
+</kw>
+<kw>
+<arguments>
+<arg>Comment</arg>
+<arg>${cellharder}</arg>
+<arg>Get Dictionary Values</arg>
+<arg>${billNumber}</arg>
+</arguments>
+<msg timestamp="20170824 14:00:43.691" level="FAIL">Keyword name cannot be empty.</msg>
+<status status="FAIL" endtime="20170824 14:00:43.691" starttime="20170824 14:00:43.691"></status>
+</kw>
+<status status="FAIL" endtime="20170824 14:00:43.692" critical="yes" starttime="20170824 14:00:43.688">Keyword name cannot be empty.</status>
+</test>
+<status status="FAIL" endtime="20170824 14:00:43.693" starttime="20170824 14:00:42.791"></status>
+</suite>
+<status status="FAIL" endtime="20170824 14:00:43.694" starttime="20170824 14:00:42.788"></status>
+</suite>
+<status status="FAIL" endtime="20170824 14:00:43.695" starttime="20170824 14:00:42.761"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="1" pass="0">Critical Tests</stat>
+<stat fail="1" pass="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="1" id="s1" name="FG" pass="0">FG</stat>
+<stat fail="1" id="s1-s1" name="TestSuites" pass="0">FG.TestSuites</stat>
+<stat fail="1" id="s1-s1-s1" name="FG Suite" pass="0">FG.TestSuites.FG Suite</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

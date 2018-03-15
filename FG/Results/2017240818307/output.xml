@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20170824 14:14:05.543" generator="Robot 3.0 (Python 2.7.12 on win32)">
+<suite source="C:\Users\anilj\Downloads\FG" id="s1" name="FG">
+<suite source="C:\Users\anilj\Downloads\FG\TestSuites" id="s1-s1" name="TestSuites">
+<suite source="C:\Users\anilj\Downloads\FG\TestSuites\FG_Suite.txt" id="s1-s1-s1" name="FG Suite">
+<test id="s1-s1-s1-t1" name="sample">
+<kw name="Comment" library="BuiltIn">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>${bill_Details}</arg>
+<arg>${status}</arg>
+<arg>${message}</arg>
+<arg>Get Ms Excel Multiple Row Values Into Dictionary List Based On Key For Billnumber</arg>
+<arg>C:\\Users\\anilj\\Desktop\\HDFC\\Sample Data.xls</arg>
+</arguments>
+<status status="PASS" endtime="20170824 14:14:06.508" starttime="20170824 14:14:06.508"></status>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>Log</arg>
+<arg>${bill_Details}</arg>
+</arguments>
+<status status="PASS" endtime="20170824 14:14:06.509" starttime="20170824 14:14:06.509"></status>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>:FOR</arg>
+<arg>${billNumber}</arg>
+<arg>IN</arg>
+<arg>@${keys}</arg>
+</arguments>
+<status status="PASS" endtime="20170824 14:14:06.510" starttime="20170824 14:14:06.510"></status>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>${cellharder}</arg>
+<arg>Get Dictionary Values</arg>
+<arg>${billNumber}</arg>
+</arguments>
+<status status="PASS" endtime="20170824 14:14:06.511" starttime="20170824 14:14:06.511"></status>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>Log</arg>
+<arg>${cellharder}</arg>
+</arguments>
+<status status="PASS" endtime="20170824 14:14:06.512" starttime="20170824 14:14:06.511"></status>
+</kw>
+<kw name="Read Multiple Testdata" library="CustomLibrary">
+<doc>read multiple rows of testdata based on testcase name</doc>
+<arguments>
+<arg>C:\\Users\\anilj\\Desktop\\HDFC\\Sample Data.xls</arg>
+<arg>Sheet1</arg>
+<arg>CTP</arg>
+</arguments>
+<assign>
+<var>${dic}</var>
+</assign>
+<msg timestamp="20170824 14:14:06.518" level="INFO">noofrows: 21</msg>
+<msg timestamp="20170824 14:14:06.518" level="INFO">${dic} = {'11': {u'Topup Flag': u'N', u'Billing Frequency': u'04', u'Product Code': u'CTP', u'Method of Payment': u'C', u'CI Rider SA': 1000000.0, u'Statistical Code': u'SUW', u'Main Benefit SA': 10000000.0, u...</msg>
+<status status="PASS" endtime="20170824 14:14:06.518" starttime="20170824 14:14:06.512"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${dic}</arg>
+</arguments>
+<msg timestamp="20170824 14:14:06.519" level="INFO">{'11': {u'Topup Flag': u'N', u'Billing Frequency': u'04', u'Product Code': u'CTP', u'Method of Payment': u'C', u'CI Rider SA': 1000000.0, u'Statistical Code': u'SUW', u'Main Benefit SA': 10000000.0, u'Beneficiary': u'A0623705', u'Main Benefit Prem Cess term': 10.0, u'Agent Code': u'00758405', u'Main Benefit Risk Cess term': 10.0, u'Prop Date': 42948.0, u'Contract Owner': u'A0623863', u'Acc Dis Rider SA': 5000000.0}, '10': {u'Topup Flag': u'N', u'Billing Frequency': u'02', u'Product Code': u'CTP', u'Method of Payment': u'C', u'CI Rider SA': 1000000.0, u'Statistical Code': u'EUW', u'Main Benefit SA': 10000000.0, u'Beneficiary': u'A0623705', u'Main Benefit Prem Cess term': 10.0, u'Agent Code': u'00758405', u'Main Benefit Risk Cess term': 10.0, u'Prop Date': 42948.0, u'Contract Owner': u'A0623862', u'Acc Dis Rider SA': 5000000.0}, '13': {u'Topup Flag': u'N', u'Billing Frequency': u'01', u'Product Code': u'CTP', u'Method of Payment': u'C', u'CI Rider SA': 1000000.0, u'Statistical Code': u'SUW', u'Main Benefit SA': 10000000.0, u'Beneficiary': u'A0623705', u'Main Benefit Prem Cess term': 10.0, u'Agent Code': u'00758405', u'Main Benefit Risk Cess term': 10.0, u'Prop Date': 42948.0, u'Contract Owner': u'A0623865', u'Acc Dis Rider SA': 5000000.0}, '12': {u'Topup Flag': u'N', u'Billing Frequency': u'12', u'Product Code': u'CTP', u'Method of Payment': u'C', u'CI Rider SA': 1000000.0, u'Statistical Code': u'EUW', u'Main Benefit SA': 10000000.0, u'Beneficiary': u'A0623705', u'Main Benefit Prem Cess term': 10.0, u'Agent Code': u'00758405', u'Main Benefit Risk Cess term': 10.0, u'Prop Date': 42948.0, u'Contract Owner': u'A0623864', u'Acc Dis Rider SA': 5000000.0}, '15': {u'Topup Flag': u'N', u'Billing Frequency': u'04', u'Product Code': u'CTP', u'Method of Payment': u'C', u'CI Rider SA': 1000000.0, u'Statistical Code': u'SUW', u'Main Benefit SA': 10000000.0, u'Beneficiary': u'A0623705', u'Main Benefit Prem Cess term': 10.0, u'Agent Code': u'00758405', u'Main Benefit Risk Cess term': 10.0, u'Prop Date': 42948.0, u'Contract Owner': u'A0623867', u'Acc Dis Rider SA': 5000000.0}, '14': {u'Topup Flag': u'N', u'Billing Frequency': u'02', u'Product Code': u'CTP', u'Method of Payment': u'C', u'CI Rider SA': 1000000.0, u'Statistical Code': u'EUW', u'Main Benefit SA': 10000000.0, u'Beneficiary': u'A0623705', u'Main Benefit Prem Cess term': 10.0, u'Agent Code': u'00758405', u'Main Benefit Risk Cess term': 10.0, u'Prop Date': 42948.0, u'Contract Owner': u'A0623866', u'Acc Dis Rider SA': 5000000.0}, '17': {u'Topup Flag': u'N', u'Billing Frequency': u'01', u'Product Code': u'CTP', u'Method of Payment': u'C', u'CI Rider SA': 1000000.0, u'Statistical Code': u'SUW', u'Main Benefit SA': 10000000.0, u'Beneficiary': u'A0623705', u'Main Benefit Prem Cess term': 10.0, u'Agent Code': u'00758405', u'Main Benefit Risk Cess term': 10.0, u'Prop Date': 42948.0, u'Contract Owner': u'A0623869', u'Acc Dis Rider SA': 5000000.0}, '16': {u'Topup Flag': u'N', u'Billing Frequency': u'12', u'Product Code': u'CTP', u'Method of Payment': u'C', u'CI Rider SA': 1000000.0, u'Statistical Code': u'EUW', u'Main Benefit SA': 10000000.0, u'Beneficiary': u'A0623705', u'Main Benefit Prem Cess term': 10.0, u'Agent Code': u'00758405', u'Main Benefit Risk Cess term': 10.0, u'Prop Date': 42948.0, u'Contract Owner': u'A0623868', u'Acc Dis Rider SA': 5000000.0}, '19': {u'Topup Flag': u'N', u'Billing Frequency': u'04', u'Product Code': u'CTP', u'Method of Payment': u'C', u'CI Rider SA': 1000000.0, u'Statistical Code': u'SUW', u'Main Benefit SA': 10000000.0, u'Beneficiary': u'A0623705', u'Main Benefit Prem Cess term': 10.0, u'Agent Code': u'00758405', u'Main Benefit Risk Cess term': 10.0, u'Prop Date': 42948.0, u'Contract Owner': u'A0623871', u'Acc Dis Rider SA': 5000000.0}, '18': {u'Topup Flag': u'N', u'Billing Frequency': u'02', u'Product Code': u'CTP', u'Method of Payment': u'C', u'CI Rider SA': 1000000.0, u'Statistical Code': u'EUW', u'Main Benefit SA': 10000000.0, u'Beneficiary': u'A0623705', u'Main Benefit Prem Cess term': 10.0, u'Agent Code': u'00758405', u'Main Benefit Risk Cess term': 10.0, u'Prop Date': 42948.0, u'Contract Owner': u'A0623870', u'Acc Dis Rider SA': 5000000.0}, '20': {u'Topup Flag': u'N', u'Billing Frequency': u'12', u'Product Code': u'CTP', u'Method of Payment': u'C', u'CI Rider SA': 1000000.0, u'Statistical Code': u'EUW', u'Main Benefit SA': 10000000.0, u'Beneficiary': u'A0623705', u'Main Benefit Prem Cess term': 10.0, u'Agent Code': u'00758405', u'Main Benefit Risk Cess term': 10.0, u'Prop Date': 42948.0, u'Contract Owner': u'A0623872', u'Acc Dis Rider SA': 5000000.0}, '1': {u'Topup Flag': u'N', u'Billing Frequency': u'01', u'Product Code': u'CTP', u'Method of Payment': u'C', u'CI Rider SA': 1000000.0, u'Statistical Code': u'SUW', u'Main Benefit SA': 10000000.0, u'Beneficiary': u'A0623705', u'Main Benefit Prem Cess term': 10.0, u'Agent Code': u'00758405', u'Main Benefit Risk Cess term': 10.0, u'Prop Date': 42948.0, u'Contract Owner': u'A0623853', u'Acc Dis Rider SA': 5000000.0}, '3': {u'Topup Flag': u'N', u'Billing Frequency': u'04', u'Product Code': u'CTP', u'Method of Payment': u'C', u'CI Rider SA': 1000000.0, u'Statistical Code': u'SUW', u'Main Benefit SA': 10000000.0, u'Beneficiary': u'A0623705', u'Main Benefit Prem Cess term': 10.0, u'Agent Code': u'00758405', u'Main Benefit Risk Cess term': 10.0, u'Prop Date': 42948.0, u'Contract Owner': u'A0623855', u'Acc Dis Rider SA': 5000000.0}, '2': {u'Topup Flag': u'N', u'Billing Frequency': u'02', u'Product Code': u'CTP', u'Method of Payment': u'C', u'CI Rider SA': 1000000.0, u'Statistical Code': u'EUW', u'Main Benefit SA': 10000000.0, u'Beneficiary': u'A0623705', u'Main Benefit Prem Cess term': 10.0, u'Agent Code': u'00758405', u'Main Benefit Risk Cess term': 10.0, u'Prop Date': 42948.0, u'Contract Owner': u'A0623854', u'Acc Dis Rider SA': 5000000.0}, '5': {u'Topup Flag': u'N', u'Billing Frequency': u'01', u'Product Code': u'CTP', u'Method of Payment': u'C', u'CI Rider SA': 1000000.0, u'Statistical Code': u'SUW', u'Main Benefit SA': 10000000.0, u'Beneficiary': u'A0623705', u'Main Benefit Prem Cess term': 10.0, u'Agent Code': u'00758405', u'Main Benefit Risk Cess term': 10.0, u'Prop Date': 42948.0, u'Contract Owner': u'A0623857', u'Acc Dis Rider SA': 5000000.0}, '4': {u'Topup Flag': u'N', u'Billing Frequency': u'12', u'Product Code': u'CTP', u'Method of Payment': u'C', u'CI Rider SA': 1000000.0, u'Statistical Code': u'EUW', u'Main Benefit SA': 10000000.0, u'Beneficiary': u'A0623705', u'Main Benefit Prem Cess term': 10.0, u'Agent Code': u'00758405', u'Main Benefit Risk Cess term': 10.0, u'Prop Date': 42948.0, u'Contract Owner': u'A0623856', u'Acc Dis Rider SA': 5000000.0}, '7': {u'Topup Flag': u'N', u'Billing Frequency': u'04', u'Product Code': u'CTP', u'Method of Payment': u'C', u'CI Rider SA': 1000000.0, u'Statistical Code': u'SUW', u'Main Benefit SA': 10000000.0, u'Beneficiary': u'A0623705', u'Main Benefit Prem Cess term': 10.0, u'Agent Code': u'00758405', u'Main Benefit Risk Cess term': 10.0, u'Prop Date': 42948.0, u'Contract Owner': u'A0623859', u'Acc Dis Rider SA': 5000000.0}, '6': {u'Topup Flag': u'N', u'Billing Frequency': u'02', u'Product Code': u'CTP', u'Method of Payment': u'C', u'CI Rider SA': 1000000.0, u'Statistical Code': u'EUW', u'Main Benefit SA': 10000000.0, u'Beneficiary': u'A0623705', u'Main Benefit Prem Cess term': 10.0, u'Agent Code': u'00758405', u'Main Benefit Risk Cess term': 10.0, u'Prop Date': 42948.0, u'Contract Owner': u'A0623858', u'Acc Dis Rider SA': 5000000.0}, '9': {u'Topup Flag': u'N', u'Billing Frequency': u'01', u'Product Code': u'CTP', u'Method of Payment': u'C', u'CI Rider SA': 1000000.0, u'Statistical Code': u'SUW', u'Main Benefit SA': 10000000.0, u'Beneficiary': u'A0623705', u'Main Benefit Prem Cess term': 10.0, u'Agent Code': u'00758405', u'Main Benefit Risk Cess term': 10.0, u'Prop Date': 42948.0, u'Contract Owner': u'A0623861', u'Acc Dis Rider SA': 5000000.0}, '8': {u'Topup Flag': u'N', u'Billing Frequency': u'12', u'Product Code': u'CTP', u'Method of Payment': u'C', u'CI Rider SA': 1000000.0, u'Statistical Code': u'EUW', u'Main Benefit SA': 10000000.0, u'Beneficiary': u'A0623705', u'Main Benefit Prem Cess term': 10.0, u'Agent Code': u'00758405', u'Main Benefit Risk Cess term': 10.0, u'Prop Date': 42948.0, u'Contract Owner': u'A0623860', u'Acc Dis Rider SA': 5000000.0}}</msg>
+<status status="PASS" endtime="20170824 14:14:06.520" starttime="20170824 14:14:06.519"></status>
+</kw>
+<status status="PASS" endtime="20170824 14:14:06.520" critical="yes" starttime="20170824 14:14:06.507"></status>
+</test>
+<status status="PASS" endtime="20170824 14:14:06.521" starttime="20170824 14:14:05.604"></status>
+</suite>
+<status status="PASS" endtime="20170824 14:14:06.523" starttime="20170824 14:14:05.602"></status>
+</suite>
+<status status="PASS" endtime="20170824 14:14:06.525" starttime="20170824 14:14:05.573"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="1">Critical Tests</stat>
+<stat fail="0" pass="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="FG" pass="1">FG</stat>
+<stat fail="0" id="s1-s1" name="TestSuites" pass="1">FG.TestSuites</stat>
+<stat fail="0" id="s1-s1-s1" name="FG Suite" pass="1">FG.TestSuites.FG Suite</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

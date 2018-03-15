@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20170824 14:08:16.794" generator="Robot 3.0 (Python 2.7.12 on win32)">
+<suite source="C:\Users\anilj\Downloads\FG" id="s1" name="FG">
+<suite source="C:\Users\anilj\Downloads\FG\TestSuites" id="s1-s1" name="TestSuites">
+<suite source="C:\Users\anilj\Downloads\FG\TestSuites\FG_Suite.txt" id="s1-s1-s1" name="FG Suite">
+<test id="s1-s1-s1-t1" name="FG Group Asia Transactions">
+<kw name="Get List Of Excel Files From Directory" library="RobotExample">
+<arguments>
+<arg>${deafult_client_files_directory}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+<var>${list_of_files}</var>
+</assign>
+<msg timestamp="20170824 14:08:17.740" level="INFO">default folder path: C:\Users\anilj\Downloads\FG\TestData\client_data
+files in default folder []</msg>
+<msg timestamp="20170824 14:08:17.740" level="INFO">${status} = False</msg>
+<msg timestamp="20170824 14:08:17.741" level="INFO">${list_of_files} = No files available in Directiory: C:\Users\anilj\Downloads\FG\TestData\client_data. Please check</msg>
+<status status="PASS" endtime="20170824 14:08:17.741" starttime="20170824 14:08:17.739"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${status} != True</arg>
+<arg>Fail</arg>
+<arg>${list_of_files}</arg>
+</arguments>
+<kw name="Fail" library="BuiltIn">
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<arguments>
+<arg>${list_of_files}</arg>
+</arguments>
+<msg timestamp="20170824 14:08:17.744" level="FAIL">No files available in Directiory: C:\Users\anilj\Downloads\FG\TestData\client_data. Please check</msg>
+<status status="FAIL" endtime="20170824 14:08:17.744" starttime="20170824 14:08:17.743"></status>
+</kw>
+<status status="FAIL" endtime="20170824 14:08:17.744" starttime="20170824 14:08:17.742"></status>
+</kw>
+<status status="FAIL" endtime="20170824 14:08:17.744" critical="yes" starttime="20170824 14:08:17.738">No files available in Directiory: C:\Users\anilj\Downloads\FG\TestData\client_data. Please check</status>
+</test>
+<test id="s1-s1-s1-t2" name="ExtractBillNumberProcess">
+<kw name="Get Current Date" library="DateTime">
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<arguments>
+<arg>result_format=%d-%m-%Y-%H-%M-%S</arg>
+</arguments>
+<assign>
+<var>${time_stamp}</var>
+</assign>
+<msg timestamp="20170824 14:08:17.747" level="INFO">${time_stamp} = 24-08-2017-14-08-17</msg>
+<status status="PASS" endtime="20170824 14:08:17.747" starttime="20170824 14:08:17.746"></status>
+</kw>
+<kw name="Get Error Log File Path For Policy Number" library="RobotExample">
+<arguments>
+<arg>${outpu_folder_for_log_errors}</arg>
+<arg>Billdata</arg>
+<arg>${time_stamp}</arg>
+</arguments>
+<assign>
+<var>${error_log_file_path}</var>
+<var>${log_folder}</var>
+</assign>
+<msg timestamp="20170824 14:08:17.748" level="INFO">${error_log_file_path} = C:\Users\anilj\Downloads\FG\TestData\Failed_Logs\24-08-2017-14-08-17\Error_Log_For_Billdata.xlsx</msg>
+<msg timestamp="20170824 14:08:17.748" level="INFO">${log_folder} = C:\Users\anilj\Downloads\FG\TestData\Failed_Logs\24-08-2017-14-08-17</msg>
+<status status="PASS" endtime="20170824 14:08:17.748" starttime="20170824 14:08:17.747"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Get Bill No from dtf</arg>
+</arguments>
+<assign>
+<var>${getBillno}</var>
+</assign>
+<kw name="Get Bill No from dtf" library="batchprocessing">
+<kw name="Get Current Date" library="DateTime">
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<arguments>
+<arg>result_format=%Y-%m-%d</arg>
+</arguments>
+<assign>
+<var>${Date}</var>
+</assign>
+<msg timestamp="20170824 14:08:17.750" level="INFO">${Date} = 2017-08-24</msg>
+<status status="PASS" endtime="20170824 14:08:17.750" starttime="20170824 14:08:17.749"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${EXECDIR}\\Connections\\Billdata.dtf</arg>
+</arguments>
+<assign>
+<var>${GlobalFileUploadpath}</var>
+</assign>
+<msg timestamp="20170824 14:08:17.751" level="INFO">${GlobalFileUploadpath} = C:\Users\anilj\Downloads\FG\Connections\Billdata.dtf</msg>
+<status status="PASS" endtime="20170824 14:08:17.751" starttime="20170824 14:08:17.750"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${bill_ouput_folder_path}\\Billdata.xls</arg>
+</arguments>
+<assign>
+<var>${BillGeneratedFile}</var>
+</assign>
+<msg timestamp="20170824 14:08:17.752" level="INFO">${BillGeneratedFile} = C:\Users\anilj\Downloads\FG\TestData\Bill_Output\Billdata.xls</msg>
+<status status="PASS" endtime="20170824 14:08:17.752" starttime="20170824 14:08:17.751"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>'${Date}'</arg>
+</arguments>
+<assign>
+<var>${billdate}</var>
+</assign>
+<msg timestamp="20170824 14:08:17.753" level="INFO">${billdate} = '2017-08-24'</msg>
+<status status="PASS" endtime="20170824 14:08:17.753" starttime="20170824 14:08:17.752"></status>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>Run Upload</arg>
+<arg>${GlobalFileUploadpath}</arg>
+</arguments>
+<kw name="Run Upload" library="Insurance">
+<doc>To run the upload through python using autoit library</doc>
+<arguments>
+<arg>${GlobalFileUploadpath}</arg>
+</arguments>
+<msg timestamp="20170824 14:08:20.296" level="INFO">wrapper
+pool
+async
+checking for active window</msg>
+<status status="PASS" endtime="20170824 14:08:20.296" starttime="20170824 14:08:17.754"></status>
+</kw>
+<status status="PASS" endtime="20170824 14:08:20.297" starttime="20170824 14:08:17.753"></status>
+</kw>
+<kw name="Win Active" library="AutoItLibrary">
+<doc>method WinActive</doc>
+<arguments>
+<arg>Data Transfer from IBM i - Billdata.dtf</arg>
+</arguments>
+<assign>
+<var>${FileUpload}</var>
+</assign>
+<msg timestamp="20170824 14:08:20.298" level="INFO">${FileUpload} = 0</msg>
+<status status="PASS" endtime="20170824 14:08:20.298" starttime="20170824 14:08:20.297"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${FileUpload}</arg>
+</arguments>
+<msg timestamp="20170824 14:08:20.299" level="INFO">0</msg>
+<status status="PASS" endtime="20170824 14:08:20.299" starttime="20170824 14:08:20.299"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>3s</arg>
+</arguments>
+<msg timestamp="20170824 14:08:23.300" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" endtime="20170824 14:08:23.300" starttime="20170824 14:08:20.299"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${FileUpload}==True</arg>
+<arg>AutoItLibrary.Send</arg>
+<arg>{TAB}</arg>
+</arguments>
+<status status="PASS" endtime="20170824 14:08:23.303" starttime="20170824 14:08:23.301"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${FileUpload}==True</arg>
+<arg>AutoItLibrary.Send</arg>
+<arg>{TAB}</arg>
+</arguments>
+<status status="PASS" endtime="20170824 14:08:23.306" starttime="20170824 14:08:23.304"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${FileUpload}==True</arg>
+<arg>AutoItLibrary.Send</arg>
+<arg>{TAB}</arg>

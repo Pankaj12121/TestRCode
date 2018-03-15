@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20170808 13:56:33.665" generator="Robot 2.9.2 (Python 2.7.13 on win32)">
+<suite id="s1" name="Accounts &amp; Leads &amp; Oppurtunities">
+<suite source="C:\SuiteCRM\TestCases\Accounts.txt" id="s1-s1" name="Accounts">
+<test id="s1-s1-t1" name="Create An Account">
+<kw name="Get Ms Excel Row Values Into Dictionary Based On Key" library="CommonLibrary">
+<doc>Returns the dictionary of values given row in the MS Excel file</doc>
+<arguments>
+<arg>${testDataFolderPath}\\SuiteCRMWorkflows.xls</arg>
+<arg>CA_TD_01</arg>
+<arg>Create Account</arg>
+</arguments>
+<assign>
+<var>${CreateAccount}</var>
+</assign>
+<msg timestamp="20170808 13:56:34.228" level="INFO">${CreateAccount} = {'Billing Address City': 'Hyderabad ', 'Billing Address Country': 'India', 'Shipping Address Postal Code': '500082', 'Billing AddressPostal Code': '500082', 'Member Of': 'Rhy', 'Save': 'Y', 'Type': 'A...</msg>
+<status status="PASS" endtime="20170808 13:56:34.228" starttime="20170808 13:56:34.212"></status>
+</kw>
+<kw name="Login To SuiteCRM" library="common">
+<doc>This keyword is used to Login to SuiteCRM application. It returns True for successful login otherwise False.</doc>
+<arguments>
+<arg>${BROWSER}</arg>
+<arg>${userName}</arg>
+<arg>${password}</arg>
+</arguments>
+<assign>
+<var>${loginStatus}</var>
+</assign>
+<kw name="Open Browser To Login Page" library="common">
+<doc>Open the application in the specified browser</doc>
+<arguments>
+<arg>${serverSuiteCRMURL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<assign>
+<var>${loginStatus}</var>
+</assign>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>'${BROWSER.lower()}'=='ff' or '${BROWSER.lower()}'=='firefox'</arg>
+</arguments>
+<assign>
+<var>${bStatus}</var>
+</assign>
+<msg timestamp="20170808 13:56:34.243" level="INFO">${bStatus} = False</msg>
+<status status="PASS" endtime="20170808 13:56:34.243" starttime="20170808 13:56:34.243"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>'${BROWSER.lower()}'=='gc' or '${BROWSER.lower()}'=='chrome'</arg>
+</arguments>
+<assign>
+<var>${chromeStatus}</var>
+</assign>
+<msg timestamp="20170808 13:56:34.243" level="INFO">${chromeStatus} = True</msg>
+<status status="PASS" endtime="20170808 13:56:34.243" starttime="20170808 13:56:34.243"></status>
+</kw>
+<kw name="Get Chrome Browser Options" library="CommonLibrary">
+<doc>It returns the chrome browser ChromeProfile, so that download pop up won't appear</doc>
+<assign>
+<var>${chrome_options}</var>
+</assign>
+<msg timestamp="20170808 13:56:34.243" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x04B999F0&gt;</msg>
+<status status="PASS" endtime="20170808 13:56:34.243" starttime="20170808 13:56:34.243"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on given items.</doc>
+<arguments>
+<arg>chrome_options=${chrome_options}</arg>
+</arguments>
+<assign>
+<var>${kwargs}</var>
+</assign>
+<msg timestamp="20170808 13:56:34.243" level="INFO">${kwargs} = {u'chrome_options': &lt;selenium.webdriver.chrome.options.Options object at 0x04B999F0&gt;}</msg>
+<status status="PASS" endtime="20170808 13:56:34.243" starttime="20170808 13:56:34.243"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${chromeStatus}</arg>
+<arg>Create Webdriver</arg>
+<arg>Chrome</arg>
+<arg>kwargs=${kwargs}</arg>
+</arguments>
+<kw name="Create Webdriver" library="Selenium2Library">
+<doc>Creates an instance of a WebDriver.</doc>
+<arguments>
+<arg>Chrome</arg>
+<arg>kwargs=${kwargs}</arg>
+</arguments>
+<msg timestamp="20170808 13:56:34.243" level="INFO">Creating an instance of the Chrome WebDriver</msg>
+<status status="PASS" endtime="20170808 13:56:36.272" starttime="20170808 13:56:34.243"></status>
+</kw>
+<status status="PASS" endtime="20170808 13:56:36.272" starttime="20170808 13:56:34.243"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${chromeStatus}</arg>
+<arg>Go To</arg>
+<arg>${url}</arg>
+</arguments>
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the active browser instance to the provided URL.</doc>
+<arguments>
+<arg>${url}</arg>
+</arguments>
+<msg timestamp="20170808 13:56:36.287" level="INFO">Opening url 'http://10.13.20.86/SuiteCRM/index.php'</msg>
+<status status="PASS" endtime="20170808 13:56:37.501" starttime="20170808 13:56:36.287"></status>
+</kw>
+<status status="PASS" endtime="20170808 13:56:37.502" starttime="20170808 13:56:36.272"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${bStatus}==True</arg>
+<arg>Open Browser</arg>
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<arg>${EMPTY}</arg>
+<arg>${firefox_profile_path}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 13:56:37.509" starttime="20170808 13:56:37.502"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${bStatus}==False and ${chromeStatus}==False</arg>
+<arg>Open Browser</arg>
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 13:56:37.517" starttime="20170808 13:56:37.510"></status>
+</kw>
+<kw name="Maximize Browser Window" library="Selenium2Library">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" endtime="20170808 13:56:38.680" starttime="20170808 13:56:37.517"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Wait Until Page Contains Element</arg>
+<arg>${textBox.Login.UserName}</arg>
+<arg>${Delay30}</arg>
+</arguments>
+<assign>
+<var>${loginPageStatus}</var>
+</assign>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<arguments>
+<arg>${textBox.Login.UserName}</arg>
+<arg>${Delay30}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 13:56:38.714" starttime="20170808 13:56:38.680"></status>
+</kw>
+<msg timestamp="20170808 13:56:38.715" level="INFO">${loginPageStatus} = True</msg>
+<status status="PASS" endtime="20170808 13:56:38.715" starttime="20170808 13:56:38.680"></status>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<doc>Sets variable based on the given condition.</doc>
+<arguments>
+<arg>${loginPageStatus}==False</arg>
+<arg>Login Page is not Displayed.</arg>
+<arg>${EMPTY}</arg>
+</arguments>
+<assign>
+<var>${errorMessage}</var>
+</assign>
+<msg timestamp="20170808 13:56:38.720" level="INFO">${errorMessage} = </msg>
+<status status="PASS" endtime="20170808 13:56:38.720" starttime="20170808 13:56:38.715"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${loginPageStatus}==False</arg>
+<arg>Set Global Variable</arg>
+<arg>${errorMessage}</arg>
+<arg>${errorMessage}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 13:56:38.727" starttime="20170808 13:56:38.722"></status>
+</kw>
+<msg timestamp="20170808 13:56:38.727" level="INFO">${loginStatus} = True</msg>
+<status status="PASS" endtime="20170808 13:56:38.727" starttime="20170808 13:56:34.228"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>${loginStatus}==False</arg>
+<arg>${loginStatus}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 13:56:38.732" starttime="20170808 13:56:38.728"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${username}' != '${EMPTY}'</arg>
+<arg>Input Text</arg>
+<arg>${textBox.Login.UserName}</arg>
+<arg>${username}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${textBox.Login.UserName}</arg>
+<arg>${username}</arg>
+</arguments>
+<msg timestamp="20170808 13:56:38.737" level="INFO">Typing text 'admin' into text field '//input[@id='user_name']'</msg>
+<status status="PASS" endtime="20170808 13:56:38.835" starttime="20170808 13:56:38.736"></status>
+</kw>
+<status status="PASS" endtime="20170808 13:56:38.836" starttime="20170808 13:56:38.732"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${password}' != '${EMPTY}'</arg>
+<arg>Input Password</arg>
+<arg>${textBox.Login.Password}</arg>
+<arg>${password}</arg>
+</arguments>
+<kw name="Input Password" library="Selenium2Library">
+<doc>Types the given password into text field identified by `locator`.</doc>
+<arguments>
+<arg>${textBox.Login.Password}</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20170808 13:56:38.843" level="INFO">Typing password into text field '//input[@id='user_password']'</msg>
+<status status="PASS" endtime="20170808 13:56:38.961" starttime="20170808 13:56:38.842"></status>
+</kw>
+<status status="PASS" endtime="20170808 13:56:38.961" starttime="20170808 13:56:38.836"></status>
+</kw>
+<kw name="Click Or Simulate" library="common">
+<doc>This keyword is used to perform click action on webelement if the browser is other than internet explorer, otherwise it performs simulate click action. It returns True if the keyword perform simultae click or click, otheriwse False.</doc>
+<arguments>
+<arg>${button.login}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<kw name="Wait For Element Visible" library="CommonLibrary">
+<doc>Returns 'True' if the element visible with the 'locator' in the corresponding page else returns 'False' base timeout</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>${Delay30}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20170808 13:56:39.014" level="INFO">iCounter: 1</msg>
+<msg timestamp="20170808 13:56:39.014" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20170808 13:56:39.014" starttime="20170808 13:56:38.963"></status>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<doc>Sets variable based on the given condition.</doc>
+<arguments>
+<arg>${status}==False</arg>
+<arg>'${locator}' is not visible.</arg>
+</arguments>
+<assign>
+<var>${errorMessage}</var>
+</assign>
+<msg timestamp="20170808 13:56:39.019" level="INFO">${errorMessage} = None</msg>
+<status status="PASS" endtime="20170808 13:56:39.019" starttime="20170808 13:56:39.015"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${status}==False</arg>
+<arg>Set Global Variable</arg>
+<arg>${errorMessage}</arg>
+<arg>${errorMessage}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 13:56:39.023" starttime="20170808 13:56:39.019"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>${status}==False</arg>
+<arg>${status}</arg>
+</arguments>
+<status status="PASS" endtime="20170808 13:56:39.027" starttime="20170808 13:56:39.023"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${BROWSER.lower()}'=='ie' or '${BROWSER.lower()}'=='internetexplorer'</arg>
+<arg>Simulate</arg>
+<arg>${locator}</arg>
+<arg>click</arg>
+<arg>ELSE</arg>
+<arg>Click Element Using Javascript</arg>
+<arg>${locator}</arg>
+</arguments>
+<kw name="Click Element Using Javascript" library="CommonLibrary">
+<doc>Returns 'True' if the element clciking by Java Script with the 'locator' in the corresponding page else returns 'False'</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<msg timestamp="20170808 13:56:39.689" level="INFO">not clcikable by JS, [Errno 10054] An existing connection was forcibly closed by the remote host</msg>
+<status status="PASS" endtime="20170808 13:56:39.689" starttime="20170808 13:56:39.032"></status>
+</kw>

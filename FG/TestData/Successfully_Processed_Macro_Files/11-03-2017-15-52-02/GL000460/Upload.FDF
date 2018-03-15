@@ -1,0 +1,15 @@
+[Data Transfer File Description]
+FieldCount=1
+FileType=1
+Version=2
+[Options]
+DateFormat=1
+DateSep=1
+DcmlSep=1
+TimeFormat=1
+TimeSep=1
+[F0001]
+Length=1200
+Name=MIDATA
+Type=1
+

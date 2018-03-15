@@ -1,0 +1,120 @@
+*** Settings ***
+Resource          Super.txt
+
+*** Keywords ***
+Create Account
+    [Arguments]    ${testCaseID}
+    ${CreateAccount}    Get Ms Excel Row Values Into Dictionary Based On Key    ${testDataFolderPath}\\SuiteCRMWorkflows.xls    ${testCaseID}    Create Account
+    ${status}    Navigate To Create Sub Menu    Create Account
+    Run Keyword If    ${status}==False    Fail    ${errorMessage}
+    ${name}    Get From Dictionary    ${CreateAccount}    Name
+    ${officePhone}    Get From Dictionary    ${CreateAccount}    Office Phone
+    ${website}    Get From Dictionary    ${CreateAccount}    Website
+    ${fax}    Get From Dictionary    ${CreateAccount}    Fax
+    ${BillingAddressStreet}    Get From Dictionary    ${CreateAccount}    Billing Address Street
+    ${BillingAddressCity}    Get From Dictionary    ${CreateAccount}    Billing Address City
+    ${BillingAddressState}    Get From Dictionary    ${CreateAccount}    Billing Address State
+    ${BillingAddressPostalCode}    Get From Dictionary    ${CreateAccount}    Billing AddressPostal Code
+    ${BillingAddressCountry}    Get From Dictionary    ${CreateAccount}    Billing Address Country
+    ${ShippingAddressStreet}    Get From Dictionary    ${CreateAccount}    Shipping Address Street
+    ${ShippingAddressCity}    Get From Dictionary    ${CreateAccount}    Shipping Address City
+    ${ShippingAddressState}    Get From Dictionary    ${CreateAccount}    Shipping Address State
+    ${ShippingAddressPostalCode}    Get From Dictionary    ${CreateAccount}    Shipping Address Postal Code
+    ${ShippingAddressCountry}    Get From Dictionary    ${CreateAccount}    Shipping Address Country
+    ${emailAddress}    Get From Dictionary    ${CreateAccount}    Email Address
+    ${description}    Get From Dictionary    ${CreateAccount}    Description
+    ${type}    Get From Dictionary    ${CreateAccount}    Type
+    ${industry}    Get From Dictionary    ${CreateAccount}    Industry
+    ${annualRevenue}    Get From Dictionary    ${CreateAccount}    Annual Revenue
+    ${employees}    Get From Dictionary    ${CreateAccount}    Employees
+    ${campaign}    Get From Dictionary    ${CreateAccount}    Campaign
+    ${assignedTo}    Get From Dictionary    ${CreateAccount}    Assigned To
+    ${memberOf}    Get From Dictionary    ${CreateAccount}    Member Of
+    ${save}    Get From Dictionary    ${CreateAccount}    Save
+    ${cancel}    Get From Dictionary    ${CreateAccount}    Cancel
+    ${expectedResult}    Get From Dictionary    ${CreateAccount}    Expected Result
+    ${expectedResult}    Set Variable    ${expectedResult.lower()}
+    Run Keyword If    '${name}'!='${EMPTY}'    Input Text    ${textBox.accounts.Name}    ${name}
+    Run Keyword If    '${officePhone}'!='${EMPTY}'    Input Text    ${textBox.accounts.OfficePhone}    ${officePhone}
+    Run Keyword If    '${website}'!='${EMPTY}'    Input Text    ${textBox.accounts.Website}    ${website}
+    Run Keyword If    '${fax}'!='${EMPTY}'    Input Text    ${textBox.accounts.Fax}    ${fax}
+    Run Keyword If    '${BillingAddressStreet}'!='${EMPTY}'    Input Text    ${textArea.accounts.BillingAddressStreet}    ${BillingAddressStreet}
+    Run Keyword If    '${BillingAddressCity}'!='${EMPTY}'    Input Text    ${textBox.accounts.BillingAddressState}    ${BillingAddressCity}
+    Run Keyword If    '${BillingAddressState}'!='${EMPTY}'    Input Text    ${textBox.accounts.BillingAddressState}    ${BillingAddressState}
+    Run Keyword If    '${BillingAddressPostalCode}'!='${EMPTY}'    Input Text    ${textBox.accounts.BillingAddressPostalCode}    ${BillingAddressPostalCode}
+    Run Keyword If    '${BillingAddressCountry}'!='${EMPTY}'    Input Text    ${textBox.accounts.BillingAddressCountry}    ${BillingAddressCountry}
+    Run Keyword If    '${ShippingAddressStreet}'!='${EMPTY}'    Input Text    ${textArea.accounts.ShippingAddressStreet}    ${ShippingAddressStreet}
+    Run Keyword If    '${ShippingAddressCity}'!='${EMPTY}'    Input Text    ${textBox.accounts.ShippingAddressCity}    ${ShippingAddressCity}
+    Run Keyword If    '${ShippingAddressState}'!='${EMPTY}'    Input Text    ${textBox.accounts.ShippingAddressState}    ${ShippingAddressState}
+    Run Keyword If    '${ShippingAddressPostalCode}'!='${EMPTY}'    Input Text    ${textBox.accounts.ShippingAddressPostalCode}    ${ShippingAddressPostalCode}
+    Run Keyword If    '${ShippingAddressCountry}'!='${EMPTY}'    Input Text    ${textBox.accounts.ShippingAddressCountry}    ${ShippingAddressCountry}
+    Run Keyword If    '${emailAddress}'!='${EMPTY}'    Input Text    ${textBox.accounts.EmailAddress}    ${emailAddress}
+    Run Keyword If    '${description}'!='${EMPTY}'    Input Text    ${textArea.accounts.Description}    ${description}
+    Run Keyword If    '${type}'!='${EMPTY}'    Select From List By Label    ${select.accounts.Type}    ${type}
+    Run Keyword If    '${industry}'!='${EMPTY}'    Select From List By Label    ${select.accounts.Industry}    ${industry}
+    Run Keyword If    '${annualRevenue}'!='${EMPTY}'    Input Text    ${textBox.accounts.AnnualRevenue}    ${annualRevenue}
+    Run Keyword If    '${employees}'!='${EMPTY}'    Input Text    ${textBox.accounts.Employees}    ${employees}
+    Run Keyword If    '${campaign}'!='${EMPTY}'    Input Text    ${textBox.accounts.Campaign}    ${campaign}
+    Run Keyword If    '${assignedTo}'!='${EMPTY}'    Input Text    ${textBox.accounts.AssignedTo}    ${assignedTo}
+    Run Keyword If    '${memberOf}'!='${EMPTY}'    Input Text    ${textBox.accounts.MemberOf}    ${memberOf}
+    Run Keyword If    '${memberOf}'!='${EMPTY}'    Wait For Element Visible    //div[@class='yui-ac-content' and not (contains(@style,'display: none;'))]//li[contains(text(),'Rhyme & Reason Inc')]
+    Run Keyword If    '${memberOf}'!='${EMPTY}'    Click Element    //div[@class='yui-ac-content' and not (contains(@style,'display: none;'))]//li[contains(text(),'Rhyme & Reason Inc')]
+    ${saveStatus}    Run Keyword And Return Status    Should Be Equal    ${save.lower()}    y
+    ${cancelStatus}    Run Keyword And Return Status    Should Be Equal    ${cancel.lower()}    y
+    Run Keyword If    ${saveStatus}    Click Or Simulate    ${contact.Save}
+    Run Keyword If    ${cancelStatus}    Click Or Simulate    ${contact.Cancel}
+    ${text}    Set Variable    ${name}
+    ${createAccountStatus}    Run Keyword If    ${saveStatus}    Wait For Element Visible    //div[@class='moduleTitle']/h2[contains(text(),'${text}')]    ${Delay30}
+    Run Keyword If    ${cancelStatus}    Sleep    ${Delay5}
+    ${alertMsg}    Run Keyword If    ${cancelStatus}    Run Keyword And Continue On Failure    Get Alert Message
+    Run Keyword If    ${cancelStatus}    Set Test Message    ${alertMsg}    True
+    ${status}    Run Keyword If    ${cancelStatus}    Wait For Element Visible    //div[@class='moduleTitle']/h2[contains(text(),'Accounts')]    ${Delay30}
+    ${errorMessage}    Set Variable If    ${status}==False    After accepting the alert application is not navigating to Accounts page.
+    Run Keyword If    ${status}==False    Fail    ${errorMessage}
+    Run Keyword If    ${status}    Set Test Message    Account is not created when we click on cancel button.
+    Return From Keyword If    ${status}
+    ${emailErrStatus}    Verify Element Visible    ${accounts.Email.ErrorMessage}
+    ${errorMessage}    Run Keyword If    ${emailErrStatus}    Run Keyword    Selenium2Library.Get Text    ${accounts.Email.ErrorMessage}
+    ${errorMessage}    Set Variable If    ${emailErrStatus}    ${errorMessage}
+    Run Keyword If    ${emailErrStatus}    Set Global Variable    ${errorMessage}    ${errorMessage}
+    Run Keyword If    ${emailErrStatus} and '${expectedResult}'=='fail'    Set Test Message    ${errorMessage}
+    Return From Keyword If    ${emailErrStatus}
+    ${nameErrStatus}    Verify Element Visible    ${accounts.Name.ErrorMessage}
+    ${errorMessage}    Run Keyword If    ${nameErrStatus}    Run Keyword    Selenium2Library.Get Text    ${accounts.Name.ErrorMessage}
+    ${errorMessage}    Set Variable If    ${nameErrStatus}    ${errorMessage}
+    Run Keyword If    ${nameErrStatus}    Set Global Variable    ${errorMessage}    ${errorMessage}
+    Run Keyword If    ${nameErrStatus} and '${expectedResult}'=='fail'    Set Test Message    ${errorMessage}
+    Return From Keyword If    ${nameErrStatus}
+    ${errorMessage}    Set Variable If    ${createAccountStatus}==False    After click on Save button application is not navigating to Accounts Success message.
+    Run Keyword If    ${createAccountStatus}==False    Set Global Variable    ${errorMessage}    ${errorMessage}
+    Run Keyword If    ${createAccountStatus}==False    Fail    ${errorMessage}
+    Comment    Set Test Variable    ${status}    ${createAccountStatus}
+    Comment    Validate Create Account Status    ${testCaseID}
+
+Validate Create Account
+    ${value}    Get Text From Required Page
+    ${value}    Set Variable    ${value.lower()}
+    ${status}    Navigate To Inner Menu Of Main Menu    Sales    Accounts
+    Run Keyword If    ${status}==False    Fail    ${errorMessage}
+    ${status}    Quick Filter    ${value}
+    Run Keyword If    ${status}==False    Fail    ${errorMessage}
+    ${text}    Selenium2Library.Get Text    ${label.common.Name}
+    ${text}    Set Variable    ${text.lower()}
+    ${status}    String Should Contain    ${text}    ${value}
+    ${errorMessage}    Set Variable If    ${status}==False    Mismatch the Created Contact.
+    Run Keyword If    ${status}==False    Fail    Created Account is not displayed in Leads Page.Error Message::${errorMessage}
+    [Return]    ${status}
+
+Validate Create Account Status
+    [Arguments]    ${TestCaseID}
+    ${CreateAccount}    Get Ms Excel Row Values Into Dictionary Based On Key    ${testDataFolderPath}/SuiteCRMWorkflows.xls    ${TestCaseID}    Create Account
+    ${save}    Get From Dictionary    ${CreateAccount}    Save
+    ${cancel}    Get From Dictionary    ${CreateAccount}    Cancel
+    ${expectedTCStatusl}    Get From Dictionary    ${CreateAccount}    Expected Result
+    ${expectedTCStatusl}    Set Variable    ${expectedTCStatusl.lower()}
+    Run Keyword If    '${save.lower()}'=='y' and ${status}==False and '${expectedTCStatusl}'=='fail'    Set Test Message    Create Account Failed.Error Message::${errorMessage}
+    Run Keyword If    '${save.lower()}'=='y' and ${status}==False and '${expectedTCStatusl}'=='pass'    Fail    Create Account Failed.Error Message::${errorMessage}
+    Run Keyword If    '${cancel.lower()}'=='y' and ${status}==True and '${expectedTCStatusl}'=='fail'    Fail    Account is Created.
+    Run Keyword If    '${save.lower()}'=='n' and ${status}==True and '${expectedTCStatusl}'=='fail'    Fail    Account is Created.
+    Run Keyword If    '${save.lower()}'=='n' and ${status}==False and '${expectedTCStatusl}'=='fail'    Set Test Message    Account is Created.
+    Run Keyword If    '${cancel.lower()}'=='n' and '${save.lower()}'=='n' and ${status}==True    Fail    Account is Created after click on Cancel button.Error Message::${errorMessage}

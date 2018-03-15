@@ -1,0 +1,97 @@
+*** Settings ***
+Resource          ../Keywords/super.txt
+
+*** Test Cases ***
+FG Group Asia Transactions
+    ${status}    ${list_of_files}    Get List Of Excel Files From Directory    ${deafult_client_files_directory}
+    Run Keyword If    ${status} != True    Fail    ${list_of_files}
+    ${time_stamp}    Get Current Date    result_format=%d-%m-%Y-%H-%M-%S
+    Set Test Variable    ${time_stamp}
+    : FOR    ${file}    IN    @{list_of_files}
+    \    ${status}    Run Keyword And Return Status    ConsolidationOfClientData    ${file}    ${time_stamp}
+    \    Log Many    ${status}    ${policy_number}    ${sheet_name}
+    \    Continue For Loop If    "${status}" == "False"
+    \    ${macro_file_dict}    ${polcy_folder_path}    ${err_msg}    Get List Of Macro Files In Path    ${output_folder_to_save_macro}    ${policy_number}
+    \    Run Keyword If    "${macro_file_dict}" == "None"    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policy_number}
+    \    ...    ${EMPTY}    Getting list of macro files from output folder    False    ${err_msg}
+    \    Continue For Loop If    "${macro_file_dict}" == "None"
+    \    ${status}    Run Keyword And Return Status    ProcessTransactions    ${macro_file_dict}    ${polcy_folder_path}
+    \    ${status}    ${err_msg}    Move Folders    ${output_folder_to_save_macro}    ${successfully_processed_macro_files}    ${time_stamp}
+    \    Run Keyword If    '${status}' == 'False'    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policy_number}
+    \    ...    ${EMPTY}    Moving the generated Macro file folders    False    ${err_msg}
+
+ExtractBillNumberProcess
+    ${time_stamp}    Get Current Date    result_format=%d-%m-%Y-%H-%M-%S
+    ${error_log_file_path}    ${log_folder}    Get Error Log File Path For Policy Number    ${outpu_folder_for_log_errors}    Billdata    ${time_stamp}
+    ${getBillno}    Run Keyword And Return Status    Get Bill No from dtf
+    Set Test Variable    ${log_folder}
+    Set Test Variable    ${error_log_file_path}
+    Run Keyword If    ${getBillno} !=True    Write Error Msg To Excel Billdata    ${log_folder}    ${error_log_file_path}    DFT Billdata downloder    ${getBillno}
+    ...    Unable to downdload BillData from dtf file downloder
+    Run Keyword If    ${getBillno} !=True    Fail and Capture ScreenShot    Unable to downdload BillData from dtf file downloder
+    Open AS400 Console    ${GlobalConnFilePath}    Bill Number Extraction
+    ${loginStatus}    Login Into Application    ${GlobalUserName}    ${GlobalPassword}
+    Run Keyword If    ${loginStatus}==False    Write Error Msg To Excel Billdata    ${log_folder}    ${error_log_file_path}    Login to application    ${loginStatus}
+    ...    Failed to login to the application
+    Run Keyword If    ${loginStatus}==False    Fail and Capture ScreenShot    Login into application was failed.Error Details: ${messageDetails}
+    ${bill_Details}    ${status}    ${message}    Get Ms Excel Multiple Row Values Into Dictionary List Based On Key For Billnumber    ${bill_ouput_folder_path}\\Billdata.xls
+    Log    ${bill_Details}
+    ${bill_Dict}    Get Billnumber Dict    ${bill_Details}
+    Log    ${bill_Dict}
+    ${dictkeys}    Get Dictionary Keys    ${bill_Dict}
+    ${time_stamp}    Get Current Date    result_format=%d-%m-%y
+    ${fileStatus}    Run Keyword And Return Status    Directory Should Exist    ${bill_ouput_folder_path}\\${time_stamp}
+    Run Keyword If    '${fileStatus}'=='True'    Remove Directory    ${bill_ouput_folder_path}\\${time_stamp}    True
+    ${timestampfolder}    Create A Folder With Current Date    ${bill_ouput_folder_path}
+    Log    ${timestampfolder}
+    : FOR    ${billNumber}    IN    @{dictkeys}
+    \    ${billNumber}    Convert To Number    ${billNumber}
+    \    ${billNumber}    Convert To Integer    ${billNumber}
+    \    log    ${billNumber}
+    \    ${policyNumber}    Get From Dictionary    ${bill_Dict}    ${billNumber}
+    \    Log    ${policyNumber}
+    \    ${validatingbill}    Run Keyword And Return Status    ValidatingTheBillNumber    G5GBILEXT    ${billNumber}
+    \    Run Keyword If    ${validatingbill} !=True    Write Error Msg To Excel Billdata    ${log_folder}    ${error_log_file_path}    Bill Batch Job Run is not done for ${billNumber}
+    \    ...    ${validatingbill}    Unable to downdload BillData from dtf file downloder
+    \    Continue For Loop If    ${validatingbill} !=True
+    \    ${billNumberFormat}    Catenate    ${policyNumber}    _    ${billNumber}
+    \    ${billNumberFormat}    Remove String    ${billNumberFormat}    ${SPACE}
+    \    Log    ${billNumberFormat}
+    \    ${billextract}    Run Keyword And Return Status    ExtractingTheBillsUsingDTF    ${billNumberFormat}    ${timestampfolder}
+    \    Run Keyword If    ${billextract}!=True    Fail and Capture ScreenShot    Bill extract is not done
+    ${move_status}    ${move_err_msg}    RobotExample.Move Selected File To Required Folder    ${bill_ouput_folder_path}\\Billdata.xls    ${timestampfolder}
+    Run Keyword If    '${move_status}' == 'False'    Write Error Msg To Excel Billdata    ${log_folder}    ${error_log_file_path}    Moving Billdata.xls file in to Time Stamp floder    ${move_status}
+    ...    ${move_err_msg}
+    [Teardown]    Close Bill Application
+
+sample
+    [Setup]    super.txt
+    ${dict_Details}    ${status}    ${message}    Get Ms Excel Multiple Row Values Into Dictionary List Based On Key For Billnumber    C:\\Users\\anilj\\Desktop\\HDFC\\Sample Data.xls
+    Log    ${dict_Details}
+    ${dictkeys}    Get Dictionary Keys    ${dict_Details}
+    : FOR    ${innerdict_details}    IN    @{dictkeys}
+    \    Log    ${innerdict_details}
+    \    ${propotioncreation}    Get From Dictionary    ${dict_Details}    ${innerdict_details}
+    \    Log    ${propotioncreation}
+    \    ${productcode}    Get From Dictionary    ${propotioncreation}    Product Code
+    \    ${contractowner}    Get From Dictionary    ${propotioncreation}    Contract Owner
+    \    ${propdate}    Get From Dictionary    ${propotioncreation}    Prop Date
+    \    ${agentcode}    Get From Dictionary    ${propotioncreation}    Agent Code
+    \    ${statisticalcode}    Get From Dictionary    ${propotioncreation}    Statistical Code
+    \    ${billingfrequency}    Get From Dictionary    ${propotioncreation}    Billing Frequency
+    \    ${methodofpayment}    Get From Dictionary    ${propotioncreation}    Method of Payment
+    \    ${mainbenefitsa}    Get From Dictionary    ${propotioncreation}    Main Benefit SA
+    \    ${mainbenefitriskcessterm}    Get From Dictionary    ${propotioncreation}    Main Benefit Risk Cess term
+    \    ${mainbenefitpremcessterm}    Get From Dictionary    ${propotioncreation}    Main Benefit Prem Cess term
+    \    ${topupflag}    Get From Dictionary    ${propotioncreation}    Topup Flag
+    \    ${accdisridersa}    Get From Dictionary    ${propotioncreation}    Acc Dis Rider SA
+    \    ${ciridersa}    Get From Dictionary    ${propotioncreation}    CI Rider SA
+    \    ${beneficiary}    Get From Dictionary    ${propotioncreation}    Beneficiary
+    ${propdate}    Convert Date    ${propdate}
+    log    ${propdate}
+
+google
+    ${bill_Details}    ${status}    ${message}    Get Ms Excel Multiple Row Values Into Dictionary List Based On Key For Billnumber    C:\\Users\\pankajs\\Desktop\\TestData.xlsx
+    Comment    Log    ${bill_Details}
+
+*** Keywords ***

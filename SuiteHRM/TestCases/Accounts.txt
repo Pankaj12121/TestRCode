@@ -1,0 +1,16 @@
+*** Settings ***
+Suite Setup       Kill Driver Instances
+Resource          ../Keywords/Super.txt
+
+*** Test Cases ***
+Create An Account
+    [Tags]    Req 1.1
+    Comment    Login to suite crm application
+    Login To SuiteCRM
+    Comment    Create an account
+    Create Account    CA_TD_01
+    Comment    Validate whether account is created or not.
+    Validate Create Account
+    Comment    Logout from application.
+    Logout From SuiteCRM
+    [Teardown]    Stop Application

@@ -1,0 +1,2 @@
+*** Variables ***
+${link.Home.LogOut}    //li[@id='globalLinks' and contains(@class,'globalLinks-desktop open')]//a[@id='logout_link']

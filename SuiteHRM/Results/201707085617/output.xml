@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20170807 16:21:23.470" generator="Robot 2.9.2 (Python 2.7.13 on win32)">
+<suite source="C:\SuiteCRM\TestCases\Accounts.txt" id="s1" name="Accounts">
+<test id="s1-t1" name="Create An Account">
+<kw name="Get Ms Excel Row Values Into Dictionary Based On Key" library="CommonLibrary">
+<doc>Returns the dictionary of values given row in the MS Excel file</doc>
+<arguments>
+<arg>${testDataFolderPath}\\SuiteCRMWorkflows.xls</arg>
+<arg>CA_TD_01</arg>
+<arg>Create Account</arg>
+</arguments>
+<assign>
+<var>${CreateAccount}</var>
+</assign>
+<msg timestamp="20170807 16:21:23.977" level="FAIL">IOError: [Errno 2] No such file or directory: u'C:\\\\TestData\\SuiteCRMWorkflows.xls'</msg>
+<status status="FAIL" endtime="20170807 16:21:23.978" starttime="20170807 16:21:23.975"></status>
+</kw>
+<kw type="teardown" name="Stop Application" library="common">
+<kw name="Get Current Time Stamp" library="CommonLibrary">
+<doc>Return the Current date value</doc>
+<assign>
+<var>${ts}</var>
+</assign>
+<msg timestamp="20170807 16:21:23.980" level="INFO">${ts} = 20170807162123</msg>
+<status status="PASS" endtime="20170807 16:21:23.980" starttime="20170807 16:21:23.979"></status>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>Capture Page Screenshot</arg>
+<arg>Screenshot${ts}.png</arg>
+</arguments>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<arguments>
+<arg>Screenshot${ts}.png</arg>
+</arguments>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20170807 16:21:23.994" level="FAIL">No browser is open</msg>
+<status status="FAIL" endtime="20170807 16:21:23.995" starttime="20170807 16:21:23.987"></status>
+</kw>
+<msg timestamp="20170807 16:21:23.995" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No browser is open</msg>
+<msg timestamp="20170807 16:21:23.999" level="FAIL">No browser is open</msg>
+<status status="FAIL" endtime="20170807 16:21:23.999" starttime="20170807 16:21:23.981"></status>
+</kw>
+<status status="PASS" endtime="20170807 16:21:24.001" starttime="20170807 16:21:23.980"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${global_Logout_Status}!=True</arg>
+<arg>Logout From SuiteCRM</arg>
+</arguments>
+<status status="PASS" endtime="20170807 16:21:24.006" starttime="20170807 16:21:24.002"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Close Browser</arg>
+</arguments>
+<assign>
+<var>${bStatus}</var>
+</assign>
+<kw name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20170807 16:21:24.008" starttime="20170807 16:21:24.007"></status>
+</kw>
+<msg timestamp="20170807 16:21:24.008" level="INFO">${bStatus} = True</msg>
+<status status="PASS" endtime="20170807 16:21:24.008" starttime="20170807 16:21:24.006"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is false.</doc>
+<arguments>
+<arg>${bStatus}</arg>
+<arg>Set Test Message</arg>
+<arg>Getting exception in "Close Browser" keyword</arg>
+</arguments>
+<status status="PASS" endtime="20170807 16:21:24.009" starttime="20170807 16:21:24.009"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${BROWSER}'=='ie'</arg>
+<arg>Process Close</arg>
+<arg>IEDriverserver.exe</arg>
+</arguments>
+<status status="PASS" endtime="20170807 16:21:24.015" starttime="20170807 16:21:24.010"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${BROWSER}'=='ie'</arg>
+<arg>OperatingSystem.Run</arg>
+<arg>taskkill /F /IM iexplore.exe</arg>
+</arguments>
+<status status="PASS" endtime="20170807 16:21:24.019" starttime="20170807 16:21:24.015"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${BROWSER}'=='ie'</arg>
+<arg>OperatingSystem.Run</arg>
+<arg>taskkill /F /IM iedriverserver.exe</arg>
+</arguments>
+<status status="PASS" endtime="20170807 16:21:24.023" starttime="20170807 16:21:24.019"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${BROWSER}'=='gc'</arg>
+<arg>Process Close</arg>
+<arg>chromedriver.exe</arg>
+</arguments>
+<kw name="Process Close" library="AutoItLibrary">
+<doc>method ProcessClose</doc>
+<arguments>
+<arg>chromedriver.exe</arg>
+</arguments>
+<status status="PASS" endtime="20170807 16:21:24.031" starttime="20170807 16:21:24.027"></status>
+</kw>
+<status status="PASS" endtime="20170807 16:21:24.032" starttime="20170807 16:21:24.024"></status>
+</kw>
+<status status="PASS" endtime="20170807 16:21:24.033" starttime="20170807 16:21:23.978"></status>
+</kw>
+<status status="FAIL" endtime="20170807 16:21:24.033" critical="yes" starttime="20170807 16:21:23.973">IOError: [Errno 2] No such file or directory: u'C:\\\\TestData\\SuiteCRMWorkflows.xls'</status>
+</test>
+<status status="FAIL" endtime="20170807 16:21:24.042" starttime="20170807 16:21:23.473"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="1" pass="0">Critical Tests</stat>
+<stat fail="1" pass="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="1" id="s1" name="Accounts" pass="0">Accounts</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20170807 16:21:23.959" level="WARN">Imported resource file 'C:\SuiteCRM\Keywords\Campaigns.txt' is empty.</msg>
+<msg timestamp="20170807 16:21:23.995" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No browser is open</msg>
+</errors>
+</robot>

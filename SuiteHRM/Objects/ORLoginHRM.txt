@@ -1,0 +1,4 @@
+*** Variables ***
+${textBox.Login.userNmae}    //input[@id='txtUsername']
+${textBox.Login.Password}    //input[@id='txtPassword']
+${button.Logi.Submit}    //div[@id='divLoginButton']/input

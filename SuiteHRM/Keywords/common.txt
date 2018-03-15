@@ -1,0 +1,275 @@
+*** Settings ***
+Resource          Super.txt
+
+*** Keywords ***
+Open Browser To Login Page
+    [Arguments]    ${url}    ${BROWSER}
+    [Documentation]    Open the application in the specified browser
+    ${bStatus}    Evaluate    '${BROWSER.lower()}'=='ff' or '${BROWSER.lower()}'=='firefox'
+    ${chromeStatus}    Evaluate    '${BROWSER.lower()}'=='gc' or '${BROWSER.lower()}'=='chrome'
+    ${chrome_options}    Get Chrome Browser Options
+    ${kwargs}    Create Dictionary    chrome_options=${chrome_options}
+    Run Keyword If    ${chromeStatus}    Create Webdriver    Chrome    kwargs=${kwargs}
+    Run Keyword If    ${chromeStatus}    Go To    ${url}
+    Run Keyword If    ${bStatus}==True    Open Browser    ${url}    ${BROWSER}    \    ${EMPTY}
+    ...    ${firefox_profile_path}
+    Run Keyword If    ${bStatus}==False and ${chromeStatus}==False    Open Browser    ${url}    ${BROWSER}
+    Maximize Browser Window
+    ${loginPageStatus}    Run Keyword And Return Status    Wait Until Page Contains Element    ${textBox.Login.UserName}    ${Delay30}
+    ${errorMessage}    Set Variable If    ${loginPageStatus}==False    Login Page is not Displayed.    ${EMPTY}
+    Run Keyword If    ${loginPageStatus}==False    Set Global Variable    ${errorMessage}    ${errorMessage}
+    [Return]    ${loginPageStatus}
+
+Login To SuiteCRM
+    [Documentation]    This keyword is used to Login to SuiteCRM application. It returns True for successful login otherwise False.
+    ${loginStatus}    Open Browser To Login Page    ${serverSuiteCRMURL}    ${BROWSER}
+    Capture Page Screenshot
+    Return From Keyword If    ${loginStatus}==False    ${loginStatus}
+    Run Keyword If    '${username}' != '${EMPTY}'    Input Text    ${textBox.Login.UserName}    ${userName}
+    Run Keyword If    '${password}' != '${EMPTY}'    Input Password    ${textBox.Login.Password}    ${password}
+    ${status}    Click Or Simulate    ${button.login}
+    Run Keyword Unless    ${status}    Fail    ${errorMessage}
+    Run Keyword If    '${username}' == '${EMPTY}'    Sleep    2s
+    ${errorMessage}    Set Variable If    '${username}' == '${EMPTY}'    Please fill out this field.
+    Run Keyword If    '${username}' == '${EMPTY}'    Set Global Variable    ${errorMessage}    ${errorMessage}
+    Return From Keyword If    '${username}' == '${EMPTY}'    False
+    Run Keyword If    '${password}' == '${EMPTY}'    Wait For Element Visible    ${error.Login.ErrorMessage}    ${Delay30}
+    ${errorMessage}    Run Keyword If    '${password}' == '${EMPTY}'    Selenium2Library.Get Text    ${error.Login.ErrorMessage}
+    Run Keyword If    '${password}' == '${EMPTY}'    Set Global Variable    ${errorMessage}    ${errorMessage}
+    Return From Keyword If    '${password}' == '${EMPTY}'    False
+    ${loginStatus}    Wait For Element Visible    ${image.Home.HomeIcon}    ${Delay30}
+    ${errorMsgStatus}    Run Keyword If    ${loginStatus}==False    Verify Element Visible    ${error.Login.ErrorMessage}
+    ${errorMsg}    Run Keyword If    ${errorMsgStatus}    Selenium2Library.Get Text    ${error.Login.ErrorMessage}
+    ${errorMessage}    Set Variable If    ${loginStatus}==False    Login Failed.    ${EMPTY}
+    Run Keyword If    ${loginStatus}==False and ${errorMsgStatus}==False    Set Global Variable    ${errorMessage}    ${errorMessage}
+    Run Keyword If    ${loginStatus}==False and ${errorMsgStatus}==True    Set Global Variable    ${errorMessage}    ${errorMsg}
+    ${logOut}    Set Variable If    ${loginStatus}    False    True
+    Set Global Variable    ${global_Logout_Status}    ${logOut}
+    Run Keyword Unless    ${loginStatus}    Fail    ${errorMessage}
+    [Return]    ${loginStatus}
+
+Logout From SuiteCRM
+    [Documentation]    This keyword is used to Logout from SuiteCRM application. It returns True for successful logout otherwise False.
+    ${status}    Verify Element Visible    ${button.Home.UserMenu}
+    ${errorMessage}    Set Variable If    ${status}==False    '${button.Home.UserMenu}' User Menu Link is not visible
+    Run Keyword If    ${status}==False    Set Global Variable    ${errorMessage}    ${errorMessage}
+    Return From Keyword If    ${status}==False    ${status}
+    ${status}    Click On Logout
+    Run Keyword Unless    ${status}    Fail    ${errorMessage}
+    Sleep    ${Delay5}
+    Run Keyword And Ignore Error    Get Alert Message
+    ${status}    Wait For Element Visible    ${textBox.Login.UserName}    ${Delay30}
+    ${errorMessage}    Set Variable If    ${status}==False    Logout Failed.
+    Run Keyword If    ${status}==False    Set Global Variable    ${errorMessage}    ${errorMessage}
+    Run Keyword If    ${status}    Set Global Variable    ${global_Logout_Status}    True
+    Run Keyword If    ${status}!= True and ${global_Logout_Status}!=True    Fail    ${errorMessage}
+    [Return]    ${status}
+
+Stop Application
+    ${ts}    get_current_time_stamp
+    Run Keyword And Ignore Error    Capture Page Screenshot    Screenshot${ts}.png
+    Run Keyword If    ${global_Logout_Status}!=True    Logout From SuiteCRM
+    ${bStatus}    Run Keyword And Return Status    Close Browser
+    Run Keyword Unless    ${bStatus}    Set Test Message    Getting exception in "Close Browser" keyword
+    Run Keyword If    '${BROWSER}'=='ie'    Process Close    IEDriverserver.exe
+    Run Keyword If    '${BROWSER}'=='ie'    OperatingSystem.Run    taskkill /F /IM iexplore.exe
+    Run Keyword If    '${BROWSER}'=='ie'    OperatingSystem.Run    taskkill /F /IM iedriverserver.exe
+    Run Keyword If    '${BROWSER}'=='gc'    Process Close    chromedriver.exe
+
+Navigate To Inner Menu Of Main Menu
+    [Arguments]    ${mainMenuName}    ${innerMenuName}
+    [Documentation]    This keyword is used to navigate to inner menu of top menu. It returns True if it is navigate to required inner menu otherwise False.
+    ${status}    Verify Element Visible    //div[@id='toolbar']/ul/li[contains(@class,'topnav')]//a[normalize-space()='${mainMenuName}']
+    ${errorMessage}    Set Variable If    ${status}==False    '//div[@id='toolbar']/ul/li[contains(@class,'topnav')]//a[normalize-space()='${mainMenuName}']' is not visible
+    Run Keyword If    ${status}==False    Set Global Variable    ${errorMessage}    ${errorMessage}
+    Return From Keyword If    ${status}==False    ${status}
+    ${status}    Click Or Simulate    //div[@id='toolbar']/ul/li[contains(@class,'topnav')]//a[normalize-space()='${mainMenuName}']
+    Run Keyword Unless    ${status}    Fail    ${errorMessage}
+    ${status}    Wait For Element Visible    //div[@id='toolbar']/ul/li[contains(@class,'topnav')]//a[normalize-space()='Sales' and @aria-expanded='true']/following-sibling::ul/li/a[normalize-space()='${innerMenuName}']    ${Delay30}
+    ${errorMessage}    Set Variable If    ${status}==False    '//div[@id='toolbar']/ul/li[contains(@class,'topnav')]//a[normalize-space()='Sales' and @aria-expanded='true']/following-sibling::ul/li/a[normalize-space()='${innerMenuName}']' is not visible
+    Run Keyword If    ${status}==False    Set Global Variable    ${errorMessage}    ${errorMessage}
+    Return From Keyword If    ${status}==False    ${status}
+    ${status}    Click Or Simulate    //div[@id='toolbar']/ul/li[contains(@class,'topnav')]//a[normalize-space()='Sales' and @aria-expanded='true']/following-sibling::ul/li/a[normalize-space()='${innerMenuName}']
+    Run Keyword Unless    ${status}    Fail    ${errorMessage}
+    ${status}    Wait For Element Visible    //div[@class='moduleTitle']/h2[contains(text(),'${innerMenuName}')]    ${Delay30}
+    ${errorMessage}    Set Variable If    ${status}==False    '//div[@class='moduleTitle']/h2[contains(text(),'${innerMenuName}')]' is not visible
+    Run Keyword If    ${status}==False    Set Global Variable    ${errorMessage}    ${errorMessage}
+    [Return]    ${status}
+
+Navigate To Create Sub Menu
+    [Arguments]    ${subMenuName}
+    [Documentation]    This keyword is used to navigate to create pulldown innermenu,It returns True if it is navigate to required inner menu otherwise False.
+    ${status}    Verify Element Visible    ${link.common.Home.Create}
+    ${errorMessage}    Set Variable If    ${status}==False    '${link.common.Home.Create}' is not visible.
+    Run Keyword If    ${status}==False    Set Global Variable    ${errorMessage}    ${errorMessage}
+    Return From Keyword If    ${status}==False    ${status}
+    ${status}    Click Or Simulate    ${link.common.Home.Create}
+    Run Keyword Unless    ${status}    Fail    ${errorMessage}
+    ${status}    Wait For Element Visible    //div[@class='desktop-bar']//li[@id='quickcreatetop' and contains(@class,'quickcreatetop open')]//a[normalize-space()='${subMenuName}']    ${Delay30}
+    ${errorMessage}    Set Variable If    ${status}==False    '//div[@class='desktop-bar']//li[@id='quickcreatetop' and contains(@class,'quickcreatetop open')]//a[normalize-space()='${subMenuName}']' is not visible.
+    Run Keyword If    ${status}==False    Set Global Variable    ${errorMessage}    ${errorMessage}
+    ${status}    Click Or Simulate    //div[@class='desktop-bar']//li[@id='quickcreatetop' and contains(@class,'quickcreatetop open')]//a[normalize-space()='${subMenuName}']
+    Run Keyword Unless    ${status}    Fail    ${errorMessage}
+    ${status}    Wait For Element Visible    //div[@id='actionMenuSidebar']/ul/li//div[normalize-space()='${subMenuName}']    ${Delay30}
+    ${errorMessage}    Set Variable If    ${status}==False    '//div[@id='actionMenuSidebar']/ul/li//div[normalize-space()='${subMenuName}']' is not visible.
+    Run Keyword If    ${status}==False    Set Global Variable    ${errorMessage}    ${errorMessage}
+    [Return]    ${status}
+
+Delete Records
+    [Arguments]    ${recordsList}    ${type}
+    [Documentation]    This keyword is used to delete the records based on the type.
+    ${type}    Get Capitalize Of Each Word In A String    ${type}
+    ${status}    Verify Element Visible    //div[@class='moduleTitle']/h2[contains(text(),'${type}')]
+    ${status1}    Run Keyword Unless    ${status}    Navigate To Inner Menu Of Main Menu    Sales    ${type}
+    Run Keyword If    ${status}==False and ${status1}==False    ${status1}
+    ${errorMessage}    Set Variable If    ${status}==False and ${status1}==False    ${errorMessage}
+    Run Keyword If    ${status}==False and ${status1}==False    Set Global Variable    ${errorMessage}    ${errorMessage}
+    Return From Keyword If    ${status}==False and ${status1}==False    ${status}
+    ${status}    Clear Search
+    Return From Keyword If    ${status}==False    ${status}
+    : FOR    ${value}    IN    @{recordsList}
+    \    ${status}    Verify Element Visible    //a[contains(text(),'${value}')]/ancestor::td[@field='name']/preceding-sibling::td/input
+    \    Run Keyword If    ${status}    Click Or Simulate    //a[contains(text(),'${value}')]/ancestor::td[@field='name']/preceding-sibling::td/input
+    \    Run Keyword If    ${status}==False    Run Keyword And Continue On Failure    Fail    //a[contains(text(),'${value}')]/ancestor::td[@field='name']/preceding-sibling::td/input is not visible.
+    ${status}    Verify Element Visible    ${link.common.BulkActionActive}
+    ${errorMessage}    Set Variable If    ${status}==False    '${link.common.BulkActionActive}' is not visible.
+    Run Keyword If    ${status}==False    Set Global Variable    ${errorMessage}    ${errorMessage}
+    Return From Keyword If    ${status}==False    ${status}
+    ${status}    Click Or Simulate    ${link.common.BulkActionActive}
+    Return From Keyword If    ${status}==False    ${status}
+    ${status}    Wait For Element Visible    //td[@class='paginationActionButtons']/ul[@id='actionLinkTop' and not(@style)]//a/following-sibling::ul[contains(@class,'open')]//a[contains(text(),'Delete')]    ${Delay30}
+    ${errorMessage}    Set Variable If    ${status}==False    '//td[@class='paginationActionButtons']/ul[@id='actionLinkTop' and not(@style)]//a/following-sibling::ul[contains(@class,'open')]//a[contains(text(),'Delete')]' is not visible.
+    Run Keyword If    ${status}==False    Set Global Variable    ${errorMessage}    ${errorMessage}
+    Return From Keyword If    ${status}==False    ${status}
+    ${status}    Click Or Simulate    //td[@class='paginationActionButtons']/ul[@id='actionLinkTop' and not(@style)]//a/following-sibling::ul[contains(@class,'open')]//a[contains(text(),'Delete')]
+    Return From Keyword If    ${status}==False    ${status}
+    ${length}    Get Length Of List    ${recordsList}
+    ${expectedErrMsg}    Set Variable    Are you sure you want to delete the ${length} selected record(s)?
+    : FOR    ${iCount}    IN RANGE    1    6
+    \    Sleep    ${Delay5}
+    \    ${alertMsg}    Get Alert Message    False
+    \    ${length1}    Get Length    ${alertMsg}
+    \    Exit For Loop If    '${length1}'>='1'
+    ${errorMessage}    Set Variable If    '${length1}'=='0'    Delete Confirmation Alert is not displayed.
+    Run Keyword If    '${length1}'=='0'    Set Global Variable    ${errorMessage}    ${errorMessage}
+    Return From Keyword If    '${length1}'=='0'    False
+    ${status}    Run Keyword And Return Status    Should Be Equal As Strings    ${expectedErrMsg}    ${alertMsg}
+    ${errorMessage}    Set Variable If    ${status}==False    '${alertMsg}' alert is displayed intead of \ '${expectedErrMsg}' alert message.
+    Run Keyword If    ${status}==False    Set Global Variable    ${errorMessage}    ${errorMessage}
+    Return From Keyword If    ${status}==False    ${status}
+    ${status}    Run Keyword And Return Status    Alert Should Be Present    ${expectedErrMsg}
+    ${status}    Wait For Element Visible    ${link.common.BulkActionInActive}    ${Delay30}
+    ${errorMessage}    Set Variable If    ${status}==False    Records are not deleted after deleting.
+    Run Keyword If    ${status}==False    Set Global Variable    ${errorMessage}    ${errorMessage}
+    ${count}    Set Variable    0
+    : FOR    ${Value}    IN    @{recordsList}
+    \    ${status}    Quick Filter    ${Value}
+    \    Run Keyword If    ${status}==False    Run Keyword And Continue On Failure    Fail    ${errorMessage}
+    \    ${status}    Verify Element Visible    //div[@class='list-view-rounded-corners']//td[@field='name']
+    \    Run Keyword If    ${status}==False    Run Keyword And Continue On Failure    Fail    ${Value} record is not deleted.
+    \    ${count}    Set Variable If    ${status}    Evaluate    ${count}+1    ${count}
+    ${status}    Set Variable If    '${count}'==${length}'    True    False
+    [Return]    ${status}
+
+Get Capitalize Of Each Word In A String
+    [Arguments]    ${string}
+    ${values}    Split String    ${string.strip().lower()}    ${SPACE}
+    ${length}    Get Length Of List    ${values}
+    ${values}    Set Variable If    '${length}'=='1'    ${values[0]}    ${values}
+    Run Keyword If    '${length}'=='1'    Convert To String    ${values}
+    ${res}    Set Variable If    '${length}'=='1'    ${values.capitalize()}
+    Return From Keyword If    '${length}'=='1'    ${res}
+    ${res}    Set Variable    ${SPACE}
+    : FOR    ${value}    IN    @{values}
+    \    Convert To String    ${value}
+    \    ${value}    Set Variable    ${value.capitalize()}
+    \    ${res}    Set Variable    ${res}${value}${SPACE}
+    ${res}    Set Variable    ${res.strip()}
+    [Return]    ${res}
+
+Clear Search
+    ${status1}    Wait For Element Visible    ${link.common.ClearSearchIcon}    ${Delay5}
+    ${status}    Set Variable If    ${status1}==False    True    ${status1}
+    Return From Keyword If    ${status1}==False    ${status}
+    Simulate    ${link.common.ClearSearchIcon}    click
+    Run Keyword If    '${BROWSER.lower()}'=='ie' or '${BROWSER.lower()}'=='internetexplorer'    Sleep    ${Delay10}
+    ...    ELSE    Wait For Element Invisible    ${link.common.ClearSearchIcon}
+    ${status}    Verify Element Visible    ${link.common.ClearSearchIcon}
+    ${errorMessage}    Set Variable If    ${status}    Search is not cleared.
+    Run Keyword If    ${status}    Set Global Variable    ${errorMessage}    ${errorMessage}
+    ${status}    Set Variable If    ${status}==False or '${status}'=='None'    True    False
+    [Return]    ${status}
+
+Quick Filter
+    [Arguments]    ${name}
+    ${status}    Clear Search
+    Return From Keyword If    ${status}==False    ${status}
+    ${status}    Verify Element Visible    ${image.common.SearchIcon}
+    ${errorMessage}    Set Variable If    ${status}==False    '${image.common.SearchIcon}' is not visible.
+    Run Keyword If    ${status}==False    Set Global Variable    ${errorMessage}    ${errorMessage}
+    Return From Keyword If    ${status}==False    ${status}
+    Simulate    ${image.common.SearchIcon}    click
+    ${status}    Wait For Element Visible    ${dialogWindow.common.QuickFilter}    ${Delay30}
+    ${errorMessage}    Set Variable If    ${status}==False    '${dialogWindow.common.QuickFilter}' is not visible.
+    Run Keyword If    ${status}==False    Set Global Variable    ${errorMessage}    ${errorMessage}
+    Return From Keyword If    ${status}==False    ${status}
+    ${activeStatus}    Verify Element Visible    ${link.common.Filter.QuickFilterActive}
+    ${inactiveStatus}    Verify Element Visible    ${link.common.Filter.QuickFilterInActive}
+    ${errorMessage}    Set Variable If    ${activeStatus}==False and ${inactiveStatus}==False    'Quick Filter' option is not visible.
+    Run Keyword If    ${activeStatus}==False and ${inactiveStatus}==False    Set Global Variable    ${errorMessage}    ${errorMessage}
+    Return From Keyword If    ${activeStatus}==False and ${inactiveStatus}==False    False
+    Run Keyword Unless    ${activeStatus}    Click Or Simulate    ${link.common.Filter.QuickFilterInActive}
+    ${status}    Run Keyword Unless    ${activeStatus}    Wait For Element Visible    ${textBox.common.QuickFilter.Name}    ${Delay30}
+    ${errorMessage}    Set Variable If    ${activeStatus}==False and ${status}==False    '${textBox.common.QuickFilter.Name}' is not visible.
+    Run Keyword If    ${activeStatus}==False and ${status}==False    Set Global Variable    ${errorMessage}    ${errorMessage}
+    Return From Keyword If    ${activeStatus}==False and ${status}==False    ${status}
+    Input Text    ${textBox.common.QuickFilter.Name}    ${name}
+    ${status}    Click Or Simulate    ${button.common.QuickFilter.Search}
+    Return From Keyword If    ${status}==False    ${status}
+    Run Keyword If    '${BROWSER.lower()}'=='ie' or '${BROWSER.lower()}'=='internetexplorer'    Sleep    ${Delay10}
+    ...    ELSE    Wait For Element Invisible    ${button.common.QuickFilter.Search}
+    ${status}    Verify Element Visible    ${button.common.QuickFilter.Search}
+    ${errorMessage}    Set Variable If    ${status}    'Filter' Dialog Window is not closed.
+    Run Keyword If    ${status}    Set Global Variable    ${errorMessage}    ${errorMessage}
+    ${status}    Set Variable If    ${status}    False    True
+    [Return]    ${status}
+
+Get Text From Required Page
+    ${text}    CommonLibrary.Get Text    ${header.common.Title}
+    ${values}    Split String    ${text}    .
+    ${length}    Get Length Of List    ${values}
+    ${value}    Set Variable If    '${length}'=='1'    ${values[0].strip()}    ${values[1].strip()}
+    Convert To String    ${value}
+    [Return]    ${value}
+
+Click Or Simulate
+    [Arguments]    ${locator}
+    [Documentation]    This keyword is used to perform click action on webelement if the browser is other than internet explorer, otherwise it performs simulate click action. It returns True if the keyword perform simultae click or click, otheriwse False.
+    ${status}    Wait For Element Visible    ${locator}    ${Delay30}
+    ${errorMessage}    Set Variable If    ${status}==False    '${locator}' is not visible.
+    Run Keyword If    ${status}==False    Set Global Variable    ${errorMessage}    ${errorMessage}
+    Return From Keyword If    ${status}==False    ${status}
+    Run Keyword If    '${BROWSER.lower()}'=='ie' or '${BROWSER.lower()}'=='internetexplorer'    Simulate    ${locator}    click
+    ...    ELSE    Click Element Using Javascript    ${locator}
+    ${status}    Set Variable    True
+    [Return]    ${status}
+
+Click On Logout
+    : FOR    ${icount}    IN RANGE    1    6
+    \    ${status}    Click Or Simulate    ${button.Home.UserMenu}
+    \    Sleep    ${Delay5}
+    \    Run Keyword And Ignore Error    Get Alert Message
+    \    Run Keyword Unless    ${status}    Fail    ${errorMessage}
+    \    ${status}    Wait For Element Visible    ${link.Home.LogOut}    ${Delay10}
+    \    Exit For Loop If    ${status}
+    ${errorMessage}    Set Variable If    ${status}==False    '${link.Home.LogOut}' Logout Link is not visible
+    Run Keyword If    ${status}==False    Set Global Variable    ${errorMessage}    ${errorMessage}
+    Return From Keyword If    ${status}==False    ${status}
+    ${status}    Click Or Simulate    ${link.Home.LogOut}
+    [Return]    ${status}
+
+Kill Driver Instances
+    Run Keyword If    '${BROWSER}'=='ie'    Process Close    IEDriverserver.exe
+    Run Keyword If    '${BROWSER}'=='ie'    OperatingSystem.Run    taskkill /F /IM iexplore.exe
+    Run Keyword If    '${BROWSER}'=='ie'    OperatingSystem.Run    taskkill /F /IM iedriverserver.exe
+    Run Keyword If    '${BROWSER}'=='gc'    Process Close    chromedriver.exe

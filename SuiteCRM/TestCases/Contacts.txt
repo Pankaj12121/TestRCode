@@ -1,0 +1,15 @@
+*** Settings ***
+Suite Setup       Kill Driver Instances
+Resource          ../Keywords/Super.txt
+
+*** Test Cases ***
+Create A Contact
+    Comment    Login To Suite CRM Application
+    Login To SuiteCRM
+    Comment    Create A contact
+    Create Contact    CC_TD_02
+    Comment    Validate Created Contact
+    Validate Create Contact
+    Comment    LogOut from Application
+    Logout From SuiteCRM
+    [Teardown]    Stop Application

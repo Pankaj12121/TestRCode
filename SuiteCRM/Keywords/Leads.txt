@@ -1,0 +1,104 @@
+*** Settings ***
+Resource          Super.txt
+
+*** Keywords ***
+Create Lead
+    [Arguments]    ${testCaseID}
+    ${CreateLead}    Get Ms Excel Row Values Into Dictionary Based On Key    ${testDataFolderPath}/SuiteCRMWorkflows.xls    ${testCaseID}    Create Lead
+    ${status}    Navigate To Create Sub Menu    Create Lead
+    Run Keyword If    ${status}==False    Fail    ${errorMessage}
+    ${Salutation}    Get From Dictionary    ${CreateLead}    Salutation
+    ${First Name}    Get From Dictionary    ${CreateLead}    First Name
+    ${Last Name}    Get From Dictionary    ${CreateLead}    Last Name
+    ${Title}    Get From Dictionary    ${CreateLead}    Title
+    ${Department}    Get From Dictionary    ${CreateLead}    Department
+    ${Account Name}    Get From Dictionary    ${CreateLead}    Account Name
+    ${Office Phone}    Get From Dictionary    ${CreateLead}    Office Phone
+    ${Mobile}    Get From Dictionary    ${CreateLead}    Mobile
+    ${Fax}    Get From Dictionary    ${CreateLead}    Fax
+    ${Website}    Get From Dictionary    ${CreateLead}    Website
+    ${Primary Address}    Get From Dictionary    ${CreateLead}    Primary Address
+    ${Primary City}    Get From Dictionary    ${CreateLead}    Primary City
+    ${Primary State}    Get From Dictionary    ${CreateLead}    Primary State
+    ${Primary Postal Code}    Get From Dictionary    ${CreateLead}    Primary Postal Code
+    ${Primary Country}    Get From Dictionary    ${CreateLead}    Primary Country
+    ${Email Address}    Get From Dictionary    ${CreateLead}    Email Address
+    ${Status}    Get From Dictionary    ${CreateLead}    Status
+    ${Status Description}    Get From Dictionary    ${CreateLead}    Status Description
+    ${Lead Source}    Get From Dictionary    ${CreateLead}    Lead Source
+    ${Lead Source Description}    Get From Dictionary    ${CreateLead}    Lead Source Description
+    ${Opportunity Amount}    Get From Dictionary    ${CreateLead}    Opportunity Amount
+    ${Referred By}    Get From Dictionary    ${CreateLead}    Referred By
+    ${Campaign}    Get From Dictionary    ${CreateLead}    Campaign
+    ${Assigned To}    Get From Dictionary    ${CreateLead}    Assigned To
+    ${save}    Get From Dictionary    ${CreateLead}    Save
+    ${cancel}    Get From Dictionary    ${CreateLead}    Cancel
+    Run Keyword If    '${Salutation}'!='${EMPTY}'    Select From List By Label    ${select.salutation}    ${Salutation}
+    Run Keyword If    '${First Name}'!='${EMPTY}'    Input Text    ${Textbox.first_name}    ${First Name}
+    Run Keyword If    '${Last Name}'!='${EMPTY}'    Input Text    ${Textbox.last_name}    ${Last Name}
+    Run Keyword If    '${Title}'!='${EMPTY}'    Input Text    ${Textbox.title}    ${Title}
+    Run Keyword If    '${Department}'!='${EMPTY}'    Input Text    ${Textbox.department}    ${Department}
+    Run Keyword If    '${Office Phone}'!='${EMPTY}'    Input Text    ${Textbox.phone}    ${Office Phone}
+    Run Keyword If    '${Mobile}'!='${EMPTY}'    Input Text    ${Textbox.mobile}    ${Mobile}
+    Run Keyword If    '${Fax}'!='${EMPTY}'    Input Text    ${Textbox.fax}    ${Fax}
+    Run Keyword If    '${Account Name}'!='${EMPTY}'    Input Text    ${Textbox.Accountname}    ${Account Name}
+    Run Keyword If    '${Website}'!='${EMPTY}'    Input Text    ${Textbox.website}    ${Website}
+    Run Keyword If    '${Primary Address}'!='${EMPTY}'    Input Text    ${Textbox.primary_address}    ${Primary Address}
+    Run Keyword If    '${Primary City}'!='${EMPTY}'    Input Text    ${Textbox.primary_address_city}    ${Primary City}
+    Run Keyword If    '${Primary State}'!='${EMPTY}'    Input Text    ${Textbox.primary_address_state}    ${Primary State}
+    Run Keyword If    '${Primary Postal Code}'!='${EMPTY}'    Input Text    ${Textbox.primary_address_postalcode}    ${Primary Postal Code}
+    Run Keyword If    '${Primary Country}'!='${EMPTY}'    Input Text    ${Textbox.primary_address_country}    ${Primary Country}
+    Run Keyword If    '${Email Address}'!='${EMPTY}'    Input Text    ${Textbox.EmailAddress}    ${Email Address}
+    Run Keyword If    '${Status}'!='${EMPTY}'    Select From List By Label    ${Textbox.status}    ${Status}
+    Run Keyword If    '${Lead Source}'!='${EMPTY}'    Select From List By Label    ${Dropdown.lead_source}    ${Lead Source}
+    Run Keyword If    '${Status Description}'!='${EMPTY}'    Input Text    ${Textbox.status_description}    ${Status Description}
+    Run Keyword If    '${Lead Source Description}'!='${EMPTY}'    Input Text    ${Textbox.lead_source_description}    ${Lead Source Description}
+    Run Keyword If    '${Opportunity Amount}'!='${EMPTY}'    Input Text    ${Textbox.opportunity_amount}    ${Opportunity Amount}
+    Run Keyword If    '${Referred By}'!='${EMPTY}'    Input Text    ${refered_by}    ${Referred By}
+    Run Keyword If    '${Campaign}'!='${EMPTY}'    Input Text    ${campaign_name}    ${Campaign}
+    Run Keyword If    '${Assigned To}'!='${EMPTY}'    Input Text    ${Assigned}    ${Assigned To}
+    ${saveStatus}    Run Keyword And Return Status    Should Be Equal    ${save.lower()}    y
+    ${cancelStatus}    Run Keyword And Return Status    Should Be Equal    ${cancel.lower()}    y
+    Run Keyword If    ${saveStatus}    Click Or Simulate    ${Button.Save}
+    Run Keyword If    ${cancelStatus}    Click Or Simulate    ${contact.Cancel}
+    ${text}    Set Variable    ${Salutation}${SPACE}${First Name}${SPACE}${Last Name}
+    Run Keyword If    ${cancelStatus}    Sleep    ${Delay5}
+    ${alertMsg}    Run Keyword If    ${cancelStatus}    Run Keyword And Continue On Failure    Get Alert Message
+    Run Keyword If    ${cancelStatus}    Set Test Message    ${alertMsg}    True
+    ${status}    Run Keyword If    ${cancelStatus}    Wait For Element Visible    //div[@class='moduleTitle']/h2[contains(text(),'Leads')]    ${Delay30}
+    Run Keyword If    ${status}==False    Fail    Application is not navigating to Leads page after click on cancel button.
+    Run Keyword If    ${status}    Set Test Message    Lead is not created when we click on cancel button.
+    Return From Keyword If    ${status}
+    ${createLeadStatus}    Run Keyword If    ${saveStatus}    Wait For Element Visible    //div[@class='moduleTitle']/h2[contains(text(),'${text}')]    ${Delay30}
+    Run Keyword If    ${createLeadStatus}==False    Set Global Variable    ${errorMessage}    After click on save button lead is not created.
+    Run Keyword If    ${createLeadStatus}==False    Fail    ${errorMessage}
+    Comment    ${status}    Set Test Variable    ${createLeadStatus}
+    Comment    Validate Create Lead Status    ${testCaseID}
+
+Validate Create Lead
+    ${value}    Get Text From Required Page
+    ${value}    Set Variable    ${value.lower()}
+    ${status}    Navigate To Inner Menu Of Main Menu    Sales    Leads
+    Run Keyword If    ${status}==False    Fail    ${errorMessage}
+    ${status}    Quick Filter    ${value}
+    Run Keyword If    ${status}==False    Fail    ${errorMessage}
+    ${text}    Selenium2Library.Get Text    ${label.common.Name}
+    ${text}    Set Variable    ${text.lower()}
+    ${status}    String Should Contain    ${text}    ${value}
+    ${errorMessage}    Set Variable If    ${status}==False    Mismatch the Created Lead.
+    Run Keyword If    ${status}==False    Fail    Created Lead is not displayed in Leads Page.Error Message::${errorMessage}
+    [Return]    ${status}
+
+Validate Create Lead Status
+    [Arguments]    ${TestCaseID}
+    ${CreateLead}    Get Ms Excel Row Values Into Dictionary Based On Key    ${testDataFolderPath}/SuiteCRMWorkflows.xls    ${TestCaseID}    Create Lead
+    ${save}    Get From Dictionary    ${CreateLead}    Save
+    ${cancel}    Get From Dictionary    ${CreateLead}    Cancel
+    ${expectedTCStatusl}    Get From Dictionary    ${CreateLead}    Expected Result
+    ${expectedTCStatusl}    Set Variable    ${expectedTCStatusl.lower()}
+    Run Keyword If    '${save.lower()}'=='y' and ${status}==False and '${expectedTCStatusl}'=='fail'    Set Test Message    Create Lead Failed.Error Message::${errorMessage}
+    Run Keyword If    '${save.lower()}'=='y' and ${status}==False and '${expectedTCStatusl}'=='pass'    Fail    Create Lead Failed.Error Message::${errorMessage}
+    Run Keyword If    '${cancel.lower()}'=='y' and ${status}==True and '${expectedTCStatusl}'=='fail'    Fail    Lead is Created.
+    Run Keyword If    '${save.lower()}'=='n' and ${status}==True and '${expectedTCStatusl}'=='fail'    Fail    Lead is Created.
+    Run Keyword If    '${save.lower()}'=='n' and ${status}==False and '${expectedTCStatusl}'=='fail'    Set Test Message    Lead is Created.
+    Run Keyword If    '${cancel.lower()}'=='n' and '${save.lower()}'=='n' and ${status}==True    Fail    Lead is Created after click on Cancel button.Error Message::${errorMessage}

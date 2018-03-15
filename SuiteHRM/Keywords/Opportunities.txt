@@ -1,0 +1,81 @@
+*** Settings ***
+Resource          Super.txt
+
+*** Keywords ***
+Create Opportunity
+    [Arguments]    ${CreateOpportunity}    ${accountName}=${EMPTY}
+    ${CreateOpportunity}    Get Ms Excel Row Values Into Dictionary Based On Key    ${testDataFolderPath}/SuiteCRMWorkflows.xls    CO_TD_01    Create Opportunity
+    ${status}    Navigate To Create Sub Menu    Create Opportunity
+    Run Keyword If    ${status}==False    Fail    ${errorMessage}
+    ${Opportunity Name}    Get From Dictionary    ${CreateOpportunity}    Opportunity Name
+    ${Account Name1}    Get From Dictionary    ${CreateOpportunity}    Account Name
+    ${Account Name}    Set Variable If    '${accountName}'!='${EMPTY}'    ${accountName}    ${Account Name1}
+    ${Expected close date}    Get From Dictionary    ${CreateOpportunity}    Expected Close Date
+    ${Opportunity amount}    Get From Dictionary    ${CreateOpportunity}    Opportunity Amount
+    ${Type}    Get From Dictionary    ${CreateOpportunity}    Type
+    ${Sales Stage}    Get From Dictionary    ${CreateOpportunity}    Sales Stage
+    ${Lead Source}    Get From Dictionary    ${CreateOpportunity}    Lead Source
+    ${Campaign}    Get From Dictionary    ${CreateOpportunity}    Campaign
+    ${Next step}    Get From Dictionary    ${CreateOpportunity}    Next Step
+    ${Description}    Get From Dictionary    ${CreateOpportunity}    Description
+    ${Assigned To}    Get From Dictionary    ${CreateOpportunity}    Assigned To
+    ${save}    Get From Dictionary    ${CreateOpportunity}    Save
+    ${cancel}    Get From Dictionary    ${CreateOpportunity}    Cancel
+    Run Keyword If    '${Opportunity Name}'!='${EMPTY}'    Input Text    ${Textbox.Opporunity Name}    ${Opportunity Name}
+    Run Keyword If    '${Account Name}'!='${EMPTY}'    Input Text    ${Texbox.Opporunity.Account Name}    ${Account Name}
+    Run Keyword If    '${Expected close date}'!='${EMPTY}'    Input Text    ${Date.Excepted closedate}    ${Expected close date}
+    Run Keyword If    '${Opportunity amount}'!='${EMPTY}'    Input Text    ${Textbox.Opporunity amount}    ${Opportunity amount}
+    Run Keyword If    '${Type}'!='${EMPTY}'    Select From List By Label    ${Dropdown.Opportunity Type}    ${Type}
+    Run Keyword If    '${Sales Stage}'!='${EMPTY}'    Select From List By Label    ${Dropdown.SalesStage}    ${Sales Stage}
+    Run Keyword If    '${Lead Source}'!='${EMPTY}'    Select From List By Label    ${Dropdown.lead_source}    ${Lead Source}
+    Run Keyword If    '${Campaign}'!='${EMPTY}'    Input Text    ${Textbox.Campaign}    ${Campaign}
+    Run Keyword If    '${Next step}'!='${EMPTY}'    Input Text    ${Textbox.Nextstep}    ${Next step}
+    Run Keyword If    '${Description}'!='${EMPTY}'    Input Text    ${Textbox.Description}    ${Description}
+    Run Keyword If    '${Assigned To}'!='${EMPTY}'    Input Text    ${Textbox.Assigned}    ${Assigned To}
+    ${saveStatus}    Run Keyword And Return Status    Should Be Equal    ${save.lower()}    y
+    ${cancelStatus}    Run Keyword And Return Status    Should Be Equal    ${cancel.lower()}    y
+    Run Keyword If    ${saveStatus}    Click Or Simulate    ${Button.Save}
+    Run Keyword If    ${cancelStatus}    Click Or Simulate    ${contact.Cancel}
+    ${text}    Set Variable    ${Opportunity Name}
+    Run Keyword If    ${cancelStatus}    Sleep    ${Delay5}
+    ${alertMsg}    Run Keyword If    ${cancelStatus}    Run Keyword And Continue On Failure    Get Alert Message
+    Run Keyword If    ${cancelStatus}    Set Test Message    ${alertMsg}    True
+    ${status}    Run Keyword If    ${cancelStatus}    Wait For Element Visible    //div[@class='moduleTitle']/h2[contains(text(),'Opportunities')]    ${Delay30}
+    Run Keyword If    ${status}==False    Fail    After click on Cancel button application is not navigating to Opportunity page.
+    Run Keyword If    ${status}    Set Test Message    Oppotunity is not created when we click on cancel button.
+    Return From Keyword If    ${status}
+    ${createOpportunityStatus}    Run Keyword If    ${saveStatus}    Wait For Element Visible    //div[@class='moduleTitle']/h2[contains(text(),'${text}')]    ${Delay30}
+    Run Keyword Unless    ${createOpportunityStatus}    Fail    Oppurtunity is not created.
+    Comment    Validate Create Oppurtunity Status    CO_TD_01
+    [Return]    ${createOpportunityStatus}
+
+Validate Create Opportunity
+    ${value}    Get Text From Required Page
+    ${value}    Set Variable    ${value.lower()}
+    ${status}    Navigate To Inner Menu Of Main Menu    Sales    Opportunities
+    Run Keyword If    ${status}==False    Fail    ${errorMessage}
+    Return From Keyword If    ${status}==False    ${status}
+    ${status}    Quick Filter    ${value}
+    Run Keyword If    ${status}==False    Fail    ${errorMessage}
+    Return From Keyword If    ${status}==False    ${status}
+    ${text}    Selenium2Library.Get Text    ${label.common.Name}
+    ${text}    Set Variable    ${text.lower()}
+    ${status}    String Should Contain    ${text}    ${value}
+    ${errorMessage}    Set Variable If    ${status}==False    Mismatch the Created Contact.
+    Run Keyword If    ${status}==False    Set Global Variable    ${errorMessage}    ${errorMessage}
+    Run Keyword If    ${status}==False    Fail    Created opportunity is not displayed in Leads Page.Error Message::${errorMessage}
+    [Return]    ${status}
+
+Validate Create Oppurtunity Status
+    [Arguments]    ${TestCaseID}
+    ${CreateOppurtunity}    Get Ms Excel Row Values Into Dictionary Based On Key    ${testDataFolderPath}/SuiteCRMWorkflows.xls    ${TestCaseID}    Create Opportunity
+    ${save}    Get From Dictionary    ${CreateOppurtunity}    Save
+    ${cancel}    Get From Dictionary    ${CreateOppurtunity}    Cancel
+    ${expectedTCStatusl}    Get From Dictionary    ${CreateOppurtunity}    Expected Result
+    ${expectedTCStatusl}    Set Variable    ${expectedTCStatusl.lower()}
+    Run Keyword If    '${save.lower()}'=='y' and ${status}==False and '${expectedTCStatusl}'=='fail'    Set Test Message    Create Oppurtunity Failed.Error Message::${errorMessage}
+    Run Keyword If    '${save.lower()}'=='y' and ${status}==False and '${expectedTCStatusl}'=='pass'    Fail    Create \ Oppurtunity Failed.Error Message::${errorMessage}
+    Run Keyword If    '${cancel.lower()}'=='y' and ${status}==True and '${expectedTCStatusl}'=='fail'    Fail    Oppurtunity is Created.
+    Run Keyword If    '${save.lower()}'=='n' and ${status}==True and '${expectedTCStatusl}'=='fail'    Fail    Oppurtunity is Created.
+    Run Keyword If    '${save.lower()}'=='n' and ${status}==False and '${expectedTCStatusl}'=='fail'    Set Test Message    Oppurtunity is Created.
+    Run Keyword If    '${cancel.lower()}'=='n' and '${save.lower()}'=='n' and ${status}==True    Fail    Oppurtunity is Created after click on Cancel button.Error Message::${errorMessage}

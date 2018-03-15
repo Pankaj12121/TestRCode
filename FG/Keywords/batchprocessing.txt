@@ -1,0 +1,966 @@
+*** Settings ***
+Resource          super.txt
+
+*** Keywords ***
+Wait For Screen and Enter Parameters
+    [Arguments]    ${ScreenName}    ${Parameters}
+    ${KWStatus}    Set Variable    False
+    Return From Keyword If    '${ScreenName}'=='NA'    True
+    ${ScreenStatus}    Wait For Text    ${ScreenName}    ${TimeOut}
+    Run Keyword If    ${ScreenStatus}==False    Return From Keyword    False
+    Run Keyword If    '${Parameters}'=='NA'    Press Key    [enter]
+    Run Keyword If    '${Parameters}'=='NA'    Return From Keyword    True
+    Enter Details based on Field Name And Parameter    ${Parameters}
+    Press Key    [enter]
+    ${BatchRunningStatus}    Wait For Text    Schedule Submission Submenu    5
+    ${KWStatus}    Set Variable    ${BatchRunningStatus}
+    [Return]    ${KWStatus}
+
+Enter Details based on Field Name And Parameter
+    [Arguments]    ${Params}
+    ${tempList}    Split String    ${Params}    |
+    Remove Values From List    ${tempList}    ${EMPTY}
+    ${iSize}    Get Length    ${tempList}
+    : FOR    ${Index}    IN RANGE    0    ${iSize}
+    \    ${FieldParameters}    Split String    @{tempList}[${Index}]    :
+    \    ${DatCheck}    Get Time Format In Script    @{FieldParameters}[1]
+    \    Enter Text By Field Name    @{FieldParameters}[0]    ${DatCheck}
+    \    Sleep    1s
+
+Get Status of The Executed Batch
+    [Arguments]    ${BatchName}    ${TimeOut}
+    ${batchExistenceStatus}    Wait For Text    ${BatchName}
+    Capture Screenshot
+    Press Key    [PF5]
+    Return From Keyword If    ${batchExistenceStatus}==False    NA
+    : FOR    ${rowIndex}    IN RANGE    0    ${TimeOut}
+    \    ${TesxtStatus}    Wait For Text    ${BatchName}
+    \    ${batchStatus}    Get Value By Field Name    ${BatchName}    -2
+    \    Capture Screenshot
+    \    Run Keyword If    '${batchStatus}'=='None'    Check For Display Messages in Status    Work with Submitted Schedules
+    \    ${batchStatus}    Get Value By Field Name    ${BatchName}    -2
+    \    Capture Screenshot
+    \    comment    ${batchStatus}    Set Variable    ${batchStatus.strip()}
+    \    Run Keyword If    '${batchStatus}'=='Started'    Press Key    [PF5]
+    \    Run Keyword If    '${batchStatus}'=='Started'    Sleep    3s
+    \    Run Keyword If    '${batchStatus}'=='Started'    Continue For Loop
+    \    Run Keyword If    '${batchStatus}'!='Started'    Exit For Loop
+    ${batchStatus}    Get Value By Field Name    ${BatchName}    -2
+    ${FinalStatus}    Set Variable    ${batchStatus}
+    Comment    ${FinalStatus}    Set Variable    ${batchStatus.strip()}
+    [Return]    ${FinalStatus}
+
+Navigate To Screen
+    [Arguments]    ${ScreenName}
+    : FOR    ${iIndex}    IN RANGE    0    10
+    \    ${bStatus}    Wait For Text    ${ScreenName}
+    \    Return From Keyword If    ${bStatus}==True    ${bStatus}
+    \    Press Key    [PF3]
+    [Return]    ${KWStatus}
+
+Check For Display Messages
+    [Arguments]    ${ScreenName}
+    ${Bstatus}    Wait For Text    Display Messages
+    Run Keyword If    ${Bstatus}==False    Press Key    [PF3]
+    Return From Keyword If    ${Bstatus}==False    True
+    : FOR    ${iIndex}    IN RANGE    0    30
+    \    Sleep    2s
+    \    ${bStatus}    Wait For Text    ${ScreenName}
+    \    Run Keyword If    ${bStatus}==True    Exit For Loop
+    \    Press Key    [PF3]
+    ${KWStatus}    Set Variable    True
+    [Return]    ${KWStatus}
+
+Check For Display Messages in Status
+    [Arguments]    ${ScreenName}
+    ${Bstatus}    Wait For Text    Display Messages
+    Run Keyword If    ${Bstatus}==False    Press Key    [PF3]
+    Return From Keyword If    ${Bstatus}==False    True
+    : FOR    ${iIndex}    IN RANGE    0    30
+    \    Sleep    2s
+    \    ${bStatus}    Wait For Text    ${ScreenName}
+    \    Run Keyword If    ${bStatus}==True    Exit For Loop
+    \    Press Key    [Enter]
+    ${KWStatus}    Set Variable    True
+    [Return]    ${KWStatus}
+
+Schedule Multiple Batches
+    [Arguments]    ${Batches}    ${EffDates}    ${ScreenNames}    ${Parameters}
+    ${KWStatus}    Set Variable    False
+    ${ScheduleBatchScreenStatus}    Wait For Text    Schedule Submission Submenu    ${TimeOut}
+    Run Keyword If    ${ScheduleBatchScreenStatus}==False    Return From Keyword    False
+    ${BatchesName}    Split String    ${Batches}    $
+    ${EffDates}    Split String    ${EffDates}    |
+    ${ScreeNames}    Split String    ${ScreenNames}    $
+    ${Parameters}    Split String    ${Parameters}    $
+    ${Isize}    Get Length    ${BatchesName}
+    : FOR    ${iIndex}    IN RANGE    0    ${Isize}
+    \    Enter Text By Field Name    Select    @{BatchesName}[${iIndex}]
+    \    ${DatCheck}    Get Time Format In Script    @{EffDates}[${iIndex}]
+    \    Enter Text By Field Name    Effective Date    ${DatCheck}
+    \    Press Key    [enter]
+    \    ${ExecuteStatus}    Wait For Screen and Enter Parameters    @{ScreeNames}[${iIndex}]    @{Parameters}[${iIndex}]
+    \    Run Keyword If    ${ExecuteStatus}==False    Exit For Loop
+    \    Sleep    3s
+    ${KWStatus}    Set Variable    ${ExecuteStatus}
+    [Return]    ${KWStatus}
+
+Get Status of Executed Batches
+    [Arguments]    ${batchesList}    ${TimeOut}
+    Press Key    [PF3]
+    Wait For Text    W/W Submitted Schedules
+    Select Menu Item    W/W Submitted Schedules
+    Wait For Text    Schedule Maintenance Processing
+    Press Key    [Enter]
+    Wait For Text    Work with Submitted Schedules
+    Press Key    [PF5]
+    ${BatchesName}    Split String    ${batchesList}    $
+    ${Isize}    Get Length    ${BatchesName}
+    ${batchStatuses}    Create List
+    : FOR    ${iIndex}    IN RANGE    0    ${Isize}
+    \    ${Status}    Get Status of The Executed Batch    @{BatchesName}[${iIndex}]    ${TimeOut}
+    \    Append To List    ${batchStatuses}    ${Status}
+    [Return]    ${BatchStatuses}
+
+Batch Member Enrollment status
+    Wait For Text    Batch member enrollment
+    Enter Text By Field Name    Input file    N
+    Enter Text By Field Name    Update database    Y
+    Enter Text By Field Name    Issue policy    N
+    Enter Text By Field Name    Update Full List    N
+    Press Key    [Enter]
+
+Macro
+    [Arguments]    ${fliepath}    ${sheet_name}
+    ${rows}    ${cols}    Get Excel No Of Rows And Cols    ${fliepath}
+    Run Keyword If    '${rows}' == 'None'    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Getting No of rows from generated macro excel    False    ${cols}
+    Run Keyword If    '${rows}' == 'None'    Fail and Capture ScreenShot    ${cols}
+    ${macro_default_header_rows_count}    Convert To Integer    ${macro_default_header_rows_count}
+    ${records_count}    Evaluate    ${rows}-${macro_default_header_rows_count}
+    Log    ${records_count}
+    Run Keyword And Ignore Error    Run Macro    ${fliepath}    copy
+    Sleep    6s
+    ${text}    AutoItLibrary.Win Get Text    Microsoft Excel
+    ${status}    Run Keyword And Return Status    Should Contain    ${text}    Total Records processed
+    Run Keyword If    ${status} != True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Validating Text message in Microsoft Excel popup after running macro    False    'Total Records processed' text is not visible in the Microsoft Excel popup after running the macro
+    Run Keyword If    ${status} != True    Fail and Capture ScreenShot    'Total Records processed' text is not visible in the Microsoft Excel popup after running the macro
+    ${list}    String.Split String    ${text}    \n
+    ${totalNoOfRecords}    Set Variable    ${list[4]}
+    ${recordsList}    Split String    ${totalNoOfRecords}    :
+    ${count}    Set Variable    ${recordsList[1]}
+    ${count}    String.Strip String    ${count}
+    ${count}    Convert To Integer    ${count}
+    AutoItLibrary.Win Close    Microsoft Excel
+    Process Close    EXCEL.EXE
+    Sleep    3s
+    ${status}    Run Keyword And Return Status    Should Be Equal As Integers    ${records_count}    ${count}
+    Run Keyword If    ${status} != True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Validating records processed in macro run    False    Records count in macro file is ${records_count}, not matching with the records processed count ${count} after macro run
+    [Return]    ${count}
+
+SpoolFiles
+    [Arguments]    ${scheduleName}    ${spoolfilename}    ${success_message_in_spool_file}    ${sheet_name}    ${total_mem_success_msg}    ${uploadedRecordsCount}
+    ...    ${schedule_number}
+    Navigate To Screen    Batch Processing
+    ${subSchedule}    Wait For Text    W/W Submitted Schedules    ${TimeOut}
+    Run Keyword If    ${subSchedule}!=True    Fail and Capture ScreenShot    W/W Submitted Schedules sub menu screen is not visible
+    Run Keyword If    ${subSchedule}    Select Menu Item    W/W Submitted Schedules
+    ${scheduleMP}    Wait For Text    Schedule Maintenance Processing    ${TimeOut}
+    Run Keyword If    ${scheduleMP} != True    Fail and Capture ScreenShot    Schedule Maintenance Processing screen is not visible
+    Run Keyword If    ${scheduleMP}    Schedule Maintenance Processing Batch    ${sheet_name}
+    ${WorkSS}    Wait For Text    Work with Submitted Schedules    ${TimeOut}
+    Run Keyword If    ${WorkSS} != True    Fail and Capture ScreenShot    Work with Submitted Schedules screen is not visible
+    ScheduleNumbers    ${scheduleName}    ${spoolfilename}
+    ${spool_records_status}    ${list_of_records}    ${err_msg}    Insurance.Spool Files Message Validation    ${uploadedRecordsCount}    ${success_message_in_spool_file}    ${total_mem_success_msg}
+    ${status}    ${err_msg}    Verify And Write Error Records To Log    ${spool_records_status}    ${list_of_records}    ${err_msg}    ${log_folder}
+    ...    ${error_log_file_path}    ${policyNumber}    ${sheet_name}    ${schedule_number}
+    Run Keyword If    '${status}' == 'Fail'    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Spool File Verification    False    ${err_msg}    ${schedule_number}
+    Run Keyword If    '${status}' == 'Fail'    Fail and Capture ScreenShot    ${err_msg}
+
+DeletionProcess
+    [Arguments]    ${filepath}    ${policyNumber}    ${folder_path}
+    Process Close    EXCEL.EXE
+    ${sheet_name}    Set Variable    Deletion
+    ${success_message_in_spool_file}    Set Variable    List of members successfully terminated
+    ${total_mem_success_msg}    Set Variable    Total number of members terminated :
+    ${macroRunCount}    Macro    ${filepath}    ${sheet_name}
+    ${uploadedRecordsCount}    FileUpload    ${folder_path}    ${libraryOrFileName}    ${sheet_name}
+    ${uploadedRecordsCount}    Convert To Integer    ${uploadedRecordsCount}
+    ${status}    Run Keyword And Return Status    Should Be Equal As Integers    ${uploadedRecordsCount}    ${macroRunCount}
+    Run Keyword If    '${status}' != 'True'    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Validating Upload DTT record count    ${status}    macro file upload count: ${macroRunCount}, \ is not matching with dtt file upload count: ${uploadedRecordsCount}
+    Open AS400 Console    ${GlobalConnFilePath}    ${sheet_name}
+    ${loginStatus}    Login Into Application    ${GlobalUserName}    ${GlobalPassword}
+    Run Keyword If    ${loginStatus}==False    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Login to application    ${status}    Failed to login to the application
+    Run Keyword If    ${loginStatus}==False    Fail and Capture ScreenShot    Login into application was failed. Error Details: ${messageDetails}
+    ${schedule_number}    BatchSchedulesubmission    ${sheet_name}
+    SpoolFiles    G5MBRDATAI    RR9JP    ${success_message_in_spool_file}    ${sheet_name}    ${total_mem_success_msg}    ${uploadedRecordsCount}
+    ...    ${schedule_number}
+    Navigate To Screen    System Master Menu
+    ${SystemMasterMenuScreenStatus}    Wait For Text    System Master Menu    ${TimeOut}
+    Run Keyword If    '${SystemMasterMenuScreenStatus}'=='True'    Select Menu Item    Group Policy Admin.
+    ${issuepolicystatus}    Run Keyword And Return Status    IssuePolicyallTrans    ${policyNumber}    F    ${sheet_name}
+    Run Keyword If    ${issuepolicystatus}!=True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Issue Policy    ${status}    Unable to Issue the Policy
+    Run Keyword If    ${issuepolicystatus}!=True    Fail and Capture ScreenShot    Unable to Issue the Policy
+    ${verifypolicystatus}    Run Keyword And Return Status    Verifying the Issue Policy Status    ${policyNumber}    ${sheet_name}
+    Run Keyword If    ${verifypolicystatus} != True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Verify Policy Issue status    ${verifypolicystatus}    policy issue status is not as IF In Force
+    Run Keyword If    ${verifypolicystatus}!=True    Fail and Capture ScreenShot    policy issue status is not as IF In Force
+    [Teardown]    Close AS400 Console    ${policyNumber}    ${sheet_name}
+
+AdditionProcess
+    [Arguments]    ${filepath}    ${policyNumber}    ${Action}    ${dtt_upload_folder_path}    ${sheet_name}    ${success_message_in_spool_file}
+    ...    ${total_mem_success_msg}
+    Process Close    EXCEL.EXE
+    ${macroRunCount}    Macro    ${filepath}    ${sheet_name}
+    ${uploadedRecordsCount}    FileUpload    ${dtt_upload_folder_path}    ${libraryOrFileName}    ${sheet_name}
+    ${uploadedRecordsCount}    Convert To Integer    ${uploadedRecordsCount}
+    ${status}    Run Keyword And Return Status    Should Be Equal As Integers    ${uploadedRecordsCount}    ${macroRunCount}
+    Run Keyword If    '${status}' != 'True'    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Validating Uplod DTT record count    ${status}    macro file upload count: ${macroRunCount}, \ is not matching with dtt file upload count: ${uploadedRecordsCount}
+    Open AS400 Console    ${GlobalConnFilePath}    ${sheet_name}
+    ${loginStatus}    Login Into Application    ${GlobalUserName}    ${GlobalPassword}
+    Run Keyword If    ${loginStatus}==False    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Login to application    ${status}    Failed to login to the application
+    Run Keyword If    ${loginStatus}==False    Fail and Capture ScreenShot    Login into application was failed.Error Details: ${messageDetails}
+    ${schedule_number}    BatchSchedulesubmission    ${sheet_name}
+    SpoolFiles    G5MBRDATAI    RR9JP    ${success_message_in_spool_file}    ${sheet_name}    ${total_mem_success_msg}    ${uploadedRecordsCount}
+    ...    ${schedule_number}
+    Navigate To Screen    System Master Menu
+    ${SystemMasterMenuScreenStatus}    Wait For Text    System Master Menu    ${TimeOut}
+    Run Keyword If    '${SystemMasterMenuScreenStatus}'=='True'    Select Menu Item    Group Policy Admin.
+    ${runTrailbill}    Run Keyword And Return Status    IssuePolicyallTrans    ${policyNumber}    G    ${sheet_name}
+    Run Keyword If    ${runTrailbill} != True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Validating Issue Trial Bill    False    Failed to Run Issue Trial Bill
+    Run Keyword If    ${runTrailbill} != True    Fail and Capture ScreenShot    Unable to Run Trail Bill for given policy ${policyno}
+    ${system}    Wait For Text    System Master Menu    ${TimeOut}
+    Select Menu Item    Batch Processing
+    ${subSchedule}    Wait For Text    W/W Submitted Schedules    ${TimeOut}
+    Run Keyword If    ${subSchedule}    Select Menu Item    W/W Submitted Schedules
+    ${scheduleMP}    Wait For Text    Schedule Maintenance Processing    ${TimeOut}
+    ${batchmaintenace}    Run Keyword If    ${scheduleMP}    Run Keyword And Return Status    Schedule Maintenance Processing Batch    ${sheet_name}
+    Run Keyword If    ${batchmaintenace} != True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Validating Batch Schedule submission for Trial Bill    False    Failed to schedule Trial Bill Batch submission
+    Run Keyword If    ${batchmaintenace} != True    Fail and Capture ScreenShot    Schedule maintenance processing is not done
+    ${dispayspoolfile}    Run Keyword If    ${batchmaintenace}    Run Keyword And Return Status    Display Spool File For Trail Balance
+    Run Keyword If    ${dispayspoolfile}!=True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Validating Display Spool File for Trail Balance    False    Display Spool File for Trail Balance screen is not available
+    Run Keyword If    ${dispayspoolfile}!=True    Fail and Capture ScreenShot    Display Spool File For Trail Balance screen is not available
+    ${getpremiunamount}    Get Premium amount    ${filepath}
+    Log Dictionary    ${getpremiunamount}
+    ${navigatebalance}    Run Keyword If    ${dispayspoolfile}    Run Keyword And Return Status    Navigate Subsidiary Ledger Balance Enquiry    ${policyNumber}
+    Run Keyword If    ${navigatebalance}!=True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Validating Navigate Subsidiary Ledger Balance Enquiry    False    Failed to Navigate Subsidiary Ledger Balance Enquiry Sub Screen
+    Run Keyword If    ${navigatebalance}!=True    Fail and Capture ScreenShot    Unable Navigate Subsidiary Ledger Balance Enquiry screen
+    ${verifypreAmount}    Run Keyword If    ${navigatebalance}    Run Keyword And Return Status    Verify Premium amount with Float amount    ${getpremiunamount}    ${policyNumber}
+    ...    ${sheet_name}
+    Run Keyword If    ${verifypreAmount}!=True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Premium Amount Validation    False    Float amount is not sufficient for Premium Amount
+    Run Keyword If    ${verifypreAmount}!=True    Fail and Capture ScreenShot    Premium Amount validation is failed
+    ${issuepolicy}    Navigate To Screen    System Master Menu
+    Run Keyword If    ${issuepolicy}!=True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Navigating to screen System master menu screen    False    Unable to Navigate to System master menu screen
+    Run Keyword If    ${issuepolicy}!=True    Fail and Capture ScreenShot    Unable to Navigate to System master menu screen
+    ${waitSytemmaster}    Wait For Text    System Master Menu    ${TimeOut}
+    Run Keyword If    ${waitSytemmaster}    Select Menu Item    Group Policy Admin.
+    ${issuepolicystatus}    Run Keyword And Return Status    IssuePolicyallTrans    ${policyNumber}    F    ${sheet_name}
+    Run Keyword If    ${issuepolicystatus}!=True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Issue Policy    False    Unable to Issue the Policy
+    Run Keyword If    ${issuepolicystatus}!=True    Fail and Capture ScreenShot    Unable to Issue the Policy
+    ${verifypolicystatus}    Run Keyword And Return Status    Verifying the Issue Policy Status    ${policyNumber}    ${sheet_name}
+    Run Keyword If    ${verifypolicystatus}!=True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Verify Issue policy status    False    policy issue status is not as IF In Force
+    Run Keyword If    ${verifypolicystatus}!=True    Fail and Capture ScreenShot    policy issue status is not as IF In Force
+    [Teardown]    Close AS400 Console    ${policyNumber}    ${sheet_name}
+
+ScheduleNumbers
+    [Arguments]    ${sScheduleName}    ${spoolfileCode}
+    Comment    ${sScheduleName}    Set Variable    ${scheduleName}
+    ${status}    Set Variable    Completed
+    : FOR    ${rowIndex}    IN RANGE    9    22
+    \    ${schedule}    Get Value By Row And Column    ${rowIndex}    32    10
+    \    ${getstatus}    Get Value By Row And Column    ${rowIndex}    16    9
+    \    ${sbreak}    Run Keyword If    '${schedule.strip()}'=='${sScheduleName}' and '${status}'=='${getstatus.strip()}'    Run Keyword And Return Status    Enter Text    8
+    \    sleep    2s
+    \    Run Keyword If    '${sbreak}'!='True'    Press Key    [TAB]
+    \    Exit For Loop If    '${sbreak}'=='True'
+    Run Keyword If    '${sbreak}'=='True'    Press Key    [Enter]
+    Sleep    3s
+    ${spoofFileScreenStatus}    Wait For Text    Work with Spooled Files
+    : FOR    ${rowIndex}    IN RANGE    9    22
+    \    ${Value1}    Get Value By Row And Column    ${rowIndex}    007    7
+    \    ${ssbreak}    Run Keyword If    '${Value1.strip()}'=='${spoolfileCode}'    Run Keyword And Return Status    Enter Text    5
+    \    sleep    2s
+    \    Run Keyword If    '${ssbreak}'!='True'    Press Key    [TAB]
+    \    Exit For Loop If    '${ssbreak}'=='True'
+    Run Keyword If    '${ssbreak}'=='True'    Press Key    [Enter]
+    ${DisplaySpooledFileScreenStatus}    Wait For Text    Display Spooled File
+    Comment    Run Keyword If    '${DisplaySpooledFileScreenStatus}'=='True'    Enter Text By Field Name    Control    B
+    Comment    Press Key    [Enter]
+    sleep    3
+
+IssuePolicyallTrans
+    [Arguments]    ${policyNumber}    ${Action}    ${sheet_name}
+    ${bStatus}    Wait For Text    Major Alterations    ${TimeOut}
+    Run Keyword If    ${bStatus}!=True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Issue Policy Transaction    False    Major Alterations text is not visible in screen
+    Run Keyword If    ${bStatus}!=True    Fail and Capture ScreenShot    "Policy Administration contd" window is not opened.
+    ${selectmenu}    Select Menu Item    Major Alterations
+    Run Keyword If    ${selectmenu}    Press Key    [Enter]
+    Run Keyword If    ${selectmenu}!=True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Issue Policy Transaction    False    Cannot able to select the Major Alterations menu
+    Run Keyword If    ${selectmenu}!=True    Fail and Capture ScreenShot    Major Alternation menu screen is not selected
+    ${bStatus}    Wait For Text    Major Alterations - Sub Menu    ${TimeOut}
+    Run Keyword If    ${bStatus}!=True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Issue Policy Transaction    False    "Major Alterations - Sub Menu" window is not opened.
+    Run Keyword If    ${bStatus}!=True    Fail and Capture ScreenShot    "Major Alterations - Sub Menu" window is not opened.
+    ${bStatus}    Wait For Text    Policy Number    ${TimeOut}
+    Run Keyword If    ${bStatus}!=True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Issue Policy Transaction    False    "Policy Number" text field is not available.
+    Run Keyword If    ${bStatus}!=True    Fail and Capture ScreenShot    "Policy Number" text field is not available.
+    sleep    3s
+    Run Keyword If    ${bStatus}    Enter Text By Field Name    Policy Number    ${policyNumber}
+    Run Keyword If    ${bStatus}    sleep    3s
+    Comment    Press Key    [TAB]
+    Comment    Press Key    [TAB]
+    Run Keyword If    ${bStatus}    Enter Text By Field Name    Pre-validate (Y/N)    Y
+    Run Keyword If    ${bStatus}    Enter Text By Field Name    Action    ${Action}
+    Run Keyword If    ${bStatus}    Press Key    [Enter]
+    ${preIssueProdCountStatus}    Wait For Text    Pre-Issue Product Count    ${TimeOut}
+    Run Keyword If    '${preIssueProdCountStatus}'=='True'    Press Key    [Enter]
+    Run Keyword If    ${preIssueProdCountStatus}!=True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Issue Policy Transaction    False    Pre-Issue Product Count screen is not available
+    Run Keyword If    ${preIssueProdCountStatus}!=True    Fail and Capture ScreenShot    Pre-Issue Product Count screen is not available
+    ${Pre-issueValidationStatus}    Wait For Text    Pre-issue Validation    ${TimeOut}
+    Run Keyword If    '${Pre-issueValidationStatus}'=='True'    Press Key    [Enter]
+    Run Keyword If    ${Pre-issueValidationStatus}!=True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Issue Policy Transaction    False    Pre-issue Validation screen is not available
+    Run Keyword If    ${Pre-issueValidationStatus}!=True    Fail and Capture ScreenShot    Pre-issue Validation screen is not available
+    ${issueConfirmationStatus}    Wait For Text    Issue Confirmation    ${TimeOut}
+    Run Keyword If    ${issueConfirmationStatus}!=True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Issue Policy Transaction    False    Issue Confirmation screen is not available
+    Run Keyword If    ${issueConfirmationStatus}!=True    Fail and Capture ScreenShot    Issue Confirmation screen is not available
+    Run Keyword If    '${issueConfirmationStatus}'=='True'    Press Key    [Enter]
+    ${displayMessagesStatus}    Wait For Text    Display Messages    ${TimeOutDisplay}
+    Run Keyword If    ${displayMessagesStatus}!=True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Issue Policy Transaction    False    Display Message is not available within 5min
+    Run Keyword If    ${displayMessagesStatus}!=True    Fail and Capture ScreenShot    Display Message is not available within 5min
+    Run Keyword If    ${displayMessagesStatus}    Press Key    [Enter]
+    Run Keyword If    '${issueConfirmationStatus}'=='True'    Get Messages
+    Navigate To Screen    System Master Menu
+
+Verifying the Issue Policy Status
+    [Arguments]    ${policyNumber}    ${sheet_name}
+    ${SystemMasterMenuScreenStatus}    Wait For Text    System Master Menu    ${TimeOut}
+    BuiltIn.Sleep    3
+    Run Keyword If    '${SystemMasterMenuScreenStatus}'=='True'    Select Menu Item    Group Policy Admin Enq
+    Sleep    3
+    ${PolicyAdminEnquiryStatus}    Wait For Text    Policy Administration Enquiry
+    Run Keyword If    ${PolicyAdminEnquiryStatus}!=True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Verify Issue Policy Status    False    Policy Administration Enquiry Screen is not Available
+    Run Keyword If    ${PolicyAdminEnquiryStatus}!=True    Fail and Capture ScreenShot    Policy Administration Enquiry Screen is not Available
+    Run Keyword If    '${PolicyAdminEnquiryStatus}'=='True'    Press Key    [Enter]
+    ${Inquiry-SubMenuStatus}    Wait For Text    Inquiry - Sub Menu    ${TimeOut}
+    Run Keyword If    '${Inquiry-SubMenuStatus}'=='True'    Enter Text By Field Name    Policy Number    ${policyNumber}
+    Run Keyword If    '${Inquiry-SubMenuStatus}'=='True'    Press Key    [TAB]
+    Run Keyword If    '${Inquiry-SubMenuStatus}'=='True'    Press Key    [TAB]
+    Run Keyword If    '${Inquiry-SubMenuStatus}'=='True'    Enter Text    A
+    Run Keyword If    '${Inquiry-SubMenuStatus}'=='True'    Press Key    [Enter]
+    ${PolicyHeaderinquery}    Wait For Text    Policy Header    ${TimeOut}
+    Run Keyword If    ${PolicyHeaderinquery}!=True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Verify Issue Policy Status    False    Policy Header Screen is not available
+    Run Keyword If    ${PolicyHeaderinquery}!=True    Fail and Capture ScreenShot    Policy Header Screen is not available
+    ${issueStatusMsg}    Get Value By Row And Column    04    021    15
+    ${issueStatusMsg}    Set Variable    ${issueStatusMsg.strip()}
+    Log    ${issueStatusMsg}
+    ${actualIssueStatusMsg}    Set Variable    IF In Force
+    ${policystatus}    Run Keyword And Return Status    Should Contain    ${issueStatusMsg}    ${actualIssueStatusMsg}    Policy is not issued.
+    ${verifypolicystatus}    Set Variable    ${policystatus}
+    Write Policy Status To Excel Sheet    ${EXECDIR}\\TestData\\policyStatus    ${policyNumber}    ${sheet_name}    False    ${issueStatusMsg}    ${time_stamp}
+    Run Keyword If    ${policystatus} == False    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Verify Issue Policy Status    False    ${issueStatusMsg} message is available in policy status IF in Force not available
+    Run Keyword If    ${policystatus} == False    Fail and Capture ScreenShot    ${issueStatusMsg} message is available in policy status IF in Force not available
+
+ExtractingTheBillsUsingDTF
+    [Arguments]    ${BillNumber}    ${timestampfolder}
+    Comment    RunMacroForDeletion
+    ${GlobalFileUploadpath}    Set Variable    ${EXECDIR}\\Connections\\Bill.dtf
+    ${BillGeneratedFile}    Set Variable    ${timestampfolder}\\${BillNumber}.xls
+    Run Keyword And Ignore Error    Run Upload    ${GlobalFileUploadpath}
+    ${FileUpload}    AutoItLibrary.Win Active    Data Transfer from IBM i - Bill.dtf
+    Log    ${FileUpload}
+    sleep    3s
+    Run Keyword If    ${FileUpload}==True    AutoItLibrary.Send    10.1.41.62
+    Run Keyword If    ${FileUpload}==True    AutoItLibrary.Send    {TAB}
+    Run Keyword If    ${FileUpload}==True    AutoItLibrary.Send    FGGACTDTA/BILLDT, FGGACTDTA/GMHD
+    sleep    3s
+    Run Keyword If    ${FileUpload}==True    AutoItLibrary.Send    {TAB}
+    Run Keyword If    ${FileUpload}==True    AutoItLibrary.Send    {TAB}
+    Run Keyword If    ${FileUpload}==True    AutoItLibrary.Send    {TAB}
+    Run Keyword If    ${FileUpload}==True    AutoItLibrary.Send    {TAB}
+    Run Keyword If    ${FileUpload}==True    AutoItLibrary.Send    {TAB}
+    sleep    3s
+    Run Keyword If    ${FileUpload}==True    AutoItLibrary.Send    ${BillGeneratedFile}
+    sleep    3s
+    Run Keyword If    ${FileUpload}==True    AutoItLibrary.Send    {ENTER}
+    ${status}    Run Keyword And Return Status    AutoItLibrary.Wait For Active Window    IBM i Access Data Transfer    Do you want to continue    3
+    Run Keyword If    ${status}    AutoItLibrary.Send    {ENTER}
+    ${popupStatus}    Run Keyword And Return Status    AutoItLibrary.Wait For Active Window    IBM i signon    \    20
+    Run Keyword If    ${popupStatus}==False    Return From Keyword    True
+    Run Keyword If    ${popupStatus}==True    AutoItLibrary.Send    ${GlobalUserName}
+    Run Keyword If    ${popupStatus}==True    AutoItLibrary.Send    {TAB}
+    Run Keyword If    ${popupStatus}==True    Sleep    1s
+    Run Keyword If    ${popupStatus}==True    AutoItLibrary.Send    ${GlobalPassword}
+    Run Keyword If    ${popupStatus}==True    AutoItLibrary.Send    {TAB}
+    Run Keyword If    ${popupStatus}==True    AutoItLibrary.Send    {ENTER}
+    ${popupStatus1}    Run Keyword And Return Status    AutoItLibrary.Wait For Active Window    Transfer to File Complete    \    20
+    Run Keyword If    ${popupStatus1}==False    Return From Keyword    True
+    sleep    2s
+    ${NoRecordUpload}    AutoItLibrary.Win Get Text    Transfer to File Complete
+    Comment    Run Keyword If    ${popupStatus1}==True    ${NoRecordUpload}
+    Run Keyword If    ${popupStatus1}==True    AutoItLibrary.Send    {Enter}
+    AutoItLibrary.Win Close    Data Transfer from IBM i - Bill.dtf
+    Sleep    10s
+    Bill Extrct With Transaction Name    ${BillGeneratedFile}
+
+ExtractBillNumber
+    [Arguments]    ${policyNumber}    ${sheet_name}
+    Comment    ${messageDetails}    Get Messages
+    Comment    Select Menu Item    Group Policy Admin Enq
+    Comment    ${status}    Wait For Text    Policy Administration Enquiry
+    Comment    Run Keyword If    ${status}==True    Select Menu Item    Policy Enquiry/2
+    ${status}    Wait For Text    Policy Enquiry Sub-Menu    ${TimeOut}
+    Run Keyword If    ${status} == False    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    ${EMPTY}    False    Policy Enquiry Sub-Menu Screen is not available
+    Run Keyword If    ${status}!=True    Fail and Capture ScreenShot    Policy Enquiry Sub-Menu Screen is not available
+    Run Keyword If    ${status}==True    Press Key    [Enter]
+    Sleep    20
+    ${status}    Wait For Text    Work With All Policies    ${TimeOut}
+    Comment    Sleep    3s
+    Run Keyword If    ${status} == False    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    ${EMPTY}    False    Work With All Policies Screen is not available
+    Run Keyword If    ${status}!=True    Fail and Capture ScreenShot    Work With All Policies Screen is not available
+    Run Keyword If    ${status}==True    Enter Text    ${policyNumber}
+    Run Keyword If    ${status}==True    Press Key    [Enter]
+    Sleep    3s
+    ${requiredPolicyNumber}    Get Value By Row And Column    10    007    8
+    ${status}    Evaluate    '${requiredPolicyNumber}'=='${policyNumber}'
+    Log    ${status}
+    Run Keyword If    ${status} != True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    ${EMPTY}    False    Policy Number is not available in Bill Enquiry screen
+    Run Keyword If    ${status} != True    Fail and Capture ScreenShot    Policy Number is not available in Bill Enquiry screen
+    Run Keyword If    ${status} == True    Press Key    [Tab]
+    Run Keyword If    ${status} == True    Enter Text    12
+    Sleep    3s
+    Run Keyword If    ${status} == True    Press Key    [Enter]
+    sleep    5s
+    ${lastrowBillvlaueofnextpage}    Set Variable    No Value
+    : FOR    ${BillEnquiryPageNo}    IN RANGE    1    50
+    \    ${lastrowBillvlaue}    Get Value By Row And Column    16    008    5
+    \    ${lastrowBillvlaue}    Strip String    ${lastrowBillvlaue}
+    \    ${billNumber}    Run Keyword If    '${lastrowBillvlaue}'=='${EMPTY}'    Get Bill Numbers In Last Page
+    \    Return From Keyword If    '${billNumber}' != 'None' and '${billNumber}' != 'No Value'    ${billNumber}
+    \    Run Keyword If    '${billNumber}' == 'No Value'    Return From Keyword    ${lastrowBillvlaueofnextpage}
+    \    Return From Keyword If    '${lastrowBillvlaue}'=='${lastrowBillvlaueofnextpage}'    ${lastrowBillvlaueofnextpage}
+    \    Run Keyword If    '${lastrowBillvlaue}'!='${SPACE}'    Press Key    [Page Down]
+    \    sleep    3s
+    \    ${status}    Wait For Text    Billing Enquiry    ${TimeOut}
+    \    sleep    3s
+    \    Run Keyword If    ${status} != True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}
+    \    ...    ${sheet_name}    ${EMPTY}    False    Billing Enquiry is not available.
+    \    Run Keyword If    ${status} != True    Fail and Capture ScreenShot    Billing Enquiry is not available.
+    \    ${lastrowBillvlaueofnextpage}    Get Value By Row And Column    16    008    5
+    \    log    '${lastrowBillvlaueofnextpage}'
+    \    ${lastrowBillvlaueofnextpage}    Strip String    ${lastrowBillvlaueofnextpage}
+    \    Return From Keyword If    '${lastrowBillvlaue}'=='${lastrowBillvlaueofnextpage}'    ${lastrowBillvlaueofnextpage}
+    \    ${billNumber}    Run Keyword If    '${lastrowBillvlaueofnextpage}'=='${EMPTY}'    Get Bill Numbers In Last Page
+    \    Return From Keyword If    '${billNumber}' != 'No Value' and '${billNumber}' != 'None'    ${billNumber}
+    \    Run Keyword If    '${billNumber}' == 'No Value'    Return From Keyword    ${lastrowBillvlaue}
+    \    Press Key    [Page Down]
+    [Return]    ${billNumber}
+
+Get Bill Numbers In Last Page
+    ${last4throwBillvlaue}    Get Value By Row And Column    14    008    5
+    log    ${last4throwBillvlaue}
+    ${last4throwBillvlaue}    Strip String    ${last4throwBillvlaue}
+    Return From Keyword If    '${last4throwBillvlaue}'!='${EMPTY}'    ${last4throwBillvlaue}
+    ${last4throwBillvlaue}    Get Value By Row And Column    12    008    5
+    log    ${last4throwBillvlaue}
+    ${last4throwBillvlaue}    Strip String    ${last4throwBillvlaue}
+    Return From Keyword If    '${last4throwBillvlaue}'!='${EMPTY}'    ${last4throwBillvlaue}
+    ${last4throwBillvlaue}    Get Value By Row And Column    10    008    5
+    log    ${last4throwBillvlaue}
+    ${last4throwBillvlaue}    Strip String    ${last4throwBillvlaue}
+    Return From Keyword If    '${last4throwBillvlaue}'!='${EMPTY}'    ${last4throwBillvlaue}
+    ${last4throwBillvlaue}    Get Value By Row And Column    08    008    5
+    log    ${last4throwBillvlaue}
+    ${last4throwBillvlaue}    Strip String    ${last4throwBillvlaue}
+    Return From Keyword If    '${last4throwBillvlaue}'!='${EMPTY}'    ${last4throwBillvlaue}
+    ${last4throwBillvlaue}    Set Variable    No Value
+    Return From Keyword    ${last4throwBillvlaue}
+    [Return]    ${last4throwBillvlaue}
+
+ValidatingTheBillNumber
+    [Arguments]    ${BillExtCode}    ${BillNumber}
+    ${SystemMasterMenuScreenStatus}    Wait For Text    System Master Menu    ${TimeOut}
+    Run Keyword If    ${SystemMasterMenuScreenStatus} != True    Write Error Msg To Excel Billdata    ${log_folder}    ${error_log_file_path}    Verify System Master Menu Screen    ${SystemMasterMenuScreenStatus}
+    ...    System Master Menu Screen is not available
+    Run Keyword If    ${SystemMasterMenuScreenStatus} != True    Fail and Capture ScreenShot    System Master Menu Screen is not Available
+    Run Keyword If    '${SystemMasterMenuScreenStatus}'=='True'    Select Menu Item    Batch Processing
+    ${BatchProcessingStatus}    Wait For Text    Batch Processing    ${TimeOut}
+    Run Keyword If    ${BatchProcessingStatus}!= True    Write Error Msg To Excel Billdata    ${log_folder}    ${error_log_file_path}    Verify Batch Processing    ${BatchProcessingStatus}
+    ...    Batch ProcessingMenu Screen is not available
+    Run Keyword If    ${BatchProcessingStatus}!= True    Fail and Capture ScreenShot    Batch Processing Screen is not Available
+    Run Keyword If    '${BatchProcessingStatus}'=='True'    Press Key    [Enter]
+    ${ScheduleSubmissionSubmenuScreenStatus}    Wait For Text    Schedule Submission Submenu    ${TimeOut}
+    Run Keyword If    ${ScheduleSubmissionSubmenuScreenStatus}!= True    Write Error Msg To Excel Billdata    ${log_folder}    ${error_log_file_path}    Schedule Submission Submenu    ${ScheduleSubmissionSubmenuScreenStatus}
+    ...    Schedule Submission Submenu Screen is not Available
+    Run Keyword If    ${ScheduleSubmissionSubmenuScreenStatus}!= True    Fail and Capture ScreenShot    Schedule Submission Submenu Screen is not Available
+    Run Keyword If    '${ScheduleSubmissionSubmenuScreenStatus}'=='True'    Enter Text By Field Name    Select    ${BillExtCode}
+    Run Keyword If    '${ScheduleSubmissionSubmenuScreenStatus}' == 'True'    Press Key    [Enter]
+    Sleep    5s
+    Enter Text By Field Name    Bill No. :    ${BillNumber}
+    Press Key    [Enter]
+    ${DisplayMessagesStatus}    Wait For Text    Display Messages    ${TimeOutDisplay}
+    Run Keyword If    ${DisplayMessagesStatus} != True    Write Error Msg To Excel Billdata    ${log_folder}    ${error_log_file_path}    Display Messages    ${DisplayMessagesStatus}
+    ...    Display Messages Screen is not avaiable
+    Run Keyword If    ${DisplayMessagesStatus} != True    Fail and Capture ScreenShot    Display Messages Screen is not Avaliable
+    ${BillDetailsMsg}    Insurance.Get Value By Row And Column    08    001    100
+    ${BillDetailsMsg}    Set Variable    ${BillDetailsMsg.strip()}
+    Should Contain    ${BillDetailsMsg}    completed normally
+    Navigate To Screen    System Master Menu
+
+FileUpload
+    [Arguments]    ${dtt_upload_folder_path}    ${libraryOrFileName}    ${sheet_name}
+    Run Keyword And Ignore Error    Run Upload    ${GlobalFileUploadpath}
+    sleep    3s
+    ${FileUpload}    Run Keyword And Return Status    AutoItLibrary.Wait For Active Window    Data Transfer to IBM i - Upload.DTT    \    ${TimeOut}
+    Run Keyword If    ${FileUpload} != True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    DTT file upload    False    Data Transfer to IBM i - Upload.DTT window is not active within 3s
+    Run Keyword If    ${FileUpload} != True    Fail and Capture ScreenShot    Data Transfer to IBM i - Upload.DTT window is not active within 3s
+    Run Keyword If    ${FileUpload}==True    AutoItLibrary.Send    {SHIFTDOWN}
+    Run Keyword If    ${FileUpload}==True    AutoItLibrary.Send    {END}
+    Run Keyword If    ${FileUpload}==True    AutoItLibrary.Send    {BACKSPACE}
+    Run Keyword If    ${FileUpload}==True    AutoItLibrary.Send    {SHIFTUP}
+    Sleep    2s
+    Run Keyword If    ${FileUpload}==True    AutoItLibrary.Send    ${dtt_upload_folder_path}\\Upload.txt
+    Run Keyword If    ${FileUpload}==True    AutoItLibrary.Send    {TAB}
+    Run Keyword If    ${FileUpload}==True    AutoItLibrary.Send    {TAB}
+    Run Keyword If    ${FileUpload}==True    AutoItLibrary.Send    {TAB}
+    Run Keyword If    ${FileUpload}==True    AutoItLibrary.Send    ${libraryOrFileName}
+    sleep    4
+    Run Keyword If    ${FileUpload}==True    AutoItLibrary.Send    {Enter}
+    Sleep    5s
+    Run Keyword If    ${FileUpload}==True    AutoItLibrary.Send    {Enter}
+    Sleep    5s
+    ${status}    Run Keyword And Return Status    AutoItLibrary.Wait For Active Window    IBM i Access Data Transfer    Do you want to continue    3
+    Run Keyword If    ${status}    AutoItLibrary.Send    {ENTER}
+    ${popupStatus}    Run Keyword And Return Status    AutoItLibrary.Wait For Active Window    IBM i signon    \    20
+    Run Keyword If    ${popupStatus}==False    Return From Keyword    True
+    Run Keyword If    ${popupStatus}==True    AutoItLibrary.Send    ${GlobalUserName}
+    Run Keyword If    ${popupStatus}==True    AutoItLibrary.Send    {TAB}
+    Run Keyword If    ${popupStatus}==True    Sleep    1s
+    Run Keyword If    ${popupStatus}==True    AutoItLibrary.Send    ${GlobalPassword}
+    Run Keyword If    ${popupStatus}==True    AutoItLibrary.Send    {TAB}
+    Run Keyword If    ${popupStatus}==True    AutoItLibrary.Send    {ENTER}
+    ${popupStatus1}    Run Keyword And Return Status    AutoItLibrary.Wait For Active Window    Transfer to IBM i Complete    \    20
+    Run Keyword If    ${popupStatus1}==False    Return From Keyword    0
+    sleep    2s
+    ${recordsUploadedText}    AutoItLibrary.Win Get Text    Transfer to IBM i Complete
+    Log    ${recordsUploadedText}
+    ${list}    String.Split String    ${recordsUploadedText}    \n
+    Log List    ${list}
+    ${recordsCount}    Set Variable    ${list[1]}
+    ${recordsCount}    Convert To Integer    ${recordsCount}
+    Run Keyword If    ${popupStatus1}==True    AutoItLibrary.Send    {Enter}
+    sleep    2s
+    AutoItLibrary.Win Close    Data Transfer to IBM i - Upload.DTT
+    [Return]    ${recordsCount}
+
+TrailBill
+    [Arguments]    ${sScheduleName}    ${spoolfileCode}
+    Wait For Text    System Master Menu
+    Select Menu Item    Batch Processing
+    Wait For Text    W/W Submitted Schedules
+    Select Menu Item    W/W Submitted Schedules
+    ${scheduleMP}    Run Keyword And Return Status    Wait For Text    Schedule Maintenance Processing
+    Run Keyword If    ${scheduleMP}==True    Press Key    [Enter]
+    ${WorkSS}    Run Keyword And Return Status    Wait For Text    Work with Submitted Schedules
+    Comment    ${sScheduleName}    Set Variable    G5GTRIAL
+    Comment    ${status}    Set Variable    Completed
+    Comment    : FOR    ${rowIndex}    IN RANGE    9    22
+    Comment    \    ${schedule}    Get Value By Row And Column    ${rowIndex}    32    10
+    Comment    \    ${getstatus}    Get Value By Row And Column    ${rowIndex}    16    9
+    Comment    \    ${sbreak}    Run Keyword If    '${schedule.strip()}'=='${sScheduleName}' and '${status}'=='${getstatus.strip()}'    Run Keyword And Return Status    Enter Text
+    ...    8
+    Comment    \    sleep    2s
+    Comment    \    Run Keyword If    '${sbreak}'!='True'    Press Key    [TAB]
+    Comment    \    Exit For Loop If    '${sbreak}'=='True'
+    Comment    Run Keyword If    '${sbreak}'=='True'    Press Key    [Enter]
+    ScheduleNumbers    ${sScheduleName}    ${spoolfileCode}
+
+GetTotalNumberCountFromMessage
+    [Arguments]    ${message}
+    ${message}    Strip String    ${message}
+    ${msglist}    Split String    ${message}    :
+    ${t_number}    Set Variable    ${msglist[1]}
+    ${t_number}    Strip String    ${t_number}
+    ${t_number}    Convert To Integer    ${t_number}
+    [Return]    ${t_number}
+
+GetTotalNumberOfRecordsInSpoolFile
+    [Arguments]    ${message_in_spool_file}    ${sheet_name}
+    ${t_number}    Set Variable    No Value
+    : FOR    ${index}    IN RANGE    20    6    -1
+    \    ${message}    Get Value By Row And Column    ${index}    002    50
+    \    ${status}    Run Keyword And Return Status    Should Contain    ${message}    Total number
+    \    ${tr_status}    Run Keyword If    ${status}    Run Keyword And Return Status    Should Contain    ${message}
+    \    ...    ${message_in_spool_file}
+    \    Run Keyword If    ${status} == True and ${tr_status} == False    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}
+    \    ...    ${sheet_name}    Validating ${message_in_spool_file} message in ${sheet_name} transaction    ${status}    '${message}' not contains '${message_in_spool_file}' in spool file verification
+    \    Run Keyword If    ${status} == True and ${tr_status} == False    Fail and Capture ScreenShot    '${message}' not contains '${message_in_spool_file}' in spool file verification
+    \    Continue For Loop If    ${status} != True
+    \    ${t_number}    GetTotalNumberCountFromMessage    ${message}
+    \    Return From Keyword    ${t_number}
+    [Return]    ${t_number}
+
+BatchSchedulesubmission
+    [Arguments]    ${sheet_name}
+    Select Menu Item    Batch Processing
+    ${sch_sub}    Wait For Text    Schedule Submission    ${TimeOut}
+    Run Keyword If    ${sch_sub} != True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Batch Schedule Submission Process    False    schedule submission screen is not visible in 20s
+    Run Keyword If    ${sch_sub} != True    Fail and Capture ScreenShot    schedule submission screen is not visible
+    Select Menu Item    Schedule Submission
+    Capture Screenshot
+    ${schedulesubmenu}    Wait For Text    Schedule Submission Submenu    ${TimeOut}
+    Run Keyword If    ${schedulesubmenu} != True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Batch Schedule Submission Process    False    Schedule submission submenu is not visible
+    Run Keyword If    ${schedulesubmenu} != True    Fail and Capture ScreenShot    Schedule submission submenu is not visible
+    Run Keyword If    ${schedulesubmenu}    Enter Text By Field Name    Select    G5MBRDATAI
+    Comment    ${Date}    Get Time Format In Script    20/11/2016
+    Run Keyword If    ${schedulesubmenu}    Enter Text By Field Name    Effective Date    20/11/2016
+    Run Keyword If    ${schedulesubmenu}    Press Key    [enter]
+    ${batchRunningStatus}    Wait For Text    Batch member enrollment    ${TimeOut}
+    Run Keyword If    ${batchRunningStatus} != True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Batch Schedule Submission Process    False    Batch member enrollment screen is not visible
+    Run Keyword If    ${batchRunningStatus} != True    Fail and Capture ScreenShot    Batch member enrollment screen is not visible
+    Run Keyword If    ${batchRunningStatus}==True    Batch Member Enrollment status
+    ${ConfirmationMessg}    Wait For Text    Confirmation
+    Run Keyword If    ${ConfirmationMessg}==True    Enter Text    Y
+    Run Keyword If    ${ConfirmationMessg}==True    Press Key    [Enter]
+    ${BPDispalyMessage}    Wait For Text    Display Messages    ${TimeOutDisplay}
+    Run Keyword If    ${BPDispalyMessage} != True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Batch Schedule Submission Process    False    Display message screen is not visible
+    Run Keyword If    ${BPDispalyMessage} != True    Fail and Capture ScreenShot    Display message screen is not visible after waiting 5min
+    Run Keyword If    ${BPDispalyMessage}==True    Press Key    [Enter]
+    sleep    2s
+    ${lastRowData}    Get Value By Row And Column    24    1    80
+    ${status}    Run Keyword And Return Status    Should Contain    ${lastRowData}    G5MBRDATAI
+    Run Keyword If    ${status}==False    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Login to application    False    Schedule number G5MBRDATAI is not in ${lastRowData} after schedule
+    ${sch_list}    Split String    ${lastRowData}    /
+    ${schedule_number}    Split String    ${sch_list[1]}    ${SPACE}
+    ${schedule_number}    Set Variable    ${schedule_number[0]}
+    [Return]    ${schedule_number}
+
+Display Spool File For Trail Balance
+    ${worksubsch}    Wait For Text    Work with Submitted Schedules    ${TimeOut}
+    Run Keyword If    ${worksubsch}!=True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Verify Work with Submitted Schedules screen    ${worksubsch}    Work with Submitted Schedules Screen is not available
+    Run Keyword If    ${worksubsch}!=True    Fail and Capture ScreenShot    Work with Submitted Schedules screen is not available
+    ${sScheduleName}    Set Variable    G5GTRIAL
+    ${status}    Set Variable    Completed
+    : FOR    ${rowIndex}    IN RANGE    9    22
+    \    ${schedule}    Get Value By Row And Column    ${rowIndex}    32    10
+    \    ${getstatus}    Get Value By Row And Column    ${rowIndex}    16    9
+    \    ${sbreak}    Run Keyword If    '${schedule.strip()}'=='${sScheduleName}' and '${status}'=='${getstatus.strip()}'    Run Keyword And Return Status    Enter Text    8
+    \    sleep    2s
+    \    Run Keyword If    '${sbreak}'!='True'    Press Key    [TAB]
+    \    Exit For Loop If    '${sbreak}'=='True'
+    Run Keyword If    '${sbreak}'=='True'    Press Key    [Enter]
+    ${workSF}    Wait For Text    Work with Spooled Files    ${TimeOut}
+    Run Keyword If    ${workSF}!=True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Verify Work with Spooled Files screen    ${workSF}    Work with Spooled Files screen \ is not available
+    Run Keyword If    ${workSF} != True    Fail and Capture ScreenShot    Work with Spooled Files screen \ is not available
+    ${spoolfile}    Set Variable    RG01403    is not available
+    : FOR    ${rowIndex}    IN RANGE    9    22
+    \    ${Value1}    Get Value By Row And Column    ${rowIndex}    007    7
+    \    ${ssbreak}    Run Keyword If    '${Value1.strip()}'=='${spoolfile}'    Run Keyword And Return Status    Enter Text    5
+    \    sleep    2s
+    \    Run Keyword If    '${ssbreak}'!='True'    Press Key    [TAB]
+    \    Exit For Loop If    '${ssbreak}'=='True'
+    Run Keyword If    '${ssbreak}'=='True'    Press Key    [Enter]
+    ${displayspool}    Wait For Text    Display Spooled File    ${TimeOut}
+    Run Keyword If    ${displayspool} != True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Verify Display Spooled Filescreen    ${displayspool}    Display Spooled File screen is not visible
+    Run Keyword If    ${displayspool} != True    Fail and Capture ScreenShot    Display Spooled File screen is not visible
+
+Navigate Subsidiary Ledger Balance Enquiry
+    [Arguments]    ${Policy Number}
+    Navigate To Screen    System Master Menu
+    ${system}    Wait For Text    System Master Menu    ${TimeOut}
+    Run Keyword If    ${system}!=True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Wait for System Master Menu screen    ${system}    Failed to Navigate to System Master Menu screen
+    Run Keyword If    ${system}!=True    Fail and Capture ScreenShot    INFO : \ System Master menu screen is not avaliable
+    ${grouppolicyad}    Wait For Text    Group Policy Admin Enq    ${TimeOut}
+    Run Keyword If    ${grouppolicyad}!=True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Wait for Group Policy Admin Enq    ${grouppolicyad}    Failed to Navigate to Group Policy Admin Enq after waited for 20sec
+    Run Keyword If    ${grouppolicyad}!=True    Fail and Capture ScreenShot    INFO : Group Policy Admin Enq sub screen is not avaliable
+    Run Keyword If    ${grouppolicyad}    Select Menu Item    Group Policy Admin Enq
+    ${policyAdEnq}    Wait For Text    Policy Administration Enquiry    ${TimeOut}
+    Run Keyword If    ${policyAdEnq}!=True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Wait for Policy Administration Enquiry    ${policyAdEnq}    Failed to Navigate to Policy Administration Enquiry after waited for 20sec
+    Run Keyword If    ${policyAdEnq}!=True    Fail and Capture ScreenShot    INFO : \ Policy Administration Enquiry screen is not avaliable
+    ${policyAdEnq3}    Wait For Text    Policy Enquiry/3    ${TimeOut}
+    Run Keyword If    ${policyAdEnq3}    Select Menu Item    Policy Enquiry/3
+    Run Keyword If    ${policyAdEnq3}!=True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Wait for Policy Enquiry/3    ${policyAdEnq3}    Failed to Navigate to Wait for Policy Enquiry/3 \ after 20s
+    Run Keyword If    ${policyAdEnq3}!=True    Fail and Capture ScreenShot    INFO : Policy Enquiry/3 sub menu screen is not available
+    ${policyAdEnq3sub}    Wait For Text    Policy Enquiry/3 Sub Menu    ${TimeOut}
+    Run Keyword If    ${policyAdEnq3sub}    Enter Text By Field Name    Action    A
+    Run Keyword If    ${policyAdEnq3sub}!=True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Wait forPolicy Enquiry/3 Sub Menu    ${policyAdEnq3sub}    Failed to Navigate to Wait forPolicy Enquiry/3 Sub Menu
+    Run Keyword If    ${policyAdEnq3sub}!=True    Fail and Capture ScreenShot    INFO : \ Policy Enquiry/3 Sub Menu screen ia not available
+    Run Keyword If    ${policyAdEnq3sub}    Press Key    [Enter]
+    ${workAllPolicies}    Wait For Text    Work With All Policies    ${TimeOut}
+    Run Keyword If    ${workAllPolicies}!=True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Wait for Work With All Policies    ${workAllPolicies}    Failed to Navigate to Work With All Policies
+    Run Keyword If    ${workAllPolicies}!=True    Fail and Capture ScreenShot    INFO : Work With All Policies Screen is not available
+    ${enterpolicyno}    Run Keyword If    ${workAllPolicies}    Run Keyword And Return Status    Enter Text By Field Name    Policy    ${Policy Number}
+    Run Keyword If    ${enterpolicyno}    Press Key    [Enter]
+    sleep    3s
+    ${getPolicies}    Get Value By Row And Column    10    007    8
+    ${getPolicies1}    Set Variable    ${getPolicies.strip()}
+    Run Keyword If    ${enterpolicyno}    Press Key    [TAB]
+    sleep    3s
+    Run Keyword If    ${enterpolicyno}    Enter Text    3
+    Run Keyword If    ${enterpolicyno}    Press Key    [Enter]
+    ${balanceBalance}    Wait For Text    Subsidiary Ledger Balance Enquiry for a Policy    ${TimeOut}
+    Run Keyword If    ${balanceBalance}!=True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Wait for Subsidiary Ledger Balance Enquiry for a Policy    ${balanceBalance}    INFO : Subsidiary Ledger Balance Enquiry for a Policy screen is not available to verify Float amount
+    Run Keyword If    ${balanceBalance}!=True    Fail and Capture ScreenShot    INFO : Subsidiary Ledger Balance Enquiry for a Policy screen is not available to verify Float amount
+
+Verify Premium amount with Float amount
+    [Arguments]    ${premium}    ${policynumber}    ${sheet_name}
+    ${floatamount}    Create Dictionary
+    : FOR    ${rowIndex}    IN RANGE    8    20
+    \    ${getfl}    Get Value By Row And Column    ${rowIndex}    002    2
+    \    ${getflvalue}    Run Keyword If    '${getfl}'=='FL'    Get Value By Row And Column    ${rowIndex}    009
+    \    ...    65
+    \    ${message}    Run Keyword If    '${getflvalue}'!='None'    Strip String    ${getflvalue}
+    \    ${msglist}    Run Keyword If    '${getflvalue}'!='None'    Split String    ${message}
+    \    ${t_number}    Run Keyword If    '${getflvalue}'!='None'    Set Variable    ${msglist[0]}
+    \    ${t_number}    Run Keyword If    '${getflvalue}'!='None'    Strip String    ${t_number}
+    \    ${balanceaval}    Run Keyword If    '${getflvalue}'!='None'    Set Variable    ${msglist[4]}
+    \    ${balanceaval}    Run Keyword If    '${getflvalue}'!='None'    Strip String    ${balanceaval}
+    \    ${subsidaryno}    Run Keyword If    '${getflvalue}'!='None'    Remove String    ${t_number}    ${policynumber}
+    \    ${subsidaryno}    Run Keyword If    '${getflvalue}'!='None'    Strip String    ${subsidaryno}
+    \    Run Keyword If    '${getflvalue}'!='None'    Set To Dictionary    ${floatamount}    ${subsidaryno}    ${balanceaval}
+    Log Dictionary    ${floatamount}
+    ${premeniumkey}    Get Dictionary Keys    ${premium}
+    : FOR    ${key}    IN    @{premeniumkey}
+    \    ${floatvaluedic}    Get From Dictionary    ${floatamount}    ${key}
+    \    ${premiumvalue}    Get From Dictionary    ${premium}    ${key}
+    \    ${premium_count_zero}    Run Keyword And Return Status    Should Be Equal As Integers    ${premiumvalue}
+    \    Run Keyword If    ${premium_count_zero} == True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}
+    \    ...    ${sheet_name}    Premium Amount validation    False    Premium amount is zero for subsidary: ${key}
+    \    Run Keyword If    ${premium_count_zero} == True    Fail and Capture ScreenShot    Premium amount is zero for subsidary: ${key}
+    \    ${status}    Evaluate    ${floatvaluedic}>${premiumvalue}
+    \    Run Keyword If    '${status}'!='True'    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}
+    \    ...    ${sheet_name}    Premium Amount validation    False    Float amount: ${floatvaluedic} is not sufficient for Premium amount: ${premiumvalue}
+    \    Run Keyword If    '${status}'!='True'    Fail and Capture ScreenShot    Float amount is not sufficient for Premium Amount for subsidiary: ${key}
+
+GetTotalAmount
+    [Arguments]    ${sub_row}
+    : FOR    ${rowno}    IN RANGE    ${sub_row}    25
+    \    ${totalAmount}    Get Value By Row And Column    ${rowno}    70    50
+    \    log    ${totalAmount}
+    \    ${status}    Run Keyword And Return Status    Should Contain    ${totalAmount}    Total Amount
+    \    log    ${status}
+    \    Run Keyword If    ${status}    Press Key    [Page Down]
+    \    ${total_number}    Run Keyword If    ${status}    SplitTotalAmount    ${totalAmount}
+    \    Return From Keyword If    '${status}'=='True'    ${total_number}
+    ${totalAmount}    NextPageTotalNumber
+    [Return]    ${totalAmount}
+
+GetSubsidaryNumber
+    [Arguments]    ${ScheduleNumber}
+    ${ScheduleNumber_list}    Split String    ${ScheduleNumber}    :
+    ${number}    Set Variable    ${ScheduleNumber_list[1]}
+    ${number}    Strip String    ${number}
+    [Return]    ${number}
+
+GetSubsidiaryData
+    : FOR    ${rowno}    IN RANGE    6    25
+    \    ${scheduleNumber}    Get Value By Row And Column    ${rowno}    20    40
+    \    Comment    Return From Keyword If    Should Contain    ${ScheduleNumber}    Subsidiary number    ${ScheduleNumber}
+    \    log    ${scheduleNumber}
+    \    ${status}    Run Keyword And Return Status    Should Contain    ${scheduleNumber}    Subsidiary number
+    \    log    ${status}
+    \    ${schedule_number}    Run Keyword If    ${status}==True    GetSubsidaryNumber    ${scheduleNumber}
+    \    ${totalAmount}    Run Keyword If    ${status}==True    GetTotalAmount    ${rowno}
+    \    Exit For Loop If    ${status}==True
+    [Return]    ${schedule_number}    ${totalAmount}
+
+SplitTotalAmount
+    [Arguments]    ${totalAmount}
+    ${varible}    Split String From Right    ${totalAmount}
+    ${varible}    Remove String    @{varible}[2]    ,
+    Log    ${varible}
+    [Return]    ${varible}
+
+NextPageTotalNumber
+    Press Key    [Page Down]
+    : FOR    ${rowno}    IN RANGE    5    25
+    \    ${totalAmount}    Get Value By Row And Column    ${rowno}    70    50
+    \    log    ${totalAmount}
+    \    ${status}    Run Keyword And Return Status    Should Contain    ${totalAmount}    Total Amount
+    \    log    ${status}
+    \    ${total_number}    Run Keyword If    ${status}    SplitTotalAmount    ${totalAmount}
+    \    Return From Keyword If    ${status}    ${total_number}
+    \    Comment    ${varible}    Set Variable    ${totalAmount}
+    \    Comment    ${varible}    Split String From Right    ${varible}
+    \    Comment    ${varible}    Remove String    @{varible}[2]    ,
+    \    Comment    Log    ${varible}
+    [Return]    ${totalAmount}
+
+Get Premium amount
+    [Arguments]    ${filepath}
+    Wait For Text    Display Spooled File    ${TimeOut}
+    ${subdata}    ${status}    Get Subsidary Values    ${filepath}
+    ${sub_dict}    Create Dictionary
+    : FOR    ${numberOfSubsidiary}    IN    @{subdata}
+    \    ${sub_no}    ${totalAmount}    GetSubsidiaryData
+    \    Run Keyword If    "${sub_no}" != "None"    Set To Dictionary    ${sub_dict}    ${sub_no}    ${totalAmount}
+    Log Dictionary    ${sub_dict}
+    [Return]    ${sub_dict}
+
+RevisionProcess
+    [Arguments]    ${filepath}    ${policyNumber}    ${Action}    ${dtt_upload_folder_path}
+    ${sheet_name}    Set Variable    Revision
+    ${success_message_in_spool_file}    Set Variable    List of members successfully changed
+    ${total_mem_success_msg}    Set Variable    Total number of members changed :
+    ${macroRunCount}    Macro    ${filepath}    ${sheet_name}
+    ${uploadedRecordsCount}    FileUpload    ${dtt_upload_folder_path}    ${libraryOrFileName}    ${sheet_name}
+    ${uploadedRecordsCount}    Convert To Integer    ${uploadedRecordsCount}
+    ${status}    Run Keyword And Return Status    Should Be Equal As Integers    ${uploadedRecordsCount}    ${macroRunCount}
+    Run Keyword If    '${status}' != 'True'    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Validating Uplod DTT record count    ${status}    macro file upload count: ${macroRunCount}, \ is not matching with dtt file upload count: ${uploadedRecordsCount}
+    Open AS400 Console    ${GlobalConnFilePath}    ${sheet_name}
+    ${loginStatus}    Login Into Application    ${GlobalUserName}    ${GlobalPassword}
+    Run Keyword If    ${loginStatus}==False    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Login to application    ${status}    Failed to login to the application
+    Run Keyword If    ${loginStatus}==False    Fail and Capture ScreenShot    Login into application was failed.Error Details: ${messageDetails}
+    ${schedule_number}    BatchSchedulesubmission    ${sheet_name}
+    SpoolFiles    G5MBRDATAI    RR9JP    ${success_message_in_spool_file}    ${sheet_name}    ${total_mem_success_msg}    ${uploadedRecordsCount}
+    ...    ${schedule_number}
+    Navigate To Screen    System Master Menu
+    ${SystemMasterMenuScreenStatus}    Wait For Text    System Master Menu    ${TimeOut}
+    Run Keyword If    '${SystemMasterMenuScreenStatus}'=='True'    Select Menu Item    Group Policy Admin.
+    ${runTrailbill}    Run Keyword And Return Status    IssuePolicyallTrans    ${policyNumber}    G
+    Run Keyword If    ${runTrailbill} != True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Validating Issue Trial Bill    Flase    Failed to Run Issue Trial Bill
+    Run Keyword If    ${runTrailbill} != True    Fail and Capture ScreenShot    Unable to Run Trail Bill for given policy ${policyno}
+    ${system}    Wait For Text    System Master Menu    ${TimeOut}
+    Select Menu Item    Batch Processing
+    ${subSchedule}    Wait For Text    W/W Submitted Schedules    ${TimeOut}
+    Run Keyword If    ${subSchedule}    Select Menu Item    W/W Submitted Schedules
+    ${scheduleMP}    Wait For Text    Schedule Maintenance Processing    ${TimeOut}
+    ${batchmaintenace}    Run Keyword If    ${scheduleMP}    Run Keyword And Return Status    Schedule Maintenance Processing Batch
+    Run Keyword If    ${batchmaintenace} != True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Validating Batch Schedule submission For Trial Bill    Flase    Failed to schedule \ Trial bill Batch submission
+    Run Keyword If    ${batchmaintenace} != True    Fail and Capture ScreenShot    Schedule maintenance processing is not done
+    ${dispayspoolfile}    Run Keyword If    ${batchmaintenace}    Run Keyword And Return Status    Display Spool File For Trail Balance
+    Run Keyword If    ${dispayspoolfile}!=True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Vaidating Display Spool File For Trail Balance    Flase    Display Spool File For Trail Balance screen is not available
+    Run Keyword If    ${dispayspoolfile}!=True    Fail and Capture ScreenShot    Display Spool File For Trail Balance screen is not available
+    ${getpremiunamount}    Get Premium amount
+    Log Dictionary    ${getpremiunamount}
+    ${navigatebalance}    Run Keyword If    ${dispayspoolfile}    Run Keyword And Return Status    Navigate Subsidiary Ledger Balance Enquiry    ${policyNumber}
+    Run Keyword If    ${navigatebalance}!=True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Validating Navigate Subsidiary Ledger Balance Enquiry    Flase    Failed to Navigate Subsidiary Ledger Balance Enquiry Sub Screen
+    Run Keyword If    ${navigatebalance}!=True    Fail and Capture ScreenShot    Unable Navigate Subsidiary Ledger Balance Enquiry screen
+    ${verifypreAmount}    Run Keyword If    ${navigatebalance}    Run Keyword And Return Status    Verify Premium amount with Float amount    ${getpremiunamount}    ${policyNumber}
+    ...    ${sheet_name}
+    Run Keyword If    ${verifypreAmount}!=True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Premium Amount Validation    Flase    Float amount is not sufficient for Premium Amount
+    Run Keyword If    ${verifypreAmount}!=True    Fail and Capture ScreenShot    Premium Amount validation is failed
+    ${issuepolicy}    Navigate To Screen    System Master Menu
+    Run Keyword If    ${issuepolicy}!=True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Navigating to screen    Flase    Unable to Naviagte to System master menu screen
+    Run Keyword If    ${issuepolicy}!=True    Fail and Capture ScreenShot    Unable to Naviagte to System master menu screen
+    ${waitSytemmaster}    Wait For Text    System Master Menu    ${TimeOut}
+    Run Keyword If    ${waitSytemmaster}    Select Menu Item    Group Policy Admin.
+    ${issuepolicystatus}    Run Keyword And Return Status    IssuePolicyallTrans    ${policyNumber}    F    ${sheet_name}
+    Run Keyword If    ${issuepolicystatus}!=True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Issue Policy    Flase    Unable to Issue the Policy
+    Run Keyword If    ${issuepolicystatus}!=True    Fail and Capture ScreenShot    Unable to Issue the Policy
+    ${verifypolicystatus}    Run Keyword And Return Status    Verifying the Issue Policy Status    ${policyNumber}    ${sheet_name}
+    Run Keyword If    ${verifypolicystatus}!=True    Write Error Msg To Excel Sheet    ${log_folder}    ${error_log_file_path}    ${policyNumber}    ${sheet_name}
+    ...    Verify Issue policy status    Flase    Unable to Verify policy Issue status
+    Run Keyword If    ${verifypolicystatus}!=True    Fail and Capture ScreenShot    Unable to Verify policy Issue status
+    [Teardown]    Close AS400 Console    ${policyNumber}    ${sheet_name}
+
+Get Bill No from dtf
+    ${Date}    DateTime.Get Current Date    result_format=%Y-%m-%d
+    ${GlobalFileUploadpath}    Set Variable    ${EXECDIR}\\Connections\\Billdata.dtf
+    ${BillGeneratedFile}    Set Variable    ${bill_ouput_folder_path}\\Billdata.xls
+    ${billdate}    Set Variable    '${Date}'
+    Run Keyword And Ignore Error    Run Upload    ${GlobalFileUploadpath}
+    ${FileUpload}    AutoItLibrary.Win Active    Data Transfer from IBM i - Billdata.dtf
+    Log    ${FileUpload}
+    sleep    3s
+    Run Keyword If    ${FileUpload}==True    AutoItLibrary.Send    {TAB}
+    Run Keyword If    ${FileUpload}==True    AutoItLibrary.Send    {TAB}
+    Run Keyword If    ${FileUpload}==True    AutoItLibrary.Send    {TAB}
+    Run Keyword If    ${FileUpload}==True    AutoItLibrary.Send    {ENTER}
+    ${status}    Run Keyword And Return Status    AutoItLibrary.Wait For Active Window    Change Data Options    \    30
+    Run Keyword If    ${status}    AutoItLibrary.Send    {TAB}
+    Run Keyword If    ${status}    AutoItLibrary.Send    date(datime) = ${billdate}
+    Run Keyword If    ${status}    AutoItLibrary.Send    {TAB}
+    Run Keyword If    ${status}    AutoItLibrary.Send    {ENTER}
+    sleep    3s
+    Run Keyword If    ${FileUpload}==True    AutoItLibrary.Send    {TAB}
+    Run Keyword If    ${FileUpload}==True    AutoItLibrary.Send    {TAB}
+    Run Keyword If    ${FileUpload}==True    AutoItLibrary.Send    {TAB}
+    Run Keyword If    ${FileUpload}==True    AutoItLibrary.Send    {TAB}
+    Run Keyword If    ${FileUpload}==True    AutoItLibrary.Send    {ENTER}
+    sleep    2s
+    Run Keyword If    ${FileUpload}==True    AutoItLibrary.Send    ${bill_ouput_folder_path}\\Billdata.xls
+    sleep    3s
+    Run Keyword If    ${FileUpload}==True    AutoItLibrary.Send    {ENTER}
+    Run Keyword If    ${FileUpload}==True    AutoItLibrary.Send    {TAB}
+    Run Keyword If    ${FileUpload}==True    AutoItLibrary.Send    {TAB}
+    Run Keyword If    ${FileUpload}==True    AutoItLibrary.Send    {ENTER}
+    ${status}    Run Keyword And Return Status    AutoItLibrary.Wait For Active Window    IBM i Access Data Transfer    \    10
+    Run Keyword If    ${status}    AutoItLibrary.Send    {TAB}
+    Run Keyword If    ${status}    AutoItLibrary.Send    {ENTER}
+    ${popupStatus}    Run Keyword And Return Status    AutoItLibrary.Wait For Active Window    IBM i signon    \    20
+    Run Keyword If    ${popupStatus}==False    Return From Keyword    True
+    Run Keyword If    ${popupStatus}==True    AutoItLibrary.Send    ${GlobalUserName}
+    Run Keyword If    ${popupStatus}==True    AutoItLibrary.Send    {TAB}
+    Run Keyword If    ${popupStatus}==True    Sleep    1s
+    Run Keyword If    ${popupStatus}==True    AutoItLibrary.Send    ${GlobalPassword}
+    Run Keyword If    ${popupStatus}==True    AutoItLibrary.Send    {TAB}
+    Run Keyword If    ${popupStatus}==True    AutoItLibrary.Send    {ENTER}
+    ${popupStatus1}    Run Keyword And Return Status    AutoItLibrary.Wait For Active Window    Transfer to File Complete    \    20
+    Run Keyword If    ${popupStatus1}==False    Return From Keyword    True
+    sleep    2s
+    ${NoRecordUpload}    AutoItLibrary.Win Get Text    Transfer to File Complete
+    Run Keyword If    ${popupStatus1}==True    AutoItLibrary.Send    {Enter}
+    AutoItLibrary.Win Close    Data Transfer from IBM i - Billdata.dtf
+
+BillNumbertimeStamp
+    [Arguments]    ${billNumber}    ${policy_number}    ${sheet_name}
+    ${time}    DateTime.Get Current Date    result_format=%d-%m-%Y
+    ${finalBillNumberFormat}    Catenate    ${billNumber}    _    ${policy_number}    _    ${sheet_name}
+    ...    _    ${time}
+    ${finalBillNumberFormat}    Remove String    ${finalBillNumberFormat}    ${SPACE}
+    Log    ${finalBillNumberFormat}
+    [Return]    ${finalBillNumberFormat}

@@ -1,0 +1,21 @@
+*** Variables ***
+${link.common.Home.Create}    //div[@class='desktop-bar']//li[@id='quickcreatetop']/a
+${link.common.Create.Create Lead}    //div[@class='desktop-bar']//li[@id='quickcreatetop' and contains(@class,'quickcreatetop open')]//a[normalize-space()='Create Lead']
+${link.common.Create.Create Account}    //div[@class='desktop-bar']//li[@id='quickcreatetop' and contains(@class,'quickcreatetop open')]//a[normalize-space()='Create Account']
+${link.common.Create.Create Contact}    //div[@class='desktop-bar']//li[@id='quickcreatetop' and contains(@class,'quickcreatetop open')]//a[normalize-space()='Create Contact']
+${link.common.Create.Create Oppurtunity}    //div[@class='desktop-bar']//li[@id='quickcreatetop' and contains(@class,'quickcreatetop open')]//a[normalize-space()='Create Opportunity']
+${link.common.Create.Create Document}    //div[@class='desktop-bar']//li[@id='quickcreatetop' and contains(@class,'quickcreatetop open')]//a[normalize-space()='Create Document']
+${link.common.Create.Log Call}    //div[@class='desktop-bar']//li[@id='quickcreatetop' and contains(@class,'quickcreatetop open')]//a[normalize-space()='Log Call']
+${link.common.Create.Create Task}    //div[@class='desktop-bar']//li[@id='quickcreatetop' and contains(@class,'quickcreatetop open')]//a[normalize-space()='Create Task']
+${link.common.ClearSearchIcon}    //li[contains(@class,'desktopOnly')]/a[contains(@class,'clearSearchIcon')]
+${image.common.SearchIcon}    //li[@class='sugar_action_button']/a[contains(@onclick,'listViewSearchIcon')]
+${link.common.Filter.QuickFilterActive}    //div[@id='searchDialog' and contains(@style,'display: block')]//li[contains(@class,'basic active')]/a
+${link.common.Filter.QuickFilterInActive}    //div[@id='searchDialog' and contains(@style,'display: block')]//li[contains(@class,'basic') and not(contains(@class,'active'))]/a
+${button.common.QuickFilter.Search}    //div[@id='searchDialog' and contains(@style,'display: block')]//input[@id='search_form_submit']
+${button.common.QuickFilter.Clear}    //div[@id='searchDialog' and contains(@style,'display: block')]//input[@id='search_form_clear']
+${textBox.common.QuickFilter.Name}    //div[@id='searchDialog' and contains(@style,'display: block')]//input[contains(@id,'name_basic')]
+${dialogWindow.common.QuickFilter}    //div[@id='searchDialog' and contains(@style,'display: block')]//div[@class='modal-content']
+${label.common.Name}    //div[@class='list-view-rounded-corners']//td[@field='name']
+${header.common.Title}    //div[@class='moduleTitle']/h2
+${link.common.BulkActionActive}    //td[@class='paginationActionButtons']/ul[@id='actionLinkTop' and not(@style)]//a
+${link.common.BulkActionInActive}    //td[@class='paginationActionButtons']/div[not(@style)]/a

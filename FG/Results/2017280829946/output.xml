@@ -1,0 +1,4372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20170828 11:12:23.489" generator="Robot 3.0 (Python 2.7.12 on win32)">
+<suite source="C:\Users\anilj\Downloads\FG" id="s1" name="FG">
+<suite source="C:\Users\anilj\Downloads\FG\TestSuites" id="s1-s1" name="TestSuites">
+<suite source="C:\Users\anilj\Downloads\FG\TestSuites\FG_Suite.txt" id="s1-s1-s1" name="FG Suite">
+<test id="s1-s1-s1-t1" name="sample">
+<kw name="Get Ms Excel Multiple Row Values Into Dictionary List Based On Key For Billnumber" library="RobotExample">
+<doc>Returns the dictionary of values given row in the MS Excel file</doc>
+<arguments>
+<arg>C:\\Users\\anilj\\Desktop\\HDFC\\Sample Data.xls</arg>
+</arguments>
+<assign>
+<var>${dict_Details}</var>
+<var>${status}</var>
+<var>${message}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.575" level="INFO">sheetname Sheet1
+noofrows 21
+size 0
+hearderList [u'Product Code', u'Contract Owner', u'Prop Date', u'Agent Code', u'Statistical Code', u'Billing Frequency', u'Method of Payment', u'Main Benefit SA', u'Main Benefit Risk Cess term', u'Main Benefit Prem Cess term', u'Topup Flag', u'Acc Dis Rider SA', u'CI Rider SA', u'Beneficiary']
+rowValues [u'CTP', u'A0623853', 42948.0, u'00758405', u'SUW', u'01', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 1
+cell_data CTP
+cell_data A0623853
+cell_data 42948.0
+cell_data 00758405
+cell_data SUW
+cell_data 01
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623854', 42948.0, u'00758405', u'EUW', u'02', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 2
+cell_data CTP
+cell_data A0623854
+cell_data 42948.0
+cell_data 00758405
+cell_data EUW
+cell_data 02
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623855', 42948.0, u'00758405', u'SUW', u'04', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 3
+cell_data CTP
+cell_data A0623855
+cell_data 42948.0
+cell_data 00758405
+cell_data SUW
+cell_data 04
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623856', 42948.0, u'00758405', u'EUW', u'12', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 4
+cell_data CTP
+cell_data A0623856
+cell_data 42948.0
+cell_data 00758405
+cell_data EUW
+cell_data 12
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623857', 42948.0, u'00758405', u'SUW', u'01', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 5
+cell_data CTP
+cell_data A0623857
+cell_data 42948.0
+cell_data 00758405
+cell_data SUW
+cell_data 01
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623858', 42948.0, u'00758405', u'EUW', u'02', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 6
+cell_data CTP
+cell_data A0623858
+cell_data 42948.0
+cell_data 00758405
+cell_data EUW
+cell_data 02
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623859', 42948.0, u'00758405', u'SUW', u'04', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 7
+cell_data CTP
+cell_data A0623859
+cell_data 42948.0
+cell_data 00758405
+cell_data SUW
+cell_data 04
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623860', 42948.0, u'00758405', u'EUW', u'12', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 8
+cell_data CTP
+cell_data A0623860
+cell_data 42948.0
+cell_data 00758405
+cell_data EUW
+cell_data 12
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623861', 42948.0, u'00758405', u'SUW', u'01', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 9
+cell_data CTP
+cell_data A0623861
+cell_data 42948.0
+cell_data 00758405
+cell_data SUW
+cell_data 01
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623862', 42948.0, u'00758405', u'EUW', u'02', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 10
+cell_data CTP
+cell_data A0623862
+cell_data 42948.0
+cell_data 00758405
+cell_data EUW
+cell_data 02
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623863', 42948.0, u'00758405', u'SUW', u'04', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 11
+cell_data CTP
+cell_data A0623863
+cell_data 42948.0
+cell_data 00758405
+cell_data SUW
+cell_data 04
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623864', 42948.0, u'00758405', u'EUW', u'12', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 12
+cell_data CTP
+cell_data A0623864
+cell_data 42948.0
+cell_data 00758405
+cell_data EUW
+cell_data 12
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623865', 42948.0, u'00758405', u'SUW', u'01', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 13
+cell_data CTP
+cell_data A0623865
+cell_data 42948.0
+cell_data 00758405
+cell_data SUW
+cell_data 01
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623866', 42948.0, u'00758405', u'EUW', u'02', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 14
+cell_data CTP
+cell_data A0623866
+cell_data 42948.0
+cell_data 00758405
+cell_data EUW
+cell_data 02
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623867', 42948.0, u'00758405', u'SUW', u'04', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 15
+cell_data CTP
+cell_data A0623867
+cell_data 42948.0
+cell_data 00758405
+cell_data SUW
+cell_data 04
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623868', 42948.0, u'00758405', u'EUW', u'12', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 16
+cell_data CTP
+cell_data A0623868
+cell_data 42948.0
+cell_data 00758405
+cell_data EUW
+cell_data 12
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623869', 42948.0, u'00758405', u'SUW', u'01', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 17
+cell_data CTP
+cell_data A0623869
+cell_data 42948.0
+cell_data 00758405
+cell_data SUW
+cell_data 01
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623870', 42948.0, u'00758405', u'EUW', u'02', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 18
+cell_data CTP
+cell_data A0623870
+cell_data 42948.0
+cell_data 00758405
+cell_data EUW
+cell_data 02
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623871', 42948.0, u'00758405', u'SUW', u'04', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 19
+cell_data CTP
+cell_data A0623871
+cell_data 42948.0
+cell_data 00758405
+cell_data SUW
+cell_data 04
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+rowValues [u'CTP', u'A0623872', 42948.0, u'00758405', u'EUW', u'12', u'C', 10000000.0, 10.0, 10.0, u'N', 5000000.0, 1000000.0, u'A0623705']
+size1 20
+cell_data CTP
+cell_data A0623872
+cell_data 42948.0
+cell_data 00758405
+cell_data EUW
+cell_data 12
+cell_data C
+cell_data 10000000.0
+cell_data 10.0
+cell_data 10.0
+cell_data N
+cell_data 5000000.0
+cell_data 1000000.0
+cell_data A0623705
+listDict {1: {'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623853', 'Acc Dis Rider SA': 5000000.0}, 2: {'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623854', 'Acc Dis Rider SA': 5000000.0}, 3: {'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623855', 'Acc Dis Rider SA': 5000000.0}, 4: {'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623856', 'Acc Dis Rider SA': 5000000.0}, 5: {'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623857', 'Acc Dis Rider SA': 5000000.0}, 6: {'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623858', 'Acc Dis Rider SA': 5000000.0}, 7: {'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623859', 'Acc Dis Rider SA': 5000000.0}, 8: {'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623860', 'Acc Dis Rider SA': 5000000.0}, 9: {'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623861', 'Acc Dis Rider SA': 5000000.0}, 10: {'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623862', 'Acc Dis Rider SA': 5000000.0}, 11: {'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623863', 'Acc Dis Rider SA': 5000000.0}, 12: {'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623864', 'Acc Dis Rider SA': 5000000.0}, 13: {'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623865', 'Acc Dis Rider SA': 5000000.0}, 14: {'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623866', 'Acc Dis Rider SA': 5000000.0}, 15: {'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623867', 'Acc Dis Rider SA': 5000000.0}, 16: {'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623868', 'Acc Dis Rider SA': 5000000.0}, 17: {'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623869', 'Acc Dis Rider SA': 5000000.0}, 18: {'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623870', 'Acc Dis Rider SA': 5000000.0}, 19: {'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623871', 'Acc Dis Rider SA': 5000000.0}, 20: {'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623872', 'Acc Dis Rider SA': 5000000.0}}</msg>
+<msg timestamp="20170828 11:12:24.575" level="INFO">${dict_Details} = {1: {'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiar...</msg>
+<msg timestamp="20170828 11:12:24.576" level="INFO">${status} = True</msg>
+<msg timestamp="20170828 11:12:24.576" level="INFO">${message} = Pass</msg>
+<status status="PASS" endtime="20170828 11:12:24.576" starttime="20170828 11:12:24.565"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${dict_Details}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.577" level="INFO">{1: {'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623853', 'Acc Dis Rider SA': 5000000.0}, 2: {'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623854', 'Acc Dis Rider SA': 5000000.0}, 3: {'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623855', 'Acc Dis Rider SA': 5000000.0}, 4: {'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623856', 'Acc Dis Rider SA': 5000000.0}, 5: {'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623857', 'Acc Dis Rider SA': 5000000.0}, 6: {'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623858', 'Acc Dis Rider SA': 5000000.0}, 7: {'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623859', 'Acc Dis Rider SA': 5000000.0}, 8: {'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623860', 'Acc Dis Rider SA': 5000000.0}, 9: {'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623861', 'Acc Dis Rider SA': 5000000.0}, 10: {'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623862', 'Acc Dis Rider SA': 5000000.0}, 11: {'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623863', 'Acc Dis Rider SA': 5000000.0}, 12: {'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623864', 'Acc Dis Rider SA': 5000000.0}, 13: {'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623865', 'Acc Dis Rider SA': 5000000.0}, 14: {'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623866', 'Acc Dis Rider SA': 5000000.0}, 15: {'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623867', 'Acc Dis Rider SA': 5000000.0}, 16: {'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623868', 'Acc Dis Rider SA': 5000000.0}, 17: {'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623869', 'Acc Dis Rider SA': 5000000.0}, 18: {'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623870', 'Acc Dis Rider SA': 5000000.0}, 19: {'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623871', 'Acc Dis Rider SA': 5000000.0}, 20: {'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623872', 'Acc Dis Rider SA': 5000000.0}}</msg>
+<status status="PASS" endtime="20170828 11:12:24.577" starttime="20170828 11:12:24.576"></status>
+</kw>
+<kw name="Get Dictionary Keys" library="Collections">
+<doc>Returns keys of the given ``dictionary``.</doc>
+<arguments>
+<arg>${dict_Details}</arg>
+</arguments>
+<assign>
+<var>${dictkeys}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.578" level="INFO">${dictkeys} = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]</msg>
+<status status="PASS" endtime="20170828 11:12:24.578" starttime="20170828 11:12:24.578"></status>
+</kw>
+<kw type="for" name="${innerdict_details} IN [ @{dictkeys} ]">
+<kw type="foritem" name="${innerdict_details} = 1">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${innerdict_details}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.580" level="INFO">1</msg>
+<status status="PASS" endtime="20170828 11:12:24.580" starttime="20170828 11:12:24.579"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${dict_Details}</arg>
+<arg>${innerdict_details}</arg>
+</arguments>
+<assign>
+<var>${propotioncreation}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.582" level="INFO">${propotioncreation} = {'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170828 11:12:24.582" starttime="20170828 11:12:24.581"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.583" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623853', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170828 11:12:24.583" starttime="20170828 11:12:24.582"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.585" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170828 11:12:24.585" starttime="20170828 11:12:24.584"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${contractowner}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.586" level="INFO">${contractowner} = A0623853</msg>
+<status status="PASS" endtime="20170828 11:12:24.586" starttime="20170828 11:12:24.586"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Prop Date</arg>
+</arguments>
+<assign>
+<var>${propdate}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.587" level="INFO">${propdate} = 42948.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.588" starttime="20170828 11:12:24.587"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Agent Code</arg>
+</arguments>
+<assign>
+<var>${agentcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.589" level="INFO">${agentcode} = 00758405</msg>
+<status status="PASS" endtime="20170828 11:12:24.589" starttime="20170828 11:12:24.588"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Statistical Code</arg>
+</arguments>
+<assign>
+<var>${statisticalcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.590" level="INFO">${statisticalcode} = SUW</msg>
+<status status="PASS" endtime="20170828 11:12:24.590" starttime="20170828 11:12:24.589"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Billing Frequency</arg>
+</arguments>
+<assign>
+<var>${billingfrequency}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.591" level="INFO">${billingfrequency} = 01</msg>
+<status status="PASS" endtime="20170828 11:12:24.591" starttime="20170828 11:12:24.590"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Method of Payment</arg>
+</arguments>
+<assign>
+<var>${methodofpayment}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.593" level="INFO">${methodofpayment} = C</msg>
+<status status="PASS" endtime="20170828 11:12:24.593" starttime="20170828 11:12:24.592"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit SA</arg>
+</arguments>
+<assign>
+<var>${mainbenefitsa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.594" level="INFO">${mainbenefitsa} = 10000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.594" starttime="20170828 11:12:24.593"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Risk Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitriskcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.595" level="INFO">${mainbenefitriskcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.595" starttime="20170828 11:12:24.595"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Prem Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitpremcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.596" level="INFO">${mainbenefitpremcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.596" starttime="20170828 11:12:24.596"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Topup Flag</arg>
+</arguments>
+<assign>
+<var>${topupflag}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.597" level="INFO">${topupflag} = N</msg>
+<status status="PASS" endtime="20170828 11:12:24.597" starttime="20170828 11:12:24.596"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Acc Dis Rider SA</arg>
+</arguments>
+<assign>
+<var>${accdisridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.598" level="INFO">${accdisridersa} = 5000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.598" starttime="20170828 11:12:24.597"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>CI Rider SA</arg>
+</arguments>
+<assign>
+<var>${ciridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.599" level="INFO">${ciridersa} = 1000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.599" starttime="20170828 11:12:24.598"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Beneficiary</arg>
+</arguments>
+<assign>
+<var>${beneficiary}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.601" level="INFO">${beneficiary} = A0623705</msg>
+<status status="PASS" endtime="20170828 11:12:24.602" starttime="20170828 11:12:24.600"></status>
+</kw>
+<status status="PASS" endtime="20170828 11:12:24.602" starttime="20170828 11:12:24.579"></status>
+</kw>
+<kw type="foritem" name="${innerdict_details} = 2">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${innerdict_details}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.603" level="INFO">2</msg>
+<status status="PASS" endtime="20170828 11:12:24.603" starttime="20170828 11:12:24.603"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${dict_Details}</arg>
+<arg>${innerdict_details}</arg>
+</arguments>
+<assign>
+<var>${propotioncreation}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.604" level="INFO">${propotioncreation} = {'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170828 11:12:24.604" starttime="20170828 11:12:24.604"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.605" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623854', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170828 11:12:24.606" starttime="20170828 11:12:24.605"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.607" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170828 11:12:24.607" starttime="20170828 11:12:24.606"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${contractowner}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.608" level="INFO">${contractowner} = A0623854</msg>
+<status status="PASS" endtime="20170828 11:12:24.608" starttime="20170828 11:12:24.607"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Prop Date</arg>
+</arguments>
+<assign>
+<var>${propdate}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.609" level="INFO">${propdate} = 42948.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.609" starttime="20170828 11:12:24.608"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Agent Code</arg>
+</arguments>
+<assign>
+<var>${agentcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.610" level="INFO">${agentcode} = 00758405</msg>
+<status status="PASS" endtime="20170828 11:12:24.610" starttime="20170828 11:12:24.609"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Statistical Code</arg>
+</arguments>
+<assign>
+<var>${statisticalcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.611" level="INFO">${statisticalcode} = EUW</msg>
+<status status="PASS" endtime="20170828 11:12:24.611" starttime="20170828 11:12:24.610"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Billing Frequency</arg>
+</arguments>
+<assign>
+<var>${billingfrequency}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.612" level="INFO">${billingfrequency} = 02</msg>
+<status status="PASS" endtime="20170828 11:12:24.612" starttime="20170828 11:12:24.611"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Method of Payment</arg>
+</arguments>
+<assign>
+<var>${methodofpayment}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.613" level="INFO">${methodofpayment} = C</msg>
+<status status="PASS" endtime="20170828 11:12:24.613" starttime="20170828 11:12:24.612"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit SA</arg>
+</arguments>
+<assign>
+<var>${mainbenefitsa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.613" level="INFO">${mainbenefitsa} = 10000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.614" starttime="20170828 11:12:24.613"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Risk Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitriskcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.614" level="INFO">${mainbenefitriskcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.614" starttime="20170828 11:12:24.614"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Prem Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitpremcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.615" level="INFO">${mainbenefitpremcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.616" starttime="20170828 11:12:24.615"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Topup Flag</arg>
+</arguments>
+<assign>
+<var>${topupflag}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.616" level="INFO">${topupflag} = N</msg>
+<status status="PASS" endtime="20170828 11:12:24.616" starttime="20170828 11:12:24.616"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Acc Dis Rider SA</arg>
+</arguments>
+<assign>
+<var>${accdisridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.618" level="INFO">${accdisridersa} = 5000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.618" starttime="20170828 11:12:24.617"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>CI Rider SA</arg>
+</arguments>
+<assign>
+<var>${ciridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.619" level="INFO">${ciridersa} = 1000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.619" starttime="20170828 11:12:24.618"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Beneficiary</arg>
+</arguments>
+<assign>
+<var>${beneficiary}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.620" level="INFO">${beneficiary} = A0623705</msg>
+<status status="PASS" endtime="20170828 11:12:24.620" starttime="20170828 11:12:24.619"></status>
+</kw>
+<status status="PASS" endtime="20170828 11:12:24.620" starttime="20170828 11:12:24.602"></status>
+</kw>
+<kw type="foritem" name="${innerdict_details} = 3">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${innerdict_details}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.622" level="INFO">3</msg>
+<status status="PASS" endtime="20170828 11:12:24.622" starttime="20170828 11:12:24.621"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${dict_Details}</arg>
+<arg>${innerdict_details}</arg>
+</arguments>
+<assign>
+<var>${propotioncreation}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.623" level="INFO">${propotioncreation} = {'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170828 11:12:24.623" starttime="20170828 11:12:24.623"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.625" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623855', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170828 11:12:24.625" starttime="20170828 11:12:24.624"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.626" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170828 11:12:24.626" starttime="20170828 11:12:24.625"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${contractowner}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.627" level="INFO">${contractowner} = A0623855</msg>
+<status status="PASS" endtime="20170828 11:12:24.627" starttime="20170828 11:12:24.626"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Prop Date</arg>
+</arguments>
+<assign>
+<var>${propdate}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.628" level="INFO">${propdate} = 42948.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.629" starttime="20170828 11:12:24.628"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Agent Code</arg>
+</arguments>
+<assign>
+<var>${agentcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.629" level="INFO">${agentcode} = 00758405</msg>
+<status status="PASS" endtime="20170828 11:12:24.629" starttime="20170828 11:12:24.629"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Statistical Code</arg>
+</arguments>
+<assign>
+<var>${statisticalcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.630" level="INFO">${statisticalcode} = SUW</msg>
+<status status="PASS" endtime="20170828 11:12:24.630" starttime="20170828 11:12:24.630"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Billing Frequency</arg>
+</arguments>
+<assign>
+<var>${billingfrequency}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.631" level="INFO">${billingfrequency} = 04</msg>
+<status status="PASS" endtime="20170828 11:12:24.631" starttime="20170828 11:12:24.631"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Method of Payment</arg>
+</arguments>
+<assign>
+<var>${methodofpayment}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.632" level="INFO">${methodofpayment} = C</msg>
+<status status="PASS" endtime="20170828 11:12:24.632" starttime="20170828 11:12:24.632"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit SA</arg>
+</arguments>
+<assign>
+<var>${mainbenefitsa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.633" level="INFO">${mainbenefitsa} = 10000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.633" starttime="20170828 11:12:24.633"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Risk Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitriskcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.634" level="INFO">${mainbenefitriskcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.634" starttime="20170828 11:12:24.633"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Prem Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitpremcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.635" level="INFO">${mainbenefitpremcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.635" starttime="20170828 11:12:24.634"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Topup Flag</arg>
+</arguments>
+<assign>
+<var>${topupflag}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.636" level="INFO">${topupflag} = N</msg>
+<status status="PASS" endtime="20170828 11:12:24.636" starttime="20170828 11:12:24.635"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Acc Dis Rider SA</arg>
+</arguments>
+<assign>
+<var>${accdisridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.637" level="INFO">${accdisridersa} = 5000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.637" starttime="20170828 11:12:24.637"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>CI Rider SA</arg>
+</arguments>
+<assign>
+<var>${ciridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.638" level="INFO">${ciridersa} = 1000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.638" starttime="20170828 11:12:24.637"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Beneficiary</arg>
+</arguments>
+<assign>
+<var>${beneficiary}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.639" level="INFO">${beneficiary} = A0623705</msg>
+<status status="PASS" endtime="20170828 11:12:24.639" starttime="20170828 11:12:24.639"></status>
+</kw>
+<status status="PASS" endtime="20170828 11:12:24.639" starttime="20170828 11:12:24.621"></status>
+</kw>
+<kw type="foritem" name="${innerdict_details} = 4">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${innerdict_details}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.640" level="INFO">4</msg>
+<status status="PASS" endtime="20170828 11:12:24.641" starttime="20170828 11:12:24.640"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${dict_Details}</arg>
+<arg>${innerdict_details}</arg>
+</arguments>
+<assign>
+<var>${propotioncreation}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.641" level="INFO">${propotioncreation} = {'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170828 11:12:24.642" starttime="20170828 11:12:24.641"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.643" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623856', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170828 11:12:24.643" starttime="20170828 11:12:24.642"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.643" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170828 11:12:24.643" starttime="20170828 11:12:24.643"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${contractowner}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.645" level="INFO">${contractowner} = A0623856</msg>
+<status status="PASS" endtime="20170828 11:12:24.645" starttime="20170828 11:12:24.644"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Prop Date</arg>
+</arguments>
+<assign>
+<var>${propdate}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.646" level="INFO">${propdate} = 42948.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.646" starttime="20170828 11:12:24.645"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Agent Code</arg>
+</arguments>
+<assign>
+<var>${agentcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.646" level="INFO">${agentcode} = 00758405</msg>
+<status status="PASS" endtime="20170828 11:12:24.646" starttime="20170828 11:12:24.646"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Statistical Code</arg>
+</arguments>
+<assign>
+<var>${statisticalcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.647" level="INFO">${statisticalcode} = EUW</msg>
+<status status="PASS" endtime="20170828 11:12:24.648" starttime="20170828 11:12:24.647"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Billing Frequency</arg>
+</arguments>
+<assign>
+<var>${billingfrequency}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.648" level="INFO">${billingfrequency} = 12</msg>
+<status status="PASS" endtime="20170828 11:12:24.648" starttime="20170828 11:12:24.648"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Method of Payment</arg>
+</arguments>
+<assign>
+<var>${methodofpayment}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.650" level="INFO">${methodofpayment} = C</msg>
+<status status="PASS" endtime="20170828 11:12:24.650" starttime="20170828 11:12:24.649"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit SA</arg>
+</arguments>
+<assign>
+<var>${mainbenefitsa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.651" level="INFO">${mainbenefitsa} = 10000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.652" starttime="20170828 11:12:24.650"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Risk Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitriskcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.653" level="INFO">${mainbenefitriskcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.653" starttime="20170828 11:12:24.652"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Prem Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitpremcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.654" level="INFO">${mainbenefitpremcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.654" starttime="20170828 11:12:24.653"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Topup Flag</arg>
+</arguments>
+<assign>
+<var>${topupflag}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.655" level="INFO">${topupflag} = N</msg>
+<status status="PASS" endtime="20170828 11:12:24.655" starttime="20170828 11:12:24.654"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Acc Dis Rider SA</arg>
+</arguments>
+<assign>
+<var>${accdisridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.656" level="INFO">${accdisridersa} = 5000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.656" starttime="20170828 11:12:24.656"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>CI Rider SA</arg>
+</arguments>
+<assign>
+<var>${ciridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.657" level="INFO">${ciridersa} = 1000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.657" starttime="20170828 11:12:24.657"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Beneficiary</arg>
+</arguments>
+<assign>
+<var>${beneficiary}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.658" level="INFO">${beneficiary} = A0623705</msg>
+<status status="PASS" endtime="20170828 11:12:24.658" starttime="20170828 11:12:24.658"></status>
+</kw>
+<status status="PASS" endtime="20170828 11:12:24.658" starttime="20170828 11:12:24.640"></status>
+</kw>
+<kw type="foritem" name="${innerdict_details} = 5">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${innerdict_details}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.659" level="INFO">5</msg>
+<status status="PASS" endtime="20170828 11:12:24.659" starttime="20170828 11:12:24.659"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${dict_Details}</arg>
+<arg>${innerdict_details}</arg>
+</arguments>
+<assign>
+<var>${propotioncreation}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.660" level="INFO">${propotioncreation} = {'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170828 11:12:24.660" starttime="20170828 11:12:24.660"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.661" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623857', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170828 11:12:24.661" starttime="20170828 11:12:24.661"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.662" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170828 11:12:24.662" starttime="20170828 11:12:24.661"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${contractowner}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.663" level="INFO">${contractowner} = A0623857</msg>
+<status status="PASS" endtime="20170828 11:12:24.663" starttime="20170828 11:12:24.662"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Prop Date</arg>
+</arguments>
+<assign>
+<var>${propdate}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.664" level="INFO">${propdate} = 42948.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.664" starttime="20170828 11:12:24.664"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Agent Code</arg>
+</arguments>
+<assign>
+<var>${agentcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.665" level="INFO">${agentcode} = 00758405</msg>
+<status status="PASS" endtime="20170828 11:12:24.665" starttime="20170828 11:12:24.665"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Statistical Code</arg>
+</arguments>
+<assign>
+<var>${statisticalcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.666" level="INFO">${statisticalcode} = SUW</msg>
+<status status="PASS" endtime="20170828 11:12:24.666" starttime="20170828 11:12:24.666"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Billing Frequency</arg>
+</arguments>
+<assign>
+<var>${billingfrequency}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.667" level="INFO">${billingfrequency} = 01</msg>
+<status status="PASS" endtime="20170828 11:12:24.667" starttime="20170828 11:12:24.666"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Method of Payment</arg>
+</arguments>
+<assign>
+<var>${methodofpayment}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.668" level="INFO">${methodofpayment} = C</msg>
+<status status="PASS" endtime="20170828 11:12:24.668" starttime="20170828 11:12:24.667"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit SA</arg>
+</arguments>
+<assign>
+<var>${mainbenefitsa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.669" level="INFO">${mainbenefitsa} = 10000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.669" starttime="20170828 11:12:24.668"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Risk Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitriskcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.670" level="INFO">${mainbenefitriskcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.670" starttime="20170828 11:12:24.669"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Prem Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitpremcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.671" level="INFO">${mainbenefitpremcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.671" starttime="20170828 11:12:24.670"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Topup Flag</arg>
+</arguments>
+<assign>
+<var>${topupflag}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.672" level="INFO">${topupflag} = N</msg>
+<status status="PASS" endtime="20170828 11:12:24.672" starttime="20170828 11:12:24.671"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Acc Dis Rider SA</arg>
+</arguments>
+<assign>
+<var>${accdisridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.673" level="INFO">${accdisridersa} = 5000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.673" starttime="20170828 11:12:24.672"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>CI Rider SA</arg>
+</arguments>
+<assign>
+<var>${ciridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.673" level="INFO">${ciridersa} = 1000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.674" starttime="20170828 11:12:24.673"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Beneficiary</arg>
+</arguments>
+<assign>
+<var>${beneficiary}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.674" level="INFO">${beneficiary} = A0623705</msg>
+<status status="PASS" endtime="20170828 11:12:24.675" starttime="20170828 11:12:24.674"></status>
+</kw>
+<status status="PASS" endtime="20170828 11:12:24.675" starttime="20170828 11:12:24.659"></status>
+</kw>
+<kw type="foritem" name="${innerdict_details} = 6">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${innerdict_details}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.676" level="INFO">6</msg>
+<status status="PASS" endtime="20170828 11:12:24.676" starttime="20170828 11:12:24.676"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${dict_Details}</arg>
+<arg>${innerdict_details}</arg>
+</arguments>
+<assign>
+<var>${propotioncreation}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.677" level="INFO">${propotioncreation} = {'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170828 11:12:24.677" starttime="20170828 11:12:24.677"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.678" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623858', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170828 11:12:24.678" starttime="20170828 11:12:24.677"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.679" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170828 11:12:24.679" starttime="20170828 11:12:24.679"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${contractowner}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.680" level="INFO">${contractowner} = A0623858</msg>
+<status status="PASS" endtime="20170828 11:12:24.680" starttime="20170828 11:12:24.680"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Prop Date</arg>
+</arguments>
+<assign>
+<var>${propdate}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.681" level="INFO">${propdate} = 42948.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.681" starttime="20170828 11:12:24.681"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Agent Code</arg>
+</arguments>
+<assign>
+<var>${agentcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.682" level="INFO">${agentcode} = 00758405</msg>
+<status status="PASS" endtime="20170828 11:12:24.682" starttime="20170828 11:12:24.681"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Statistical Code</arg>
+</arguments>
+<assign>
+<var>${statisticalcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.683" level="INFO">${statisticalcode} = EUW</msg>
+<status status="PASS" endtime="20170828 11:12:24.683" starttime="20170828 11:12:24.683"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Billing Frequency</arg>
+</arguments>
+<assign>
+<var>${billingfrequency}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.684" level="INFO">${billingfrequency} = 02</msg>
+<status status="PASS" endtime="20170828 11:12:24.684" starttime="20170828 11:12:24.684"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Method of Payment</arg>
+</arguments>
+<assign>
+<var>${methodofpayment}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.685" level="INFO">${methodofpayment} = C</msg>
+<status status="PASS" endtime="20170828 11:12:24.685" starttime="20170828 11:12:24.685"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit SA</arg>
+</arguments>
+<assign>
+<var>${mainbenefitsa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.686" level="INFO">${mainbenefitsa} = 10000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.686" starttime="20170828 11:12:24.686"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Risk Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitriskcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.687" level="INFO">${mainbenefitriskcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.687" starttime="20170828 11:12:24.687"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Prem Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitpremcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.688" level="INFO">${mainbenefitpremcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.688" starttime="20170828 11:12:24.688"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Topup Flag</arg>
+</arguments>
+<assign>
+<var>${topupflag}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.689" level="INFO">${topupflag} = N</msg>
+<status status="PASS" endtime="20170828 11:12:24.689" starttime="20170828 11:12:24.689"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Acc Dis Rider SA</arg>
+</arguments>
+<assign>
+<var>${accdisridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.690" level="INFO">${accdisridersa} = 5000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.690" starttime="20170828 11:12:24.690"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>CI Rider SA</arg>
+</arguments>
+<assign>
+<var>${ciridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.691" level="INFO">${ciridersa} = 1000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.691" starttime="20170828 11:12:24.690"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Beneficiary</arg>
+</arguments>
+<assign>
+<var>${beneficiary}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.692" level="INFO">${beneficiary} = A0623705</msg>
+<status status="PASS" endtime="20170828 11:12:24.692" starttime="20170828 11:12:24.691"></status>
+</kw>
+<status status="PASS" endtime="20170828 11:12:24.692" starttime="20170828 11:12:24.675"></status>
+</kw>
+<kw type="foritem" name="${innerdict_details} = 7">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${innerdict_details}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.693" level="INFO">7</msg>
+<status status="PASS" endtime="20170828 11:12:24.693" starttime="20170828 11:12:24.692"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${dict_Details}</arg>
+<arg>${innerdict_details}</arg>
+</arguments>
+<assign>
+<var>${propotioncreation}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.694" level="INFO">${propotioncreation} = {'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170828 11:12:24.694" starttime="20170828 11:12:24.693"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.695" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623859', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170828 11:12:24.695" starttime="20170828 11:12:24.694"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.696" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170828 11:12:24.696" starttime="20170828 11:12:24.695"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${contractowner}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.696" level="INFO">${contractowner} = A0623859</msg>
+<status status="PASS" endtime="20170828 11:12:24.696" starttime="20170828 11:12:24.696"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Prop Date</arg>
+</arguments>
+<assign>
+<var>${propdate}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.697" level="INFO">${propdate} = 42948.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.698" starttime="20170828 11:12:24.697"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Agent Code</arg>
+</arguments>
+<assign>
+<var>${agentcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.698" level="INFO">${agentcode} = 00758405</msg>
+<status status="PASS" endtime="20170828 11:12:24.698" starttime="20170828 11:12:24.698"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Statistical Code</arg>
+</arguments>
+<assign>
+<var>${statisticalcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.699" level="INFO">${statisticalcode} = SUW</msg>
+<status status="PASS" endtime="20170828 11:12:24.700" starttime="20170828 11:12:24.699"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Billing Frequency</arg>
+</arguments>
+<assign>
+<var>${billingfrequency}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.701" level="INFO">${billingfrequency} = 04</msg>
+<status status="PASS" endtime="20170828 11:12:24.701" starttime="20170828 11:12:24.700"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Method of Payment</arg>
+</arguments>
+<assign>
+<var>${methodofpayment}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.702" level="INFO">${methodofpayment} = C</msg>
+<status status="PASS" endtime="20170828 11:12:24.702" starttime="20170828 11:12:24.701"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit SA</arg>
+</arguments>
+<assign>
+<var>${mainbenefitsa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.703" level="INFO">${mainbenefitsa} = 10000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.703" starttime="20170828 11:12:24.702"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Risk Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitriskcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.704" level="INFO">${mainbenefitriskcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.704" starttime="20170828 11:12:24.703"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Prem Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitpremcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.705" level="INFO">${mainbenefitpremcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.705" starttime="20170828 11:12:24.704"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Topup Flag</arg>
+</arguments>
+<assign>
+<var>${topupflag}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.706" level="INFO">${topupflag} = N</msg>
+<status status="PASS" endtime="20170828 11:12:24.706" starttime="20170828 11:12:24.706"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Acc Dis Rider SA</arg>
+</arguments>
+<assign>
+<var>${accdisridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.707" level="INFO">${accdisridersa} = 5000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.707" starttime="20170828 11:12:24.707"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>CI Rider SA</arg>
+</arguments>
+<assign>
+<var>${ciridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.708" level="INFO">${ciridersa} = 1000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.708" starttime="20170828 11:12:24.708"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Beneficiary</arg>
+</arguments>
+<assign>
+<var>${beneficiary}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.710" level="INFO">${beneficiary} = A0623705</msg>
+<status status="PASS" endtime="20170828 11:12:24.710" starttime="20170828 11:12:24.709"></status>
+</kw>
+<status status="PASS" endtime="20170828 11:12:24.710" starttime="20170828 11:12:24.692"></status>
+</kw>
+<kw type="foritem" name="${innerdict_details} = 8">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${innerdict_details}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.711" level="INFO">8</msg>
+<status status="PASS" endtime="20170828 11:12:24.711" starttime="20170828 11:12:24.711"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${dict_Details}</arg>
+<arg>${innerdict_details}</arg>
+</arguments>
+<assign>
+<var>${propotioncreation}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.713" level="INFO">${propotioncreation} = {'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170828 11:12:24.713" starttime="20170828 11:12:24.712"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.713" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623860', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170828 11:12:24.714" starttime="20170828 11:12:24.713"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.714" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170828 11:12:24.715" starttime="20170828 11:12:24.714"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${contractowner}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.716" level="INFO">${contractowner} = A0623860</msg>
+<status status="PASS" endtime="20170828 11:12:24.717" starttime="20170828 11:12:24.715"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Prop Date</arg>
+</arguments>
+<assign>
+<var>${propdate}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.718" level="INFO">${propdate} = 42948.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.718" starttime="20170828 11:12:24.718"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Agent Code</arg>
+</arguments>
+<assign>
+<var>${agentcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.719" level="INFO">${agentcode} = 00758405</msg>
+<status status="PASS" endtime="20170828 11:12:24.719" starttime="20170828 11:12:24.719"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Statistical Code</arg>
+</arguments>
+<assign>
+<var>${statisticalcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.720" level="INFO">${statisticalcode} = EUW</msg>
+<status status="PASS" endtime="20170828 11:12:24.720" starttime="20170828 11:12:24.720"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Billing Frequency</arg>
+</arguments>
+<assign>
+<var>${billingfrequency}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.721" level="INFO">${billingfrequency} = 12</msg>
+<status status="PASS" endtime="20170828 11:12:24.721" starttime="20170828 11:12:24.720"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Method of Payment</arg>
+</arguments>
+<assign>
+<var>${methodofpayment}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.722" level="INFO">${methodofpayment} = C</msg>
+<status status="PASS" endtime="20170828 11:12:24.722" starttime="20170828 11:12:24.721"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit SA</arg>
+</arguments>
+<assign>
+<var>${mainbenefitsa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.723" level="INFO">${mainbenefitsa} = 10000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.723" starttime="20170828 11:12:24.722"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Risk Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitriskcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.724" level="INFO">${mainbenefitriskcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.724" starttime="20170828 11:12:24.723"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Prem Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitpremcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.725" level="INFO">${mainbenefitpremcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.725" starttime="20170828 11:12:24.724"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Topup Flag</arg>
+</arguments>
+<assign>
+<var>${topupflag}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.726" level="INFO">${topupflag} = N</msg>
+<status status="PASS" endtime="20170828 11:12:24.726" starttime="20170828 11:12:24.725"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Acc Dis Rider SA</arg>
+</arguments>
+<assign>
+<var>${accdisridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.727" level="INFO">${accdisridersa} = 5000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.727" starttime="20170828 11:12:24.726"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>CI Rider SA</arg>
+</arguments>
+<assign>
+<var>${ciridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.727" level="INFO">${ciridersa} = 1000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.727" starttime="20170828 11:12:24.727"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Beneficiary</arg>
+</arguments>
+<assign>
+<var>${beneficiary}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.728" level="INFO">${beneficiary} = A0623705</msg>
+<status status="PASS" endtime="20170828 11:12:24.728" starttime="20170828 11:12:24.728"></status>
+</kw>
+<status status="PASS" endtime="20170828 11:12:24.729" starttime="20170828 11:12:24.711"></status>
+</kw>
+<kw type="foritem" name="${innerdict_details} = 9">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${innerdict_details}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.730" level="INFO">9</msg>
+<status status="PASS" endtime="20170828 11:12:24.730" starttime="20170828 11:12:24.729"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${dict_Details}</arg>
+<arg>${innerdict_details}</arg>
+</arguments>
+<assign>
+<var>${propotioncreation}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.731" level="INFO">${propotioncreation} = {'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170828 11:12:24.731" starttime="20170828 11:12:24.730"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.732" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623861', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170828 11:12:24.732" starttime="20170828 11:12:24.731"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.734" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170828 11:12:24.734" starttime="20170828 11:12:24.733"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${contractowner}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.735" level="INFO">${contractowner} = A0623861</msg>
+<status status="PASS" endtime="20170828 11:12:24.735" starttime="20170828 11:12:24.734"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Prop Date</arg>
+</arguments>
+<assign>
+<var>${propdate}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.736" level="INFO">${propdate} = 42948.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.736" starttime="20170828 11:12:24.735"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Agent Code</arg>
+</arguments>
+<assign>
+<var>${agentcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.737" level="INFO">${agentcode} = 00758405</msg>
+<status status="PASS" endtime="20170828 11:12:24.737" starttime="20170828 11:12:24.737"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Statistical Code</arg>
+</arguments>
+<assign>
+<var>${statisticalcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.738" level="INFO">${statisticalcode} = SUW</msg>
+<status status="PASS" endtime="20170828 11:12:24.738" starttime="20170828 11:12:24.738"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Billing Frequency</arg>
+</arguments>
+<assign>
+<var>${billingfrequency}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.739" level="INFO">${billingfrequency} = 01</msg>
+<status status="PASS" endtime="20170828 11:12:24.740" starttime="20170828 11:12:24.739"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Method of Payment</arg>
+</arguments>
+<assign>
+<var>${methodofpayment}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.741" level="INFO">${methodofpayment} = C</msg>
+<status status="PASS" endtime="20170828 11:12:24.741" starttime="20170828 11:12:24.740"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit SA</arg>
+</arguments>
+<assign>
+<var>${mainbenefitsa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.742" level="INFO">${mainbenefitsa} = 10000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.742" starttime="20170828 11:12:24.741"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Risk Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitriskcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.743" level="INFO">${mainbenefitriskcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.743" starttime="20170828 11:12:24.742"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Prem Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitpremcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.744" level="INFO">${mainbenefitpremcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.744" starttime="20170828 11:12:24.744"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Topup Flag</arg>
+</arguments>
+<assign>
+<var>${topupflag}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.745" level="INFO">${topupflag} = N</msg>
+<status status="PASS" endtime="20170828 11:12:24.745" starttime="20170828 11:12:24.745"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Acc Dis Rider SA</arg>
+</arguments>
+<assign>
+<var>${accdisridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.746" level="INFO">${accdisridersa} = 5000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.747" starttime="20170828 11:12:24.746"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>CI Rider SA</arg>
+</arguments>
+<assign>
+<var>${ciridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.748" level="INFO">${ciridersa} = 1000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.748" starttime="20170828 11:12:24.747"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Beneficiary</arg>
+</arguments>
+<assign>
+<var>${beneficiary}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.749" level="INFO">${beneficiary} = A0623705</msg>
+<status status="PASS" endtime="20170828 11:12:24.749" starttime="20170828 11:12:24.748"></status>
+</kw>
+<status status="PASS" endtime="20170828 11:12:24.750" starttime="20170828 11:12:24.729"></status>
+</kw>
+<kw type="foritem" name="${innerdict_details} = 10">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${innerdict_details}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.751" level="INFO">10</msg>
+<status status="PASS" endtime="20170828 11:12:24.751" starttime="20170828 11:12:24.750"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${dict_Details}</arg>
+<arg>${innerdict_details}</arg>
+</arguments>
+<assign>
+<var>${propotioncreation}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.752" level="INFO">${propotioncreation} = {'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170828 11:12:24.752" starttime="20170828 11:12:24.751"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.753" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623862', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170828 11:12:24.753" starttime="20170828 11:12:24.752"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.754" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170828 11:12:24.754" starttime="20170828 11:12:24.753"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${contractowner}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.755" level="INFO">${contractowner} = A0623862</msg>
+<status status="PASS" endtime="20170828 11:12:24.755" starttime="20170828 11:12:24.755"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Prop Date</arg>
+</arguments>
+<assign>
+<var>${propdate}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.756" level="INFO">${propdate} = 42948.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.756" starttime="20170828 11:12:24.755"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Agent Code</arg>
+</arguments>
+<assign>
+<var>${agentcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.757" level="INFO">${agentcode} = 00758405</msg>
+<status status="PASS" endtime="20170828 11:12:24.757" starttime="20170828 11:12:24.756"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Statistical Code</arg>
+</arguments>
+<assign>
+<var>${statisticalcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.758" level="INFO">${statisticalcode} = EUW</msg>
+<status status="PASS" endtime="20170828 11:12:24.758" starttime="20170828 11:12:24.757"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Billing Frequency</arg>
+</arguments>
+<assign>
+<var>${billingfrequency}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.759" level="INFO">${billingfrequency} = 02</msg>
+<status status="PASS" endtime="20170828 11:12:24.759" starttime="20170828 11:12:24.758"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Method of Payment</arg>
+</arguments>
+<assign>
+<var>${methodofpayment}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.760" level="INFO">${methodofpayment} = C</msg>
+<status status="PASS" endtime="20170828 11:12:24.760" starttime="20170828 11:12:24.759"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit SA</arg>
+</arguments>
+<assign>
+<var>${mainbenefitsa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.761" level="INFO">${mainbenefitsa} = 10000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.761" starttime="20170828 11:12:24.761"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Risk Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitriskcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.762" level="INFO">${mainbenefitriskcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.762" starttime="20170828 11:12:24.762"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Prem Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitpremcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.763" level="INFO">${mainbenefitpremcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.763" starttime="20170828 11:12:24.763"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Topup Flag</arg>
+</arguments>
+<assign>
+<var>${topupflag}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.765" level="INFO">${topupflag} = N</msg>
+<status status="PASS" endtime="20170828 11:12:24.765" starttime="20170828 11:12:24.764"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Acc Dis Rider SA</arg>
+</arguments>
+<assign>
+<var>${accdisridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.767" level="INFO">${accdisridersa} = 5000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.767" starttime="20170828 11:12:24.766"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>CI Rider SA</arg>
+</arguments>
+<assign>
+<var>${ciridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.768" level="INFO">${ciridersa} = 1000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.768" starttime="20170828 11:12:24.768"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Beneficiary</arg>
+</arguments>
+<assign>
+<var>${beneficiary}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.769" level="INFO">${beneficiary} = A0623705</msg>
+<status status="PASS" endtime="20170828 11:12:24.769" starttime="20170828 11:12:24.769"></status>
+</kw>
+<status status="PASS" endtime="20170828 11:12:24.770" starttime="20170828 11:12:24.750"></status>
+</kw>
+<kw type="foritem" name="${innerdict_details} = 11">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${innerdict_details}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.770" level="INFO">11</msg>
+<status status="PASS" endtime="20170828 11:12:24.771" starttime="20170828 11:12:24.770"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${dict_Details}</arg>
+<arg>${innerdict_details}</arg>
+</arguments>
+<assign>
+<var>${propotioncreation}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.772" level="INFO">${propotioncreation} = {'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170828 11:12:24.772" starttime="20170828 11:12:24.771"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.772" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623863', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170828 11:12:24.772" starttime="20170828 11:12:24.772"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.773" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170828 11:12:24.774" starttime="20170828 11:12:24.773"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${contractowner}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.774" level="INFO">${contractowner} = A0623863</msg>
+<status status="PASS" endtime="20170828 11:12:24.774" starttime="20170828 11:12:24.774"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Prop Date</arg>
+</arguments>
+<assign>
+<var>${propdate}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.776" level="INFO">${propdate} = 42948.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.776" starttime="20170828 11:12:24.775"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Agent Code</arg>
+</arguments>
+<assign>
+<var>${agentcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.777" level="INFO">${agentcode} = 00758405</msg>
+<status status="PASS" endtime="20170828 11:12:24.777" starttime="20170828 11:12:24.776"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Statistical Code</arg>
+</arguments>
+<assign>
+<var>${statisticalcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.778" level="INFO">${statisticalcode} = SUW</msg>
+<status status="PASS" endtime="20170828 11:12:24.778" starttime="20170828 11:12:24.777"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Billing Frequency</arg>
+</arguments>
+<assign>
+<var>${billingfrequency}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.779" level="INFO">${billingfrequency} = 04</msg>
+<status status="PASS" endtime="20170828 11:12:24.779" starttime="20170828 11:12:24.778"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Method of Payment</arg>
+</arguments>
+<assign>
+<var>${methodofpayment}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.780" level="INFO">${methodofpayment} = C</msg>
+<status status="PASS" endtime="20170828 11:12:24.780" starttime="20170828 11:12:24.779"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit SA</arg>
+</arguments>
+<assign>
+<var>${mainbenefitsa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.781" level="INFO">${mainbenefitsa} = 10000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.781" starttime="20170828 11:12:24.780"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Risk Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitriskcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.782" level="INFO">${mainbenefitriskcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.782" starttime="20170828 11:12:24.781"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Prem Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitpremcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.784" level="INFO">${mainbenefitpremcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.784" starttime="20170828 11:12:24.783"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Topup Flag</arg>
+</arguments>
+<assign>
+<var>${topupflag}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.785" level="INFO">${topupflag} = N</msg>
+<status status="PASS" endtime="20170828 11:12:24.785" starttime="20170828 11:12:24.784"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Acc Dis Rider SA</arg>
+</arguments>
+<assign>
+<var>${accdisridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.786" level="INFO">${accdisridersa} = 5000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.786" starttime="20170828 11:12:24.785"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>CI Rider SA</arg>
+</arguments>
+<assign>
+<var>${ciridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.787" level="INFO">${ciridersa} = 1000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.787" starttime="20170828 11:12:24.786"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Beneficiary</arg>
+</arguments>
+<assign>
+<var>${beneficiary}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.788" level="INFO">${beneficiary} = A0623705</msg>
+<status status="PASS" endtime="20170828 11:12:24.788" starttime="20170828 11:12:24.787"></status>
+</kw>
+<status status="PASS" endtime="20170828 11:12:24.788" starttime="20170828 11:12:24.770"></status>
+</kw>
+<kw type="foritem" name="${innerdict_details} = 12">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${innerdict_details}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.789" level="INFO">12</msg>
+<status status="PASS" endtime="20170828 11:12:24.789" starttime="20170828 11:12:24.789"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${dict_Details}</arg>
+<arg>${innerdict_details}</arg>
+</arguments>
+<assign>
+<var>${propotioncreation}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.790" level="INFO">${propotioncreation} = {'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170828 11:12:24.790" starttime="20170828 11:12:24.790"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.791" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623864', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170828 11:12:24.791" starttime="20170828 11:12:24.790"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.792" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170828 11:12:24.792" starttime="20170828 11:12:24.791"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${contractowner}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.793" level="INFO">${contractowner} = A0623864</msg>
+<status status="PASS" endtime="20170828 11:12:24.793" starttime="20170828 11:12:24.792"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Prop Date</arg>
+</arguments>
+<assign>
+<var>${propdate}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.794" level="INFO">${propdate} = 42948.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.794" starttime="20170828 11:12:24.793"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Agent Code</arg>
+</arguments>
+<assign>
+<var>${agentcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.795" level="INFO">${agentcode} = 00758405</msg>
+<status status="PASS" endtime="20170828 11:12:24.795" starttime="20170828 11:12:24.794"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Statistical Code</arg>
+</arguments>
+<assign>
+<var>${statisticalcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.795" level="INFO">${statisticalcode} = EUW</msg>
+<status status="PASS" endtime="20170828 11:12:24.796" starttime="20170828 11:12:24.795"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Billing Frequency</arg>
+</arguments>
+<assign>
+<var>${billingfrequency}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.797" level="INFO">${billingfrequency} = 12</msg>
+<status status="PASS" endtime="20170828 11:12:24.797" starttime="20170828 11:12:24.796"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Method of Payment</arg>
+</arguments>
+<assign>
+<var>${methodofpayment}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.798" level="INFO">${methodofpayment} = C</msg>
+<status status="PASS" endtime="20170828 11:12:24.798" starttime="20170828 11:12:24.797"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit SA</arg>
+</arguments>
+<assign>
+<var>${mainbenefitsa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.799" level="INFO">${mainbenefitsa} = 10000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.799" starttime="20170828 11:12:24.798"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Risk Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitriskcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.800" level="INFO">${mainbenefitriskcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.800" starttime="20170828 11:12:24.799"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Prem Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitpremcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.801" level="INFO">${mainbenefitpremcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.801" starttime="20170828 11:12:24.801"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Topup Flag</arg>
+</arguments>
+<assign>
+<var>${topupflag}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.802" level="INFO">${topupflag} = N</msg>
+<status status="PASS" endtime="20170828 11:12:24.802" starttime="20170828 11:12:24.802"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Acc Dis Rider SA</arg>
+</arguments>
+<assign>
+<var>${accdisridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.803" level="INFO">${accdisridersa} = 5000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.803" starttime="20170828 11:12:24.802"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>CI Rider SA</arg>
+</arguments>
+<assign>
+<var>${ciridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.804" level="INFO">${ciridersa} = 1000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.804" starttime="20170828 11:12:24.804"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Beneficiary</arg>
+</arguments>
+<assign>
+<var>${beneficiary}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.805" level="INFO">${beneficiary} = A0623705</msg>
+<status status="PASS" endtime="20170828 11:12:24.805" starttime="20170828 11:12:24.805"></status>
+</kw>
+<status status="PASS" endtime="20170828 11:12:24.805" starttime="20170828 11:12:24.788"></status>
+</kw>
+<kw type="foritem" name="${innerdict_details} = 13">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${innerdict_details}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.806" level="INFO">13</msg>
+<status status="PASS" endtime="20170828 11:12:24.806" starttime="20170828 11:12:24.806"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${dict_Details}</arg>
+<arg>${innerdict_details}</arg>
+</arguments>
+<assign>
+<var>${propotioncreation}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.807" level="INFO">${propotioncreation} = {'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170828 11:12:24.807" starttime="20170828 11:12:24.807"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.808" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623865', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170828 11:12:24.808" starttime="20170828 11:12:24.808"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.809" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170828 11:12:24.810" starttime="20170828 11:12:24.809"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${contractowner}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.811" level="INFO">${contractowner} = A0623865</msg>
+<status status="PASS" endtime="20170828 11:12:24.811" starttime="20170828 11:12:24.810"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Prop Date</arg>
+</arguments>
+<assign>
+<var>${propdate}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.812" level="INFO">${propdate} = 42948.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.813" starttime="20170828 11:12:24.812"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Agent Code</arg>
+</arguments>
+<assign>
+<var>${agentcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.814" level="INFO">${agentcode} = 00758405</msg>
+<status status="PASS" endtime="20170828 11:12:24.814" starttime="20170828 11:12:24.813"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Statistical Code</arg>
+</arguments>
+<assign>
+<var>${statisticalcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.815" level="INFO">${statisticalcode} = SUW</msg>
+<status status="PASS" endtime="20170828 11:12:24.815" starttime="20170828 11:12:24.814"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Billing Frequency</arg>
+</arguments>
+<assign>
+<var>${billingfrequency}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.817" level="INFO">${billingfrequency} = 01</msg>
+<status status="PASS" endtime="20170828 11:12:24.817" starttime="20170828 11:12:24.815"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Method of Payment</arg>
+</arguments>
+<assign>
+<var>${methodofpayment}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.818" level="INFO">${methodofpayment} = C</msg>
+<status status="PASS" endtime="20170828 11:12:24.819" starttime="20170828 11:12:24.818"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit SA</arg>
+</arguments>
+<assign>
+<var>${mainbenefitsa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.820" level="INFO">${mainbenefitsa} = 10000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.820" starttime="20170828 11:12:24.819"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Risk Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitriskcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.820" level="INFO">${mainbenefitriskcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.821" starttime="20170828 11:12:24.820"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Prem Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitpremcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.822" level="INFO">${mainbenefitpremcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.822" starttime="20170828 11:12:24.821"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Topup Flag</arg>
+</arguments>
+<assign>
+<var>${topupflag}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.823" level="INFO">${topupflag} = N</msg>
+<status status="PASS" endtime="20170828 11:12:24.823" starttime="20170828 11:12:24.822"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Acc Dis Rider SA</arg>
+</arguments>
+<assign>
+<var>${accdisridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.824" level="INFO">${accdisridersa} = 5000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.824" starttime="20170828 11:12:24.823"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>CI Rider SA</arg>
+</arguments>
+<assign>
+<var>${ciridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.824" level="INFO">${ciridersa} = 1000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.825" starttime="20170828 11:12:24.824"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Beneficiary</arg>
+</arguments>
+<assign>
+<var>${beneficiary}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.825" level="INFO">${beneficiary} = A0623705</msg>
+<status status="PASS" endtime="20170828 11:12:24.825" starttime="20170828 11:12:24.825"></status>
+</kw>
+<status status="PASS" endtime="20170828 11:12:24.826" starttime="20170828 11:12:24.806"></status>
+</kw>
+<kw type="foritem" name="${innerdict_details} = 14">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${innerdict_details}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.827" level="INFO">14</msg>
+<status status="PASS" endtime="20170828 11:12:24.827" starttime="20170828 11:12:24.826"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${dict_Details}</arg>
+<arg>${innerdict_details}</arg>
+</arguments>
+<assign>
+<var>${propotioncreation}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.828" level="INFO">${propotioncreation} = {'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170828 11:12:24.828" starttime="20170828 11:12:24.828"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.829" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623866', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170828 11:12:24.829" starttime="20170828 11:12:24.828"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.830" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170828 11:12:24.830" starttime="20170828 11:12:24.829"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${contractowner}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.831" level="INFO">${contractowner} = A0623866</msg>
+<status status="PASS" endtime="20170828 11:12:24.831" starttime="20170828 11:12:24.830"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Prop Date</arg>
+</arguments>
+<assign>
+<var>${propdate}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.832" level="INFO">${propdate} = 42948.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.832" starttime="20170828 11:12:24.831"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Agent Code</arg>
+</arguments>
+<assign>
+<var>${agentcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.833" level="INFO">${agentcode} = 00758405</msg>
+<status status="PASS" endtime="20170828 11:12:24.834" starttime="20170828 11:12:24.832"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Statistical Code</arg>
+</arguments>
+<assign>
+<var>${statisticalcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.834" level="INFO">${statisticalcode} = EUW</msg>
+<status status="PASS" endtime="20170828 11:12:24.835" starttime="20170828 11:12:24.834"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Billing Frequency</arg>
+</arguments>
+<assign>
+<var>${billingfrequency}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.835" level="INFO">${billingfrequency} = 02</msg>
+<status status="PASS" endtime="20170828 11:12:24.836" starttime="20170828 11:12:24.835"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Method of Payment</arg>
+</arguments>
+<assign>
+<var>${methodofpayment}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.836" level="INFO">${methodofpayment} = C</msg>
+<status status="PASS" endtime="20170828 11:12:24.836" starttime="20170828 11:12:24.836"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit SA</arg>
+</arguments>
+<assign>
+<var>${mainbenefitsa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.838" level="INFO">${mainbenefitsa} = 10000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.838" starttime="20170828 11:12:24.837"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Risk Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitriskcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.839" level="INFO">${mainbenefitriskcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.839" starttime="20170828 11:12:24.838"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Prem Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitpremcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.839" level="INFO">${mainbenefitpremcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.840" starttime="20170828 11:12:24.839"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Topup Flag</arg>
+</arguments>
+<assign>
+<var>${topupflag}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.841" level="INFO">${topupflag} = N</msg>
+<status status="PASS" endtime="20170828 11:12:24.842" starttime="20170828 11:12:24.840"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Acc Dis Rider SA</arg>
+</arguments>
+<assign>
+<var>${accdisridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.843" level="INFO">${accdisridersa} = 5000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.843" starttime="20170828 11:12:24.842"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>CI Rider SA</arg>
+</arguments>
+<assign>
+<var>${ciridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.844" level="INFO">${ciridersa} = 1000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.844" starttime="20170828 11:12:24.843"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Beneficiary</arg>
+</arguments>
+<assign>
+<var>${beneficiary}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.844" level="INFO">${beneficiary} = A0623705</msg>
+<status status="PASS" endtime="20170828 11:12:24.844" starttime="20170828 11:12:24.844"></status>
+</kw>
+<status status="PASS" endtime="20170828 11:12:24.845" starttime="20170828 11:12:24.826"></status>
+</kw>
+<kw type="foritem" name="${innerdict_details} = 15">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${innerdict_details}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.846" level="INFO">15</msg>
+<status status="PASS" endtime="20170828 11:12:24.846" starttime="20170828 11:12:24.845"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${dict_Details}</arg>
+<arg>${innerdict_details}</arg>
+</arguments>
+<assign>
+<var>${propotioncreation}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.847" level="INFO">${propotioncreation} = {'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170828 11:12:24.847" starttime="20170828 11:12:24.846"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.848" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623867', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170828 11:12:24.848" starttime="20170828 11:12:24.847"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.848" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170828 11:12:24.848" starttime="20170828 11:12:24.848"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${contractowner}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.850" level="INFO">${contractowner} = A0623867</msg>
+<status status="PASS" endtime="20170828 11:12:24.850" starttime="20170828 11:12:24.849"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Prop Date</arg>
+</arguments>
+<assign>
+<var>${propdate}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.850" level="INFO">${propdate} = 42948.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.851" starttime="20170828 11:12:24.850"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Agent Code</arg>
+</arguments>
+<assign>
+<var>${agentcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.852" level="INFO">${agentcode} = 00758405</msg>
+<status status="PASS" endtime="20170828 11:12:24.852" starttime="20170828 11:12:24.851"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Statistical Code</arg>
+</arguments>
+<assign>
+<var>${statisticalcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.853" level="INFO">${statisticalcode} = SUW</msg>
+<status status="PASS" endtime="20170828 11:12:24.853" starttime="20170828 11:12:24.852"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Billing Frequency</arg>
+</arguments>
+<assign>
+<var>${billingfrequency}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.854" level="INFO">${billingfrequency} = 04</msg>
+<status status="PASS" endtime="20170828 11:12:24.854" starttime="20170828 11:12:24.853"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Method of Payment</arg>
+</arguments>
+<assign>
+<var>${methodofpayment}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.854" level="INFO">${methodofpayment} = C</msg>
+<status status="PASS" endtime="20170828 11:12:24.855" starttime="20170828 11:12:24.854"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit SA</arg>
+</arguments>
+<assign>
+<var>${mainbenefitsa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.856" level="INFO">${mainbenefitsa} = 10000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.856" starttime="20170828 11:12:24.855"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Risk Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitriskcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.857" level="INFO">${mainbenefitriskcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.857" starttime="20170828 11:12:24.856"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Prem Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitpremcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.857" level="INFO">${mainbenefitpremcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.858" starttime="20170828 11:12:24.857"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Topup Flag</arg>
+</arguments>
+<assign>
+<var>${topupflag}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.858" level="INFO">${topupflag} = N</msg>
+<status status="PASS" endtime="20170828 11:12:24.858" starttime="20170828 11:12:24.858"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Acc Dis Rider SA</arg>
+</arguments>
+<assign>
+<var>${accdisridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.859" level="INFO">${accdisridersa} = 5000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.859" starttime="20170828 11:12:24.859"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>CI Rider SA</arg>
+</arguments>
+<assign>
+<var>${ciridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.860" level="INFO">${ciridersa} = 1000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.860" starttime="20170828 11:12:24.860"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Beneficiary</arg>
+</arguments>
+<assign>
+<var>${beneficiary}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.861" level="INFO">${beneficiary} = A0623705</msg>
+<status status="PASS" endtime="20170828 11:12:24.862" starttime="20170828 11:12:24.861"></status>
+</kw>
+<status status="PASS" endtime="20170828 11:12:24.862" starttime="20170828 11:12:24.845"></status>
+</kw>
+<kw type="foritem" name="${innerdict_details} = 16">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${innerdict_details}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.863" level="INFO">16</msg>
+<status status="PASS" endtime="20170828 11:12:24.863" starttime="20170828 11:12:24.862"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${dict_Details}</arg>
+<arg>${innerdict_details}</arg>
+</arguments>
+<assign>
+<var>${propotioncreation}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.864" level="INFO">${propotioncreation} = {'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170828 11:12:24.864" starttime="20170828 11:12:24.864"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.865" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623868', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170828 11:12:24.866" starttime="20170828 11:12:24.865"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.868" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170828 11:12:24.868" starttime="20170828 11:12:24.867"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${contractowner}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.869" level="INFO">${contractowner} = A0623868</msg>
+<status status="PASS" endtime="20170828 11:12:24.869" starttime="20170828 11:12:24.868"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Prop Date</arg>
+</arguments>
+<assign>
+<var>${propdate}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.869" level="INFO">${propdate} = 42948.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.870" starttime="20170828 11:12:24.869"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Agent Code</arg>
+</arguments>
+<assign>
+<var>${agentcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.871" level="INFO">${agentcode} = 00758405</msg>
+<status status="PASS" endtime="20170828 11:12:24.871" starttime="20170828 11:12:24.870"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Statistical Code</arg>
+</arguments>
+<assign>
+<var>${statisticalcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.872" level="INFO">${statisticalcode} = EUW</msg>
+<status status="PASS" endtime="20170828 11:12:24.872" starttime="20170828 11:12:24.871"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Billing Frequency</arg>
+</arguments>
+<assign>
+<var>${billingfrequency}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.873" level="INFO">${billingfrequency} = 12</msg>
+<status status="PASS" endtime="20170828 11:12:24.873" starttime="20170828 11:12:24.872"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Method of Payment</arg>
+</arguments>
+<assign>
+<var>${methodofpayment}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.874" level="INFO">${methodofpayment} = C</msg>
+<status status="PASS" endtime="20170828 11:12:24.874" starttime="20170828 11:12:24.873"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit SA</arg>
+</arguments>
+<assign>
+<var>${mainbenefitsa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.874" level="INFO">${mainbenefitsa} = 10000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.875" starttime="20170828 11:12:24.874"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Risk Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitriskcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.875" level="INFO">${mainbenefitriskcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.876" starttime="20170828 11:12:24.875"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Prem Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitpremcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.876" level="INFO">${mainbenefitpremcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.876" starttime="20170828 11:12:24.876"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Topup Flag</arg>
+</arguments>
+<assign>
+<var>${topupflag}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.877" level="INFO">${topupflag} = N</msg>
+<status status="PASS" endtime="20170828 11:12:24.877" starttime="20170828 11:12:24.877"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Acc Dis Rider SA</arg>
+</arguments>
+<assign>
+<var>${accdisridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.878" level="INFO">${accdisridersa} = 5000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.878" starttime="20170828 11:12:24.878"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>CI Rider SA</arg>
+</arguments>
+<assign>
+<var>${ciridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.879" level="INFO">${ciridersa} = 1000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.879" starttime="20170828 11:12:24.878"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Beneficiary</arg>
+</arguments>
+<assign>
+<var>${beneficiary}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.880" level="INFO">${beneficiary} = A0623705</msg>
+<status status="PASS" endtime="20170828 11:12:24.880" starttime="20170828 11:12:24.879"></status>
+</kw>
+<status status="PASS" endtime="20170828 11:12:24.880" starttime="20170828 11:12:24.862"></status>
+</kw>
+<kw type="foritem" name="${innerdict_details} = 17">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${innerdict_details}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.881" level="INFO">17</msg>
+<status status="PASS" endtime="20170828 11:12:24.881" starttime="20170828 11:12:24.881"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${dict_Details}</arg>
+<arg>${innerdict_details}</arg>
+</arguments>
+<assign>
+<var>${propotioncreation}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.882" level="INFO">${propotioncreation} = {'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170828 11:12:24.882" starttime="20170828 11:12:24.882"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.883" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'01', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623869', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170828 11:12:24.884" starttime="20170828 11:12:24.883"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.884" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170828 11:12:24.885" starttime="20170828 11:12:24.884"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${contractowner}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.885" level="INFO">${contractowner} = A0623869</msg>
+<status status="PASS" endtime="20170828 11:12:24.885" starttime="20170828 11:12:24.885"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Prop Date</arg>
+</arguments>
+<assign>
+<var>${propdate}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.886" level="INFO">${propdate} = 42948.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.886" starttime="20170828 11:12:24.886"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Agent Code</arg>
+</arguments>
+<assign>
+<var>${agentcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.887" level="INFO">${agentcode} = 00758405</msg>
+<status status="PASS" endtime="20170828 11:12:24.887" starttime="20170828 11:12:24.887"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Statistical Code</arg>
+</arguments>
+<assign>
+<var>${statisticalcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.888" level="INFO">${statisticalcode} = SUW</msg>
+<status status="PASS" endtime="20170828 11:12:24.888" starttime="20170828 11:12:24.888"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Billing Frequency</arg>
+</arguments>
+<assign>
+<var>${billingfrequency}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.889" level="INFO">${billingfrequency} = 01</msg>
+<status status="PASS" endtime="20170828 11:12:24.889" starttime="20170828 11:12:24.889"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Method of Payment</arg>
+</arguments>
+<assign>
+<var>${methodofpayment}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.890" level="INFO">${methodofpayment} = C</msg>
+<status status="PASS" endtime="20170828 11:12:24.890" starttime="20170828 11:12:24.889"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit SA</arg>
+</arguments>
+<assign>
+<var>${mainbenefitsa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.891" level="INFO">${mainbenefitsa} = 10000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.891" starttime="20170828 11:12:24.891"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Risk Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitriskcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.892" level="INFO">${mainbenefitriskcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.892" starttime="20170828 11:12:24.892"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Prem Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitpremcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.893" level="INFO">${mainbenefitpremcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.893" starttime="20170828 11:12:24.893"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Topup Flag</arg>
+</arguments>
+<assign>
+<var>${topupflag}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.894" level="INFO">${topupflag} = N</msg>
+<status status="PASS" endtime="20170828 11:12:24.894" starttime="20170828 11:12:24.893"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Acc Dis Rider SA</arg>
+</arguments>
+<assign>
+<var>${accdisridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.895" level="INFO">${accdisridersa} = 5000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.895" starttime="20170828 11:12:24.894"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>CI Rider SA</arg>
+</arguments>
+<assign>
+<var>${ciridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.896" level="INFO">${ciridersa} = 1000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.896" starttime="20170828 11:12:24.895"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Beneficiary</arg>
+</arguments>
+<assign>
+<var>${beneficiary}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.897" level="INFO">${beneficiary} = A0623705</msg>
+<status status="PASS" endtime="20170828 11:12:24.897" starttime="20170828 11:12:24.897"></status>
+</kw>
+<status status="PASS" endtime="20170828 11:12:24.897" starttime="20170828 11:12:24.880"></status>
+</kw>
+<kw type="foritem" name="${innerdict_details} = 18">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${innerdict_details}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.898" level="INFO">18</msg>
+<status status="PASS" endtime="20170828 11:12:24.898" starttime="20170828 11:12:24.898"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${dict_Details}</arg>
+<arg>${innerdict_details}</arg>
+</arguments>
+<assign>
+<var>${propotioncreation}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.900" level="INFO">${propotioncreation} = {'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170828 11:12:24.900" starttime="20170828 11:12:24.899"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.900" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'02', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623870', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170828 11:12:24.901" starttime="20170828 11:12:24.900"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.901" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170828 11:12:24.902" starttime="20170828 11:12:24.901"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${contractowner}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.903" level="INFO">${contractowner} = A0623870</msg>
+<status status="PASS" endtime="20170828 11:12:24.903" starttime="20170828 11:12:24.902"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Prop Date</arg>
+</arguments>
+<assign>
+<var>${propdate}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.904" level="INFO">${propdate} = 42948.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.904" starttime="20170828 11:12:24.903"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Agent Code</arg>
+</arguments>
+<assign>
+<var>${agentcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.905" level="INFO">${agentcode} = 00758405</msg>
+<status status="PASS" endtime="20170828 11:12:24.905" starttime="20170828 11:12:24.904"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Statistical Code</arg>
+</arguments>
+<assign>
+<var>${statisticalcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.906" level="INFO">${statisticalcode} = EUW</msg>
+<status status="PASS" endtime="20170828 11:12:24.906" starttime="20170828 11:12:24.905"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Billing Frequency</arg>
+</arguments>
+<assign>
+<var>${billingfrequency}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.906" level="INFO">${billingfrequency} = 02</msg>
+<status status="PASS" endtime="20170828 11:12:24.907" starttime="20170828 11:12:24.906"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Method of Payment</arg>
+</arguments>
+<assign>
+<var>${methodofpayment}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.907" level="INFO">${methodofpayment} = C</msg>
+<status status="PASS" endtime="20170828 11:12:24.908" starttime="20170828 11:12:24.907"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit SA</arg>
+</arguments>
+<assign>
+<var>${mainbenefitsa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.908" level="INFO">${mainbenefitsa} = 10000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.908" starttime="20170828 11:12:24.908"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Risk Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitriskcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.909" level="INFO">${mainbenefitriskcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.909" starttime="20170828 11:12:24.909"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Prem Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitpremcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.910" level="INFO">${mainbenefitpremcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.910" starttime="20170828 11:12:24.910"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Topup Flag</arg>
+</arguments>
+<assign>
+<var>${topupflag}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.911" level="INFO">${topupflag} = N</msg>
+<status status="PASS" endtime="20170828 11:12:24.911" starttime="20170828 11:12:24.910"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Acc Dis Rider SA</arg>
+</arguments>
+<assign>
+<var>${accdisridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.912" level="INFO">${accdisridersa} = 5000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.912" starttime="20170828 11:12:24.911"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>CI Rider SA</arg>
+</arguments>
+<assign>
+<var>${ciridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.913" level="INFO">${ciridersa} = 1000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.913" starttime="20170828 11:12:24.912"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Beneficiary</arg>
+</arguments>
+<assign>
+<var>${beneficiary}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.913" level="INFO">${beneficiary} = A0623705</msg>
+<status status="PASS" endtime="20170828 11:12:24.914" starttime="20170828 11:12:24.913"></status>
+</kw>
+<status status="PASS" endtime="20170828 11:12:24.914" starttime="20170828 11:12:24.898"></status>
+</kw>
+<kw type="foritem" name="${innerdict_details} = 19">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${innerdict_details}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.915" level="INFO">19</msg>
+<status status="PASS" endtime="20170828 11:12:24.915" starttime="20170828 11:12:24.914"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${dict_Details}</arg>
+<arg>${innerdict_details}</arg>
+</arguments>
+<assign>
+<var>${propotioncreation}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.916" level="INFO">${propotioncreation} = {'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170828 11:12:24.916" starttime="20170828 11:12:24.915"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.917" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'04', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'SUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623871', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170828 11:12:24.917" starttime="20170828 11:12:24.917"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.918" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170828 11:12:24.918" starttime="20170828 11:12:24.918"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${contractowner}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.919" level="INFO">${contractowner} = A0623871</msg>
+<status status="PASS" endtime="20170828 11:12:24.919" starttime="20170828 11:12:24.918"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Prop Date</arg>
+</arguments>
+<assign>
+<var>${propdate}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.920" level="INFO">${propdate} = 42948.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.920" starttime="20170828 11:12:24.919"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Agent Code</arg>
+</arguments>
+<assign>
+<var>${agentcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.921" level="INFO">${agentcode} = 00758405</msg>
+<status status="PASS" endtime="20170828 11:12:24.921" starttime="20170828 11:12:24.920"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Statistical Code</arg>
+</arguments>
+<assign>
+<var>${statisticalcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.922" level="INFO">${statisticalcode} = SUW</msg>
+<status status="PASS" endtime="20170828 11:12:24.922" starttime="20170828 11:12:24.921"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Billing Frequency</arg>
+</arguments>
+<assign>
+<var>${billingfrequency}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.922" level="INFO">${billingfrequency} = 04</msg>
+<status status="PASS" endtime="20170828 11:12:24.923" starttime="20170828 11:12:24.922"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Method of Payment</arg>
+</arguments>
+<assign>
+<var>${methodofpayment}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.923" level="INFO">${methodofpayment} = C</msg>
+<status status="PASS" endtime="20170828 11:12:24.923" starttime="20170828 11:12:24.923"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit SA</arg>
+</arguments>
+<assign>
+<var>${mainbenefitsa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.924" level="INFO">${mainbenefitsa} = 10000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.924" starttime="20170828 11:12:24.924"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Risk Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitriskcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.925" level="INFO">${mainbenefitriskcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.925" starttime="20170828 11:12:24.925"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Prem Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitpremcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.926" level="INFO">${mainbenefitpremcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.926" starttime="20170828 11:12:24.925"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Topup Flag</arg>
+</arguments>
+<assign>
+<var>${topupflag}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.927" level="INFO">${topupflag} = N</msg>
+<status status="PASS" endtime="20170828 11:12:24.927" starttime="20170828 11:12:24.927"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Acc Dis Rider SA</arg>
+</arguments>
+<assign>
+<var>${accdisridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.928" level="INFO">${accdisridersa} = 5000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.928" starttime="20170828 11:12:24.928"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>CI Rider SA</arg>
+</arguments>
+<assign>
+<var>${ciridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.929" level="INFO">${ciridersa} = 1000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.929" starttime="20170828 11:12:24.929"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Beneficiary</arg>
+</arguments>
+<assign>
+<var>${beneficiary}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.930" level="INFO">${beneficiary} = A0623705</msg>
+<status status="PASS" endtime="20170828 11:12:24.930" starttime="20170828 11:12:24.929"></status>
+</kw>
+<status status="PASS" endtime="20170828 11:12:24.930" starttime="20170828 11:12:24.914"></status>
+</kw>
+<kw type="foritem" name="${innerdict_details} = 20">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${innerdict_details}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.931" level="INFO">20</msg>
+<status status="PASS" endtime="20170828 11:12:24.931" starttime="20170828 11:12:24.931"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${dict_Details}</arg>
+<arg>${innerdict_details}</arg>
+</arguments>
+<assign>
+<var>${propotioncreation}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.933" level="INFO">${propotioncreation} = {'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': ...</msg>
+<status status="PASS" endtime="20170828 11:12:24.933" starttime="20170828 11:12:24.933"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+</arguments>
+<msg timestamp="20170828 11:12:24.933" level="INFO">{'Topup Flag': u'N', 'Billing Frequency': u'12', 'Product Code': u'CTP', 'Method of Payment': u'C', 'CI Rider SA': 1000000.0, 'Statistical Code': u'EUW', 'Main Benefit SA': 10000000.0, 'Beneficiary': u'A0623705', 'Main Benefit Prem Cess term': 10.0, 'Agent Code': u'00758405', 'Main Benefit Risk Cess term': 10.0, 'Prop Date': 42948.0, 'Contract Owner': u'A0623872', 'Acc Dis Rider SA': 5000000.0}</msg>
+<status status="PASS" endtime="20170828 11:12:24.934" starttime="20170828 11:12:24.933"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Product Code</arg>
+</arguments>
+<assign>
+<var>${productcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.935" level="INFO">${productcode} = CTP</msg>
+<status status="PASS" endtime="20170828 11:12:24.935" starttime="20170828 11:12:24.934"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Contract Owner</arg>
+</arguments>
+<assign>
+<var>${contractowner}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.936" level="INFO">${contractowner} = A0623872</msg>
+<status status="PASS" endtime="20170828 11:12:24.936" starttime="20170828 11:12:24.935"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Prop Date</arg>
+</arguments>
+<assign>
+<var>${propdate}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.937" level="INFO">${propdate} = 42948.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.937" starttime="20170828 11:12:24.936"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Agent Code</arg>
+</arguments>
+<assign>
+<var>${agentcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.938" level="INFO">${agentcode} = 00758405</msg>
+<status status="PASS" endtime="20170828 11:12:24.938" starttime="20170828 11:12:24.937"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Statistical Code</arg>
+</arguments>
+<assign>
+<var>${statisticalcode}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.939" level="INFO">${statisticalcode} = EUW</msg>
+<status status="PASS" endtime="20170828 11:12:24.939" starttime="20170828 11:12:24.938"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Billing Frequency</arg>
+</arguments>
+<assign>
+<var>${billingfrequency}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.940" level="INFO">${billingfrequency} = 12</msg>
+<status status="PASS" endtime="20170828 11:12:24.940" starttime="20170828 11:12:24.939"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Method of Payment</arg>
+</arguments>
+<assign>
+<var>${methodofpayment}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.941" level="INFO">${methodofpayment} = C</msg>
+<status status="PASS" endtime="20170828 11:12:24.941" starttime="20170828 11:12:24.940"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit SA</arg>
+</arguments>
+<assign>
+<var>${mainbenefitsa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.942" level="INFO">${mainbenefitsa} = 10000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.942" starttime="20170828 11:12:24.941"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Risk Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitriskcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.942" level="INFO">${mainbenefitriskcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.942" starttime="20170828 11:12:24.942"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Main Benefit Prem Cess term</arg>
+</arguments>
+<assign>
+<var>${mainbenefitpremcessterm}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.943" level="INFO">${mainbenefitpremcessterm} = 10.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.943" starttime="20170828 11:12:24.943"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Topup Flag</arg>
+</arguments>
+<assign>
+<var>${topupflag}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.944" level="INFO">${topupflag} = N</msg>
+<status status="PASS" endtime="20170828 11:12:24.944" starttime="20170828 11:12:24.944"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Acc Dis Rider SA</arg>
+</arguments>
+<assign>
+<var>${accdisridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.966" level="INFO">${accdisridersa} = 5000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.966" starttime="20170828 11:12:24.945"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>CI Rider SA</arg>
+</arguments>
+<assign>
+<var>${ciridersa}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.968" level="INFO">${ciridersa} = 1000000.0</msg>
+<status status="PASS" endtime="20170828 11:12:24.968" starttime="20170828 11:12:24.968"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${propotioncreation}</arg>
+<arg>Beneficiary</arg>
+</arguments>
+<assign>
+<var>${beneficiary}</var>
+</assign>
+<msg timestamp="20170828 11:12:24.969" level="INFO">${beneficiary} = A0623705</msg>
+<status status="PASS" endtime="20170828 11:12:24.969" starttime="20170828 11:12:24.969"></status>
+</kw>
+<status status="PASS" endtime="20170828 11:12:24.970" starttime="20170828 11:12:24.930"></status>
+</kw>
+<status status="PASS" endtime="20170828 11:12:24.970" starttime="20170828 11:12:24.578"></status>
+</kw>
+<status status="PASS" endtime="20170828 11:12:24.970" critical="yes" starttime="20170828 11:12:24.564"></status>
+</test>
+<status status="PASS" endtime="20170828 11:12:24.971" starttime="20170828 11:12:23.557"></status>
+</suite>
+<status status="PASS" endtime="20170828 11:12:24.972" starttime="20170828 11:12:23.554"></status>
+</suite>
+<status status="PASS" endtime="20170828 11:12:24.973" starttime="20170828 11:12:23.524"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="1">Critical Tests</stat>
+<stat fail="0" pass="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="FG" pass="1">FG</stat>
+<stat fail="0" id="s1-s1" name="TestSuites" pass="1">FG.TestSuites</stat>
+<stat fail="0" id="s1-s1-s1" name="FG Suite" pass="1">FG.TestSuites.FG Suite</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

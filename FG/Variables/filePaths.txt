@@ -1,0 +1,12 @@
+*** Variables ***
+${deafult_client_files_directory}    ${EXECDIR}\\TestData\\client_data
+${config_file}    ${EXECDIR}\\TestData\\ConfigurationSheet.xlsx
+${output_folder_to_save_macro}    ${EXECDIR}\\TestData\\output_folder
+${standard_macro_file}    ${EXECDIR}\\TestData\\Standard_macro.xlsm
+${master_data_file}    ${EXECDIR}\\TestData\\Master DataFile.xlsx
+${outpu_folder_for_log_errors}    ${EXECDIR}\\TestData\\Failed_Logs
+${output_folder_to_move_error_files}    ${EXECDIR}\\TestData\\Failed_Policy_Files
+${output_folder_for_successfully_consolidated_fies}    ${EXECDIR}\\TestData\\Successfuly_Consolidated_files
+${successfully_processed_macro_files}    ${EXECDIR}\\TestData\\Successfully_Processed_Macro_Files
+${failed_macro_files}    ${EXECDIR}\\TestData\\Failed_Macro_Files
+${bill_ouput_folder_path}    ${EXECDIR}\\TestData\\Bill_Output
